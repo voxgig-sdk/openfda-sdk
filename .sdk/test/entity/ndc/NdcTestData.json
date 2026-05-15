@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "ndc": {
+      "NDC00": {
+        "meta": {},
+        "result": []
+      },
+      "NDC01": {
+        "meta": {},
+        "result": []
+      },
+      "NDC02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "ndc": {
+      "ndc_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

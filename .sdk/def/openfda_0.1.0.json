@@ -1,0 +1,917 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "openFDA API",
+    "description": "openFDA provides access to a variety of public data related to FDA-regulated products. It offers APIs for searching FDA data for drugs, devices, food, and other relevant categories crucial for healthcare decisions and research.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "openFDA",
+      "url": "https://open.fda.gov/"
+    },
+    "license": {
+      "name": "Public Domain",
+      "url": "https://open.fda.gov/license/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.fda.gov",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/drug/event.json": {
+      "get": {
+        "summary": "Search drug adverse events",
+        "description": "Query FDA Adverse Event Reporting System (FAERS) data for drug adverse events",
+        "operationId": "searchDrugEvents",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search query using openFDA query syntax",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "patient.drug.openfda.brand_name:aspirin"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Count records by specified field",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of records to return (max 1000)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "Number of records to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "disclaimer": {
+                          "type": "string"
+                        },
+                        "terms": {
+                          "type": "string"
+                        },
+                        "license": {
+                          "type": "string"
+                        },
+                        "results": {
+                          "type": "object",
+                          "properties": {
+                            "skip": {
+                              "type": "integer"
+                            },
+                            "limit": {
+                              "type": "integer"
+                            },
+                            "total": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid query parameters"
+          },
+          "404": {
+            "description": "No results found"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/drug/label.json": {
+      "get": {
+        "summary": "Search drug labels",
+        "description": "Query drug labeling information (SPL) for prescription and OTC drugs",
+        "operationId": "searchDrugLabels",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search query using openFDA query syntax",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Count records by specified field",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of records to return (max 1000)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "Number of records to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "No results found"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/drug/ndc.json": {
+      "get": {
+        "summary": "Search drug NDC directory",
+        "description": "Query National Drug Code (NDC) directory information",
+        "operationId": "searchDrugNDC",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "No results found"
+          }
+        }
+      }
+    },
+    "/drug/enforcement.json": {
+      "get": {
+        "summary": "Search drug enforcement reports",
+        "description": "Query FDA drug product recall enforcement reports",
+        "operationId": "searchDrugEnforcement",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/drug/drugsfda.json": {
+      "get": {
+        "summary": "Search drugs@FDA",
+        "description": "Query drugs@FDA database for drug products with FDA approval",
+        "operationId": "searchDrugsFDA",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/event.json": {
+      "get": {
+        "summary": "Search device adverse events",
+        "description": "Query MAUDE (Manufacturer and User Facility Device Experience) database for device adverse events",
+        "operationId": "searchDeviceEvents",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/enforcement.json": {
+      "get": {
+        "summary": "Search device enforcement reports",
+        "description": "Query FDA device product recall enforcement reports",
+        "operationId": "searchDeviceEnforcement",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/classification.json": {
+      "get": {
+        "summary": "Search device classifications",
+        "description": "Query device classification database",
+        "operationId": "searchDeviceClassification",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/510k.json": {
+      "get": {
+        "summary": "Search device 510(k) clearances",
+        "description": "Query premarket notification 510(k) database",
+        "operationId": "searchDevice510k",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/pma.json": {
+      "get": {
+        "summary": "Search device PMA approvals",
+        "description": "Query premarket approval (PMA) database",
+        "operationId": "searchDevicePMA",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/enforcement.json": {
+      "get": {
+        "summary": "Search food enforcement reports",
+        "description": "Query FDA food product recall enforcement reports",
+        "operationId": "searchFoodEnforcement",
+        "tags": [
+          "Food"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/food/event.json": {
+      "get": {
+        "summary": "Search food adverse events",
+        "description": "Query CFSAN Adverse Event Reporting System (CAERS) for food and cosmetic adverse events",
+        "operationId": "searchFoodEvents",
+        "tags": [
+          "Food"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/other/nsde.json": {
+      "get": {
+        "summary": "Search nutritional supplement data",
+        "description": "Query National Survey on Drug Use and Health (NSDE) data",
+        "operationId": "searchNSDE",
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tobacco/problem.json": {
+      "get": {
+        "summary": "Search tobacco problem reports",
+        "description": "Query tobacco product problem reports submitted to FDA",
+        "operationId": "searchTobaccoProblem",
+        "tags": [
+          "Tobacco"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/other/substance.json": {
+      "get": {
+        "summary": "Search substance data",
+        "description": "Query FDA substance registration system data",
+        "operationId": "searchSubstance",
+        "tags": [
+          "Other"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cosmetic/event.json": {
+      "get": {
+        "summary": "Search cosmetic adverse events",
+        "description": "Query cosmetic adverse event data",
+        "operationId": "searchCosmeticEvents",
+        "tags": [
+          "Cosmetic"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/drug/shortages.json": {
+      "get": {
+        "summary": "Search drug shortages",
+        "description": "Query current and resolved drug shortage data",
+        "operationId": "searchDrugShortages",
+        "tags": [
+          "Drug"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/CountParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          },
+          {
+            "$ref": "#/components/parameters/SkipParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "SearchParam": {
+        "name": "search",
+        "in": "query",
+        "description": "Search query using openFDA query syntax. Supports logical operators (AND, OR), field-specific searches, and range queries.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "patient.drug.openfda.brand_name:lipitor"
+      },
+      "CountParam": {
+        "name": "count",
+        "in": "query",
+        "description": "Count records by specified field. Returns frequency counts for unique values.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "patient.reaction.reactionmeddrapt.exact"
+      },
+      "LimitParam": {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of records to return. Maximum is 1000.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 1000
+        }
+      },
+      "SkipParam": {
+        "name": "skip",
+        "in": "query",
+        "description": "Number of records to skip for pagination. Used with limit for paging through results.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0
+        }
+      }
+    },
+    "schemas": {
+      "APIResponse": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "type": "object",
+            "properties": {
+              "disclaimer": {
+                "type": "string",
+                "description": "Important disclaimer about FDA data usage"
+              },
+              "terms": {
+                "type": "string",
+                "description": "Link to API terms of service"
+              },
+              "license": {
+                "type": "string",
+                "description": "Link to data license"
+              },
+              "last_updated": {
+                "type": "string",
+                "format": "date",
+                "description": "Date the data was last updated"
+              },
+              "results": {
+                "type": "object",
+                "properties": {
+                  "skip": {
+                    "type": "integer",
+                    "description": "Number of records skipped"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Number of records returned"
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "Total number of matching records"
+                  }
+                }
+              }
+            }
+          },
+          "results": {
+            "type": "array",
+            "description": "Array of result objects matching the query",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Error code"
+              },
+              "message": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "api_key",
+        "description": "Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day."
+      }
+    }
+  },
+  "security": [
+    {},
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Drug",
+      "description": "Endpoints for querying drug-related data including adverse events, labels, NDC codes, enforcement actions, and shortages"
+    },
+    {
+      "name": "Device",
+      "description": "Endpoints for querying medical device data including adverse events, recalls, classifications, and approvals"
+    },
+    {
+      "name": "Food",
+      "description": "Endpoints for querying food-related data including adverse events and enforcement reports"
+    },
+    {
+      "name": "Cosmetic",
+      "description": "Endpoints for querying cosmetic adverse event data"
+    },
+    {
+      "name": "Tobacco",
+      "description": "Endpoints for querying tobacco product problem reports"
+    },
+    {
+      "name": "Other",
+      "description": "Other FDA data endpoints including substances and nutritional supplements"
+    }
+  ],
+  "externalDocs": {
+    "description": "Full openFDA API Documentation",
+    "url": "https://open.fda.gov/apis/"
+  }
+}

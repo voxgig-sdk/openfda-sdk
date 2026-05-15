@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "substance": {
+      "SUBSTANCE00": {
+        "meta": {},
+        "result": []
+      },
+      "SUBSTANCE01": {
+        "meta": {},
+        "result": []
+      },
+      "SUBSTANCE02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "substance": {
+      "substance_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

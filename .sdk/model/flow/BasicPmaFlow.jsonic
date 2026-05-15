@@ -1,0 +1,22 @@
+# BasicPmaFlow
+
+main: kit: flow: BasicPmaFlow:
+{
+  entity: "pma",
+  kind: "basic",
+  name: "BasicPmaFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pma_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPmaFlow"
+}

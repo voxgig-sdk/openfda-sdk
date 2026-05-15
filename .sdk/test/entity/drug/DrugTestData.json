@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "drug": {
+      "DRUG00": {
+        "meta": {},
+        "result": []
+      },
+      "DRUG01": {
+        "meta": {},
+        "result": []
+      },
+      "DRUG02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "drug": {
+      "drug_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

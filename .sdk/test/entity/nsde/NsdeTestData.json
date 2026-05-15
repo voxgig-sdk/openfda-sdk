@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "nsde": {
+      "NSDE00": {
+        "meta": {},
+        "result": []
+      },
+      "NSDE01": {
+        "meta": {},
+        "result": []
+      },
+      "NSDE02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "nsde": {
+      "nsde_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

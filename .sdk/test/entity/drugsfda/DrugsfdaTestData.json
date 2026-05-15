@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "drugsfda": {
+      "DRUGSFDA00": {
+        "meta": {},
+        "result": []
+      },
+      "DRUGSFDA01": {
+        "meta": {},
+        "result": []
+      },
+      "DRUGSFDA02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "drugsfda": {
+      "drugsfda_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "label": {
+      "LABEL00": {
+        "meta": {},
+        "result": []
+      },
+      "LABEL01": {
+        "meta": {},
+        "result": []
+      },
+      "LABEL02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "label": {
+      "label_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

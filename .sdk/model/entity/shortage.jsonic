@@ -1,0 +1,87 @@
+# Entity: shortage
+
+main: kit: entity: shortage: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "meta"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "shortage"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "patient.reaction.reactionmeddrapt.exact"
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "patient.drug.openfda.brand_name:lipitor"
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "skip"
+                orig: "skip"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/drug/shortages.json"
+          parts: [
+            "drug"
+            "shortages.json"
+          ]
+          select: {
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

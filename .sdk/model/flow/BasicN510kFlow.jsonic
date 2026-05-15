@@ -1,0 +1,22 @@
+# BasicN510kFlow
+
+main: kit: flow: BasicN510kFlow:
+{
+  entity: "n510k",
+  kind: "basic",
+  name: "BasicN510kFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "n510k_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicN510kFlow"
+}

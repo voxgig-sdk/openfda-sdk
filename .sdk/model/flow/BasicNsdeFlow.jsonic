@@ -1,0 +1,22 @@
+# BasicNsdeFlow
+
+main: kit: flow: BasicNsdeFlow:
+{
+  entity: "nsde",
+  kind: "basic",
+  name: "BasicNsdeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "nsde_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNsdeFlow"
+}

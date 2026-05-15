@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "pma": {
+      "PMA00": {
+        "meta": {},
+        "result": []
+      },
+      "PMA01": {
+        "meta": {},
+        "result": []
+      },
+      "PMA02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "pma": {
+      "pma_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

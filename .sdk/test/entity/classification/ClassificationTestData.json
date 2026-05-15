@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "classification": {
+      "CLASSIFICATION00": {
+        "meta": {},
+        "result": []
+      },
+      "CLASSIFICATION01": {
+        "meta": {},
+        "result": []
+      },
+      "CLASSIFICATION02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "classification": {
+      "classification_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

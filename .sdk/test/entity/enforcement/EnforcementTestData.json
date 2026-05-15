@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "enforcement": {
+      "ENFORCEMENT00": {
+        "meta": {},
+        "result": []
+      },
+      "ENFORCEMENT01": {
+        "meta": {},
+        "result": []
+      },
+      "ENFORCEMENT02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "enforcement": {
+      "enforcement_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

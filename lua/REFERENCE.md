@@ -1,0 +1,837 @@
+# Openfda Lua SDK Reference
+
+Complete API reference for the Openfda Lua SDK.
+
+
+## OpenfdaSDK
+
+### Constructor
+
+```lua
+local sdk = require("openfda_sdk")
+local client = sdk.new(options)
+```
+
+Create a new SDK client instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `options` | `table` | SDK configuration options. |
+| `options.apikey` | `string` | API key for authentication. |
+| `options.base` | `string` | Base URL for API requests. |
+| `options.prefix` | `string` | URL prefix appended after base. |
+| `options.suffix` | `string` | URL suffix appended after path. |
+| `options.headers` | `table` | Custom headers for all requests. |
+| `options.feature` | `table` | Feature configuration. |
+| `options.system` | `table` | System overrides (e.g. custom fetch). |
+
+
+### Static Methods
+
+#### `sdk.test(testopts, sdkopts)`
+
+Create a test client with mock features active. Both arguments may be `nil`.
+
+```lua
+local client = sdk.test(nil, nil)
+```
+
+
+### Instance Methods
+
+#### `Classification(data)`
+
+Create a new `Classification` entity instance. Pass `nil` for no initial data.
+
+#### `Drug(data)`
+
+Create a new `Drug` entity instance. Pass `nil` for no initial data.
+
+#### `Drugsfda(data)`
+
+Create a new `Drugsfda` entity instance. Pass `nil` for no initial data.
+
+#### `Enforcement(data)`
+
+Create a new `Enforcement` entity instance. Pass `nil` for no initial data.
+
+#### `Event(data)`
+
+Create a new `Event` entity instance. Pass `nil` for no initial data.
+
+#### `Label(data)`
+
+Create a new `Label` entity instance. Pass `nil` for no initial data.
+
+#### `N510k(data)`
+
+Create a new `N510k` entity instance. Pass `nil` for no initial data.
+
+#### `Ndc(data)`
+
+Create a new `Ndc` entity instance. Pass `nil` for no initial data.
+
+#### `Nsde(data)`
+
+Create a new `Nsde` entity instance. Pass `nil` for no initial data.
+
+#### `Pma(data)`
+
+Create a new `Pma` entity instance. Pass `nil` for no initial data.
+
+#### `Problem(data)`
+
+Create a new `Problem` entity instance. Pass `nil` for no initial data.
+
+#### `Shortage(data)`
+
+Create a new `Shortage` entity instance. Pass `nil` for no initial data.
+
+#### `Substance(data)`
+
+Create a new `Substance` entity instance. Pass `nil` for no initial data.
+
+#### `options_map() -> table`
+
+Return a deep copy of the current SDK options.
+
+#### `get_utility() -> Utility`
+
+Return a copy of the SDK utility object.
+
+#### `direct(fetchargs) -> table, err`
+
+Make a direct HTTP request to any API endpoint.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `fetchargs.path` | `string` | URL path with optional `{param}` placeholders. |
+| `fetchargs.method` | `string` | HTTP method (default: `"GET"`). |
+| `fetchargs.params` | `table` | Path parameter values for `{param}` substitution. |
+| `fetchargs.query` | `table` | Query string parameters. |
+| `fetchargs.headers` | `table` | Request headers (merged with defaults). |
+| `fetchargs.body` | `any` | Request body (tables are JSON-serialized). |
+| `fetchargs.ctrl` | `table` | Control options (e.g. `{ explain = true }`). |
+
+**Returns:** `table, err`
+
+#### `prepare(fetchargs) -> table, err`
+
+Prepare a fetch definition without sending the request. Accepts the
+same parameters as `direct()`.
+
+**Returns:** `table, err`
+
+
+---
+
+## ClassificationEntity
+
+```lua
+local classification = client:Classification(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Classification(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ClassificationEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DrugEntity
+
+```lua
+local drug = client:Drug(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Drug(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DrugEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## DrugsfdaEntity
+
+```lua
+local drugsfda = client:Drugsfda(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Drugsfda(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `DrugsfdaEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## EnforcementEntity
+
+```lua
+local enforcement = client:Enforcement(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Enforcement(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EnforcementEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## EventEntity
+
+```lua
+local event = client:Event(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Event(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `EventEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## LabelEntity
+
+```lua
+local label = client:Label(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Label(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `LabelEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## N510kEntity
+
+```lua
+local n510k = client:N510k(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:N510k(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `N510kEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NdcEntity
+
+```lua
+local ndc = client:Ndc(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Ndc(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NdcEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## NsdeEntity
+
+```lua
+local nsde = client:Nsde(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Nsde(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `NsdeEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## PmaEntity
+
+```lua
+local pma = client:Pma(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Pma(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `PmaEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ProblemEntity
+
+```lua
+local problem = client:Problem(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Problem(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ProblemEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## ShortageEntity
+
+```lua
+local shortage = client:Shortage(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Shortage(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ShortageEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## SubstanceEntity
+
+```lua
+local substance = client:Substance(nil)
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `meta` | ``$OBJECT`` | No |  |
+| `result` | ``$ARRAY`` | No |  |
+
+### Operations
+
+#### `list(reqmatch, ctrl) -> any, err`
+
+List entities matching the given criteria. Returns an array.
+
+```lua
+local results, err = client:Substance(nil):list(nil, nil)
+```
+
+### Common Methods
+
+#### `data_get() -> table`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> table`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SubstanceEntity` instance with the same client and
+options.
+
+#### `get_name() -> string`
+
+Return the entity name.
+
+
+---
+
+## Features
+
+| Feature | Version | Description |
+| --- | --- | --- |
+| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
+
+
+Features are activated via the `feature` option:
+
+```lua
+local client = sdk.new({
+  feature = {
+    test = { active = true },
+  },
+})
+```
+

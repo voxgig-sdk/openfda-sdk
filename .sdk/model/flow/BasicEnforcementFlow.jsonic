@@ -1,0 +1,22 @@
+# BasicEnforcementFlow
+
+main: kit: flow: BasicEnforcementFlow:
+{
+  entity: "enforcement",
+  kind: "basic",
+  name: "BasicEnforcementFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "enforcement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEnforcementFlow"
+}

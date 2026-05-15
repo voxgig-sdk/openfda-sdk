@@ -1,0 +1,22 @@
+# BasicClassificationFlow
+
+main: kit: flow: BasicClassificationFlow:
+{
+  entity: "classification",
+  kind: "basic",
+  name: "BasicClassificationFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "classification_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClassificationFlow"
+}

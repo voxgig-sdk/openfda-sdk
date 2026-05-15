@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "shortage": {
+      "SHORTAGE00": {
+        "meta": {},
+        "result": []
+      },
+      "SHORTAGE01": {
+        "meta": {},
+        "result": []
+      },
+      "SHORTAGE02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "shortage": {
+      "shortage_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

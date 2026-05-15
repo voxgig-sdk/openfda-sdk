@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "openFDA"
+        url: "https://open.fda.gov/"
+      }
+      description: "openFDA provides access to a variety of public data related to FDA-regulated products. It offers APIs for searching FDA data for drugs, devices, food, and other relevant categories crucial for healthcare decisions and research."
+      license: {
+        name: "Public Domain"
+        url: "https://open.fda.gov/license/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.fda.gov"
+        }
+      ]
+      title: "openFDA API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "event": {
+      "EVENT00": {
+        "meta": {},
+        "result": []
+      },
+      "EVENT01": {
+        "meta": {},
+        "result": []
+      },
+      "EVENT02": {
+        "meta": {},
+        "result": []
+      }
+    }
+  },
+  "new": {
+    "event": {
+      "event_ref01": {
+        "meta": {},
+        "result": []
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 13
+  metrics: count: path: 17
+  metrics: count: method: 17
+
+  entity: classification: {
+    path: "/device/classification.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: drug: {
+    path: "/drug/event.json": {
+      action: "event": {}
+      op: list: method: *GET
+    }
+  }
+
+  entity: drugsfda: {
+    path: "/drug/drugsfda.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: enforcement: {
+    path: "/device/enforcement.json": {
+      op: list: method: *GET
+    }
+    path: "/drug/enforcement.json": {
+      op: list: method: *GET
+    }
+    path: "/food/enforcement.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: event: {
+    path: "/cosmetic/event.json": {
+      op: list: method: *GET
+    }
+    path: "/device/event.json": {
+      op: list: method: *GET
+    }
+    path: "/food/event.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: label: {
+    path: "/drug/label.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: n510k: {
+    path: "/device/510k.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: ndc: {
+    path: "/drug/ndc.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: nsde: {
+    path: "/other/nsde.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: pma: {
+    path: "/device/pma.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: problem: {
+    path: "/tobacco/problem.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: shortage: {
+    path: "/drug/shortages.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: substance: {
+    path: "/other/substance.json": {
+      op: list: method: *GET
+    }
+  }
+
+}

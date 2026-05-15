@@ -1,0 +1,22 @@
+# BasicSubstanceFlow
+
+main: kit: flow: BasicSubstanceFlow:
+{
+  entity: "substance",
+  kind: "basic",
+  name: "BasicSubstanceFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "substance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubstanceFlow"
+}

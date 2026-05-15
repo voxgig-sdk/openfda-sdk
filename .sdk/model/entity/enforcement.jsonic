@@ -1,0 +1,199 @@
+# Entity: enforcement
+
+main: kit: entity: enforcement: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "meta"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "enforcement"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "patient.reaction.reactionmeddrapt.exact"
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "patient.drug.openfda.brand_name:lipitor"
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "skip"
+                orig: "skip"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/device/enforcement.json"
+          parts: [
+            "device"
+            "enforcement.json"
+          ]
+          select: {
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "patient.reaction.reactionmeddrapt.exact"
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "patient.drug.openfda.brand_name:lipitor"
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "skip"
+                orig: "skip"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/drug/enforcement.json"
+          parts: [
+            "drug"
+            "enforcement.json"
+          ]
+          select: {
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "patient.reaction.reactionmeddrapt.exact"
+                kind: "query"
+                name: "count"
+                orig: "count"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "patient.drug.openfda.brand_name:lipitor"
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "skip"
+                orig: "skip"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/food/enforcement.json"
+          parts: [
+            "food"
+            "enforcement.json"
+          ]
+          select: {
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,15 @@
+# Entity Models
+
+@"classification.jsonic"
+@"drug.jsonic"
+@"drugsfda.jsonic"
+@"enforcement.jsonic"
+@"event.jsonic"
+@"label.jsonic"
+@"n510k.jsonic"
+@"ndc.jsonic"
+@"nsde.jsonic"
+@"pma.jsonic"
+@"problem.jsonic"
+@"shortage.jsonic"
+@"substance.jsonic"
