@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/openfda-sdk"
-	"github.com/voxgig-sdk/openfda-sdk/core"
+	sdk "github.com/voxgig-sdk/openfda-sdk/go"
+	"github.com/voxgig-sdk/openfda-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/openfda-sdk/go/utility/struct"
 )
 
 func TestShortageEntity(t *testing.T) {

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/openfda-sdk/core"
+	"github.com/voxgig-sdk/openfda-sdk/go/core"
 )
 
 type BaseFeature struct {

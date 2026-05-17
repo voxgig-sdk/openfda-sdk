@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/openfda-sdk/core"
+	"github.com/voxgig-sdk/openfda-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/openfda-sdk/go/utility/struct"
 )
 
 type LabelEntity struct {

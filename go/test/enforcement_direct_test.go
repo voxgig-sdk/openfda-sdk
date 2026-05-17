@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/openfda-sdk"
-	"github.com/voxgig-sdk/openfda-sdk/core"
+	sdk "github.com/voxgig-sdk/openfda-sdk/go"
+	"github.com/voxgig-sdk/openfda-sdk/go/core"
 )
 
 func TestEnforcementDirect(t *testing.T) {

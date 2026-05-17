@@ -1,10 +1,10 @@
 package voxgigopenfdasdk
 
 import (
-	"github.com/voxgig-sdk/openfda-sdk/core"
-	"github.com/voxgig-sdk/openfda-sdk/entity"
-	"github.com/voxgig-sdk/openfda-sdk/feature"
-	_ "github.com/voxgig-sdk/openfda-sdk/utility"
+	"github.com/voxgig-sdk/openfda-sdk/go/core"
+	"github.com/voxgig-sdk/openfda-sdk/go/entity"
+	"github.com/voxgig-sdk/openfda-sdk/go/feature"
+	_ "github.com/voxgig-sdk/openfda-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

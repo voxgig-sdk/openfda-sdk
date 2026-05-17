@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/openfda-sdk"
+	sdk "github.com/voxgig-sdk/openfda-sdk/go"
 )
 
 func TestExists(t *testing.T) {
