@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.fda.gov',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

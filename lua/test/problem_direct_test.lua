@@ -63,14 +63,12 @@ function problem_direct_setup(mockres)
   local env = runner.env_override({
     ["OPENFDA_TEST_PROBLEM_ENTID"] = {},
     ["OPENFDA_TEST_LIVE"] = "FALSE",
-    ["OPENFDA_APIKEY"] = "NONE",
   })
 
   local live = env["OPENFDA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["OPENFDA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

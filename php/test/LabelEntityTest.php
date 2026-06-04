@@ -86,7 +86,6 @@ function label_basic_setup($extra)
         "OPENFDA_TEST_LABEL_ENTID" => $idmap,
         "OPENFDA_TEST_LIVE" => "FALSE",
         "OPENFDA_TEST_EXPLAIN" => "FALSE",
-        "OPENFDA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function label_basic_setup($extra)
     if ($env["OPENFDA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["OPENFDA_APIKEY"],
             ],
             $extra ?? [],
         ]);

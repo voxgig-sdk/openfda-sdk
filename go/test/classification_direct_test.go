@@ -93,14 +93,12 @@ func classificationDirectSetup(mockres any) *classificationDirectSetupResult {
 	env := envOverride(map[string]any{
 		"OPENFDA_TEST_CLASSIFICATION_ENTID": map[string]any{},
 		"OPENFDA_TEST_LIVE":    "FALSE",
-		"OPENFDA_APIKEY":       "NONE",
 	})
 
 	live := env["OPENFDA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["OPENFDA_APIKEY"],
 		}
 		client := sdk.NewOpenfdaSDK(mergedOpts)
 

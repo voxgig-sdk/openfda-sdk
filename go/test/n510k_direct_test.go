@@ -93,14 +93,12 @@ func n510kDirectSetup(mockres any) *n510kDirectSetupResult {
 	env := envOverride(map[string]any{
 		"OPENFDA_TEST_N___K_ENTID": map[string]any{},
 		"OPENFDA_TEST_LIVE":    "FALSE",
-		"OPENFDA_APIKEY":       "NONE",
 	})
 
 	live := env["OPENFDA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["OPENFDA_APIKEY"],
 		}
 		client := sdk.NewOpenfdaSDK(mergedOpts)
 

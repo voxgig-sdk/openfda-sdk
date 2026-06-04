@@ -92,7 +92,6 @@ def _drug_basic_setup(extra):
         "OPENFDA_TEST_DRUG_ENTID": idmap,
         "OPENFDA_TEST_LIVE": "FALSE",
         "OPENFDA_TEST_EXPLAIN": "FALSE",
-        "OPENFDA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _drug_basic_setup(extra):
     if env.get("OPENFDA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("OPENFDA_APIKEY"),
             },
             extra or {},
         ])

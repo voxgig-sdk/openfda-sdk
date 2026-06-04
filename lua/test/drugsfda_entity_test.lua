@@ -92,7 +92,6 @@ function drugsfda_basic_setup(extra)
     ["OPENFDA_TEST_DRUGSFDA_ENTID"] = idmap,
     ["OPENFDA_TEST_LIVE"] = "FALSE",
     ["OPENFDA_TEST_EXPLAIN"] = "FALSE",
-    ["OPENFDA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function drugsfda_basic_setup(extra)
   if env["OPENFDA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["OPENFDA_APIKEY"],
       },
       extra or {},
     })

@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'OPENFDA_TEST_N___K_ENTID': {},
     'OPENFDA_TEST_LIVE': 'FALSE',
-    'OPENFDA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.OPENFDA_TEST_LIVE
 
   if (live) {
     const client = new OpenfdaSDK({
-      apikey: env.OPENFDA_APIKEY,
     })
 
     let idmap: any = env['OPENFDA_TEST_N___K_ENTID']
