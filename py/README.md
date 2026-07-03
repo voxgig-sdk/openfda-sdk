@@ -10,7 +10,7 @@ The Python SDK for the Openfda API — an entity-oriented client following Pytho
 
 ## Install
 ```bash
-pip install openfda-sdk
+pip install voxgig-sdk-openfda
 ```
 
 Or install from source:

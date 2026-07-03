@@ -10,13 +10,13 @@ The Ruby SDK for the Openfda API — an entity-oriented client using idiomatic R
 
 ## Install
 ```bash
-gem install openfda-sdk
+gem install voxgig-sdk-openfda
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "openfda-sdk"
+gem "voxgig-sdk-openfda"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The PHP SDK for the Openfda API — an entity-oriented client using PHP conventi
 
 ## Install
 ```bash
-composer require voxgig/openfda-sdk
+composer require voxgig-sdk/openfda
 ```
 
 

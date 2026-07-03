@@ -8,12 +8,14 @@ source = {
   dir = "openfda-sdk/lua"
 }
 description = {
-  summary = "Openfda SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the openFDA public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/openfda-sdk",
+  issues_url = "https://github.com/voxgig-sdk/openfda-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "openfda" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

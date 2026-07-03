@@ -10,7 +10,7 @@ The TypeScript SDK for the Openfda API — a type-safe, entity-oriented client w
 
 ## Install
 ```bash
-npm install openfda
+npm install @voxgig-sdk/openfda
 ```
 ## Tutorial: your first API call
 

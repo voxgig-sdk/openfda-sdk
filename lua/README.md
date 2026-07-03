@@ -10,7 +10,7 @@ The Lua SDK for the Openfda API — an entity-oriented client using Lua conventi
 
 ## Install
 ```bash
-luarocks install openfda-sdk
+luarocks install voxgig-sdk-openfda
 ```
 
 If the module is not yet published, add the source directory to
