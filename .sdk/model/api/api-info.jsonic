@@ -21,37 +21,7 @@ main: {
       ]
       title: "openFDA API"
       version: "1.0.0"
-      tagline: "Query FDA public datasets on drugs, medical devices, food, tobacco, and animal/veterinary products through one JSON API"
-      homepage: "https://open.fda.gov/"
-      docs_url: "https://open.fda.gov/apis/"
-      license_short: "Public Domain (U.S. Government work, CC0-like)"
-      license_md: `- Data is published by the U.S. Food and Drug Administration as a U.S. Government work and is generally in the public domain.
-- The openFDA documentation notes that not all data has been validated for clinical or production use, so use it accordingly.
-- Only publicly available data is served; no sensitive patient or proprietary information is exposed.
-- Review the terms on [open.fda.gov](https://open.fda.gov/) before redistributing or building on the data.`
-      about_md: `[openFDA](https://open.fda.gov/) is an initiative of the [U.S. Food and Drug Administration](https://www.fda.gov/) that exposes a large slice of the agency's public datasets through a single JSON HTTP API served from \`https://api.fda.gov\`.
-
-The API is organised by product area — drugs, medical devices, food, tobacco, and animal & veterinary products — with endpoints for adverse event reports, product labels, recall/enforcement notices, registrations, and reference catalogues such as NDC and substance lists.
-
-Responses follow a consistent shape: a \`meta\` object (query metadata, disclaimer, last-updated timestamp) and a \`results\` array of matching records. The backend is Elasticsearch-based, so endpoints support rich field queries, full-text search, counts, and pagination via the standard \`search\`, \`count\`, \`limit\`, and \`skip\` parameters.
-
-Access is open and CORS-enabled. An optional API key (from open.fda.gov) lifts the default per-IP request quota for production use.`
-      entity_desc: {
-        classification: "Medical device classification records from the FDA product classification database (e.g. `/device/classification.json`)."
-        drug: "Drug-related resources covering adverse event reports, labelling, and reference data under the `/drug/*` namespace."
-        drugsfda: "Records from the Drugs@FDA dataset of approved drug products and their application history (e.g. `/drug/drugsfda.json`)."
-        enforcement: "Recall and enforcement reports issued by the FDA across drug, device, and food product areas (e.g. `/drug/enforcement.json`, `/device/enforcement.json`, `/food/enforcement.json`)."
-        event: "Adverse event reports for drugs, devices, foods, and animal/veterinary products (e.g. `/drug/event.json`, `/device/event.json`, `/food/event.json`)."
-        label: "Structured Product Labeling (SPL) data for human and animal drugs, including indications, warnings, and dosage (e.g. `/drug/label.json`, `/animalandveterinary/event.json` companion labelling)."
-        n510k: "Medical device 510(k) premarket notification clearances (e.g. `/device/510k.json`)."
-        ndc: "National Drug Code directory entries identifying marketed drug products (e.g. `/drug/ndc.json`)."
-        nsde: "Comprehensive NDC SPL Data Elements file — a unified view of marketed drug listing data (e.g. `/drug/nsde.json`)."
-        pma: "Medical device Premarket Approval (PMA) submissions and supplements (e.g. `/device/pma.json`)."
-        problem: "Reports of device problems and adverse experiences associated with FDA-regulated medical devices."
-        shortage: "Drug shortage information drawn from FDA's drug shortage database (e.g. `/drug/shortages.json`)."
-        substance: "Substance reference data identifying ingredients and chemical substances used in regulated products (e.g. `/other/substance.json`)."
-      }
-      auth: false
     }
   }
 }
+

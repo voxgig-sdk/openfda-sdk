@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -149,7 +149,7 @@ local classification = client:Classification(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Classification(nil):list(nil, nil)
+local results, err = client:Classification():list()
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ local drug = client:Drug(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Drug(nil):list(nil, nil)
+local results, err = client:Drug():list()
 ```
 
 ### Common Methods
@@ -255,7 +255,7 @@ local drugsfda = client:Drugsfda(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Drugsfda(nil):list(nil, nil)
+local results, err = client:Drugsfda():list()
 ```
 
 ### Common Methods
@@ -308,7 +308,7 @@ local enforcement = client:Enforcement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Enforcement(nil):list(nil, nil)
+local results, err = client:Enforcement():list()
 ```
 
 ### Common Methods
@@ -361,7 +361,7 @@ local event = client:Event(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Event(nil):list(nil, nil)
+local results, err = client:Event():list()
 ```
 
 ### Common Methods
@@ -414,7 +414,7 @@ local label = client:Label(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Label(nil):list(nil, nil)
+local results, err = client:Label():list()
 ```
 
 ### Common Methods
@@ -467,7 +467,7 @@ local n510k = client:N510k(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:N510k(nil):list(nil, nil)
+local results, err = client:N510k():list()
 ```
 
 ### Common Methods
@@ -520,7 +520,7 @@ local ndc = client:Ndc(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Ndc(nil):list(nil, nil)
+local results, err = client:Ndc():list()
 ```
 
 ### Common Methods
@@ -573,7 +573,7 @@ local nsde = client:Nsde(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Nsde(nil):list(nil, nil)
+local results, err = client:Nsde():list()
 ```
 
 ### Common Methods
@@ -626,7 +626,7 @@ local pma = client:Pma(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Pma(nil):list(nil, nil)
+local results, err = client:Pma():list()
 ```
 
 ### Common Methods
@@ -679,7 +679,7 @@ local problem = client:Problem(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Problem(nil):list(nil, nil)
+local results, err = client:Problem():list()
 ```
 
 ### Common Methods
@@ -732,7 +732,7 @@ local shortage = client:Shortage(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Shortage(nil):list(nil, nil)
+local results, err = client:Shortage():list()
 ```
 
 ### Common Methods
@@ -785,7 +785,7 @@ local substance = client:Substance(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Substance(nil):list(nil, nil)
+local results, err = client:Substance():list()
 ```
 
 ### Common Methods

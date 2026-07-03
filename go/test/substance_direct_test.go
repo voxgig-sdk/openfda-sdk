@@ -93,12 +93,14 @@ func substanceDirectSetup(mockres any) *substanceDirectSetupResult {
 	env := envOverride(map[string]any{
 		"OPENFDA_TEST_SUBSTANCE_ENTID": map[string]any{},
 		"OPENFDA_TEST_LIVE":    "FALSE",
+		"OPENFDA_APIKEY":       "NONE",
 	})
 
 	live := env["OPENFDA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["OPENFDA_APIKEY"],
 		}
 		client := sdk.NewOpenfdaSDK(mergedOpts)
 

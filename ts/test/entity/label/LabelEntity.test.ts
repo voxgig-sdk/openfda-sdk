@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'OPENFDA_TEST_LABEL_ENTID': idmap,
     'OPENFDA_TEST_LIVE': 'FALSE',
     'OPENFDA_TEST_EXPLAIN': 'FALSE',
+    'OPENFDA_APIKEY': 'NONE',
   })
 
   idmap = env['OPENFDA_TEST_LABEL_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new OpenfdaSDK(merge([
       {
+        apikey: env.OPENFDA_APIKEY,
       },
       extra
     ]))

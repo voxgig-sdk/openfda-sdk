@@ -62,12 +62,14 @@ def problem_direct_setup(mockres)
   env = Runner.env_override({
     "OPENFDA_TEST_PROBLEM_ENTID" => {},
     "OPENFDA_TEST_LIVE" => "FALSE",
+    "OPENFDA_APIKEY" => "NONE",
   })
 
   live = env["OPENFDA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["OPENFDA_APIKEY"],
     }
     client = OpenfdaSDK.new(merged_opts)
     return {

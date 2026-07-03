@@ -61,12 +61,14 @@ def _label_direct_setup(mockres):
     env = runner.env_override({
         "OPENFDA_TEST_LABEL_ENTID": {},
         "OPENFDA_TEST_LIVE": "FALSE",
+        "OPENFDA_APIKEY": "NONE",
     })
 
     live = env.get("OPENFDA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("OPENFDA_APIKEY"),
         }
         client = OpenfdaSDK(merged_opts)
         return {

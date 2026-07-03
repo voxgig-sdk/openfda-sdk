@@ -119,6 +119,7 @@ func classificationBasicSetup(extra map[string]any) *entityTestSetup {
 		"OPENFDA_TEST_CLASSIFICATION_ENTID": idmap,
 		"OPENFDA_TEST_LIVE":      "FALSE",
 		"OPENFDA_TEST_EXPLAIN":   "FALSE",
+		"OPENFDA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["OPENFDA_TEST_CLASSIFICATION_ENTID"])
@@ -129,6 +130,7 @@ func classificationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["OPENFDA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["OPENFDA_APIKEY"],
 			},
 			extra,
 		})
