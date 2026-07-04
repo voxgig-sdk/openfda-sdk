@@ -50,8 +50,7 @@ class TestClassificationEntity:
         classification_ref01_ent = client.Classification(None)
         classification_ref01_match = {}
 
-        classification_ref01_list_result, err = classification_ref01_ent.list(classification_ref01_match, None)
-        assert err is None
+        classification_ref01_list_result = classification_ref01_ent.list(classification_ref01_match, None)
         assert isinstance(classification_ref01_list_result, list)
 
 

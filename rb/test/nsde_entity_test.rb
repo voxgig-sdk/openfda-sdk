@@ -43,8 +43,7 @@ class NsdeEntityTest < Minitest::Test
     nsde_ref01_ent = client.Nsde(nil)
     nsde_ref01_match = {}
 
-    nsde_ref01_list_result, err = nsde_ref01_ent.list(nsde_ref01_match, nil)
-    assert_nil err
+    nsde_ref01_list_result = nsde_ref01_ent.list(nsde_ref01_match, nil)
     assert nsde_ref01_list_result.is_a?(Array)
 
   end

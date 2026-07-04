@@ -50,8 +50,7 @@ class LabelEntityTest extends TestCase
         $label_ref01_ent = $client->Label(null);
         $label_ref01_match = [];
 
-        [$label_ref01_list_result, $err] = $label_ref01_ent->list($label_ref01_match, null);
-        $this->assertNull($err);
+        $label_ref01_list_result = $label_ref01_ent->list($label_ref01_match, null);
         $this->assertIsArray($label_ref01_list_result);
 
     }

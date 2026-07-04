@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  N510k,
+  N510kListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class N510kEntity extends OpenfdaEntityBase {
+class N510kEntity extends OpenfdaEntityBase<N510k> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class N510kEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: N510kListMatch, ctrl?: Control): Promise<N510k[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class N510kEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<N510k[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

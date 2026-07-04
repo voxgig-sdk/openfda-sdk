@@ -50,8 +50,7 @@ class PmaEntityTest extends TestCase
         $pma_ref01_ent = $client->Pma(null);
         $pma_ref01_match = [];
 
-        [$pma_ref01_list_result, $err] = $pma_ref01_ent->list($pma_ref01_match, null);
-        $this->assertNull($err);
+        $pma_ref01_list_result = $pma_ref01_ent->list($pma_ref01_match, null);
         $this->assertIsArray($pma_ref01_list_result);
 
     }

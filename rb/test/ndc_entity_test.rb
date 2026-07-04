@@ -43,8 +43,7 @@ class NdcEntityTest < Minitest::Test
     ndc_ref01_ent = client.Ndc(nil)
     ndc_ref01_match = {}
 
-    ndc_ref01_list_result, err = ndc_ref01_ent.list(ndc_ref01_match, nil)
-    assert_nil err
+    ndc_ref01_list_result = ndc_ref01_ent.list(ndc_ref01_match, nil)
     assert ndc_ref01_list_result.is_a?(Array)
 
   end

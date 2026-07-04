@@ -104,7 +104,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -118,11 +121,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -130,7 +134,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## ClassificationEntity
 
 ```php
-$classification = $client->Classification();
+$classification = $client->classification();
 ```
 
 ### Fields
@@ -142,12 +146,12 @@ $classification = $client->Classification();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Classification()->list([]);
+$results = $client->classification()->list([]);
 ```
 
 ### Common Methods
@@ -183,7 +187,7 @@ Return the entity name.
 ## DrugEntity
 
 ```php
-$drug = $client->Drug();
+$drug = $client->drug();
 ```
 
 ### Fields
@@ -195,12 +199,12 @@ $drug = $client->Drug();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Drug()->list([]);
+$results = $client->drug()->list([]);
 ```
 
 ### Common Methods
@@ -236,7 +240,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```php
-$drugsfda = $client->Drugsfda();
+$drugsfda = $client->drugsfda();
 ```
 
 ### Fields
@@ -248,12 +252,12 @@ $drugsfda = $client->Drugsfda();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Drugsfda()->list([]);
+$results = $client->drugsfda()->list([]);
 ```
 
 ### Common Methods
@@ -289,7 +293,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```php
-$enforcement = $client->Enforcement();
+$enforcement = $client->enforcement();
 ```
 
 ### Fields
@@ -301,12 +305,12 @@ $enforcement = $client->Enforcement();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Enforcement()->list([]);
+$results = $client->enforcement()->list([]);
 ```
 
 ### Common Methods
@@ -342,7 +346,7 @@ Return the entity name.
 ## EventEntity
 
 ```php
-$event = $client->Event();
+$event = $client->event();
 ```
 
 ### Fields
@@ -354,12 +358,12 @@ $event = $client->Event();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Event()->list([]);
+$results = $client->event()->list([]);
 ```
 
 ### Common Methods
@@ -395,7 +399,7 @@ Return the entity name.
 ## LabelEntity
 
 ```php
-$label = $client->Label();
+$label = $client->label();
 ```
 
 ### Fields
@@ -407,12 +411,12 @@ $label = $client->Label();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Label()->list([]);
+$results = $client->label()->list([]);
 ```
 
 ### Common Methods
@@ -448,7 +452,7 @@ Return the entity name.
 ## N510kEntity
 
 ```php
-$n510k = $client->N510k();
+$n510k = $client->n510k();
 ```
 
 ### Fields
@@ -460,12 +464,12 @@ $n510k = $client->N510k();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->N510k()->list([]);
+$results = $client->n510k()->list([]);
 ```
 
 ### Common Methods
@@ -501,7 +505,7 @@ Return the entity name.
 ## NdcEntity
 
 ```php
-$ndc = $client->Ndc();
+$ndc = $client->ndc();
 ```
 
 ### Fields
@@ -513,12 +517,12 @@ $ndc = $client->Ndc();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Ndc()->list([]);
+$results = $client->ndc()->list([]);
 ```
 
 ### Common Methods
@@ -554,7 +558,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```php
-$nsde = $client->Nsde();
+$nsde = $client->nsde();
 ```
 
 ### Fields
@@ -566,12 +570,12 @@ $nsde = $client->Nsde();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Nsde()->list([]);
+$results = $client->nsde()->list([]);
 ```
 
 ### Common Methods
@@ -607,7 +611,7 @@ Return the entity name.
 ## PmaEntity
 
 ```php
-$pma = $client->Pma();
+$pma = $client->pma();
 ```
 
 ### Fields
@@ -619,12 +623,12 @@ $pma = $client->Pma();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Pma()->list([]);
+$results = $client->pma()->list([]);
 ```
 
 ### Common Methods
@@ -660,7 +664,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```php
-$problem = $client->Problem();
+$problem = $client->problem();
 ```
 
 ### Fields
@@ -672,12 +676,12 @@ $problem = $client->Problem();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Problem()->list([]);
+$results = $client->problem()->list([]);
 ```
 
 ### Common Methods
@@ -713,7 +717,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```php
-$shortage = $client->Shortage();
+$shortage = $client->shortage();
 ```
 
 ### Fields
@@ -725,12 +729,12 @@ $shortage = $client->Shortage();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Shortage()->list([]);
+$results = $client->shortage()->list([]);
 ```
 
 ### Common Methods
@@ -766,7 +770,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```php
-$substance = $client->Substance();
+$substance = $client->substance();
 ```
 
 ### Fields
@@ -778,12 +782,12 @@ $substance = $client->Substance();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Substance()->list([]);
+$results = $client->substance()->list([]);
 ```
 
 ### Common Methods

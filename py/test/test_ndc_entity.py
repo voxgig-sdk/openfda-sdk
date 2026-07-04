@@ -50,8 +50,7 @@ class TestNdcEntity:
         ndc_ref01_ent = client.Ndc(None)
         ndc_ref01_match = {}
 
-        ndc_ref01_list_result, err = ndc_ref01_ent.list(ndc_ref01_match, None)
-        assert err is None
+        ndc_ref01_list_result = ndc_ref01_ent.list(ndc_ref01_match, None)
         assert isinstance(ndc_ref01_list_result, list)
 
 

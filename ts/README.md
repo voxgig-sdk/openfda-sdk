@@ -9,9 +9,12 @@ The TypeScript SDK for the Openfda API — a type-safe, entity-oriented client w
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/openfda
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/openfda-sdk/releases](https://github.com/voxgig-sdk/openfda-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,7 +23,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OpenfdaSDK } from 'openfda'
+import { OpenfdaSDK } from '@voxgig-sdk/openfda'
 
 const client = new OpenfdaSDK({
   apikey: process.env.OPENFDA_APIKEY,
@@ -30,7 +33,7 @@ const client = new OpenfdaSDK({
 ### 2. List classifications
 
 ```ts
-const result = await client.Classification().list()
+const result = await client.classification.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OpenfdaSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.classification.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -98,7 +101,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.classification
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -413,7 +416,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.Classification()`
+Create an instance: `const classification = client.classification`
 
 #### Operations
 
@@ -431,13 +434,13 @@ Create an instance: `const classification = client.Classification()`
 #### Example: List
 
 ```ts
-const classifications = await client.Classification().list()
+const classifications = await client.classification.list()
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.Drug()`
+Create an instance: `const drug = client.drug`
 
 #### Operations
 
@@ -455,13 +458,13 @@ Create an instance: `const drug = client.Drug()`
 #### Example: List
 
 ```ts
-const drugs = await client.Drug().list()
+const drugs = await client.drug.list()
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.Drugsfda()`
+Create an instance: `const drugsfda = client.drugsfda`
 
 #### Operations
 
@@ -479,13 +482,13 @@ Create an instance: `const drugsfda = client.Drugsfda()`
 #### Example: List
 
 ```ts
-const drugsfdas = await client.Drugsfda().list()
+const drugsfdas = await client.drugsfda.list()
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.Enforcement()`
+Create an instance: `const enforcement = client.enforcement`
 
 #### Operations
 
@@ -503,13 +506,13 @@ Create an instance: `const enforcement = client.Enforcement()`
 #### Example: List
 
 ```ts
-const enforcements = await client.Enforcement().list()
+const enforcements = await client.enforcement.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -527,13 +530,13 @@ Create an instance: `const event = client.Event()`
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.Label()`
+Create an instance: `const label = client.label`
 
 #### Operations
 
@@ -551,13 +554,13 @@ Create an instance: `const label = client.Label()`
 #### Example: List
 
 ```ts
-const labels = await client.Label().list()
+const labels = await client.label.list()
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.N510k()`
+Create an instance: `const n510k = client.n510k`
 
 #### Operations
 
@@ -575,13 +578,13 @@ Create an instance: `const n510k = client.N510k()`
 #### Example: List
 
 ```ts
-const n510ks = await client.N510k().list()
+const n510ks = await client.n510k.list()
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.Ndc()`
+Create an instance: `const ndc = client.ndc`
 
 #### Operations
 
@@ -599,13 +602,13 @@ Create an instance: `const ndc = client.Ndc()`
 #### Example: List
 
 ```ts
-const ndcs = await client.Ndc().list()
+const ndcs = await client.ndc.list()
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.Nsde()`
+Create an instance: `const nsde = client.nsde`
 
 #### Operations
 
@@ -623,13 +626,13 @@ Create an instance: `const nsde = client.Nsde()`
 #### Example: List
 
 ```ts
-const nsdes = await client.Nsde().list()
+const nsdes = await client.nsde.list()
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.Pma()`
+Create an instance: `const pma = client.pma`
 
 #### Operations
 
@@ -647,13 +650,13 @@ Create an instance: `const pma = client.Pma()`
 #### Example: List
 
 ```ts
-const pmas = await client.Pma().list()
+const pmas = await client.pma.list()
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.Problem()`
+Create an instance: `const problem = client.problem`
 
 #### Operations
 
@@ -671,13 +674,13 @@ Create an instance: `const problem = client.Problem()`
 #### Example: List
 
 ```ts
-const problems = await client.Problem().list()
+const problems = await client.problem.list()
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.Shortage()`
+Create an instance: `const shortage = client.shortage`
 
 #### Operations
 
@@ -695,13 +698,13 @@ Create an instance: `const shortage = client.Shortage()`
 #### Example: List
 
 ```ts
-const shortages = await client.Shortage().list()
+const shortages = await client.shortage.list()
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.Substance()`
+Create an instance: `const substance = client.substance`
 
 #### Operations
 
@@ -719,7 +722,7 @@ Create an instance: `const substance = client.Substance()`
 #### Example: List
 
 ```ts
-const substances = await client.Substance().list()
+const substances = await client.substance.list()
 ```
 
 
@@ -780,7 +783,7 @@ openfda/
 Import the SDK from the package root:
 
 ```ts
-import { OpenfdaSDK } from 'openfda'
+import { OpenfdaSDK } from '@voxgig-sdk/openfda'
 ```
 
 ### Entity state
@@ -790,11 +793,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const classification = client.classification
+await classification.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// classification.data() now returns the loaded classification data
+// classification.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -50,8 +50,7 @@ class N510kEntityTest extends TestCase
         $n510k_ref01_ent = $client->N510k(null);
         $n510k_ref01_match = [];
 
-        [$n510k_ref01_list_result, $err] = $n510k_ref01_ent->list($n510k_ref01_match, null);
-        $this->assertNull($err);
+        $n510k_ref01_list_result = $n510k_ref01_ent->list($n510k_ref01_match, null);
         $this->assertIsArray($n510k_ref01_list_result);
 
     }

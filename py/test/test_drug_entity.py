@@ -50,8 +50,7 @@ class TestDrugEntity:
         drug_ref01_ent = client.Drug(None)
         drug_ref01_match = {}
 
-        drug_ref01_list_result, err = drug_ref01_ent.list(drug_ref01_match, None)
-        assert err is None
+        drug_ref01_list_result = drug_ref01_ent.list(drug_ref01_match, None)
         assert isinstance(drug_ref01_list_result, list)
 
 

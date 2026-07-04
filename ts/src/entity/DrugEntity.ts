@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Drug,
+  DrugListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class DrugEntity extends OpenfdaEntityBase {
+class DrugEntity extends OpenfdaEntityBase<Drug> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class DrugEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DrugListMatch, ctrl?: Control): Promise<Drug[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class DrugEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Drug[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

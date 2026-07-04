@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch PmaListMatch
+---@param ctrl? table
+---@return Pma[]
+---@return string? err
 function PmaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SubstanceListMatch
+---@param ctrl? table
+---@return Substance[]
+---@return string? err
 function SubstanceEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

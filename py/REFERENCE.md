@@ -102,9 +102,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -117,11 +117,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -129,7 +129,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## ClassificationEntity
 
 ```python
-classification = client.Classification()
+classification = client.classification
 ```
 
 ### Fields
@@ -141,12 +141,12 @@ classification = client.Classification()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Classification().list({})
+results = client.classification.list({})
 ```
 
 ### Common Methods
@@ -181,7 +181,7 @@ Return the entity name.
 ## DrugEntity
 
 ```python
-drug = client.Drug()
+drug = client.drug
 ```
 
 ### Fields
@@ -193,12 +193,12 @@ drug = client.Drug()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Drug().list({})
+results = client.drug.list({})
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```python
-drugsfda = client.Drugsfda()
+drugsfda = client.drugsfda
 ```
 
 ### Fields
@@ -245,12 +245,12 @@ drugsfda = client.Drugsfda()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Drugsfda().list({})
+results = client.drugsfda.list({})
 ```
 
 ### Common Methods
@@ -285,7 +285,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```python
-enforcement = client.Enforcement()
+enforcement = client.enforcement
 ```
 
 ### Fields
@@ -297,12 +297,12 @@ enforcement = client.Enforcement()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Enforcement().list({})
+results = client.enforcement.list({})
 ```
 
 ### Common Methods
@@ -337,7 +337,7 @@ Return the entity name.
 ## EventEntity
 
 ```python
-event = client.Event()
+event = client.event
 ```
 
 ### Fields
@@ -349,12 +349,12 @@ event = client.Event()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Event().list({})
+results = client.event.list({})
 ```
 
 ### Common Methods
@@ -389,7 +389,7 @@ Return the entity name.
 ## LabelEntity
 
 ```python
-label = client.Label()
+label = client.label
 ```
 
 ### Fields
@@ -401,12 +401,12 @@ label = client.Label()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Label().list({})
+results = client.label.list({})
 ```
 
 ### Common Methods
@@ -441,7 +441,7 @@ Return the entity name.
 ## N510kEntity
 
 ```python
-n510k = client.N510k()
+n510k = client.n510k
 ```
 
 ### Fields
@@ -453,12 +453,12 @@ n510k = client.N510k()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.N510k().list({})
+results = client.n510k.list({})
 ```
 
 ### Common Methods
@@ -493,7 +493,7 @@ Return the entity name.
 ## NdcEntity
 
 ```python
-ndc = client.Ndc()
+ndc = client.ndc
 ```
 
 ### Fields
@@ -505,12 +505,12 @@ ndc = client.Ndc()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Ndc().list({})
+results = client.ndc.list({})
 ```
 
 ### Common Methods
@@ -545,7 +545,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```python
-nsde = client.Nsde()
+nsde = client.nsde
 ```
 
 ### Fields
@@ -557,12 +557,12 @@ nsde = client.Nsde()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Nsde().list({})
+results = client.nsde.list({})
 ```
 
 ### Common Methods
@@ -597,7 +597,7 @@ Return the entity name.
 ## PmaEntity
 
 ```python
-pma = client.Pma()
+pma = client.pma
 ```
 
 ### Fields
@@ -609,12 +609,12 @@ pma = client.Pma()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Pma().list({})
+results = client.pma.list({})
 ```
 
 ### Common Methods
@@ -649,7 +649,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```python
-problem = client.Problem()
+problem = client.problem
 ```
 
 ### Fields
@@ -661,12 +661,12 @@ problem = client.Problem()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Problem().list({})
+results = client.problem.list({})
 ```
 
 ### Common Methods
@@ -701,7 +701,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```python
-shortage = client.Shortage()
+shortage = client.shortage
 ```
 
 ### Fields
@@ -713,12 +713,12 @@ shortage = client.Shortage()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Shortage().list({})
+results = client.shortage.list({})
 ```
 
 ### Common Methods
@@ -753,7 +753,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```python
-substance = client.Substance()
+substance = client.substance
 ```
 
 ### Fields
@@ -765,12 +765,12 @@ substance = client.Substance()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Substance().list({})
+results = client.substance.list({})
 ```
 
 ### Common Methods

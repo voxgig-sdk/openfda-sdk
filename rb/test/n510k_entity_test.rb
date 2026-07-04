@@ -43,8 +43,7 @@ class N510kEntityTest < Minitest::Test
     n510k_ref01_ent = client.N510k(nil)
     n510k_ref01_match = {}
 
-    n510k_ref01_list_result, err = n510k_ref01_ent.list(n510k_ref01_match, nil)
-    assert_nil err
+    n510k_ref01_list_result = n510k_ref01_ent.list(n510k_ref01_match, nil)
     assert n510k_ref01_list_result.is_a?(Array)
 
   end

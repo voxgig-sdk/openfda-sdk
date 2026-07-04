@@ -85,6 +85,27 @@ func (e *NdcEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Ndc; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *NdcEntity) DataTyped(data ...Ndc) Ndc {
+	if len(data) > 0 {
+		return typedFrom[Ndc](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Ndc](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Ndc (all fields
+// optional at the wire level).
+func (e *NdcEntity) MatchTyped(match ...Ndc) Ndc {
+	if len(match) > 0 {
+		return typedFrom[Ndc](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Ndc](e.Match())
+}
+
 func (e *NdcEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *NdcEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, err
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// NdcListMatch and returns []Ndc. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *NdcEntity) ListTyped(reqmatch NdcListMatch, ctrl map[string]any) ([]Ndc, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Ndc](res), nil
 }
 
 

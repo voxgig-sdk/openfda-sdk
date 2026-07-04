@@ -102,9 +102,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -118,14 +120,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -133,7 +135,7 @@ same parameters as `direct()`.
 ## ClassificationEntity
 
 ```ruby
-classification = client.Classification
+classification = client.classification
 ```
 
 ### Fields
@@ -145,12 +147,12 @@ classification = client.Classification
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Classification.list(nil)
+results = client.classification.list(nil)
 ```
 
 ### Common Methods
@@ -186,7 +188,7 @@ Return the entity name.
 ## DrugEntity
 
 ```ruby
-drug = client.Drug
+drug = client.drug
 ```
 
 ### Fields
@@ -198,12 +200,12 @@ drug = client.Drug
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Drug.list(nil)
+results = client.drug.list(nil)
 ```
 
 ### Common Methods
@@ -239,7 +241,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```ruby
-drugsfda = client.Drugsfda
+drugsfda = client.drugsfda
 ```
 
 ### Fields
@@ -251,12 +253,12 @@ drugsfda = client.Drugsfda
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Drugsfda.list(nil)
+results = client.drugsfda.list(nil)
 ```
 
 ### Common Methods
@@ -292,7 +294,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```ruby
-enforcement = client.Enforcement
+enforcement = client.enforcement
 ```
 
 ### Fields
@@ -304,12 +306,12 @@ enforcement = client.Enforcement
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Enforcement.list(nil)
+results = client.enforcement.list(nil)
 ```
 
 ### Common Methods
@@ -345,7 +347,7 @@ Return the entity name.
 ## EventEntity
 
 ```ruby
-event = client.Event
+event = client.event
 ```
 
 ### Fields
@@ -357,12 +359,12 @@ event = client.Event
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Event.list(nil)
+results = client.event.list(nil)
 ```
 
 ### Common Methods
@@ -398,7 +400,7 @@ Return the entity name.
 ## LabelEntity
 
 ```ruby
-label = client.Label
+label = client.label
 ```
 
 ### Fields
@@ -410,12 +412,12 @@ label = client.Label
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Label.list(nil)
+results = client.label.list(nil)
 ```
 
 ### Common Methods
@@ -451,7 +453,7 @@ Return the entity name.
 ## N510kEntity
 
 ```ruby
-n510k = client.N510k
+n510k = client.n510k
 ```
 
 ### Fields
@@ -463,12 +465,12 @@ n510k = client.N510k
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.N510k.list(nil)
+results = client.n510k.list(nil)
 ```
 
 ### Common Methods
@@ -504,7 +506,7 @@ Return the entity name.
 ## NdcEntity
 
 ```ruby
-ndc = client.Ndc
+ndc = client.ndc
 ```
 
 ### Fields
@@ -516,12 +518,12 @@ ndc = client.Ndc
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Ndc.list(nil)
+results = client.ndc.list(nil)
 ```
 
 ### Common Methods
@@ -557,7 +559,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```ruby
-nsde = client.Nsde
+nsde = client.nsde
 ```
 
 ### Fields
@@ -569,12 +571,12 @@ nsde = client.Nsde
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Nsde.list(nil)
+results = client.nsde.list(nil)
 ```
 
 ### Common Methods
@@ -610,7 +612,7 @@ Return the entity name.
 ## PmaEntity
 
 ```ruby
-pma = client.Pma
+pma = client.pma
 ```
 
 ### Fields
@@ -622,12 +624,12 @@ pma = client.Pma
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Pma.list(nil)
+results = client.pma.list(nil)
 ```
 
 ### Common Methods
@@ -663,7 +665,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```ruby
-problem = client.Problem
+problem = client.problem
 ```
 
 ### Fields
@@ -675,12 +677,12 @@ problem = client.Problem
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Problem.list(nil)
+results = client.problem.list(nil)
 ```
 
 ### Common Methods
@@ -716,7 +718,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```ruby
-shortage = client.Shortage
+shortage = client.shortage
 ```
 
 ### Fields
@@ -728,12 +730,12 @@ shortage = client.Shortage
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Shortage.list(nil)
+results = client.shortage.list(nil)
 ```
 
 ### Common Methods
@@ -769,7 +771,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```ruby
-substance = client.Substance
+substance = client.substance
 ```
 
 ### Fields
@@ -781,12 +783,12 @@ substance = client.Substance
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Substance.list(nil)
+results = client.substance.list(nil)
 ```
 
 ### Common Methods

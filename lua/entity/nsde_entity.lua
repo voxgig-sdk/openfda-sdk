@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch NsdeListMatch
+---@param ctrl? table
+---@return Nsde[]
+---@return string? err
 function NsdeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

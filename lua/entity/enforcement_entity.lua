@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch EnforcementListMatch
+---@param ctrl? table
+---@return Enforcement[]
+---@return string? err
 function EnforcementEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

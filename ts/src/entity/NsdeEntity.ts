@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Nsde,
+  NsdeListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class NsdeEntity extends OpenfdaEntityBase {
+class NsdeEntity extends OpenfdaEntityBase<Nsde> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class NsdeEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: NsdeListMatch, ctrl?: Control): Promise<Nsde[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class NsdeEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Nsde[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

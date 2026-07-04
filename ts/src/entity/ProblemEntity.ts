@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Problem,
+  ProblemListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class ProblemEntity extends OpenfdaEntityBase {
+class ProblemEntity extends OpenfdaEntityBase<Problem> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ProblemEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ProblemListMatch, ctrl?: Control): Promise<Problem[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ProblemEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Problem[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

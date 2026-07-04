@@ -144,16 +144,23 @@ class OpenfdaSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class OpenfdaSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,75 +212,218 @@ class OpenfdaSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def classification(self):
+        """Idiomatic facade: client.classification.list() / client.classification.load({"id": ...})."""
+        from entity.classification_entity import ClassificationEntity
+        cached = getattr(self, "_classification", None)
+        if cached is None:
+            cached = ClassificationEntity(self, None)
+            self._classification = cached
+        return cached
 
     def Classification(self, data=None):
+        # Deprecated: use client.classification instead.
         from entity.classification_entity import ClassificationEntity
         return ClassificationEntity(self, data)
 
 
+    @property
+    def drug(self):
+        """Idiomatic facade: client.drug.list() / client.drug.load({"id": ...})."""
+        from entity.drug_entity import DrugEntity
+        cached = getattr(self, "_drug", None)
+        if cached is None:
+            cached = DrugEntity(self, None)
+            self._drug = cached
+        return cached
+
     def Drug(self, data=None):
+        # Deprecated: use client.drug instead.
         from entity.drug_entity import DrugEntity
         return DrugEntity(self, data)
 
 
+    @property
+    def drugsfda(self):
+        """Idiomatic facade: client.drugsfda.list() / client.drugsfda.load({"id": ...})."""
+        from entity.drugsfda_entity import DrugsfdaEntity
+        cached = getattr(self, "_drugsfda", None)
+        if cached is None:
+            cached = DrugsfdaEntity(self, None)
+            self._drugsfda = cached
+        return cached
+
     def Drugsfda(self, data=None):
+        # Deprecated: use client.drugsfda instead.
         from entity.drugsfda_entity import DrugsfdaEntity
         return DrugsfdaEntity(self, data)
 
 
+    @property
+    def enforcement(self):
+        """Idiomatic facade: client.enforcement.list() / client.enforcement.load({"id": ...})."""
+        from entity.enforcement_entity import EnforcementEntity
+        cached = getattr(self, "_enforcement", None)
+        if cached is None:
+            cached = EnforcementEntity(self, None)
+            self._enforcement = cached
+        return cached
+
     def Enforcement(self, data=None):
+        # Deprecated: use client.enforcement instead.
         from entity.enforcement_entity import EnforcementEntity
         return EnforcementEntity(self, data)
 
 
+    @property
+    def event(self):
+        """Idiomatic facade: client.event.list() / client.event.load({"id": ...})."""
+        from entity.event_entity import EventEntity
+        cached = getattr(self, "_event", None)
+        if cached is None:
+            cached = EventEntity(self, None)
+            self._event = cached
+        return cached
+
     def Event(self, data=None):
+        # Deprecated: use client.event instead.
         from entity.event_entity import EventEntity
         return EventEntity(self, data)
 
 
+    @property
+    def label(self):
+        """Idiomatic facade: client.label.list() / client.label.load({"id": ...})."""
+        from entity.label_entity import LabelEntity
+        cached = getattr(self, "_label", None)
+        if cached is None:
+            cached = LabelEntity(self, None)
+            self._label = cached
+        return cached
+
     def Label(self, data=None):
+        # Deprecated: use client.label instead.
         from entity.label_entity import LabelEntity
         return LabelEntity(self, data)
 
 
+    @property
+    def n510k(self):
+        """Idiomatic facade: client.n510k.list() / client.n510k.load({"id": ...})."""
+        from entity.n510k_entity import N510kEntity
+        cached = getattr(self, "_n510k", None)
+        if cached is None:
+            cached = N510kEntity(self, None)
+            self._n510k = cached
+        return cached
+
     def N510k(self, data=None):
+        # Deprecated: use client.n510k instead.
         from entity.n510k_entity import N510kEntity
         return N510kEntity(self, data)
 
 
+    @property
+    def ndc(self):
+        """Idiomatic facade: client.ndc.list() / client.ndc.load({"id": ...})."""
+        from entity.ndc_entity import NdcEntity
+        cached = getattr(self, "_ndc", None)
+        if cached is None:
+            cached = NdcEntity(self, None)
+            self._ndc = cached
+        return cached
+
     def Ndc(self, data=None):
+        # Deprecated: use client.ndc instead.
         from entity.ndc_entity import NdcEntity
         return NdcEntity(self, data)
 
 
+    @property
+    def nsde(self):
+        """Idiomatic facade: client.nsde.list() / client.nsde.load({"id": ...})."""
+        from entity.nsde_entity import NsdeEntity
+        cached = getattr(self, "_nsde", None)
+        if cached is None:
+            cached = NsdeEntity(self, None)
+            self._nsde = cached
+        return cached
+
     def Nsde(self, data=None):
+        # Deprecated: use client.nsde instead.
         from entity.nsde_entity import NsdeEntity
         return NsdeEntity(self, data)
 
 
+    @property
+    def pma(self):
+        """Idiomatic facade: client.pma.list() / client.pma.load({"id": ...})."""
+        from entity.pma_entity import PmaEntity
+        cached = getattr(self, "_pma", None)
+        if cached is None:
+            cached = PmaEntity(self, None)
+            self._pma = cached
+        return cached
+
     def Pma(self, data=None):
+        # Deprecated: use client.pma instead.
         from entity.pma_entity import PmaEntity
         return PmaEntity(self, data)
 
 
+    @property
+    def problem(self):
+        """Idiomatic facade: client.problem.list() / client.problem.load({"id": ...})."""
+        from entity.problem_entity import ProblemEntity
+        cached = getattr(self, "_problem", None)
+        if cached is None:
+            cached = ProblemEntity(self, None)
+            self._problem = cached
+        return cached
+
     def Problem(self, data=None):
+        # Deprecated: use client.problem instead.
         from entity.problem_entity import ProblemEntity
         return ProblemEntity(self, data)
 
 
+    @property
+    def shortage(self):
+        """Idiomatic facade: client.shortage.list() / client.shortage.load({"id": ...})."""
+        from entity.shortage_entity import ShortageEntity
+        cached = getattr(self, "_shortage", None)
+        if cached is None:
+            cached = ShortageEntity(self, None)
+            self._shortage = cached
+        return cached
+
     def Shortage(self, data=None):
+        # Deprecated: use client.shortage instead.
         from entity.shortage_entity import ShortageEntity
         return ShortageEntity(self, data)
 
 
+    @property
+    def substance(self):
+        """Idiomatic facade: client.substance.list() / client.substance.load({"id": ...})."""
+        from entity.substance_entity import SubstanceEntity
+        cached = getattr(self, "_substance", None)
+        if cached is None:
+            cached = SubstanceEntity(self, None)
+            self._substance = cached
+        return cached
+
     def Substance(self, data=None):
+        # Deprecated: use client.substance instead.
         from entity.substance_entity import SubstanceEntity
         return SubstanceEntity(self, data)
 

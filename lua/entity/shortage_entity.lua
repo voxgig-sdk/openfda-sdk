@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ShortageListMatch
+---@param ctrl? table
+---@return Shortage[]
+---@return string? err
 function ShortageEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

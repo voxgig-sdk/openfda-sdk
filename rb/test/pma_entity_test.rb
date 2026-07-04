@@ -43,8 +43,7 @@ class PmaEntityTest < Minitest::Test
     pma_ref01_ent = client.Pma(nil)
     pma_ref01_match = {}
 
-    pma_ref01_list_result, err = pma_ref01_ent.list(pma_ref01_match, nil)
-    assert_nil err
+    pma_ref01_list_result = pma_ref01_ent.list(pma_ref01_match, nil)
     assert pma_ref01_list_result.is_a?(Array)
 
   end

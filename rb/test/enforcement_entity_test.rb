@@ -43,8 +43,7 @@ class EnforcementEntityTest < Minitest::Test
     enforcement_ref01_ent = client.Enforcement(nil)
     enforcement_ref01_match = {}
 
-    enforcement_ref01_list_result, err = enforcement_ref01_ent.list(enforcement_ref01_match, nil)
-    assert_nil err
+    enforcement_ref01_list_result = enforcement_ref01_ent.list(enforcement_ref01_match, nil)
     assert enforcement_ref01_list_result.is_a?(Array)
 
   end

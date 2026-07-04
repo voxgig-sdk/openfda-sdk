@@ -43,8 +43,7 @@ class ShortageEntityTest < Minitest::Test
     shortage_ref01_ent = client.Shortage(nil)
     shortage_ref01_match = {}
 
-    shortage_ref01_list_result, err = shortage_ref01_ent.list(shortage_ref01_match, nil)
-    assert_nil err
+    shortage_ref01_list_result = shortage_ref01_ent.list(shortage_ref01_match, nil)
     assert shortage_ref01_list_result.is_a?(Array)
 
   end

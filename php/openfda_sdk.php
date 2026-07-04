@@ -103,7 +103,7 @@ class OpenfdaSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class OpenfdaSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class OpenfdaSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,108 +216,251 @@ class OpenfdaSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Classification($data = null)
+    private $_classification = null;
+
+    // Idiomatic facade: $client->classification()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Classification() (PHP method
+    // names are case-insensitive).
+    public function classification($data = null)
     {
         require_once __DIR__ . '/entity/classification_entity.php';
+        if ($data === null) {
+            if ($this->_classification === null) {
+                $this->_classification = new ClassificationEntity($this, null);
+            }
+            return $this->_classification;
+        }
         return new ClassificationEntity($this, $data);
     }
 
 
-    public function Drug($data = null)
+    private $_drug = null;
+
+    // Idiomatic facade: $client->drug()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Drug() (PHP method
+    // names are case-insensitive).
+    public function drug($data = null)
     {
         require_once __DIR__ . '/entity/drug_entity.php';
+        if ($data === null) {
+            if ($this->_drug === null) {
+                $this->_drug = new DrugEntity($this, null);
+            }
+            return $this->_drug;
+        }
         return new DrugEntity($this, $data);
     }
 
 
-    public function Drugsfda($data = null)
+    private $_drugsfda = null;
+
+    // Idiomatic facade: $client->drugsfda()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Drugsfda() (PHP method
+    // names are case-insensitive).
+    public function drugsfda($data = null)
     {
         require_once __DIR__ . '/entity/drugsfda_entity.php';
+        if ($data === null) {
+            if ($this->_drugsfda === null) {
+                $this->_drugsfda = new DrugsfdaEntity($this, null);
+            }
+            return $this->_drugsfda;
+        }
         return new DrugsfdaEntity($this, $data);
     }
 
 
-    public function Enforcement($data = null)
+    private $_enforcement = null;
+
+    // Idiomatic facade: $client->enforcement()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Enforcement() (PHP method
+    // names are case-insensitive).
+    public function enforcement($data = null)
     {
         require_once __DIR__ . '/entity/enforcement_entity.php';
+        if ($data === null) {
+            if ($this->_enforcement === null) {
+                $this->_enforcement = new EnforcementEntity($this, null);
+            }
+            return $this->_enforcement;
+        }
         return new EnforcementEntity($this, $data);
     }
 
 
-    public function Event($data = null)
+    private $_event = null;
+
+    // Idiomatic facade: $client->event()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Event() (PHP method
+    // names are case-insensitive).
+    public function event($data = null)
     {
         require_once __DIR__ . '/entity/event_entity.php';
+        if ($data === null) {
+            if ($this->_event === null) {
+                $this->_event = new EventEntity($this, null);
+            }
+            return $this->_event;
+        }
         return new EventEntity($this, $data);
     }
 
 
-    public function Label($data = null)
+    private $_label = null;
+
+    // Idiomatic facade: $client->label()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Label() (PHP method
+    // names are case-insensitive).
+    public function label($data = null)
     {
         require_once __DIR__ . '/entity/label_entity.php';
+        if ($data === null) {
+            if ($this->_label === null) {
+                $this->_label = new LabelEntity($this, null);
+            }
+            return $this->_label;
+        }
         return new LabelEntity($this, $data);
     }
 
 
-    public function N510k($data = null)
+    private $_n510k = null;
+
+    // Idiomatic facade: $client->n510k()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias N510k() (PHP method
+    // names are case-insensitive).
+    public function n510k($data = null)
     {
         require_once __DIR__ . '/entity/n510k_entity.php';
+        if ($data === null) {
+            if ($this->_n510k === null) {
+                $this->_n510k = new N510kEntity($this, null);
+            }
+            return $this->_n510k;
+        }
         return new N510kEntity($this, $data);
     }
 
 
-    public function Ndc($data = null)
+    private $_ndc = null;
+
+    // Idiomatic facade: $client->ndc()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Ndc() (PHP method
+    // names are case-insensitive).
+    public function ndc($data = null)
     {
         require_once __DIR__ . '/entity/ndc_entity.php';
+        if ($data === null) {
+            if ($this->_ndc === null) {
+                $this->_ndc = new NdcEntity($this, null);
+            }
+            return $this->_ndc;
+        }
         return new NdcEntity($this, $data);
     }
 
 
-    public function Nsde($data = null)
+    private $_nsde = null;
+
+    // Idiomatic facade: $client->nsde()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Nsde() (PHP method
+    // names are case-insensitive).
+    public function nsde($data = null)
     {
         require_once __DIR__ . '/entity/nsde_entity.php';
+        if ($data === null) {
+            if ($this->_nsde === null) {
+                $this->_nsde = new NsdeEntity($this, null);
+            }
+            return $this->_nsde;
+        }
         return new NsdeEntity($this, $data);
     }
 
 
-    public function Pma($data = null)
+    private $_pma = null;
+
+    // Idiomatic facade: $client->pma()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Pma() (PHP method
+    // names are case-insensitive).
+    public function pma($data = null)
     {
         require_once __DIR__ . '/entity/pma_entity.php';
+        if ($data === null) {
+            if ($this->_pma === null) {
+                $this->_pma = new PmaEntity($this, null);
+            }
+            return $this->_pma;
+        }
         return new PmaEntity($this, $data);
     }
 
 
-    public function Problem($data = null)
+    private $_problem = null;
+
+    // Idiomatic facade: $client->problem()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Problem() (PHP method
+    // names are case-insensitive).
+    public function problem($data = null)
     {
         require_once __DIR__ . '/entity/problem_entity.php';
+        if ($data === null) {
+            if ($this->_problem === null) {
+                $this->_problem = new ProblemEntity($this, null);
+            }
+            return $this->_problem;
+        }
         return new ProblemEntity($this, $data);
     }
 
 
-    public function Shortage($data = null)
+    private $_shortage = null;
+
+    // Idiomatic facade: $client->shortage()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Shortage() (PHP method
+    // names are case-insensitive).
+    public function shortage($data = null)
     {
         require_once __DIR__ . '/entity/shortage_entity.php';
+        if ($data === null) {
+            if ($this->_shortage === null) {
+                $this->_shortage = new ShortageEntity($this, null);
+            }
+            return $this->_shortage;
+        }
         return new ShortageEntity($this, $data);
     }
 
 
-    public function Substance($data = null)
+    private $_substance = null;
+
+    // Idiomatic facade: $client->substance()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Substance() (PHP method
+    // names are case-insensitive).
+    public function substance($data = null)
     {
         require_once __DIR__ . '/entity/substance_entity.php';
+        if ($data === null) {
+            if ($this->_substance === null) {
+                $this->_substance = new SubstanceEntity($this, null);
+            }
+            return $this->_substance;
+        }
         return new SubstanceEntity($this, $data);
     }
 

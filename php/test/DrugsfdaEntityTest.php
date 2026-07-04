@@ -50,8 +50,7 @@ class DrugsfdaEntityTest extends TestCase
         $drugsfda_ref01_ent = $client->Drugsfda(null);
         $drugsfda_ref01_match = [];
 
-        [$drugsfda_ref01_list_result, $err] = $drugsfda_ref01_ent->list($drugsfda_ref01_match, null);
-        $this->assertNull($err);
+        $drugsfda_ref01_list_result = $drugsfda_ref01_ent->list($drugsfda_ref01_match, null);
         $this->assertIsArray($drugsfda_ref01_list_result);
 
     }

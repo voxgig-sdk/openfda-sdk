@@ -50,8 +50,7 @@ class TestPmaEntity:
         pma_ref01_ent = client.Pma(None)
         pma_ref01_match = {}
 
-        pma_ref01_list_result, err = pma_ref01_ent.list(pma_ref01_match, None)
-        assert err is None
+        pma_ref01_list_result = pma_ref01_ent.list(pma_ref01_match, None)
         assert isinstance(pma_ref01_list_result, list)
 
 

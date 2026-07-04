@@ -245,66 +245,105 @@ func (sdk *OpenfdaSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 }
 
 
+// Classification returns a Classification entity bound to this client.
+// Idiomatic usage: client.Classification(nil).List(nil, nil) or
+// client.Classification(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Classification(data map[string]any) OpenfdaEntity {
 	return NewClassificationEntityFunc(sdk, data)
 }
 
 
+// Drug returns a Drug entity bound to this client.
+// Idiomatic usage: client.Drug(nil).List(nil, nil) or
+// client.Drug(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Drug(data map[string]any) OpenfdaEntity {
 	return NewDrugEntityFunc(sdk, data)
 }
 
 
+// Drugsfda returns a Drugsfda entity bound to this client.
+// Idiomatic usage: client.Drugsfda(nil).List(nil, nil) or
+// client.Drugsfda(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Drugsfda(data map[string]any) OpenfdaEntity {
 	return NewDrugsfdaEntityFunc(sdk, data)
 }
 
 
+// Enforcement returns a Enforcement entity bound to this client.
+// Idiomatic usage: client.Enforcement(nil).List(nil, nil) or
+// client.Enforcement(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Enforcement(data map[string]any) OpenfdaEntity {
 	return NewEnforcementEntityFunc(sdk, data)
 }
 
 
+// Event returns a Event entity bound to this client.
+// Idiomatic usage: client.Event(nil).List(nil, nil) or
+// client.Event(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Event(data map[string]any) OpenfdaEntity {
 	return NewEventEntityFunc(sdk, data)
 }
 
 
+// Label returns a Label entity bound to this client.
+// Idiomatic usage: client.Label(nil).List(nil, nil) or
+// client.Label(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Label(data map[string]any) OpenfdaEntity {
 	return NewLabelEntityFunc(sdk, data)
 }
 
 
+// N510k returns a N510k entity bound to this client.
+// Idiomatic usage: client.N510k(nil).List(nil, nil) or
+// client.N510k(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) N510k(data map[string]any) OpenfdaEntity {
 	return NewN510kEntityFunc(sdk, data)
 }
 
 
+// Ndc returns a Ndc entity bound to this client.
+// Idiomatic usage: client.Ndc(nil).List(nil, nil) or
+// client.Ndc(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Ndc(data map[string]any) OpenfdaEntity {
 	return NewNdcEntityFunc(sdk, data)
 }
 
 
+// Nsde returns a Nsde entity bound to this client.
+// Idiomatic usage: client.Nsde(nil).List(nil, nil) or
+// client.Nsde(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Nsde(data map[string]any) OpenfdaEntity {
 	return NewNsdeEntityFunc(sdk, data)
 }
 
 
+// Pma returns a Pma entity bound to this client.
+// Idiomatic usage: client.Pma(nil).List(nil, nil) or
+// client.Pma(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Pma(data map[string]any) OpenfdaEntity {
 	return NewPmaEntityFunc(sdk, data)
 }
 
 
+// Problem returns a Problem entity bound to this client.
+// Idiomatic usage: client.Problem(nil).List(nil, nil) or
+// client.Problem(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Problem(data map[string]any) OpenfdaEntity {
 	return NewProblemEntityFunc(sdk, data)
 }
 
 
+// Shortage returns a Shortage entity bound to this client.
+// Idiomatic usage: client.Shortage(nil).List(nil, nil) or
+// client.Shortage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Shortage(data map[string]any) OpenfdaEntity {
 	return NewShortageEntityFunc(sdk, data)
 }
 
 
+// Substance returns a Substance entity bound to this client.
+// Idiomatic usage: client.Substance(nil).List(nil, nil) or
+// client.Substance(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenfdaSDK) Substance(data map[string]any) OpenfdaEntity {
 	return NewSubstanceEntityFunc(sdk, data)
 }

@@ -50,8 +50,7 @@ class TestLabelEntity:
         label_ref01_ent = client.Label(None)
         label_ref01_match = {}
 
-        label_ref01_list_result, err = label_ref01_ent.list(label_ref01_match, None)
-        assert err is None
+        label_ref01_list_result = label_ref01_ent.list(label_ref01_match, None)
         assert isinstance(label_ref01_list_result, list)
 
 

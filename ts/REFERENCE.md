@@ -254,7 +254,7 @@ Alias for `OpenfdaSDK.test()`.
 ## ClassificationEntity
 
 ```ts
-const classification = client.Classification()
+const classification = client.classification
 ```
 
 ### Fields
@@ -271,7 +271,7 @@ const classification = client.Classification()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Classification().list()
+const results = await client.classification.list()
 ```
 
 ### Common Methods
@@ -305,7 +305,7 @@ Return a copy of the entity options.
 ## DrugEntity
 
 ```ts
-const drug = client.Drug()
+const drug = client.drug
 ```
 
 ### Fields
@@ -322,7 +322,7 @@ const drug = client.Drug()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Drug().list()
+const results = await client.drug.list()
 ```
 
 ### Common Methods
@@ -356,7 +356,7 @@ Return a copy of the entity options.
 ## DrugsfdaEntity
 
 ```ts
-const drugsfda = client.Drugsfda()
+const drugsfda = client.drugsfda
 ```
 
 ### Fields
@@ -373,7 +373,7 @@ const drugsfda = client.Drugsfda()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Drugsfda().list()
+const results = await client.drugsfda.list()
 ```
 
 ### Common Methods
@@ -407,7 +407,7 @@ Return a copy of the entity options.
 ## EnforcementEntity
 
 ```ts
-const enforcement = client.Enforcement()
+const enforcement = client.enforcement
 ```
 
 ### Fields
@@ -424,7 +424,7 @@ const enforcement = client.Enforcement()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Enforcement().list()
+const results = await client.enforcement.list()
 ```
 
 ### Common Methods
@@ -458,7 +458,7 @@ Return a copy of the entity options.
 ## EventEntity
 
 ```ts
-const event = client.Event()
+const event = client.event
 ```
 
 ### Fields
@@ -475,7 +475,7 @@ const event = client.Event()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Event().list()
+const results = await client.event.list()
 ```
 
 ### Common Methods
@@ -509,7 +509,7 @@ Return a copy of the entity options.
 ## LabelEntity
 
 ```ts
-const label = client.Label()
+const label = client.label
 ```
 
 ### Fields
@@ -526,7 +526,7 @@ const label = client.Label()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Label().list()
+const results = await client.label.list()
 ```
 
 ### Common Methods
@@ -560,7 +560,7 @@ Return a copy of the entity options.
 ## N510kEntity
 
 ```ts
-const n510k = client.N510k()
+const n510k = client.n510k
 ```
 
 ### Fields
@@ -577,7 +577,7 @@ const n510k = client.N510k()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.N510k().list()
+const results = await client.n510k.list()
 ```
 
 ### Common Methods
@@ -611,7 +611,7 @@ Return a copy of the entity options.
 ## NdcEntity
 
 ```ts
-const ndc = client.Ndc()
+const ndc = client.ndc
 ```
 
 ### Fields
@@ -628,7 +628,7 @@ const ndc = client.Ndc()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Ndc().list()
+const results = await client.ndc.list()
 ```
 
 ### Common Methods
@@ -662,7 +662,7 @@ Return a copy of the entity options.
 ## NsdeEntity
 
 ```ts
-const nsde = client.Nsde()
+const nsde = client.nsde
 ```
 
 ### Fields
@@ -679,7 +679,7 @@ const nsde = client.Nsde()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Nsde().list()
+const results = await client.nsde.list()
 ```
 
 ### Common Methods
@@ -713,7 +713,7 @@ Return a copy of the entity options.
 ## PmaEntity
 
 ```ts
-const pma = client.Pma()
+const pma = client.pma
 ```
 
 ### Fields
@@ -730,7 +730,7 @@ const pma = client.Pma()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Pma().list()
+const results = await client.pma.list()
 ```
 
 ### Common Methods
@@ -764,7 +764,7 @@ Return a copy of the entity options.
 ## ProblemEntity
 
 ```ts
-const problem = client.Problem()
+const problem = client.problem
 ```
 
 ### Fields
@@ -781,7 +781,7 @@ const problem = client.Problem()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Problem().list()
+const results = await client.problem.list()
 ```
 
 ### Common Methods
@@ -815,7 +815,7 @@ Return a copy of the entity options.
 ## ShortageEntity
 
 ```ts
-const shortage = client.Shortage()
+const shortage = client.shortage
 ```
 
 ### Fields
@@ -832,7 +832,7 @@ const shortage = client.Shortage()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Shortage().list()
+const results = await client.shortage.list()
 ```
 
 ### Common Methods
@@ -866,7 +866,7 @@ Return a copy of the entity options.
 ## SubstanceEntity
 
 ```ts
-const substance = client.Substance()
+const substance = client.substance
 ```
 
 ### Fields
@@ -883,7 +883,7 @@ const substance = client.Substance()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Substance().list()
+const results = await client.substance.list()
 ```
 
 ### Common Methods

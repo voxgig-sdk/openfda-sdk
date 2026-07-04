@@ -45,6 +45,7 @@ class ProblemEntity
     end
   end
 
+  # @return [Problem, Hash] the current Problem data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ProblemEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Problem fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ProblemEntity
   
 
   
+  # List Problem items matching the given filter.
+  #
+  # @param reqmatch [ProblemListMatch, Hash, nil] match filter (any subset of Problem fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Problem>, Array] the matching Problem items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -50,8 +50,7 @@ class TestN510kEntity:
         n510k_ref01_ent = client.N510k(None)
         n510k_ref01_match = {}
 
-        n510k_ref01_list_result, err = n510k_ref01_ent.list(n510k_ref01_match, None)
-        assert err is None
+        n510k_ref01_list_result = n510k_ref01_ent.list(n510k_ref01_match, None)
         assert isinstance(n510k_ref01_list_result, list)
 
 

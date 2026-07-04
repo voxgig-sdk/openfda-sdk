@@ -43,8 +43,7 @@ class ClassificationEntityTest < Minitest::Test
     classification_ref01_ent = client.Classification(nil)
     classification_ref01_match = {}
 
-    classification_ref01_list_result, err = classification_ref01_ent.list(classification_ref01_match, nil)
-    assert_nil err
+    classification_ref01_list_result = classification_ref01_ent.list(classification_ref01_match, nil)
     assert classification_ref01_list_result.is_a?(Array)
 
   end

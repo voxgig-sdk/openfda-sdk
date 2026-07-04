@@ -43,8 +43,7 @@ class ProblemEntityTest < Minitest::Test
     problem_ref01_ent = client.Problem(nil)
     problem_ref01_match = {}
 
-    problem_ref01_list_result, err = problem_ref01_ent.list(problem_ref01_match, nil)
-    assert_nil err
+    problem_ref01_list_result = problem_ref01_ent.list(problem_ref01_match, nil)
     assert problem_ref01_list_result.is_a?(Array)
 
   end

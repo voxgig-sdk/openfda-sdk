@@ -45,6 +45,7 @@ class ClassificationEntity
     end
   end
 
+  # @return [Classification, Hash] the current Classification data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ClassificationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Classification fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ClassificationEntity
   
 
   
+  # List Classification items matching the given filter.
+  #
+  # @param reqmatch [ClassificationListMatch, Hash, nil] match filter (any subset of Classification fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Classification>, Array] the matching Classification items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

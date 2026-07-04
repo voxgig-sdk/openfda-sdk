@@ -244,78 +244,247 @@ end
 
 
 
+-- Idiomatic facade: client:classification():list() / client:classification():load({ id = ... })
+function OpenfdaSDK:classification(data)
+  local EntityMod = require("entity.classification_entity")
+  if data == nil then
+    if self._classification == nil then
+      self._classification = EntityMod.new(self, nil)
+    end
+    return self._classification
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:classification() instead.
 function OpenfdaSDK:Classification(data)
   local EntityMod = require("entity.classification_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:drug():list() / client:drug():load({ id = ... })
+function OpenfdaSDK:drug(data)
+  local EntityMod = require("entity.drug_entity")
+  if data == nil then
+    if self._drug == nil then
+      self._drug = EntityMod.new(self, nil)
+    end
+    return self._drug
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:drug() instead.
 function OpenfdaSDK:Drug(data)
   local EntityMod = require("entity.drug_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:drugsfda():list() / client:drugsfda():load({ id = ... })
+function OpenfdaSDK:drugsfda(data)
+  local EntityMod = require("entity.drugsfda_entity")
+  if data == nil then
+    if self._drugsfda == nil then
+      self._drugsfda = EntityMod.new(self, nil)
+    end
+    return self._drugsfda
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:drugsfda() instead.
 function OpenfdaSDK:Drugsfda(data)
   local EntityMod = require("entity.drugsfda_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:enforcement():list() / client:enforcement():load({ id = ... })
+function OpenfdaSDK:enforcement(data)
+  local EntityMod = require("entity.enforcement_entity")
+  if data == nil then
+    if self._enforcement == nil then
+      self._enforcement = EntityMod.new(self, nil)
+    end
+    return self._enforcement
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:enforcement() instead.
 function OpenfdaSDK:Enforcement(data)
   local EntityMod = require("entity.enforcement_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:event():list() / client:event():load({ id = ... })
+function OpenfdaSDK:event(data)
+  local EntityMod = require("entity.event_entity")
+  if data == nil then
+    if self._event == nil then
+      self._event = EntityMod.new(self, nil)
+    end
+    return self._event
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:event() instead.
 function OpenfdaSDK:Event(data)
   local EntityMod = require("entity.event_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:label():list() / client:label():load({ id = ... })
+function OpenfdaSDK:label(data)
+  local EntityMod = require("entity.label_entity")
+  if data == nil then
+    if self._label == nil then
+      self._label = EntityMod.new(self, nil)
+    end
+    return self._label
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:label() instead.
 function OpenfdaSDK:Label(data)
   local EntityMod = require("entity.label_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:n510k():list() / client:n510k():load({ id = ... })
+function OpenfdaSDK:n510k(data)
+  local EntityMod = require("entity.n510k_entity")
+  if data == nil then
+    if self._n510k == nil then
+      self._n510k = EntityMod.new(self, nil)
+    end
+    return self._n510k
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:n510k() instead.
 function OpenfdaSDK:N510k(data)
   local EntityMod = require("entity.n510k_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:ndc():list() / client:ndc():load({ id = ... })
+function OpenfdaSDK:ndc(data)
+  local EntityMod = require("entity.ndc_entity")
+  if data == nil then
+    if self._ndc == nil then
+      self._ndc = EntityMod.new(self, nil)
+    end
+    return self._ndc
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ndc() instead.
 function OpenfdaSDK:Ndc(data)
   local EntityMod = require("entity.ndc_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:nsde():list() / client:nsde():load({ id = ... })
+function OpenfdaSDK:nsde(data)
+  local EntityMod = require("entity.nsde_entity")
+  if data == nil then
+    if self._nsde == nil then
+      self._nsde = EntityMod.new(self, nil)
+    end
+    return self._nsde
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:nsde() instead.
 function OpenfdaSDK:Nsde(data)
   local EntityMod = require("entity.nsde_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:pma():list() / client:pma():load({ id = ... })
+function OpenfdaSDK:pma(data)
+  local EntityMod = require("entity.pma_entity")
+  if data == nil then
+    if self._pma == nil then
+      self._pma = EntityMod.new(self, nil)
+    end
+    return self._pma
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:pma() instead.
 function OpenfdaSDK:Pma(data)
   local EntityMod = require("entity.pma_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:problem():list() / client:problem():load({ id = ... })
+function OpenfdaSDK:problem(data)
+  local EntityMod = require("entity.problem_entity")
+  if data == nil then
+    if self._problem == nil then
+      self._problem = EntityMod.new(self, nil)
+    end
+    return self._problem
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:problem() instead.
 function OpenfdaSDK:Problem(data)
   local EntityMod = require("entity.problem_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:shortage():list() / client:shortage():load({ id = ... })
+function OpenfdaSDK:shortage(data)
+  local EntityMod = require("entity.shortage_entity")
+  if data == nil then
+    if self._shortage == nil then
+      self._shortage = EntityMod.new(self, nil)
+    end
+    return self._shortage
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:shortage() instead.
 function OpenfdaSDK:Shortage(data)
   local EntityMod = require("entity.shortage_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:substance():list() / client:substance():load({ id = ... })
+function OpenfdaSDK:substance(data)
+  local EntityMod = require("entity.substance_entity")
+  if data == nil then
+    if self._substance == nil then
+      self._substance = EntityMod.new(self, nil)
+    end
+    return self._substance
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:substance() instead.
 function OpenfdaSDK:Substance(data)
   local EntityMod = require("entity.substance_entity")
   return EntityMod.new(self, data)

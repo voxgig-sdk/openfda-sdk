@@ -50,8 +50,7 @@ class TestShortageEntity:
         shortage_ref01_ent = client.Shortage(None)
         shortage_ref01_match = {}
 
-        shortage_ref01_list_result, err = shortage_ref01_ent.list(shortage_ref01_match, None)
-        assert err is None
+        shortage_ref01_list_result = shortage_ref01_ent.list(shortage_ref01_match, None)
         assert isinstance(shortage_ref01_list_result, list)
 
 

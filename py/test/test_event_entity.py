@@ -50,8 +50,7 @@ class TestEventEntity:
         event_ref01_ent = client.Event(None)
         event_ref01_match = {}
 
-        event_ref01_list_result, err = event_ref01_ent.list(event_ref01_match, None)
-        assert err is None
+        event_ref01_list_result = event_ref01_ent.list(event_ref01_match, None)
         assert isinstance(event_ref01_list_result, list)
 
 

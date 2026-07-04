@@ -55,6 +55,9 @@ class N510kEntity
         return new N510kEntity($this->_client, $opts);
     }
 
+    /**
+     * @param N510k|array $args N510k data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class N510kEntity
         }
     }
 
+    /**
+     * @return N510k|array The current N510k data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of N510k fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class N510kEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of N510k fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -86,7 +98,16 @@ class N510kEntity
     
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List N510k items matching the given filter.
+     *
+     * @param N510kListMatch|array|null $reqmatch Match filter (any subset
+     *   of N510k fields) as an assoc-array; N510kListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return N510k[]|array A list of N510k items as assoc-arrays at
+     *   the SDK boundary; throws OpenfdaError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -114,7 +135,7 @@ class N510kEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

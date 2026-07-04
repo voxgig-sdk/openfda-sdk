@@ -85,6 +85,27 @@ func (e *ShortageEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Shortage; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ShortageEntity) DataTyped(data ...Shortage) Shortage {
+	if len(data) > 0 {
+		return typedFrom[Shortage](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Shortage](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Shortage (all fields
+// optional at the wire level).
+func (e *ShortageEntity) MatchTyped(match ...Shortage) Shortage {
+	if len(match) > 0 {
+		return typedFrom[Shortage](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Shortage](e.Match())
+}
+
 func (e *ShortageEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *ShortageEntity) List(reqmatch map[string]any, ctrl map[string]any) (any
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ShortageListMatch and returns []Shortage. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ShortageEntity) ListTyped(reqmatch ShortageListMatch, ctrl map[string]any) ([]Shortage, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Shortage](res), nil
 }
 
 

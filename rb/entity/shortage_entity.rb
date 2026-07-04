@@ -45,6 +45,7 @@ class ShortageEntity
     end
   end
 
+  # @return [Shortage, Hash] the current Shortage data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ShortageEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Shortage fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ShortageEntity
   
 
   
+  # List Shortage items matching the given filter.
+  #
+  # @param reqmatch [ShortageListMatch, Hash, nil] match filter (any subset of Shortage fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Shortage>, Array] the matching Shortage items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

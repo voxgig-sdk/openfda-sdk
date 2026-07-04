@@ -14,6 +14,8 @@ import { ProblemEntity } from './entity/ProblemEntity'
 import { ShortageEntity } from './entity/ShortageEntity'
 import { SubstanceEntity } from './entity/SubstanceEntity'
 
+export type * from './OpenfdaTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -214,78 +216,182 @@ class OpenfdaSDK {
 
 
 
+  _classification?: ClassificationEntity
+
+  // Idiomatic facade: `client.classification.list()` / `client.classification.load({ id })`.
+  get classification(): ClassificationEntity {
+    return (this._classification ??= new ClassificationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.classification` instead. */
   Classification(data?: any) {
     const self = this
     return new ClassificationEntity(self,data)
   }
 
 
+  _drug?: DrugEntity
+
+  // Idiomatic facade: `client.drug.list()` / `client.drug.load({ id })`.
+  get drug(): DrugEntity {
+    return (this._drug ??= new DrugEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.drug` instead. */
   Drug(data?: any) {
     const self = this
     return new DrugEntity(self,data)
   }
 
 
+  _drugsfda?: DrugsfdaEntity
+
+  // Idiomatic facade: `client.drugsfda.list()` / `client.drugsfda.load({ id })`.
+  get drugsfda(): DrugsfdaEntity {
+    return (this._drugsfda ??= new DrugsfdaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.drugsfda` instead. */
   Drugsfda(data?: any) {
     const self = this
     return new DrugsfdaEntity(self,data)
   }
 
 
+  _enforcement?: EnforcementEntity
+
+  // Idiomatic facade: `client.enforcement.list()` / `client.enforcement.load({ id })`.
+  get enforcement(): EnforcementEntity {
+    return (this._enforcement ??= new EnforcementEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.enforcement` instead. */
   Enforcement(data?: any) {
     const self = this
     return new EnforcementEntity(self,data)
   }
 
 
+  _event?: EventEntity
+
+  // Idiomatic facade: `client.event.list()` / `client.event.load({ id })`.
+  get event(): EventEntity {
+    return (this._event ??= new EventEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.event` instead. */
   Event(data?: any) {
     const self = this
     return new EventEntity(self,data)
   }
 
 
+  _label?: LabelEntity
+
+  // Idiomatic facade: `client.label.list()` / `client.label.load({ id })`.
+  get label(): LabelEntity {
+    return (this._label ??= new LabelEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.label` instead. */
   Label(data?: any) {
     const self = this
     return new LabelEntity(self,data)
   }
 
 
+  _n510k?: N510kEntity
+
+  // Idiomatic facade: `client.n510k.list()` / `client.n510k.load({ id })`.
+  get n510k(): N510kEntity {
+    return (this._n510k ??= new N510kEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.n510k` instead. */
   N510k(data?: any) {
     const self = this
     return new N510kEntity(self,data)
   }
 
 
+  _ndc?: NdcEntity
+
+  // Idiomatic facade: `client.ndc.list()` / `client.ndc.load({ id })`.
+  get ndc(): NdcEntity {
+    return (this._ndc ??= new NdcEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.ndc` instead. */
   Ndc(data?: any) {
     const self = this
     return new NdcEntity(self,data)
   }
 
 
+  _nsde?: NsdeEntity
+
+  // Idiomatic facade: `client.nsde.list()` / `client.nsde.load({ id })`.
+  get nsde(): NsdeEntity {
+    return (this._nsde ??= new NsdeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.nsde` instead. */
   Nsde(data?: any) {
     const self = this
     return new NsdeEntity(self,data)
   }
 
 
+  _pma?: PmaEntity
+
+  // Idiomatic facade: `client.pma.list()` / `client.pma.load({ id })`.
+  get pma(): PmaEntity {
+    return (this._pma ??= new PmaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.pma` instead. */
   Pma(data?: any) {
     const self = this
     return new PmaEntity(self,data)
   }
 
 
+  _problem?: ProblemEntity
+
+  // Idiomatic facade: `client.problem.list()` / `client.problem.load({ id })`.
+  get problem(): ProblemEntity {
+    return (this._problem ??= new ProblemEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.problem` instead. */
   Problem(data?: any) {
     const self = this
     return new ProblemEntity(self,data)
   }
 
 
+  _shortage?: ShortageEntity
+
+  // Idiomatic facade: `client.shortage.list()` / `client.shortage.load({ id })`.
+  get shortage(): ShortageEntity {
+    return (this._shortage ??= new ShortageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.shortage` instead. */
   Shortage(data?: any) {
     const self = this
     return new ShortageEntity(self,data)
   }
 
 
+  _substance?: SubstanceEntity
+
+  // Idiomatic facade: `client.substance.list()` / `client.substance.load({ id })`.
+  get substance(): SubstanceEntity {
+    return (this._substance ??= new SubstanceEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.substance` instead. */
   Substance(data?: any) {
     const self = this
     return new SubstanceEntity(self,data)

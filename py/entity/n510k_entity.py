@@ -1,7 +1,13 @@
 # Openfda SDK N510k entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from openfda_types import (
+    N510k,
+    N510kListMatch,
+)
 
 
 class N510kEntity:
@@ -44,7 +50,7 @@ class N510kEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> N510k:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,14 +59,14 @@ class N510kEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> N510k:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: N510kListMatch, ctrl=None) -> list[N510k]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

@@ -43,8 +43,7 @@ class SubstanceEntityTest < Minitest::Test
     substance_ref01_ent = client.Substance(nil)
     substance_ref01_match = {}
 
-    substance_ref01_list_result, err = substance_ref01_ent.list(substance_ref01_match, nil)
-    assert_nil err
+    substance_ref01_list_result = substance_ref01_ent.list(substance_ref01_match, nil)
     assert substance_ref01_list_result.is_a?(Array)
 
   end

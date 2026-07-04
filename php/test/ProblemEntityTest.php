@@ -50,8 +50,7 @@ class ProblemEntityTest extends TestCase
         $problem_ref01_ent = $client->Problem(null);
         $problem_ref01_match = [];
 
-        [$problem_ref01_list_result, $err] = $problem_ref01_ent->list($problem_ref01_match, null);
-        $this->assertNull($err);
+        $problem_ref01_list_result = $problem_ref01_ent->list($problem_ref01_match, null);
         $this->assertIsArray($problem_ref01_list_result);
 
     }

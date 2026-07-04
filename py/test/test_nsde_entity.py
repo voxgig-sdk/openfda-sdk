@@ -50,8 +50,7 @@ class TestNsdeEntity:
         nsde_ref01_ent = client.Nsde(None)
         nsde_ref01_match = {}
 
-        nsde_ref01_list_result, err = nsde_ref01_ent.list(nsde_ref01_match, None)
-        assert err is None
+        nsde_ref01_list_result = nsde_ref01_ent.list(nsde_ref01_match, None)
         assert isinstance(nsde_ref01_list_result, list)
 
 

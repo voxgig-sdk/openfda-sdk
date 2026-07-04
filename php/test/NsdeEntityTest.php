@@ -50,8 +50,7 @@ class NsdeEntityTest extends TestCase
         $nsde_ref01_ent = $client->Nsde(null);
         $nsde_ref01_match = [];
 
-        [$nsde_ref01_list_result, $err] = $nsde_ref01_ent->list($nsde_ref01_match, null);
-        $this->assertNull($err);
+        $nsde_ref01_list_result = $nsde_ref01_ent->list($nsde_ref01_match, null);
         $this->assertIsArray($nsde_ref01_list_result);
 
     }

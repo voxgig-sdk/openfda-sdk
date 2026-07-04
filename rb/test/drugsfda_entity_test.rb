@@ -43,8 +43,7 @@ class DrugsfdaEntityTest < Minitest::Test
     drugsfda_ref01_ent = client.Drugsfda(nil)
     drugsfda_ref01_match = {}
 
-    drugsfda_ref01_list_result, err = drugsfda_ref01_ent.list(drugsfda_ref01_match, nil)
-    assert_nil err
+    drugsfda_ref01_list_result = drugsfda_ref01_ent.list(drugsfda_ref01_match, nil)
     assert drugsfda_ref01_list_result.is_a?(Array)
 
   end

@@ -9,12 +9,9 @@ The Lua SDK for the Openfda API — an entity-oriented client using Lua conventi
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-openfda
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/openfda-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -39,7 +36,7 @@ local client = sdk.new({
 ### 2. List classifications
 
 ```lua
-local result, err = client:Classification():list()
+local result, err = client:classification():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +90,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Openfda():load({ id = "test01" })
+local result, err = client:classification():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -372,7 +369,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.Classification()`
+Create an instance: `const classification = client.classification`
 
 #### Operations
 
@@ -390,13 +387,13 @@ Create an instance: `const classification = client.Classification()`
 #### Example: List
 
 ```ts
-const classifications = await client.Classification().list()
+const classifications = await client.classification.list()
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.Drug()`
+Create an instance: `const drug = client.drug`
 
 #### Operations
 
@@ -414,13 +411,13 @@ Create an instance: `const drug = client.Drug()`
 #### Example: List
 
 ```ts
-const drugs = await client.Drug().list()
+const drugs = await client.drug.list()
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.Drugsfda()`
+Create an instance: `const drugsfda = client.drugsfda`
 
 #### Operations
 
@@ -438,13 +435,13 @@ Create an instance: `const drugsfda = client.Drugsfda()`
 #### Example: List
 
 ```ts
-const drugsfdas = await client.Drugsfda().list()
+const drugsfdas = await client.drugsfda.list()
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.Enforcement()`
+Create an instance: `const enforcement = client.enforcement`
 
 #### Operations
 
@@ -462,13 +459,13 @@ Create an instance: `const enforcement = client.Enforcement()`
 #### Example: List
 
 ```ts
-const enforcements = await client.Enforcement().list()
+const enforcements = await client.enforcement.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -486,13 +483,13 @@ Create an instance: `const event = client.Event()`
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.Label()`
+Create an instance: `const label = client.label`
 
 #### Operations
 
@@ -510,13 +507,13 @@ Create an instance: `const label = client.Label()`
 #### Example: List
 
 ```ts
-const labels = await client.Label().list()
+const labels = await client.label.list()
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.N510k()`
+Create an instance: `const n510k = client.n510k`
 
 #### Operations
 
@@ -534,13 +531,13 @@ Create an instance: `const n510k = client.N510k()`
 #### Example: List
 
 ```ts
-const n510ks = await client.N510k().list()
+const n510ks = await client.n510k.list()
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.Ndc()`
+Create an instance: `const ndc = client.ndc`
 
 #### Operations
 
@@ -558,13 +555,13 @@ Create an instance: `const ndc = client.Ndc()`
 #### Example: List
 
 ```ts
-const ndcs = await client.Ndc().list()
+const ndcs = await client.ndc.list()
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.Nsde()`
+Create an instance: `const nsde = client.nsde`
 
 #### Operations
 
@@ -582,13 +579,13 @@ Create an instance: `const nsde = client.Nsde()`
 #### Example: List
 
 ```ts
-const nsdes = await client.Nsde().list()
+const nsdes = await client.nsde.list()
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.Pma()`
+Create an instance: `const pma = client.pma`
 
 #### Operations
 
@@ -606,13 +603,13 @@ Create an instance: `const pma = client.Pma()`
 #### Example: List
 
 ```ts
-const pmas = await client.Pma().list()
+const pmas = await client.pma.list()
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.Problem()`
+Create an instance: `const problem = client.problem`
 
 #### Operations
 
@@ -630,13 +627,13 @@ Create an instance: `const problem = client.Problem()`
 #### Example: List
 
 ```ts
-const problems = await client.Problem().list()
+const problems = await client.problem.list()
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.Shortage()`
+Create an instance: `const shortage = client.shortage`
 
 #### Operations
 
@@ -654,13 +651,13 @@ Create an instance: `const shortage = client.Shortage()`
 #### Example: List
 
 ```ts
-const shortages = await client.Shortage().list()
+const shortages = await client.shortage.list()
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.Substance()`
+Create an instance: `const substance = client.substance`
 
 #### Operations
 
@@ -678,7 +675,7 @@ Create an instance: `const substance = client.Substance()`
 #### Example: List
 
 ```ts
-const substances = await client.Substance().list()
+const substances = await client.substance.list()
 ```
 
 
@@ -753,11 +750,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local classification = client:classification()
+classification:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- classification:data_get() now returns the loaded classification data
+-- classification:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

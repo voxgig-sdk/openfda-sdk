@@ -85,6 +85,27 @@ func (e *N510kEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an N510k; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *N510kEntity) DataTyped(data ...N510k) N510k {
+	if len(data) > 0 {
+		return typedFrom[N510k](e.Data(asMap(data[0])))
+	}
+	return typedFrom[N510k](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through N510k (all fields
+// optional at the wire level).
+func (e *N510kEntity) MatchTyped(match ...N510k) N510k {
+	if len(match) > 0 {
+		return typedFrom[N510k](e.Match(asMap(match[0])))
+	}
+	return typedFrom[N510k](e.Match())
+}
+
 func (e *N510kEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *N510kEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// N510kListMatch and returns []N510k. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *N510kEntity) ListTyped(reqmatch N510kListMatch, ctrl map[string]any) ([]N510k, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[N510k](res), nil
 }
 
 

@@ -43,8 +43,7 @@ class EventEntityTest < Minitest::Test
     event_ref01_ent = client.Event(nil)
     event_ref01_match = {}
 
-    event_ref01_list_result, err = event_ref01_ent.list(event_ref01_match, nil)
-    assert_nil err
+    event_ref01_list_result = event_ref01_ent.list(event_ref01_match, nil)
     assert event_ref01_list_result.is_a?(Array)
 
   end

@@ -50,8 +50,7 @@ class ClassificationEntityTest extends TestCase
         $classification_ref01_ent = $client->Classification(null);
         $classification_ref01_match = [];
 
-        [$classification_ref01_list_result, $err] = $classification_ref01_ent->list($classification_ref01_match, null);
-        $this->assertNull($err);
+        $classification_ref01_list_result = $classification_ref01_ent->list($classification_ref01_match, null);
         $this->assertIsArray($classification_ref01_list_result);
 
     }

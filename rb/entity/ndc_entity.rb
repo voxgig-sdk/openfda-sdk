@@ -45,6 +45,7 @@ class NdcEntity
     end
   end
 
+  # @return [Ndc, Hash] the current Ndc data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class NdcEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Ndc fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class NdcEntity
   
 
   
+  # List Ndc items matching the given filter.
+  #
+  # @param reqmatch [NdcListMatch, Hash, nil] match filter (any subset of Ndc fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Ndc>, Array] the matching Ndc items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

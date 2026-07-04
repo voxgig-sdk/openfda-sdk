@@ -50,8 +50,7 @@ class EnforcementEntityTest extends TestCase
         $enforcement_ref01_ent = $client->Enforcement(null);
         $enforcement_ref01_match = [];
 
-        [$enforcement_ref01_list_result, $err] = $enforcement_ref01_ent->list($enforcement_ref01_match, null);
-        $this->assertNull($err);
+        $enforcement_ref01_list_result = $enforcement_ref01_ent->list($enforcement_ref01_match, null);
         $this->assertIsArray($enforcement_ref01_list_result);
 
     }

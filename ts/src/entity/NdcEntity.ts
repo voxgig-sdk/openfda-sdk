@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Ndc,
+  NdcListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class NdcEntity extends OpenfdaEntityBase {
+class NdcEntity extends OpenfdaEntityBase<Ndc> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class NdcEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: NdcListMatch, ctrl?: Control): Promise<Ndc[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class NdcEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Ndc[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -9,11 +9,9 @@ The Python SDK for the Openfda API — an entity-oriented client following Pytho
 
 
 ## Install
-```bash
-pip install voxgig-sdk-openfda
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/openfda-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -39,14 +37,13 @@ client = OpenfdaSDK({
 ### 2. List classifications
 
 ```python
-result, err = client.Classification().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.classification.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 
@@ -57,29 +54,28 @@ if isinstance(result, list):
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -93,7 +89,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OpenfdaSDK.test()
 
-result, err = client.Openfda().load({"id": "test01"})
+result = client.classification.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -170,8 +166,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Classification` | `(data) -> ClassificationEntity` | Create a Classification entity instance. |
 | `Drug` | `(data) -> DrugEntity` | Create a Drug entity instance. |
 | `Drugsfda` | `(data) -> DrugsfdaEntity` | Create a Drugsfda entity instance. |
@@ -192,11 +188,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -206,8 +202,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -370,7 +370,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.Classification()`
+Create an instance: `const classification = client.classification`
 
 #### Operations
 
@@ -388,13 +388,13 @@ Create an instance: `const classification = client.Classification()`
 #### Example: List
 
 ```ts
-const classifications = await client.Classification().list()
+const classifications = await client.classification.list()
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.Drug()`
+Create an instance: `const drug = client.drug`
 
 #### Operations
 
@@ -412,13 +412,13 @@ Create an instance: `const drug = client.Drug()`
 #### Example: List
 
 ```ts
-const drugs = await client.Drug().list()
+const drugs = await client.drug.list()
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.Drugsfda()`
+Create an instance: `const drugsfda = client.drugsfda`
 
 #### Operations
 
@@ -436,13 +436,13 @@ Create an instance: `const drugsfda = client.Drugsfda()`
 #### Example: List
 
 ```ts
-const drugsfdas = await client.Drugsfda().list()
+const drugsfdas = await client.drugsfda.list()
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.Enforcement()`
+Create an instance: `const enforcement = client.enforcement`
 
 #### Operations
 
@@ -460,13 +460,13 @@ Create an instance: `const enforcement = client.Enforcement()`
 #### Example: List
 
 ```ts
-const enforcements = await client.Enforcement().list()
+const enforcements = await client.enforcement.list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.Event()`
+Create an instance: `const event = client.event`
 
 #### Operations
 
@@ -484,13 +484,13 @@ Create an instance: `const event = client.Event()`
 #### Example: List
 
 ```ts
-const events = await client.Event().list()
+const events = await client.event.list()
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.Label()`
+Create an instance: `const label = client.label`
 
 #### Operations
 
@@ -508,13 +508,13 @@ Create an instance: `const label = client.Label()`
 #### Example: List
 
 ```ts
-const labels = await client.Label().list()
+const labels = await client.label.list()
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.N510k()`
+Create an instance: `const n510k = client.n510k`
 
 #### Operations
 
@@ -532,13 +532,13 @@ Create an instance: `const n510k = client.N510k()`
 #### Example: List
 
 ```ts
-const n510ks = await client.N510k().list()
+const n510ks = await client.n510k.list()
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.Ndc()`
+Create an instance: `const ndc = client.ndc`
 
 #### Operations
 
@@ -556,13 +556,13 @@ Create an instance: `const ndc = client.Ndc()`
 #### Example: List
 
 ```ts
-const ndcs = await client.Ndc().list()
+const ndcs = await client.ndc.list()
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.Nsde()`
+Create an instance: `const nsde = client.nsde`
 
 #### Operations
 
@@ -580,13 +580,13 @@ Create an instance: `const nsde = client.Nsde()`
 #### Example: List
 
 ```ts
-const nsdes = await client.Nsde().list()
+const nsdes = await client.nsde.list()
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.Pma()`
+Create an instance: `const pma = client.pma`
 
 #### Operations
 
@@ -604,13 +604,13 @@ Create an instance: `const pma = client.Pma()`
 #### Example: List
 
 ```ts
-const pmas = await client.Pma().list()
+const pmas = await client.pma.list()
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.Problem()`
+Create an instance: `const problem = client.problem`
 
 #### Operations
 
@@ -628,13 +628,13 @@ Create an instance: `const problem = client.Problem()`
 #### Example: List
 
 ```ts
-const problems = await client.Problem().list()
+const problems = await client.problem.list()
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.Shortage()`
+Create an instance: `const shortage = client.shortage`
 
 #### Operations
 
@@ -652,13 +652,13 @@ Create an instance: `const shortage = client.Shortage()`
 #### Example: List
 
 ```ts
-const shortages = await client.Shortage().list()
+const shortages = await client.shortage.list()
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.Substance()`
+Create an instance: `const substance = client.substance`
 
 #### Operations
 
@@ -676,7 +676,7 @@ Create an instance: `const substance = client.Substance()`
 #### Example: List
 
 ```ts
-const substances = await client.Substance().list()
+const substances = await client.substance.list()
 ```
 
 
@@ -750,11 +750,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+classification = client.classification
+classification.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# classification.data_get() now returns the loaded classification data
+# classification.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

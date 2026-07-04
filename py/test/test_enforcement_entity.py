@@ -50,8 +50,7 @@ class TestEnforcementEntity:
         enforcement_ref01_ent = client.Enforcement(None)
         enforcement_ref01_match = {}
 
-        enforcement_ref01_list_result, err = enforcement_ref01_ent.list(enforcement_ref01_match, None)
-        assert err is None
+        enforcement_ref01_list_result = enforcement_ref01_ent.list(enforcement_ref01_match, None)
         assert isinstance(enforcement_ref01_list_result, list)
 
 

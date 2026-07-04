@@ -50,8 +50,7 @@ class SubstanceEntityTest extends TestCase
         $substance_ref01_ent = $client->Substance(null);
         $substance_ref01_match = [];
 
-        [$substance_ref01_list_result, $err] = $substance_ref01_ent->list($substance_ref01_match, null);
-        $this->assertNull($err);
+        $substance_ref01_list_result = $substance_ref01_ent->list($substance_ref01_match, null);
         $this->assertIsArray($substance_ref01_list_result);
 
     }

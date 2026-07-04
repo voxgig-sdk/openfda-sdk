@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Label,
+  LabelListMatch,
+} from '../OpenfdaTypes'
 
 // TODO: needs Entity superclass
-class LabelEntity extends OpenfdaEntityBase {
+class LabelEntity extends OpenfdaEntityBase<Label> {
 
   constructor(client: OpenfdaSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class LabelEntity extends OpenfdaEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: LabelListMatch, ctrl?: Control): Promise<Label[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class LabelEntity extends OpenfdaEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Label[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

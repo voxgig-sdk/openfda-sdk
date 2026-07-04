@@ -45,6 +45,7 @@ class N510kEntity
     end
   end
 
+  # @return [N510k, Hash] the current N510k data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class N510kEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of N510k fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class N510kEntity
   
 
   
+  # List N510k items matching the given filter.
+  #
+  # @param reqmatch [N510kListMatch, Hash, nil] match filter (any subset of N510k fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<N510k>, Array] the matching N510k items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -43,8 +43,7 @@ class LabelEntityTest < Minitest::Test
     label_ref01_ent = client.Label(nil)
     label_ref01_match = {}
 
-    label_ref01_list_result, err = label_ref01_ent.list(label_ref01_match, nil)
-    assert_nil err
+    label_ref01_list_result = label_ref01_ent.list(label_ref01_match, nil)
     assert label_ref01_list_result.is_a?(Array)
 
   end

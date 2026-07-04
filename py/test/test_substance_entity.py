@@ -50,8 +50,7 @@ class TestSubstanceEntity:
         substance_ref01_ent = client.Substance(None)
         substance_ref01_match = {}
 
-        substance_ref01_list_result, err = substance_ref01_ent.list(substance_ref01_match, None)
-        assert err is None
+        substance_ref01_list_result = substance_ref01_ent.list(substance_ref01_match, None)
         assert isinstance(substance_ref01_list_result, list)
 
 

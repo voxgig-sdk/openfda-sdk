@@ -50,8 +50,7 @@ class NdcEntityTest extends TestCase
         $ndc_ref01_ent = $client->Ndc(null);
         $ndc_ref01_match = [];
 
-        [$ndc_ref01_list_result, $err] = $ndc_ref01_ent->list($ndc_ref01_match, null);
-        $this->assertNull($err);
+        $ndc_ref01_list_result = $ndc_ref01_ent->list($ndc_ref01_match, null);
         $this->assertIsArray($ndc_ref01_list_result);
 
     }

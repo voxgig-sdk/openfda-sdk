@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch NdcListMatch
+---@param ctrl? table
+---@return Ndc[]
+---@return string? err
 function NdcEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

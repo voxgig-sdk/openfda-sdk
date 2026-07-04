@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch DrugsfdaListMatch
+---@param ctrl? table
+---@return Drugsfda[]
+---@return string? err
 function DrugsfdaEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

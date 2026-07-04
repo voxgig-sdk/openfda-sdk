@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch N510kListMatch
+---@param ctrl? table
+---@return N510k[]
+---@return string? err
 function N510kEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

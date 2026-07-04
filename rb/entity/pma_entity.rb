@@ -45,6 +45,7 @@ class PmaEntity
     end
   end
 
+  # @return [Pma, Hash] the current Pma data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class PmaEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Pma fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class PmaEntity
   
 
   
+  # List Pma items matching the given filter.
+  #
+  # @param reqmatch [PmaListMatch, Hash, nil] match filter (any subset of Pma fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Pma>, Array] the matching Pma items; raises OpenfdaError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

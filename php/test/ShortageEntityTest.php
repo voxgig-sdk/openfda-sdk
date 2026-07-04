@@ -50,8 +50,7 @@ class ShortageEntityTest extends TestCase
         $shortage_ref01_ent = $client->Shortage(null);
         $shortage_ref01_match = [];
 
-        [$shortage_ref01_list_result, $err] = $shortage_ref01_ent->list($shortage_ref01_match, null);
-        $this->assertNull($err);
+        $shortage_ref01_list_result = $shortage_ref01_ent->list($shortage_ref01_match, null);
         $this->assertIsArray($shortage_ref01_list_result);
 
     }

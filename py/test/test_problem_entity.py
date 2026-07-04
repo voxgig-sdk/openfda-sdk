@@ -50,8 +50,7 @@ class TestProblemEntity:
         problem_ref01_ent = client.Problem(None)
         problem_ref01_match = {}
 
-        problem_ref01_list_result, err = problem_ref01_ent.list(problem_ref01_match, None)
-        assert err is None
+        problem_ref01_list_result = problem_ref01_ent.list(problem_ref01_match, None)
         assert isinstance(problem_ref01_list_result, list)
 
 

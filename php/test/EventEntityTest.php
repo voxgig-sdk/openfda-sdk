@@ -50,8 +50,7 @@ class EventEntityTest extends TestCase
         $event_ref01_ent = $client->Event(null);
         $event_ref01_match = [];
 
-        [$event_ref01_list_result, $err] = $event_ref01_ent->list($event_ref01_match, null);
-        $this->assertNull($err);
+        $event_ref01_list_result = $event_ref01_ent->list($event_ref01_match, null);
         $this->assertIsArray($event_ref01_list_result);
 
     }
