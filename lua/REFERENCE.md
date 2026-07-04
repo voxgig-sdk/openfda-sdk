@@ -132,7 +132,7 @@ same parameters as `direct()`.
 ## ClassificationEntity
 
 ```lua
-local classification = client:classification(nil)
+local classification = client:Classification(nil)
 ```
 
 ### Fields
@@ -149,7 +149,7 @@ local classification = client:classification(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:classification():list()
+local results, err = client:Classification():list()
 ```
 
 ### Common Methods
@@ -185,7 +185,7 @@ Return the entity name.
 ## DrugEntity
 
 ```lua
-local drug = client:drug(nil)
+local drug = client:Drug(nil)
 ```
 
 ### Fields
@@ -202,7 +202,7 @@ local drug = client:drug(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:drug():list()
+local results, err = client:Drug():list()
 ```
 
 ### Common Methods
@@ -238,7 +238,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```lua
-local drugsfda = client:drugsfda(nil)
+local drugsfda = client:Drugsfda(nil)
 ```
 
 ### Fields
@@ -255,7 +255,7 @@ local drugsfda = client:drugsfda(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:drugsfda():list()
+local results, err = client:Drugsfda():list()
 ```
 
 ### Common Methods
@@ -291,7 +291,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```lua
-local enforcement = client:enforcement(nil)
+local enforcement = client:Enforcement(nil)
 ```
 
 ### Fields
@@ -308,7 +308,7 @@ local enforcement = client:enforcement(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:enforcement():list()
+local results, err = client:Enforcement():list()
 ```
 
 ### Common Methods
@@ -344,7 +344,7 @@ Return the entity name.
 ## EventEntity
 
 ```lua
-local event = client:event(nil)
+local event = client:Event(nil)
 ```
 
 ### Fields
@@ -361,7 +361,7 @@ local event = client:event(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:event():list()
+local results, err = client:Event():list()
 ```
 
 ### Common Methods
@@ -397,7 +397,7 @@ Return the entity name.
 ## LabelEntity
 
 ```lua
-local label = client:label(nil)
+local label = client:Label(nil)
 ```
 
 ### Fields
@@ -414,7 +414,7 @@ local label = client:label(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:label():list()
+local results, err = client:Label():list()
 ```
 
 ### Common Methods
@@ -450,7 +450,7 @@ Return the entity name.
 ## N510kEntity
 
 ```lua
-local n510k = client:n510k(nil)
+local n510k = client:N510k(nil)
 ```
 
 ### Fields
@@ -467,7 +467,7 @@ local n510k = client:n510k(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:n510k():list()
+local results, err = client:N510k():list()
 ```
 
 ### Common Methods
@@ -503,7 +503,7 @@ Return the entity name.
 ## NdcEntity
 
 ```lua
-local ndc = client:ndc(nil)
+local ndc = client:Ndc(nil)
 ```
 
 ### Fields
@@ -520,7 +520,7 @@ local ndc = client:ndc(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ndc():list()
+local results, err = client:Ndc():list()
 ```
 
 ### Common Methods
@@ -556,7 +556,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```lua
-local nsde = client:nsde(nil)
+local nsde = client:Nsde(nil)
 ```
 
 ### Fields
@@ -573,7 +573,7 @@ local nsde = client:nsde(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:nsde():list()
+local results, err = client:Nsde():list()
 ```
 
 ### Common Methods
@@ -609,7 +609,7 @@ Return the entity name.
 ## PmaEntity
 
 ```lua
-local pma = client:pma(nil)
+local pma = client:Pma(nil)
 ```
 
 ### Fields
@@ -626,7 +626,7 @@ local pma = client:pma(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:pma():list()
+local results, err = client:Pma():list()
 ```
 
 ### Common Methods
@@ -662,7 +662,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```lua
-local problem = client:problem(nil)
+local problem = client:Problem(nil)
 ```
 
 ### Fields
@@ -679,7 +679,7 @@ local problem = client:problem(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:problem():list()
+local results, err = client:Problem():list()
 ```
 
 ### Common Methods
@@ -715,7 +715,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```lua
-local shortage = client:shortage(nil)
+local shortage = client:Shortage(nil)
 ```
 
 ### Fields
@@ -732,7 +732,7 @@ local shortage = client:shortage(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:shortage():list()
+local results, err = client:Shortage():list()
 ```
 
 ### Common Methods
@@ -768,7 +768,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```lua
-local substance = client:substance(nil)
+local substance = client:Substance(nil)
 ```
 
 ### Fields
@@ -785,7 +785,7 @@ local substance = client:substance(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:substance():list()
+local results, err = client:Substance():list()
 ```
 
 ### Common Methods

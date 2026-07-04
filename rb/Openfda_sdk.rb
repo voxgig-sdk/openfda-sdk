@@ -208,169 +208,91 @@ class OpenfdaSDK
   end
 
 
-  # Idiomatic facade: client.classification.list / client.classification.load({ "id" => ... })
-  def classification
-    require_relative 'entity/classification_entity'
-    @classification ||= ClassificationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.classification instead.
+  # Canonical facade: client.Classification.list / client.Classification.load({ "id" => ... })
   def Classification(data = nil)
     require_relative 'entity/classification_entity'
     ClassificationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.drug.list / client.drug.load({ "id" => ... })
-  def drug
-    require_relative 'entity/drug_entity'
-    @drug ||= DrugEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.drug instead.
+  # Canonical facade: client.Drug.list / client.Drug.load({ "id" => ... })
   def Drug(data = nil)
     require_relative 'entity/drug_entity'
     DrugEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.drugsfda.list / client.drugsfda.load({ "id" => ... })
-  def drugsfda
-    require_relative 'entity/drugsfda_entity'
-    @drugsfda ||= DrugsfdaEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.drugsfda instead.
+  # Canonical facade: client.Drugsfda.list / client.Drugsfda.load({ "id" => ... })
   def Drugsfda(data = nil)
     require_relative 'entity/drugsfda_entity'
     DrugsfdaEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.enforcement.list / client.enforcement.load({ "id" => ... })
-  def enforcement
-    require_relative 'entity/enforcement_entity'
-    @enforcement ||= EnforcementEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.enforcement instead.
+  # Canonical facade: client.Enforcement.list / client.Enforcement.load({ "id" => ... })
   def Enforcement(data = nil)
     require_relative 'entity/enforcement_entity'
     EnforcementEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.event.list / client.event.load({ "id" => ... })
-  def event
-    require_relative 'entity/event_entity'
-    @event ||= EventEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.event instead.
+  # Canonical facade: client.Event.list / client.Event.load({ "id" => ... })
   def Event(data = nil)
     require_relative 'entity/event_entity'
     EventEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.label.list / client.label.load({ "id" => ... })
-  def label
-    require_relative 'entity/label_entity'
-    @label ||= LabelEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.label instead.
+  # Canonical facade: client.Label.list / client.Label.load({ "id" => ... })
   def Label(data = nil)
     require_relative 'entity/label_entity'
     LabelEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.n510k.list / client.n510k.load({ "id" => ... })
-  def n510k
-    require_relative 'entity/n510k_entity'
-    @n510k ||= N510kEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.n510k instead.
+  # Canonical facade: client.N510k.list / client.N510k.load({ "id" => ... })
   def N510k(data = nil)
     require_relative 'entity/n510k_entity'
     N510kEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.ndc.list / client.ndc.load({ "id" => ... })
-  def ndc
-    require_relative 'entity/ndc_entity'
-    @ndc ||= NdcEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ndc instead.
+  # Canonical facade: client.Ndc.list / client.Ndc.load({ "id" => ... })
   def Ndc(data = nil)
     require_relative 'entity/ndc_entity'
     NdcEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.nsde.list / client.nsde.load({ "id" => ... })
-  def nsde
-    require_relative 'entity/nsde_entity'
-    @nsde ||= NsdeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.nsde instead.
+  # Canonical facade: client.Nsde.list / client.Nsde.load({ "id" => ... })
   def Nsde(data = nil)
     require_relative 'entity/nsde_entity'
     NsdeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.pma.list / client.pma.load({ "id" => ... })
-  def pma
-    require_relative 'entity/pma_entity'
-    @pma ||= PmaEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.pma instead.
+  # Canonical facade: client.Pma.list / client.Pma.load({ "id" => ... })
   def Pma(data = nil)
     require_relative 'entity/pma_entity'
     PmaEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.problem.list / client.problem.load({ "id" => ... })
-  def problem
-    require_relative 'entity/problem_entity'
-    @problem ||= ProblemEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.problem instead.
+  # Canonical facade: client.Problem.list / client.Problem.load({ "id" => ... })
   def Problem(data = nil)
     require_relative 'entity/problem_entity'
     ProblemEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.shortage.list / client.shortage.load({ "id" => ... })
-  def shortage
-    require_relative 'entity/shortage_entity'
-    @shortage ||= ShortageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.shortage instead.
+  # Canonical facade: client.Shortage.list / client.Shortage.load({ "id" => ... })
   def Shortage(data = nil)
     require_relative 'entity/shortage_entity'
     ShortageEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.substance.list / client.substance.load({ "id" => ... })
-  def substance
-    require_relative 'entity/substance_entity'
-    @substance ||= SubstanceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.substance instead.
+  # Canonical facade: client.Substance.list / client.Substance.load({ "id" => ... })
   def Substance(data = nil)
     require_relative 'entity/substance_entity'
     SubstanceEntity.new(self, data)

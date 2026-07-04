@@ -134,7 +134,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ClassificationEntity
 
 ```php
-$classification = $client->classification();
+$classification = $client->Classification();
 ```
 
 ### Fields
@@ -151,7 +151,7 @@ $classification = $client->classification();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->classification()->list([]);
+$results = $client->Classification()->list([]);
 ```
 
 ### Common Methods
@@ -187,7 +187,7 @@ Return the entity name.
 ## DrugEntity
 
 ```php
-$drug = $client->drug();
+$drug = $client->Drug();
 ```
 
 ### Fields
@@ -204,7 +204,7 @@ $drug = $client->drug();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->drug()->list([]);
+$results = $client->Drug()->list([]);
 ```
 
 ### Common Methods
@@ -240,7 +240,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```php
-$drugsfda = $client->drugsfda();
+$drugsfda = $client->Drugsfda();
 ```
 
 ### Fields
@@ -257,7 +257,7 @@ $drugsfda = $client->drugsfda();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->drugsfda()->list([]);
+$results = $client->Drugsfda()->list([]);
 ```
 
 ### Common Methods
@@ -293,7 +293,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```php
-$enforcement = $client->enforcement();
+$enforcement = $client->Enforcement();
 ```
 
 ### Fields
@@ -310,7 +310,7 @@ $enforcement = $client->enforcement();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->enforcement()->list([]);
+$results = $client->Enforcement()->list([]);
 ```
 
 ### Common Methods
@@ -346,7 +346,7 @@ Return the entity name.
 ## EventEntity
 
 ```php
-$event = $client->event();
+$event = $client->Event();
 ```
 
 ### Fields
@@ -363,7 +363,7 @@ $event = $client->event();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->event()->list([]);
+$results = $client->Event()->list([]);
 ```
 
 ### Common Methods
@@ -399,7 +399,7 @@ Return the entity name.
 ## LabelEntity
 
 ```php
-$label = $client->label();
+$label = $client->Label();
 ```
 
 ### Fields
@@ -416,7 +416,7 @@ $label = $client->label();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->label()->list([]);
+$results = $client->Label()->list([]);
 ```
 
 ### Common Methods
@@ -452,7 +452,7 @@ Return the entity name.
 ## N510kEntity
 
 ```php
-$n510k = $client->n510k();
+$n510k = $client->N510k();
 ```
 
 ### Fields
@@ -469,7 +469,7 @@ $n510k = $client->n510k();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->n510k()->list([]);
+$results = $client->N510k()->list([]);
 ```
 
 ### Common Methods
@@ -505,7 +505,7 @@ Return the entity name.
 ## NdcEntity
 
 ```php
-$ndc = $client->ndc();
+$ndc = $client->Ndc();
 ```
 
 ### Fields
@@ -522,7 +522,7 @@ $ndc = $client->ndc();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->ndc()->list([]);
+$results = $client->Ndc()->list([]);
 ```
 
 ### Common Methods
@@ -558,7 +558,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```php
-$nsde = $client->nsde();
+$nsde = $client->Nsde();
 ```
 
 ### Fields
@@ -575,7 +575,7 @@ $nsde = $client->nsde();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->nsde()->list([]);
+$results = $client->Nsde()->list([]);
 ```
 
 ### Common Methods
@@ -611,7 +611,7 @@ Return the entity name.
 ## PmaEntity
 
 ```php
-$pma = $client->pma();
+$pma = $client->Pma();
 ```
 
 ### Fields
@@ -628,7 +628,7 @@ $pma = $client->pma();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->pma()->list([]);
+$results = $client->Pma()->list([]);
 ```
 
 ### Common Methods
@@ -664,7 +664,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```php
-$problem = $client->problem();
+$problem = $client->Problem();
 ```
 
 ### Fields
@@ -681,7 +681,7 @@ $problem = $client->problem();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->problem()->list([]);
+$results = $client->Problem()->list([]);
 ```
 
 ### Common Methods
@@ -717,7 +717,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```php
-$shortage = $client->shortage();
+$shortage = $client->Shortage();
 ```
 
 ### Fields
@@ -734,7 +734,7 @@ $shortage = $client->shortage();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->shortage()->list([]);
+$results = $client->Shortage()->list([]);
 ```
 
 ### Common Methods
@@ -770,7 +770,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```php
-$substance = $client->substance();
+$substance = $client->Substance();
 ```
 
 ### Fields
@@ -787,7 +787,7 @@ $substance = $client->substance();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->substance()->list([]);
+$results = $client->Substance()->list([]);
 ```
 
 ### Common Methods

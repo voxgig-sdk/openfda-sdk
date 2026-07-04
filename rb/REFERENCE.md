@@ -135,7 +135,7 @@ same parameters as `direct()`. Raises on error.
 ## ClassificationEntity
 
 ```ruby
-classification = client.classification
+classification = client.Classification
 ```
 
 ### Fields
@@ -152,7 +152,7 @@ classification = client.classification
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.classification.list(nil)
+results = client.Classification.list(nil)
 ```
 
 ### Common Methods
@@ -188,7 +188,7 @@ Return the entity name.
 ## DrugEntity
 
 ```ruby
-drug = client.drug
+drug = client.Drug
 ```
 
 ### Fields
@@ -205,7 +205,7 @@ drug = client.drug
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.drug.list(nil)
+results = client.Drug.list(nil)
 ```
 
 ### Common Methods
@@ -241,7 +241,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```ruby
-drugsfda = client.drugsfda
+drugsfda = client.Drugsfda
 ```
 
 ### Fields
@@ -258,7 +258,7 @@ drugsfda = client.drugsfda
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.drugsfda.list(nil)
+results = client.Drugsfda.list(nil)
 ```
 
 ### Common Methods
@@ -294,7 +294,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```ruby
-enforcement = client.enforcement
+enforcement = client.Enforcement
 ```
 
 ### Fields
@@ -311,7 +311,7 @@ enforcement = client.enforcement
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.enforcement.list(nil)
+results = client.Enforcement.list(nil)
 ```
 
 ### Common Methods
@@ -347,7 +347,7 @@ Return the entity name.
 ## EventEntity
 
 ```ruby
-event = client.event
+event = client.Event
 ```
 
 ### Fields
@@ -364,7 +364,7 @@ event = client.event
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.event.list(nil)
+results = client.Event.list(nil)
 ```
 
 ### Common Methods
@@ -400,7 +400,7 @@ Return the entity name.
 ## LabelEntity
 
 ```ruby
-label = client.label
+label = client.Label
 ```
 
 ### Fields
@@ -417,7 +417,7 @@ label = client.label
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.label.list(nil)
+results = client.Label.list(nil)
 ```
 
 ### Common Methods
@@ -453,7 +453,7 @@ Return the entity name.
 ## N510kEntity
 
 ```ruby
-n510k = client.n510k
+n510k = client.N510k
 ```
 
 ### Fields
@@ -470,7 +470,7 @@ n510k = client.n510k
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.n510k.list(nil)
+results = client.N510k.list(nil)
 ```
 
 ### Common Methods
@@ -506,7 +506,7 @@ Return the entity name.
 ## NdcEntity
 
 ```ruby
-ndc = client.ndc
+ndc = client.Ndc
 ```
 
 ### Fields
@@ -523,7 +523,7 @@ ndc = client.ndc
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.ndc.list(nil)
+results = client.Ndc.list(nil)
 ```
 
 ### Common Methods
@@ -559,7 +559,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```ruby
-nsde = client.nsde
+nsde = client.Nsde
 ```
 
 ### Fields
@@ -576,7 +576,7 @@ nsde = client.nsde
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.nsde.list(nil)
+results = client.Nsde.list(nil)
 ```
 
 ### Common Methods
@@ -612,7 +612,7 @@ Return the entity name.
 ## PmaEntity
 
 ```ruby
-pma = client.pma
+pma = client.Pma
 ```
 
 ### Fields
@@ -629,7 +629,7 @@ pma = client.pma
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.pma.list(nil)
+results = client.Pma.list(nil)
 ```
 
 ### Common Methods
@@ -665,7 +665,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```ruby
-problem = client.problem
+problem = client.Problem
 ```
 
 ### Fields
@@ -682,7 +682,7 @@ problem = client.problem
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.problem.list(nil)
+results = client.Problem.list(nil)
 ```
 
 ### Common Methods
@@ -718,7 +718,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```ruby
-shortage = client.shortage
+shortage = client.Shortage
 ```
 
 ### Fields
@@ -735,7 +735,7 @@ shortage = client.shortage
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.shortage.list(nil)
+results = client.Shortage.list(nil)
 ```
 
 ### Common Methods
@@ -771,7 +771,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```ruby
-substance = client.substance
+substance = client.Substance
 ```
 
 ### Fields
@@ -788,7 +788,7 @@ substance = client.substance
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.substance.list(nil)
+results = client.Substance.list(nil)
 ```
 
 ### Common Methods

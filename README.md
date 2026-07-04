@@ -28,9 +28,11 @@ const client = new OpenfdaSDK({
   apikey: process.env.OPENFDA_APIKEY,
 })
 
-// List all classifications
-const classifications = await client.classification.list()
-console.log(classifications.data)
+// List all classifications (returns Classification[])
+const classifications = await client.Classification().list()
+for (const classification of classifications) {
+  console.log(classification)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -100,9 +102,10 @@ client = OpenfdaSDK({
     "apikey": os.environ.get("OPENFDA_APIKEY"),
 })
 
-# List all classifications
-classifications = client.classification.list()
-print(classifications)
+# List all classifications (returns a list, raises on error)
+classifications = client.Classification().list({})
+for classification in classifications:
+    print(classification)
 ```
 
 ### PHP
@@ -115,8 +118,8 @@ $client = new OpenfdaSDK([
     "apikey" => getenv("OPENFDA_APIKEY"),
 ]);
 
-// List all classifications (throws on error)
-$classifications = $client->classification()->list();
+// List all classifications (returns an array; throws on error)
+$classifications = $client->Classification()->list();
 print_r($classifications);
 ```
 
@@ -143,8 +146,8 @@ client = OpenfdaSDK.new({
   "apikey" => ENV["OPENFDA_APIKEY"],
 })
 
-# List all classifications
-classifications = client.classification.list
+# List all classifications (returns an Array; raises on error)
+classifications = client.Classification.list
 puts classifications
 ```
 
@@ -158,7 +161,7 @@ local client = sdk.new({
 })
 
 -- List all classifications
-local classifications, err = client:classification():list()
+local classifications, err = client:Classification():list()
 print(classifications)
 ```
 
@@ -171,22 +174,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = OpenfdaSDK.test()
-const result = await client.classification.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const classification = await client.Classification().load({ id: 'test01' })
+// classification is a bare Classification populated with mock data
+console.log(classification)
 ```
 
 ### Python
 
 ```python
 client = OpenfdaSDK.test()
-result = client.classification.load({"id": "test01"})
+classification = client.Classification().load({"id": "test01"})
+print(classification)
 ```
 
 ### PHP
 
 ```php
-$client = OpenfdaSDK::test();
-$result = $client->classification()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = OpenfdaSDK::test([
+    "entity" => ["classification" => ["test01" => ["id" => "test01"]]],
+]);
+$classification = $client->Classification()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -201,15 +209,18 @@ result, err := client.Classification(nil).Load(
 ### Ruby
 
 ```ruby
-client = OpenfdaSDK.test
-result = client.classification.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = OpenfdaSDK.test({
+  "entity" => { "classification" => { "test01" => { "id" => "test01" } } },
+})
+classification = client.Classification.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:classification():load({ id = "test01" })
+local result, err = client:Classification():load({ id = "test01" })
 ```
 
 ## How it works
@@ -257,6 +268,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

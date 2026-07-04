@@ -33,17 +33,17 @@ local client = sdk.new({
 })
 ```
 
-### 2. List classifications
+### 2. List classification records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:classification():list()
+local classifications, err = client:Classification():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(classifications) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -90,8 +90,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:classification():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Classification():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -174,8 +174,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Classification` | `(data) -> ClassificationEntity` | Create a Classification entity instance. |
 | `Drug` | `(data) -> DrugEntity` | Create a Drug entity instance. |
 | `Drugsfda` | `(data) -> DrugsfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement` | `(data) -> EnforcementEntity` | Create a Enforcement entity instance. |
-| `Event` | `(data) -> EventEntity` | Create a Event entity instance. |
+| `Enforcement` | `(data) -> EnforcementEntity` | Create an Enforcement entity instance. |
+| `Event` | `(data) -> EventEntity` | Create an Event entity instance. |
 | `Label` | `(data) -> LabelEntity` | Create a Label entity instance. |
 | `N510k` | `(data) -> N510kEntity` | Create a N510k entity instance. |
 | `Ndc` | `(data) -> NdcEntity` | Create a Ndc entity instance. |
@@ -205,17 +205,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local classification, err = client:Classification():load({ id = "example_id" })
+    if err then error(err) end
+    -- classification is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -369,7 +374,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.classification`
+Create an instance: `local classification = client:Classification(nil)`
 
 #### Operations
 
@@ -386,14 +391,14 @@ Create an instance: `const classification = client.classification`
 
 #### Example: List
 
-```ts
-const classifications = await client.classification.list()
+```lua
+local classifications, err = client:Classification():list()
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.drug`
+Create an instance: `local drug = client:Drug(nil)`
 
 #### Operations
 
@@ -410,14 +415,14 @@ Create an instance: `const drug = client.drug`
 
 #### Example: List
 
-```ts
-const drugs = await client.drug.list()
+```lua
+local drugs, err = client:Drug():list()
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.drugsfda`
+Create an instance: `local drugsfda = client:Drugsfda(nil)`
 
 #### Operations
 
@@ -434,14 +439,14 @@ Create an instance: `const drugsfda = client.drugsfda`
 
 #### Example: List
 
-```ts
-const drugsfdas = await client.drugsfda.list()
+```lua
+local drugsfdas, err = client:Drugsfda():list()
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.enforcement`
+Create an instance: `local enforcement = client:Enforcement(nil)`
 
 #### Operations
 
@@ -458,14 +463,14 @@ Create an instance: `const enforcement = client.enforcement`
 
 #### Example: List
 
-```ts
-const enforcements = await client.enforcement.list()
+```lua
+local enforcements, err = client:Enforcement():list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `local event = client:Event(nil)`
 
 #### Operations
 
@@ -482,14 +487,14 @@ Create an instance: `const event = client.event`
 
 #### Example: List
 
-```ts
-const events = await client.event.list()
+```lua
+local events, err = client:Event():list()
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.label`
+Create an instance: `local label = client:Label(nil)`
 
 #### Operations
 
@@ -506,14 +511,14 @@ Create an instance: `const label = client.label`
 
 #### Example: List
 
-```ts
-const labels = await client.label.list()
+```lua
+local labels, err = client:Label():list()
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.n510k`
+Create an instance: `local n510k = client:N510k(nil)`
 
 #### Operations
 
@@ -530,14 +535,14 @@ Create an instance: `const n510k = client.n510k`
 
 #### Example: List
 
-```ts
-const n510ks = await client.n510k.list()
+```lua
+local n510ks, err = client:N510k():list()
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.ndc`
+Create an instance: `local ndc = client:Ndc(nil)`
 
 #### Operations
 
@@ -554,14 +559,14 @@ Create an instance: `const ndc = client.ndc`
 
 #### Example: List
 
-```ts
-const ndcs = await client.ndc.list()
+```lua
+local ndcs, err = client:Ndc():list()
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.nsde`
+Create an instance: `local nsde = client:Nsde(nil)`
 
 #### Operations
 
@@ -578,14 +583,14 @@ Create an instance: `const nsde = client.nsde`
 
 #### Example: List
 
-```ts
-const nsdes = await client.nsde.list()
+```lua
+local nsdes, err = client:Nsde():list()
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.pma`
+Create an instance: `local pma = client:Pma(nil)`
 
 #### Operations
 
@@ -602,14 +607,14 @@ Create an instance: `const pma = client.pma`
 
 #### Example: List
 
-```ts
-const pmas = await client.pma.list()
+```lua
+local pmas, err = client:Pma():list()
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.problem`
+Create an instance: `local problem = client:Problem(nil)`
 
 #### Operations
 
@@ -626,14 +631,14 @@ Create an instance: `const problem = client.problem`
 
 #### Example: List
 
-```ts
-const problems = await client.problem.list()
+```lua
+local problems, err = client:Problem():list()
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.shortage`
+Create an instance: `local shortage = client:Shortage(nil)`
 
 #### Operations
 
@@ -650,14 +655,14 @@ Create an instance: `const shortage = client.shortage`
 
 #### Example: List
 
-```ts
-const shortages = await client.shortage.list()
+```lua
+local shortages, err = client:Shortage():list()
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.substance`
+Create an instance: `local substance = client:Substance(nil)`
 
 #### Operations
 
@@ -674,8 +679,8 @@ Create an instance: `const substance = client.substance`
 
 #### Example: List
 
-```ts
-const substances = await client.substance.list()
+```lua
+local substances, err = client:Substance():list()
 ```
 
 
@@ -750,7 +755,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local classification = client:classification()
+local classification = client:Classification()
 classification:load({ id = "example_id" })
 
 -- classification:data_get() now returns the loaded classification data

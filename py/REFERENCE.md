@@ -129,7 +129,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ClassificationEntity
 
 ```python
-classification = client.classification
+classification = client.Classification()
 ```
 
 ### Fields
@@ -146,7 +146,9 @@ classification = client.classification
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.classification.list({})
+results = client.Classification().list({})
+for classification in results:
+    print(classification)
 ```
 
 ### Common Methods
@@ -181,7 +183,7 @@ Return the entity name.
 ## DrugEntity
 
 ```python
-drug = client.drug
+drug = client.Drug()
 ```
 
 ### Fields
@@ -198,7 +200,9 @@ drug = client.drug
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.drug.list({})
+results = client.Drug().list({})
+for drug in results:
+    print(drug)
 ```
 
 ### Common Methods
@@ -233,7 +237,7 @@ Return the entity name.
 ## DrugsfdaEntity
 
 ```python
-drugsfda = client.drugsfda
+drugsfda = client.Drugsfda()
 ```
 
 ### Fields
@@ -250,7 +254,9 @@ drugsfda = client.drugsfda
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.drugsfda.list({})
+results = client.Drugsfda().list({})
+for drugsfda in results:
+    print(drugsfda)
 ```
 
 ### Common Methods
@@ -285,7 +291,7 @@ Return the entity name.
 ## EnforcementEntity
 
 ```python
-enforcement = client.enforcement
+enforcement = client.Enforcement()
 ```
 
 ### Fields
@@ -302,7 +308,9 @@ enforcement = client.enforcement
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.enforcement.list({})
+results = client.Enforcement().list({})
+for enforcement in results:
+    print(enforcement)
 ```
 
 ### Common Methods
@@ -337,7 +345,7 @@ Return the entity name.
 ## EventEntity
 
 ```python
-event = client.event
+event = client.Event()
 ```
 
 ### Fields
@@ -354,7 +362,9 @@ event = client.event
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.event.list({})
+results = client.Event().list({})
+for event in results:
+    print(event)
 ```
 
 ### Common Methods
@@ -389,7 +399,7 @@ Return the entity name.
 ## LabelEntity
 
 ```python
-label = client.label
+label = client.Label()
 ```
 
 ### Fields
@@ -406,7 +416,9 @@ label = client.label
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.label.list({})
+results = client.Label().list({})
+for label in results:
+    print(label)
 ```
 
 ### Common Methods
@@ -441,7 +453,7 @@ Return the entity name.
 ## N510kEntity
 
 ```python
-n510k = client.n510k
+n510k = client.N510k()
 ```
 
 ### Fields
@@ -458,7 +470,9 @@ n510k = client.n510k
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.n510k.list({})
+results = client.N510k().list({})
+for n510k in results:
+    print(n510k)
 ```
 
 ### Common Methods
@@ -493,7 +507,7 @@ Return the entity name.
 ## NdcEntity
 
 ```python
-ndc = client.ndc
+ndc = client.Ndc()
 ```
 
 ### Fields
@@ -510,7 +524,9 @@ ndc = client.ndc
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.ndc.list({})
+results = client.Ndc().list({})
+for ndc in results:
+    print(ndc)
 ```
 
 ### Common Methods
@@ -545,7 +561,7 @@ Return the entity name.
 ## NsdeEntity
 
 ```python
-nsde = client.nsde
+nsde = client.Nsde()
 ```
 
 ### Fields
@@ -562,7 +578,9 @@ nsde = client.nsde
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.nsde.list({})
+results = client.Nsde().list({})
+for nsde in results:
+    print(nsde)
 ```
 
 ### Common Methods
@@ -597,7 +615,7 @@ Return the entity name.
 ## PmaEntity
 
 ```python
-pma = client.pma
+pma = client.Pma()
 ```
 
 ### Fields
@@ -614,7 +632,9 @@ pma = client.pma
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.pma.list({})
+results = client.Pma().list({})
+for pma in results:
+    print(pma)
 ```
 
 ### Common Methods
@@ -649,7 +669,7 @@ Return the entity name.
 ## ProblemEntity
 
 ```python
-problem = client.problem
+problem = client.Problem()
 ```
 
 ### Fields
@@ -666,7 +686,9 @@ problem = client.problem
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.problem.list({})
+results = client.Problem().list({})
+for problem in results:
+    print(problem)
 ```
 
 ### Common Methods
@@ -701,7 +723,7 @@ Return the entity name.
 ## ShortageEntity
 
 ```python
-shortage = client.shortage
+shortage = client.Shortage()
 ```
 
 ### Fields
@@ -718,7 +740,9 @@ shortage = client.shortage
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.shortage.list({})
+results = client.Shortage().list({})
+for shortage in results:
+    print(shortage)
 ```
 
 ### Common Methods
@@ -753,7 +777,7 @@ Return the entity name.
 ## SubstanceEntity
 
 ```python
-substance = client.substance
+substance = client.Substance()
 ```
 
 ### Fields
@@ -770,7 +794,9 @@ substance = client.substance
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.substance.list({})
+results = client.Substance().list({})
+for substance in results:
+    print(substance)
 ```
 
 ### Common Methods

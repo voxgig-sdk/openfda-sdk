@@ -220,217 +220,87 @@ class OpenfdaSDK:
         }
 
 
-    @property
-    def classification(self):
-        """Idiomatic facade: client.classification.list() / client.classification.load({"id": ...})."""
-        from entity.classification_entity import ClassificationEntity
-        cached = getattr(self, "_classification", None)
-        if cached is None:
-            cached = ClassificationEntity(self, None)
-            self._classification = cached
-        return cached
-
-    def Classification(self, data=None):
-        # Deprecated: use client.classification instead.
+    def Classification(self, data=None) -> "ClassificationEntity":
+        """Entity factory: client.Classification().list({}) / client.Classification().load({"id": ...})."""
         from entity.classification_entity import ClassificationEntity
         return ClassificationEntity(self, data)
 
 
-    @property
-    def drug(self):
-        """Idiomatic facade: client.drug.list() / client.drug.load({"id": ...})."""
-        from entity.drug_entity import DrugEntity
-        cached = getattr(self, "_drug", None)
-        if cached is None:
-            cached = DrugEntity(self, None)
-            self._drug = cached
-        return cached
-
-    def Drug(self, data=None):
-        # Deprecated: use client.drug instead.
+    def Drug(self, data=None) -> "DrugEntity":
+        """Entity factory: client.Drug().list({}) / client.Drug().load({"id": ...})."""
         from entity.drug_entity import DrugEntity
         return DrugEntity(self, data)
 
 
-    @property
-    def drugsfda(self):
-        """Idiomatic facade: client.drugsfda.list() / client.drugsfda.load({"id": ...})."""
-        from entity.drugsfda_entity import DrugsfdaEntity
-        cached = getattr(self, "_drugsfda", None)
-        if cached is None:
-            cached = DrugsfdaEntity(self, None)
-            self._drugsfda = cached
-        return cached
-
-    def Drugsfda(self, data=None):
-        # Deprecated: use client.drugsfda instead.
+    def Drugsfda(self, data=None) -> "DrugsfdaEntity":
+        """Entity factory: client.Drugsfda().list({}) / client.Drugsfda().load({"id": ...})."""
         from entity.drugsfda_entity import DrugsfdaEntity
         return DrugsfdaEntity(self, data)
 
 
-    @property
-    def enforcement(self):
-        """Idiomatic facade: client.enforcement.list() / client.enforcement.load({"id": ...})."""
-        from entity.enforcement_entity import EnforcementEntity
-        cached = getattr(self, "_enforcement", None)
-        if cached is None:
-            cached = EnforcementEntity(self, None)
-            self._enforcement = cached
-        return cached
-
-    def Enforcement(self, data=None):
-        # Deprecated: use client.enforcement instead.
+    def Enforcement(self, data=None) -> "EnforcementEntity":
+        """Entity factory: client.Enforcement().list({}) / client.Enforcement().load({"id": ...})."""
         from entity.enforcement_entity import EnforcementEntity
         return EnforcementEntity(self, data)
 
 
-    @property
-    def event(self):
-        """Idiomatic facade: client.event.list() / client.event.load({"id": ...})."""
-        from entity.event_entity import EventEntity
-        cached = getattr(self, "_event", None)
-        if cached is None:
-            cached = EventEntity(self, None)
-            self._event = cached
-        return cached
-
-    def Event(self, data=None):
-        # Deprecated: use client.event instead.
+    def Event(self, data=None) -> "EventEntity":
+        """Entity factory: client.Event().list({}) / client.Event().load({"id": ...})."""
         from entity.event_entity import EventEntity
         return EventEntity(self, data)
 
 
-    @property
-    def label(self):
-        """Idiomatic facade: client.label.list() / client.label.load({"id": ...})."""
-        from entity.label_entity import LabelEntity
-        cached = getattr(self, "_label", None)
-        if cached is None:
-            cached = LabelEntity(self, None)
-            self._label = cached
-        return cached
-
-    def Label(self, data=None):
-        # Deprecated: use client.label instead.
+    def Label(self, data=None) -> "LabelEntity":
+        """Entity factory: client.Label().list({}) / client.Label().load({"id": ...})."""
         from entity.label_entity import LabelEntity
         return LabelEntity(self, data)
 
 
-    @property
-    def n510k(self):
-        """Idiomatic facade: client.n510k.list() / client.n510k.load({"id": ...})."""
-        from entity.n510k_entity import N510kEntity
-        cached = getattr(self, "_n510k", None)
-        if cached is None:
-            cached = N510kEntity(self, None)
-            self._n510k = cached
-        return cached
-
-    def N510k(self, data=None):
-        # Deprecated: use client.n510k instead.
+    def N510k(self, data=None) -> "N510kEntity":
+        """Entity factory: client.N510k().list({}) / client.N510k().load({"id": ...})."""
         from entity.n510k_entity import N510kEntity
         return N510kEntity(self, data)
 
 
-    @property
-    def ndc(self):
-        """Idiomatic facade: client.ndc.list() / client.ndc.load({"id": ...})."""
-        from entity.ndc_entity import NdcEntity
-        cached = getattr(self, "_ndc", None)
-        if cached is None:
-            cached = NdcEntity(self, None)
-            self._ndc = cached
-        return cached
-
-    def Ndc(self, data=None):
-        # Deprecated: use client.ndc instead.
+    def Ndc(self, data=None) -> "NdcEntity":
+        """Entity factory: client.Ndc().list({}) / client.Ndc().load({"id": ...})."""
         from entity.ndc_entity import NdcEntity
         return NdcEntity(self, data)
 
 
-    @property
-    def nsde(self):
-        """Idiomatic facade: client.nsde.list() / client.nsde.load({"id": ...})."""
-        from entity.nsde_entity import NsdeEntity
-        cached = getattr(self, "_nsde", None)
-        if cached is None:
-            cached = NsdeEntity(self, None)
-            self._nsde = cached
-        return cached
-
-    def Nsde(self, data=None):
-        # Deprecated: use client.nsde instead.
+    def Nsde(self, data=None) -> "NsdeEntity":
+        """Entity factory: client.Nsde().list({}) / client.Nsde().load({"id": ...})."""
         from entity.nsde_entity import NsdeEntity
         return NsdeEntity(self, data)
 
 
-    @property
-    def pma(self):
-        """Idiomatic facade: client.pma.list() / client.pma.load({"id": ...})."""
-        from entity.pma_entity import PmaEntity
-        cached = getattr(self, "_pma", None)
-        if cached is None:
-            cached = PmaEntity(self, None)
-            self._pma = cached
-        return cached
-
-    def Pma(self, data=None):
-        # Deprecated: use client.pma instead.
+    def Pma(self, data=None) -> "PmaEntity":
+        """Entity factory: client.Pma().list({}) / client.Pma().load({"id": ...})."""
         from entity.pma_entity import PmaEntity
         return PmaEntity(self, data)
 
 
-    @property
-    def problem(self):
-        """Idiomatic facade: client.problem.list() / client.problem.load({"id": ...})."""
-        from entity.problem_entity import ProblemEntity
-        cached = getattr(self, "_problem", None)
-        if cached is None:
-            cached = ProblemEntity(self, None)
-            self._problem = cached
-        return cached
-
-    def Problem(self, data=None):
-        # Deprecated: use client.problem instead.
+    def Problem(self, data=None) -> "ProblemEntity":
+        """Entity factory: client.Problem().list({}) / client.Problem().load({"id": ...})."""
         from entity.problem_entity import ProblemEntity
         return ProblemEntity(self, data)
 
 
-    @property
-    def shortage(self):
-        """Idiomatic facade: client.shortage.list() / client.shortage.load({"id": ...})."""
-        from entity.shortage_entity import ShortageEntity
-        cached = getattr(self, "_shortage", None)
-        if cached is None:
-            cached = ShortageEntity(self, None)
-            self._shortage = cached
-        return cached
-
-    def Shortage(self, data=None):
-        # Deprecated: use client.shortage instead.
+    def Shortage(self, data=None) -> "ShortageEntity":
+        """Entity factory: client.Shortage().list({}) / client.Shortage().load({"id": ...})."""
         from entity.shortage_entity import ShortageEntity
         return ShortageEntity(self, data)
 
 
-    @property
-    def substance(self):
-        """Idiomatic facade: client.substance.list() / client.substance.load({"id": ...})."""
-        from entity.substance_entity import SubstanceEntity
-        cached = getattr(self, "_substance", None)
-        if cached is None:
-            cached = SubstanceEntity(self, None)
-            self._substance = cached
-        return cached
-
-    def Substance(self, data=None):
-        # Deprecated: use client.substance instead.
+    def Substance(self, data=None) -> "SubstanceEntity":
+        """Entity factory: client.Substance().list({}) / client.Substance().load({"id": ...})."""
         from entity.substance_entity import SubstanceEntity
         return SubstanceEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "OpenfdaSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -450,3 +320,21 @@ class OpenfdaSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.classification_entity import ClassificationEntity
+    from entity.drug_entity import DrugEntity
+    from entity.drugsfda_entity import DrugsfdaEntity
+    from entity.enforcement_entity import EnforcementEntity
+    from entity.event_entity import EventEntity
+    from entity.label_entity import LabelEntity
+    from entity.n510k_entity import N510kEntity
+    from entity.ndc_entity import NdcEntity
+    from entity.nsde_entity import NsdeEntity
+    from entity.pma_entity import PmaEntity
+    from entity.problem_entity import ProblemEntity
+    from entity.shortage_entity import ShortageEntity
+    from entity.substance_entity import SubstanceEntity

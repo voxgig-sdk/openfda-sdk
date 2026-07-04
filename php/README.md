@@ -31,18 +31,16 @@ $client = new OpenfdaSDK([
 ]);
 ```
 
-### 2. List classifications
+### 2. List classification records
 
 ```php
 try {
-    $result = $client->classification()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Classification records — iterate directly.
+    $classifications = $client->Classification()->list();
+    foreach ($classifications as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -88,13 +86,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = OpenfdaSDK::test();
+$client = OpenfdaSDK::test([
+    "entity" => ["classification" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->classification()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$classification = $client->Classification()->load(["id" => "test01"]);
+print_r($classification);
 ```
 
 ### Use a custom fetch function
@@ -178,8 +180,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Classification` | `($data): ClassificationEntity` | Create a Classification entity instance. |
 | `Drug` | `($data): DrugEntity` | Create a Drug entity instance. |
 | `Drugsfda` | `($data): DrugsfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement` | `($data): EnforcementEntity` | Create a Enforcement entity instance. |
-| `Event` | `($data): EventEntity` | Create a Event entity instance. |
+| `Enforcement` | `($data): EnforcementEntity` | Create an Enforcement entity instance. |
+| `Event` | `($data): EventEntity` | Create an Event entity instance. |
 | `Label` | `($data): LabelEntity` | Create a Label entity instance. |
 | `N510k` | `($data): N510kEntity` | Create a N510k entity instance. |
 | `Ndc` | `($data): NdcEntity` | Create a Ndc entity instance. |
@@ -377,7 +379,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.classification`
+Create an instance: `$classification = $client->Classification();`
 
 #### Operations
 
@@ -394,14 +396,15 @@ Create an instance: `const classification = client.classification`
 
 #### Example: List
 
-```ts
-const classifications = await client.classification.list()
+```php
+// list() returns an array of Classification records (throws on error).
+$classifications = $client->Classification()->list();
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.drug`
+Create an instance: `$drug = $client->Drug();`
 
 #### Operations
 
@@ -418,14 +421,15 @@ Create an instance: `const drug = client.drug`
 
 #### Example: List
 
-```ts
-const drugs = await client.drug.list()
+```php
+// list() returns an array of Drug records (throws on error).
+$drugs = $client->Drug()->list();
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.drugsfda`
+Create an instance: `$drugsfda = $client->Drugsfda();`
 
 #### Operations
 
@@ -442,14 +446,15 @@ Create an instance: `const drugsfda = client.drugsfda`
 
 #### Example: List
 
-```ts
-const drugsfdas = await client.drugsfda.list()
+```php
+// list() returns an array of Drugsfda records (throws on error).
+$drugsfdas = $client->Drugsfda()->list();
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.enforcement`
+Create an instance: `$enforcement = $client->Enforcement();`
 
 #### Operations
 
@@ -466,14 +471,15 @@ Create an instance: `const enforcement = client.enforcement`
 
 #### Example: List
 
-```ts
-const enforcements = await client.enforcement.list()
+```php
+// list() returns an array of Enforcement records (throws on error).
+$enforcements = $client->Enforcement()->list();
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `$event = $client->Event();`
 
 #### Operations
 
@@ -490,14 +496,15 @@ Create an instance: `const event = client.event`
 
 #### Example: List
 
-```ts
-const events = await client.event.list()
+```php
+// list() returns an array of Event records (throws on error).
+$events = $client->Event()->list();
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.label`
+Create an instance: `$label = $client->Label();`
 
 #### Operations
 
@@ -514,14 +521,15 @@ Create an instance: `const label = client.label`
 
 #### Example: List
 
-```ts
-const labels = await client.label.list()
+```php
+// list() returns an array of Label records (throws on error).
+$labels = $client->Label()->list();
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.n510k`
+Create an instance: `$n510k = $client->N510k();`
 
 #### Operations
 
@@ -538,14 +546,15 @@ Create an instance: `const n510k = client.n510k`
 
 #### Example: List
 
-```ts
-const n510ks = await client.n510k.list()
+```php
+// list() returns an array of N510k records (throws on error).
+$n510ks = $client->N510k()->list();
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.ndc`
+Create an instance: `$ndc = $client->Ndc();`
 
 #### Operations
 
@@ -562,14 +571,15 @@ Create an instance: `const ndc = client.ndc`
 
 #### Example: List
 
-```ts
-const ndcs = await client.ndc.list()
+```php
+// list() returns an array of Ndc records (throws on error).
+$ndcs = $client->Ndc()->list();
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.nsde`
+Create an instance: `$nsde = $client->Nsde();`
 
 #### Operations
 
@@ -586,14 +596,15 @@ Create an instance: `const nsde = client.nsde`
 
 #### Example: List
 
-```ts
-const nsdes = await client.nsde.list()
+```php
+// list() returns an array of Nsde records (throws on error).
+$nsdes = $client->Nsde()->list();
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.pma`
+Create an instance: `$pma = $client->Pma();`
 
 #### Operations
 
@@ -610,14 +621,15 @@ Create an instance: `const pma = client.pma`
 
 #### Example: List
 
-```ts
-const pmas = await client.pma.list()
+```php
+// list() returns an array of Pma records (throws on error).
+$pmas = $client->Pma()->list();
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.problem`
+Create an instance: `$problem = $client->Problem();`
 
 #### Operations
 
@@ -634,14 +646,15 @@ Create an instance: `const problem = client.problem`
 
 #### Example: List
 
-```ts
-const problems = await client.problem.list()
+```php
+// list() returns an array of Problem records (throws on error).
+$problems = $client->Problem()->list();
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.shortage`
+Create an instance: `$shortage = $client->Shortage();`
 
 #### Operations
 
@@ -658,14 +671,15 @@ Create an instance: `const shortage = client.shortage`
 
 #### Example: List
 
-```ts
-const shortages = await client.shortage.list()
+```php
+// list() returns an array of Shortage records (throws on error).
+$shortages = $client->Shortage()->list();
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.substance`
+Create an instance: `$substance = $client->Substance();`
 
 #### Operations
 
@@ -682,8 +696,9 @@ Create an instance: `const substance = client.substance`
 
 #### Example: List
 
-```ts
-const substances = await client.substance.list()
+```php
+// list() returns an array of Substance records (throws on error).
+$substances = $client->Substance()->list();
 ```
 
 
@@ -758,7 +773,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$classification = $client->classification();
+$classification = $client->Classification();
 $classification->load(["id" => "example_id"]);
 
 // $classification->dataGet() now returns the loaded classification data

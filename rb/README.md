@@ -30,16 +30,14 @@ client = OpenfdaSDK.new({
 })
 ```
 
-### 2. List classifications
+### 2. List classification records
 
 ```ruby
 begin
-  result = client.classification.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Classification records — iterate directly.
+  classifications = client.Classification.list
+  classifications.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -87,13 +85,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = OpenfdaSDK.test
+client = OpenfdaSDK.test({
+  "entity" => { "classification" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.classification.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+classification = client.Classification.load({ "id" => "test01" })
+puts classification
 ```
 
 ### Use a custom fetch function
@@ -174,8 +176,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Classification` | `(data) -> ClassificationEntity` | Create a Classification entity instance. |
 | `Drug` | `(data) -> DrugEntity` | Create a Drug entity instance. |
 | `Drugsfda` | `(data) -> DrugsfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement` | `(data) -> EnforcementEntity` | Create a Enforcement entity instance. |
-| `Event` | `(data) -> EventEntity` | Create a Event entity instance. |
+| `Enforcement` | `(data) -> EnforcementEntity` | Create an Enforcement entity instance. |
+| `Event` | `(data) -> EventEntity` | Create an Event entity instance. |
 | `Label` | `(data) -> LabelEntity` | Create a Label entity instance. |
 | `N510k` | `(data) -> N510kEntity` | Create a N510k entity instance. |
 | `Ndc` | `(data) -> NdcEntity` | Create a Ndc entity instance. |
@@ -372,7 +374,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.classification`
+Create an instance: `classification = client.Classification`
 
 #### Operations
 
@@ -389,14 +391,15 @@ Create an instance: `const classification = client.classification`
 
 #### Example: List
 
-```ts
-const classifications = await client.classification.list()
+```ruby
+# list returns an Array of Classification records (raises on error).
+classifications = client.Classification.list
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.drug`
+Create an instance: `drug = client.Drug`
 
 #### Operations
 
@@ -413,14 +416,15 @@ Create an instance: `const drug = client.drug`
 
 #### Example: List
 
-```ts
-const drugs = await client.drug.list()
+```ruby
+# list returns an Array of Drug records (raises on error).
+drugs = client.Drug.list
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.drugsfda`
+Create an instance: `drugsfda = client.Drugsfda`
 
 #### Operations
 
@@ -437,14 +441,15 @@ Create an instance: `const drugsfda = client.drugsfda`
 
 #### Example: List
 
-```ts
-const drugsfdas = await client.drugsfda.list()
+```ruby
+# list returns an Array of Drugsfda records (raises on error).
+drugsfdas = client.Drugsfda.list
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.enforcement`
+Create an instance: `enforcement = client.Enforcement`
 
 #### Operations
 
@@ -461,14 +466,15 @@ Create an instance: `const enforcement = client.enforcement`
 
 #### Example: List
 
-```ts
-const enforcements = await client.enforcement.list()
+```ruby
+# list returns an Array of Enforcement records (raises on error).
+enforcements = client.Enforcement.list
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `event = client.Event`
 
 #### Operations
 
@@ -485,14 +491,15 @@ Create an instance: `const event = client.event`
 
 #### Example: List
 
-```ts
-const events = await client.event.list()
+```ruby
+# list returns an Array of Event records (raises on error).
+events = client.Event.list
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.label`
+Create an instance: `label = client.Label`
 
 #### Operations
 
@@ -509,14 +516,15 @@ Create an instance: `const label = client.label`
 
 #### Example: List
 
-```ts
-const labels = await client.label.list()
+```ruby
+# list returns an Array of Label records (raises on error).
+labels = client.Label.list
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.n510k`
+Create an instance: `n510k = client.N510k`
 
 #### Operations
 
@@ -533,14 +541,15 @@ Create an instance: `const n510k = client.n510k`
 
 #### Example: List
 
-```ts
-const n510ks = await client.n510k.list()
+```ruby
+# list returns an Array of N510k records (raises on error).
+n510ks = client.N510k.list
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.ndc`
+Create an instance: `ndc = client.Ndc`
 
 #### Operations
 
@@ -557,14 +566,15 @@ Create an instance: `const ndc = client.ndc`
 
 #### Example: List
 
-```ts
-const ndcs = await client.ndc.list()
+```ruby
+# list returns an Array of Ndc records (raises on error).
+ndcs = client.Ndc.list
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.nsde`
+Create an instance: `nsde = client.Nsde`
 
 #### Operations
 
@@ -581,14 +591,15 @@ Create an instance: `const nsde = client.nsde`
 
 #### Example: List
 
-```ts
-const nsdes = await client.nsde.list()
+```ruby
+# list returns an Array of Nsde records (raises on error).
+nsdes = client.Nsde.list
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.pma`
+Create an instance: `pma = client.Pma`
 
 #### Operations
 
@@ -605,14 +616,15 @@ Create an instance: `const pma = client.pma`
 
 #### Example: List
 
-```ts
-const pmas = await client.pma.list()
+```ruby
+# list returns an Array of Pma records (raises on error).
+pmas = client.Pma.list
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.problem`
+Create an instance: `problem = client.Problem`
 
 #### Operations
 
@@ -629,14 +641,15 @@ Create an instance: `const problem = client.problem`
 
 #### Example: List
 
-```ts
-const problems = await client.problem.list()
+```ruby
+# list returns an Array of Problem records (raises on error).
+problems = client.Problem.list
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.shortage`
+Create an instance: `shortage = client.Shortage`
 
 #### Operations
 
@@ -653,14 +666,15 @@ Create an instance: `const shortage = client.shortage`
 
 #### Example: List
 
-```ts
-const shortages = await client.shortage.list()
+```ruby
+# list returns an Array of Shortage records (raises on error).
+shortages = client.Shortage.list
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.substance`
+Create an instance: `substance = client.Substance`
 
 #### Operations
 
@@ -677,8 +691,9 @@ Create an instance: `const substance = client.substance`
 
 #### Example: List
 
-```ts
-const substances = await client.substance.list()
+```ruby
+# list returns an Array of Substance records (raises on error).
+substances = client.Substance.list
 ```
 
 
@@ -753,7 +768,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-classification = client.classification
+classification = client.Classification
 classification.load({ "id" => "example_id" })
 
 # classification.data_get now returns the loaded classification data

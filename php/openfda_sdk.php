@@ -233,10 +233,10 @@ class OpenfdaSDK
 
     private $_classification = null;
 
-    // Idiomatic facade: $client->classification()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Classification() (PHP method
-    // names are case-insensitive).
-    public function classification($data = null)
+    // Canonical facade: $client->Classification()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->classification()
+    // resolves here too.
+    public function Classification($data = null)
     {
         require_once __DIR__ . '/entity/classification_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class OpenfdaSDK
 
     private $_drug = null;
 
-    // Idiomatic facade: $client->drug()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Drug() (PHP method
-    // names are case-insensitive).
-    public function drug($data = null)
+    // Canonical facade: $client->Drug()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->drug()
+    // resolves here too.
+    public function Drug($data = null)
     {
         require_once __DIR__ . '/entity/drug_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class OpenfdaSDK
 
     private $_drugsfda = null;
 
-    // Idiomatic facade: $client->drugsfda()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Drugsfda() (PHP method
-    // names are case-insensitive).
-    public function drugsfda($data = null)
+    // Canonical facade: $client->Drugsfda()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->drugsfda()
+    // resolves here too.
+    public function Drugsfda($data = null)
     {
         require_once __DIR__ . '/entity/drugsfda_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class OpenfdaSDK
 
     private $_enforcement = null;
 
-    // Idiomatic facade: $client->enforcement()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Enforcement() (PHP method
-    // names are case-insensitive).
-    public function enforcement($data = null)
+    // Canonical facade: $client->Enforcement()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->enforcement()
+    // resolves here too.
+    public function Enforcement($data = null)
     {
         require_once __DIR__ . '/entity/enforcement_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class OpenfdaSDK
 
     private $_event = null;
 
-    // Idiomatic facade: $client->event()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Event() (PHP method
-    // names are case-insensitive).
-    public function event($data = null)
+    // Canonical facade: $client->Event()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->event()
+    // resolves here too.
+    public function Event($data = null)
     {
         require_once __DIR__ . '/entity/event_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class OpenfdaSDK
 
     private $_label = null;
 
-    // Idiomatic facade: $client->label()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Label() (PHP method
-    // names are case-insensitive).
-    public function label($data = null)
+    // Canonical facade: $client->Label()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->label()
+    // resolves here too.
+    public function Label($data = null)
     {
         require_once __DIR__ . '/entity/label_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class OpenfdaSDK
 
     private $_n510k = null;
 
-    // Idiomatic facade: $client->n510k()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias N510k() (PHP method
-    // names are case-insensitive).
-    public function n510k($data = null)
+    // Canonical facade: $client->N510k()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->n510k()
+    // resolves here too.
+    public function N510k($data = null)
     {
         require_once __DIR__ . '/entity/n510k_entity.php';
         if ($data === null) {
@@ -359,10 +359,10 @@ class OpenfdaSDK
 
     private $_ndc = null;
 
-    // Idiomatic facade: $client->ndc()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Ndc() (PHP method
-    // names are case-insensitive).
-    public function ndc($data = null)
+    // Canonical facade: $client->Ndc()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ndc()
+    // resolves here too.
+    public function Ndc($data = null)
     {
         require_once __DIR__ . '/entity/ndc_entity.php';
         if ($data === null) {
@@ -377,10 +377,10 @@ class OpenfdaSDK
 
     private $_nsde = null;
 
-    // Idiomatic facade: $client->nsde()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Nsde() (PHP method
-    // names are case-insensitive).
-    public function nsde($data = null)
+    // Canonical facade: $client->Nsde()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->nsde()
+    // resolves here too.
+    public function Nsde($data = null)
     {
         require_once __DIR__ . '/entity/nsde_entity.php';
         if ($data === null) {
@@ -395,10 +395,10 @@ class OpenfdaSDK
 
     private $_pma = null;
 
-    // Idiomatic facade: $client->pma()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Pma() (PHP method
-    // names are case-insensitive).
-    public function pma($data = null)
+    // Canonical facade: $client->Pma()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->pma()
+    // resolves here too.
+    public function Pma($data = null)
     {
         require_once __DIR__ . '/entity/pma_entity.php';
         if ($data === null) {
@@ -413,10 +413,10 @@ class OpenfdaSDK
 
     private $_problem = null;
 
-    // Idiomatic facade: $client->problem()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Problem() (PHP method
-    // names are case-insensitive).
-    public function problem($data = null)
+    // Canonical facade: $client->Problem()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->problem()
+    // resolves here too.
+    public function Problem($data = null)
     {
         require_once __DIR__ . '/entity/problem_entity.php';
         if ($data === null) {
@@ -431,10 +431,10 @@ class OpenfdaSDK
 
     private $_shortage = null;
 
-    // Idiomatic facade: $client->shortage()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Shortage() (PHP method
-    // names are case-insensitive).
-    public function shortage($data = null)
+    // Canonical facade: $client->Shortage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->shortage()
+    // resolves here too.
+    public function Shortage($data = null)
     {
         require_once __DIR__ . '/entity/shortage_entity.php';
         if ($data === null) {
@@ -449,10 +449,10 @@ class OpenfdaSDK
 
     private $_substance = null;
 
-    // Idiomatic facade: $client->substance()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Substance() (PHP method
-    // names are case-insensitive).
-    public function substance($data = null)
+    // Canonical facade: $client->Substance()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->substance()
+    // resolves here too.
+    public function Substance($data = null)
     {
         require_once __DIR__ . '/entity/substance_entity.php';
         if ($data === null) {

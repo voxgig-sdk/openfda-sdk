@@ -30,7 +30,12 @@ go mod edit -replace github.com/voxgig-sdk/openfda-sdk/go=../openfda-sdk/go
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
@@ -38,32 +43,23 @@ package main
 import (
     "fmt"
     "os"
-
     sdk "github.com/voxgig-sdk/openfda-sdk/go"
-    "github.com/voxgig-sdk/openfda-sdk/go/core"
 )
 
 func main() {
     client := sdk.NewOpenfdaSDK(map[string]any{
         "apikey": os.Getenv("OPENFDA_APIKEY"),
     })
-```
 
-### 2. List classifications
-
-```go
-    result, err := client.Classification(nil).List(nil, nil)
+    // List classification records — the value is the array of records itself.
+    classifications, err := client.Classification(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range classifications.([]any) {
+        fmt.Println(item)
     }
+}
 ```
 
 
@@ -113,10 +109,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Classification(nil).Load(
+classification, err := client.Classification(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(classification) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -198,8 +197,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Classification` | `(data map[string]any) OpenfdaEntity` | Create a Classification entity instance. |
 | `Drug` | `(data map[string]any) OpenfdaEntity` | Create a Drug entity instance. |
 | `Drugsfda` | `(data map[string]any) OpenfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement` | `(data map[string]any) OpenfdaEntity` | Create a Enforcement entity instance. |
-| `Event` | `(data map[string]any) OpenfdaEntity` | Create a Event entity instance. |
+| `Enforcement` | `(data map[string]any) OpenfdaEntity` | Create an Enforcement entity instance. |
+| `Event` | `(data map[string]any) OpenfdaEntity` | Create an Event entity instance. |
 | `Label` | `(data map[string]any) OpenfdaEntity` | Create a Label entity instance. |
 | `N510k` | `(data map[string]any) OpenfdaEntity` | Create a N510k entity instance. |
 | `Ndc` | `(data map[string]any) OpenfdaEntity` | Create a Ndc entity instance. |
@@ -227,17 +226,24 @@ All entities implement the `OpenfdaEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    classification, err := client.Classification(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // classification is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -409,7 +415,11 @@ Create an instance: `classification := client.Classification(nil)`
 #### Example: List
 
 ```go
-results, err := client.Classification(nil).List(nil, nil)
+classifications, err := client.Classification(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(classifications) // the array of records
 ```
 
 
@@ -433,7 +443,11 @@ Create an instance: `drug := client.Drug(nil)`
 #### Example: List
 
 ```go
-results, err := client.Drug(nil).List(nil, nil)
+drugs, err := client.Drug(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(drugs) // the array of records
 ```
 
 
@@ -457,7 +471,11 @@ Create an instance: `drugsfda := client.Drugsfda(nil)`
 #### Example: List
 
 ```go
-results, err := client.Drugsfda(nil).List(nil, nil)
+drugsfdas, err := client.Drugsfda(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(drugsfdas) // the array of records
 ```
 
 
@@ -481,7 +499,11 @@ Create an instance: `enforcement := client.Enforcement(nil)`
 #### Example: List
 
 ```go
-results, err := client.Enforcement(nil).List(nil, nil)
+enforcements, err := client.Enforcement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(enforcements) // the array of records
 ```
 
 
@@ -505,7 +527,11 @@ Create an instance: `event := client.Event(nil)`
 #### Example: List
 
 ```go
-results, err := client.Event(nil).List(nil, nil)
+events, err := client.Event(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(events) // the array of records
 ```
 
 
@@ -529,7 +555,11 @@ Create an instance: `label := client.Label(nil)`
 #### Example: List
 
 ```go
-results, err := client.Label(nil).List(nil, nil)
+labels, err := client.Label(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(labels) // the array of records
 ```
 
 
@@ -553,7 +583,11 @@ Create an instance: `n510k := client.N510k(nil)`
 #### Example: List
 
 ```go
-results, err := client.N510k(nil).List(nil, nil)
+n510ks, err := client.N510k(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(n510ks) // the array of records
 ```
 
 
@@ -577,7 +611,11 @@ Create an instance: `ndc := client.Ndc(nil)`
 #### Example: List
 
 ```go
-results, err := client.Ndc(nil).List(nil, nil)
+ndcs, err := client.Ndc(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ndcs) // the array of records
 ```
 
 
@@ -601,7 +639,11 @@ Create an instance: `nsde := client.Nsde(nil)`
 #### Example: List
 
 ```go
-results, err := client.Nsde(nil).List(nil, nil)
+nsdes, err := client.Nsde(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(nsdes) // the array of records
 ```
 
 
@@ -625,7 +667,11 @@ Create an instance: `pma := client.Pma(nil)`
 #### Example: List
 
 ```go
-results, err := client.Pma(nil).List(nil, nil)
+pmas, err := client.Pma(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(pmas) // the array of records
 ```
 
 
@@ -649,7 +695,11 @@ Create an instance: `problem := client.Problem(nil)`
 #### Example: List
 
 ```go
-results, err := client.Problem(nil).List(nil, nil)
+problems, err := client.Problem(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(problems) // the array of records
 ```
 
 
@@ -673,7 +723,11 @@ Create an instance: `shortage := client.Shortage(nil)`
 #### Example: List
 
 ```go
-results, err := client.Shortage(nil).List(nil, nil)
+shortages, err := client.Shortage(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(shortages) // the array of records
 ```
 
 
@@ -697,7 +751,11 @@ Create an instance: `substance := client.Substance(nil)`
 #### Example: List
 
 ```go
-results, err := client.Substance(nil).List(nil, nil)
+substances, err := client.Substance(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(substances) // the array of records
 ```
 
 

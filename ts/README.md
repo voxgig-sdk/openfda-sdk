@@ -30,15 +30,15 @@ const client = new OpenfdaSDK({
 })
 ```
 
-### 2. List classifications
+### 2. List classification records
+
+`list()` resolves to an array of Classification objects — iterate it directly:
 
 ```ts
-const result = await client.classification.list()
+const classifications = await client.Classification().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const classification of classifications) {
+  console.log(classification)
 }
 ```
 
@@ -56,6 +56,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -84,9 +87,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OpenfdaSDK.test()
 
-const result = await client.classification.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const classification = await client.Classification().load({ id: 'test01' })
+// classification is a bare entity populated with mock response data
+console.log(classification)
 ```
 
 You can also use the instance method:
@@ -101,7 +104,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.classification
+const entity = client.Classification()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -186,8 +189,8 @@ new OpenfdaSDK(options?: {
 | `Classification(data?)` | `ClassificationEntity` | Create a Classification entity instance. |
 | `Drug(data?)` | `DrugEntity` | Create a Drug entity instance. |
 | `Drugsfda(data?)` | `DrugsfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement(data?)` | `EnforcementEntity` | Create a Enforcement entity instance. |
-| `Event(data?)` | `EventEntity` | Create a Event entity instance. |
+| `Enforcement(data?)` | `EnforcementEntity` | Create an Enforcement entity instance. |
+| `Event(data?)` | `EventEntity` | Create an Event entity instance. |
 | `Label(data?)` | `LabelEntity` | Create a Label entity instance. |
 | `N510k(data?)` | `N510kEntity` | Create a N510k entity instance. |
 | `Ndc(data?)` | `NdcEntity` | Create a Ndc entity instance. |
@@ -212,29 +215,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): OpenfdaSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -416,7 +420,7 @@ API path: `/other/substance.json`
 
 ### Classification
 
-Create an instance: `const classification = client.classification`
+Create an instance: `const classification = client.Classification()`
 
 #### Operations
 
@@ -434,13 +438,13 @@ Create an instance: `const classification = client.classification`
 #### Example: List
 
 ```ts
-const classifications = await client.classification.list()
+const classifications = await client.Classification().list()
 ```
 
 
 ### Drug
 
-Create an instance: `const drug = client.drug`
+Create an instance: `const drug = client.Drug()`
 
 #### Operations
 
@@ -458,13 +462,13 @@ Create an instance: `const drug = client.drug`
 #### Example: List
 
 ```ts
-const drugs = await client.drug.list()
+const drugs = await client.Drug().list()
 ```
 
 
 ### Drugsfda
 
-Create an instance: `const drugsfda = client.drugsfda`
+Create an instance: `const drugsfda = client.Drugsfda()`
 
 #### Operations
 
@@ -482,13 +486,13 @@ Create an instance: `const drugsfda = client.drugsfda`
 #### Example: List
 
 ```ts
-const drugsfdas = await client.drugsfda.list()
+const drugsfdas = await client.Drugsfda().list()
 ```
 
 
 ### Enforcement
 
-Create an instance: `const enforcement = client.enforcement`
+Create an instance: `const enforcement = client.Enforcement()`
 
 #### Operations
 
@@ -506,13 +510,13 @@ Create an instance: `const enforcement = client.enforcement`
 #### Example: List
 
 ```ts
-const enforcements = await client.enforcement.list()
+const enforcements = await client.Enforcement().list()
 ```
 
 
 ### Event
 
-Create an instance: `const event = client.event`
+Create an instance: `const event = client.Event()`
 
 #### Operations
 
@@ -530,13 +534,13 @@ Create an instance: `const event = client.event`
 #### Example: List
 
 ```ts
-const events = await client.event.list()
+const events = await client.Event().list()
 ```
 
 
 ### Label
 
-Create an instance: `const label = client.label`
+Create an instance: `const label = client.Label()`
 
 #### Operations
 
@@ -554,13 +558,13 @@ Create an instance: `const label = client.label`
 #### Example: List
 
 ```ts
-const labels = await client.label.list()
+const labels = await client.Label().list()
 ```
 
 
 ### N510k
 
-Create an instance: `const n510k = client.n510k`
+Create an instance: `const n510k = client.N510k()`
 
 #### Operations
 
@@ -578,13 +582,13 @@ Create an instance: `const n510k = client.n510k`
 #### Example: List
 
 ```ts
-const n510ks = await client.n510k.list()
+const n510ks = await client.N510k().list()
 ```
 
 
 ### Ndc
 
-Create an instance: `const ndc = client.ndc`
+Create an instance: `const ndc = client.Ndc()`
 
 #### Operations
 
@@ -602,13 +606,13 @@ Create an instance: `const ndc = client.ndc`
 #### Example: List
 
 ```ts
-const ndcs = await client.ndc.list()
+const ndcs = await client.Ndc().list()
 ```
 
 
 ### Nsde
 
-Create an instance: `const nsde = client.nsde`
+Create an instance: `const nsde = client.Nsde()`
 
 #### Operations
 
@@ -626,13 +630,13 @@ Create an instance: `const nsde = client.nsde`
 #### Example: List
 
 ```ts
-const nsdes = await client.nsde.list()
+const nsdes = await client.Nsde().list()
 ```
 
 
 ### Pma
 
-Create an instance: `const pma = client.pma`
+Create an instance: `const pma = client.Pma()`
 
 #### Operations
 
@@ -650,13 +654,13 @@ Create an instance: `const pma = client.pma`
 #### Example: List
 
 ```ts
-const pmas = await client.pma.list()
+const pmas = await client.Pma().list()
 ```
 
 
 ### Problem
 
-Create an instance: `const problem = client.problem`
+Create an instance: `const problem = client.Problem()`
 
 #### Operations
 
@@ -674,13 +678,13 @@ Create an instance: `const problem = client.problem`
 #### Example: List
 
 ```ts
-const problems = await client.problem.list()
+const problems = await client.Problem().list()
 ```
 
 
 ### Shortage
 
-Create an instance: `const shortage = client.shortage`
+Create an instance: `const shortage = client.Shortage()`
 
 #### Operations
 
@@ -698,13 +702,13 @@ Create an instance: `const shortage = client.shortage`
 #### Example: List
 
 ```ts
-const shortages = await client.shortage.list()
+const shortages = await client.Shortage().list()
 ```
 
 
 ### Substance
 
-Create an instance: `const substance = client.substance`
+Create an instance: `const substance = client.Substance()`
 
 #### Operations
 
@@ -722,7 +726,7 @@ Create an instance: `const substance = client.substance`
 #### Example: List
 
 ```ts
-const substances = await client.substance.list()
+const substances = await client.Substance().list()
 ```
 
 
@@ -793,7 +797,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const classification = client.classification
+const classification = client.Classification()
 await classification.load({ id: "example_id" })
 
 // classification.data() now returns the loaded classification data

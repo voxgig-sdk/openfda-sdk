@@ -4,165 +4,143 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Classification:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Classification(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class ClassificationListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class ClassificationListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Drug:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Drug(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class DrugListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class DrugListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Drugsfda:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Drugsfda(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class DrugsfdaListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class DrugsfdaListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Enforcement:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Enforcement(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class EnforcementListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class EnforcementListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Event:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Event(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class EventListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class EventListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Label:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Label(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class LabelListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class LabelListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class N510k:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class N510k(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class N510kListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class N510kListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Ndc:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Ndc(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class NdcListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class NdcListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Nsde:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Nsde(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class NsdeListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class NsdeListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Pma:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Pma(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class PmaListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class PmaListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Problem:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Problem(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class ProblemListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class ProblemListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Shortage:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Shortage(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class ShortageListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class ShortageListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class Substance:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
+class Substance(TypedDict, total=False):
+    meta: dict
+    result: list
 
 
-@dataclass
-class SubstanceListMatch:
-    meta: Optional[dict] = None
-    result: Optional[list] = None
-
+class SubstanceListMatch(TypedDict, total=False):
+    meta: dict
+    result: list
