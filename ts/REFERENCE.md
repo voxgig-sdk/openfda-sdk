@@ -261,8 +261,8 @@ const classification = client.Classification()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -312,8 +312,8 @@ const drug = client.Drug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -363,8 +363,8 @@ const drugsfda = client.Drugsfda()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -414,8 +414,8 @@ const enforcement = client.Enforcement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -465,8 +465,8 @@ const event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -516,8 +516,8 @@ const label = client.Label()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -567,8 +567,8 @@ const n510k = client.N510k()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -618,8 +618,8 @@ const ndc = client.Ndc()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -669,8 +669,8 @@ const nsde = client.Nsde()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -720,8 +720,8 @@ const pma = client.Pma()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -771,8 +771,8 @@ const problem = client.Problem()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -822,8 +822,8 @@ const shortage = client.Shortage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 
@@ -873,8 +873,8 @@ const substance = client.Substance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Record<string, any>` | No |  |
+| `result` | `any[]` | No |  |
 
 ### Operations
 

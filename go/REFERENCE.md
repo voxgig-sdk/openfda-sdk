@@ -146,8 +146,8 @@ classification := client.Classification(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -193,8 +193,8 @@ drug := client.Drug(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -240,8 +240,8 @@ drugsfda := client.Drugsfda(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -287,8 +287,8 @@ enforcement := client.Enforcement(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -334,8 +334,8 @@ event := client.Event(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -381,8 +381,8 @@ label := client.Label(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -428,8 +428,8 @@ n510k := client.N510k(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -475,8 +475,8 @@ ndc := client.Ndc(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -522,8 +522,8 @@ nsde := client.Nsde(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -569,8 +569,8 @@ pma := client.Pma(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -616,8 +616,8 @@ problem := client.Problem(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -663,8 +663,8 @@ shortage := client.Shortage(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 
@@ -710,8 +710,8 @@ substance := client.Substance(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `map[string]any` | No |  |
+| `result` | `[]any` | No |  |
 
 ### Operations
 

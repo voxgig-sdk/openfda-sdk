@@ -136,17 +136,17 @@ classification = client.Classification()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Classification().list({})
+results = client.Classification().list()
 for classification in results:
     print(classification)
 ```
@@ -190,17 +190,17 @@ drug = client.Drug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Drug().list({})
+results = client.Drug().list()
 for drug in results:
     print(drug)
 ```
@@ -244,17 +244,17 @@ drugsfda = client.Drugsfda()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Drugsfda().list({})
+results = client.Drugsfda().list()
 for drugsfda in results:
     print(drugsfda)
 ```
@@ -298,17 +298,17 @@ enforcement = client.Enforcement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Enforcement().list({})
+results = client.Enforcement().list()
 for enforcement in results:
     print(enforcement)
 ```
@@ -352,17 +352,17 @@ event = client.Event()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Event().list({})
+results = client.Event().list()
 for event in results:
     print(event)
 ```
@@ -406,17 +406,17 @@ label = client.Label()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Label().list({})
+results = client.Label().list()
 for label in results:
     print(label)
 ```
@@ -460,17 +460,17 @@ n510k = client.N510k()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.N510k().list({})
+results = client.N510k().list()
 for n510k in results:
     print(n510k)
 ```
@@ -514,17 +514,17 @@ ndc = client.Ndc()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Ndc().list({})
+results = client.Ndc().list()
 for ndc in results:
     print(ndc)
 ```
@@ -568,17 +568,17 @@ nsde = client.Nsde()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Nsde().list({})
+results = client.Nsde().list()
 for nsde in results:
     print(nsde)
 ```
@@ -622,17 +622,17 @@ pma = client.Pma()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Pma().list({})
+results = client.Pma().list()
 for pma in results:
     print(pma)
 ```
@@ -676,17 +676,17 @@ problem = client.Problem()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Problem().list({})
+results = client.Problem().list()
 for problem in results:
     print(problem)
 ```
@@ -730,17 +730,17 @@ shortage = client.Shortage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Shortage().list({})
+results = client.Shortage().list()
 for shortage in results:
     print(shortage)
 ```
@@ -784,17 +784,17 @@ substance = client.Substance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `dict` | No |  |
+| `result` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Substance().list({})
+results = client.Substance().list()
 for substance in results:
     print(substance)
 ```

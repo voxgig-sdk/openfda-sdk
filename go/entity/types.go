@@ -14,8 +14,7 @@ type Classification struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// ClassificationListMatch mirrors the classification fields as an all-optional match
-// filter (Go analog of Partial<Classification>).
+// ClassificationListMatch is the typed request payload for Classification.ListTyped.
 type ClassificationListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -27,8 +26,7 @@ type Drug struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// DrugListMatch mirrors the drug fields as an all-optional match
-// filter (Go analog of Partial<Drug>).
+// DrugListMatch is the typed request payload for Drug.ListTyped.
 type DrugListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -40,8 +38,7 @@ type Drugsfda struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// DrugsfdaListMatch mirrors the drugsfda fields as an all-optional match
-// filter (Go analog of Partial<Drugsfda>).
+// DrugsfdaListMatch is the typed request payload for Drugsfda.ListTyped.
 type DrugsfdaListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -53,8 +50,7 @@ type Enforcement struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// EnforcementListMatch mirrors the enforcement fields as an all-optional match
-// filter (Go analog of Partial<Enforcement>).
+// EnforcementListMatch is the typed request payload for Enforcement.ListTyped.
 type EnforcementListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -66,8 +62,7 @@ type Event struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// EventListMatch mirrors the event fields as an all-optional match
-// filter (Go analog of Partial<Event>).
+// EventListMatch is the typed request payload for Event.ListTyped.
 type EventListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -79,8 +74,7 @@ type Label struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// LabelListMatch mirrors the label fields as an all-optional match
-// filter (Go analog of Partial<Label>).
+// LabelListMatch is the typed request payload for Label.ListTyped.
 type LabelListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -92,8 +86,7 @@ type N510k struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// N510kListMatch mirrors the n510k fields as an all-optional match
-// filter (Go analog of Partial<N510k>).
+// N510kListMatch is the typed request payload for N510k.ListTyped.
 type N510kListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -105,8 +98,7 @@ type Ndc struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// NdcListMatch mirrors the ndc fields as an all-optional match
-// filter (Go analog of Partial<Ndc>).
+// NdcListMatch is the typed request payload for Ndc.ListTyped.
 type NdcListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -118,8 +110,7 @@ type Nsde struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// NsdeListMatch mirrors the nsde fields as an all-optional match
-// filter (Go analog of Partial<Nsde>).
+// NsdeListMatch is the typed request payload for Nsde.ListTyped.
 type NsdeListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -131,8 +122,7 @@ type Pma struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// PmaListMatch mirrors the pma fields as an all-optional match
-// filter (Go analog of Partial<Pma>).
+// PmaListMatch is the typed request payload for Pma.ListTyped.
 type PmaListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -144,8 +134,7 @@ type Problem struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// ProblemListMatch mirrors the problem fields as an all-optional match
-// filter (Go analog of Partial<Problem>).
+// ProblemListMatch is the typed request payload for Problem.ListTyped.
 type ProblemListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -157,8 +146,7 @@ type Shortage struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// ShortageListMatch mirrors the shortage fields as an all-optional match
-// filter (Go analog of Partial<Shortage>).
+// ShortageListMatch is the typed request payload for Shortage.ListTyped.
 type ShortageListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`
@@ -170,8 +158,7 @@ type Substance struct {
 	Result *[]any `json:"result,omitempty"`
 }
 
-// SubstanceListMatch mirrors the substance fields as an all-optional match
-// filter (Go analog of Partial<Substance>).
+// SubstanceListMatch is the typed request payload for Substance.ListTyped.
 type SubstanceListMatch struct {
 	Meta *map[string]any `json:"meta,omitempty"`
 	Result *[]any `json:"result,omitempty"`

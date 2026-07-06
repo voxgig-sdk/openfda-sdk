@@ -19,7 +19,7 @@ class Classification
     public ?array $result = null;
 }
 
-/** Match filter for Classification#list (any subset of Classification fields). */
+/** Request payload for Classification#list. */
 class ClassificationListMatch
 {
     public ?array $meta = null;
@@ -33,7 +33,7 @@ class Drug
     public ?array $result = null;
 }
 
-/** Match filter for Drug#list (any subset of Drug fields). */
+/** Request payload for Drug#list. */
 class DrugListMatch
 {
     public ?array $meta = null;
@@ -47,7 +47,7 @@ class Drugsfda
     public ?array $result = null;
 }
 
-/** Match filter for Drugsfda#list (any subset of Drugsfda fields). */
+/** Request payload for Drugsfda#list. */
 class DrugsfdaListMatch
 {
     public ?array $meta = null;
@@ -61,7 +61,7 @@ class Enforcement
     public ?array $result = null;
 }
 
-/** Match filter for Enforcement#list (any subset of Enforcement fields). */
+/** Request payload for Enforcement#list. */
 class EnforcementListMatch
 {
     public ?array $meta = null;
@@ -75,7 +75,7 @@ class Event
     public ?array $result = null;
 }
 
-/** Match filter for Event#list (any subset of Event fields). */
+/** Request payload for Event#list. */
 class EventListMatch
 {
     public ?array $meta = null;
@@ -89,7 +89,7 @@ class Label
     public ?array $result = null;
 }
 
-/** Match filter for Label#list (any subset of Label fields). */
+/** Request payload for Label#list. */
 class LabelListMatch
 {
     public ?array $meta = null;
@@ -103,7 +103,7 @@ class N510k
     public ?array $result = null;
 }
 
-/** Match filter for N510k#list (any subset of N510k fields). */
+/** Request payload for N510k#list. */
 class N510kListMatch
 {
     public ?array $meta = null;
@@ -117,7 +117,7 @@ class Ndc
     public ?array $result = null;
 }
 
-/** Match filter for Ndc#list (any subset of Ndc fields). */
+/** Request payload for Ndc#list. */
 class NdcListMatch
 {
     public ?array $meta = null;
@@ -131,7 +131,7 @@ class Nsde
     public ?array $result = null;
 }
 
-/** Match filter for Nsde#list (any subset of Nsde fields). */
+/** Request payload for Nsde#list. */
 class NsdeListMatch
 {
     public ?array $meta = null;
@@ -145,7 +145,7 @@ class Pma
     public ?array $result = null;
 }
 
-/** Match filter for Pma#list (any subset of Pma fields). */
+/** Request payload for Pma#list. */
 class PmaListMatch
 {
     public ?array $meta = null;
@@ -159,7 +159,7 @@ class Problem
     public ?array $result = null;
 }
 
-/** Match filter for Problem#list (any subset of Problem fields). */
+/** Request payload for Problem#list. */
 class ProblemListMatch
 {
     public ?array $meta = null;
@@ -173,7 +173,7 @@ class Shortage
     public ?array $result = null;
 }
 
-/** Match filter for Shortage#list (any subset of Shortage fields). */
+/** Request payload for Shortage#list. */
 class ShortageListMatch
 {
     public ?array $meta = null;
@@ -187,7 +187,7 @@ class Substance
     public ?array $result = null;
 }
 
-/** Match filter for Substance#list (any subset of Substance fields). */
+/** Request payload for Substance#list. */
 class SubstanceListMatch
 {
     public ?array $meta = null;

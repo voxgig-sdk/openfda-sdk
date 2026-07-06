@@ -221,79 +221,79 @@ class OpenfdaSDK:
 
 
     def Classification(self, data=None) -> "ClassificationEntity":
-        """Entity factory: client.Classification().list({}) / client.Classification().load({"id": ...})."""
+        """Entity factory: client.Classification().list() / client.Classification().load({"id": ...})."""
         from entity.classification_entity import ClassificationEntity
         return ClassificationEntity(self, data)
 
 
     def Drug(self, data=None) -> "DrugEntity":
-        """Entity factory: client.Drug().list({}) / client.Drug().load({"id": ...})."""
+        """Entity factory: client.Drug().list() / client.Drug().load({"id": ...})."""
         from entity.drug_entity import DrugEntity
         return DrugEntity(self, data)
 
 
     def Drugsfda(self, data=None) -> "DrugsfdaEntity":
-        """Entity factory: client.Drugsfda().list({}) / client.Drugsfda().load({"id": ...})."""
+        """Entity factory: client.Drugsfda().list() / client.Drugsfda().load({"id": ...})."""
         from entity.drugsfda_entity import DrugsfdaEntity
         return DrugsfdaEntity(self, data)
 
 
     def Enforcement(self, data=None) -> "EnforcementEntity":
-        """Entity factory: client.Enforcement().list({}) / client.Enforcement().load({"id": ...})."""
+        """Entity factory: client.Enforcement().list() / client.Enforcement().load({"id": ...})."""
         from entity.enforcement_entity import EnforcementEntity
         return EnforcementEntity(self, data)
 
 
     def Event(self, data=None) -> "EventEntity":
-        """Entity factory: client.Event().list({}) / client.Event().load({"id": ...})."""
+        """Entity factory: client.Event().list() / client.Event().load({"id": ...})."""
         from entity.event_entity import EventEntity
         return EventEntity(self, data)
 
 
     def Label(self, data=None) -> "LabelEntity":
-        """Entity factory: client.Label().list({}) / client.Label().load({"id": ...})."""
+        """Entity factory: client.Label().list() / client.Label().load({"id": ...})."""
         from entity.label_entity import LabelEntity
         return LabelEntity(self, data)
 
 
     def N510k(self, data=None) -> "N510kEntity":
-        """Entity factory: client.N510k().list({}) / client.N510k().load({"id": ...})."""
+        """Entity factory: client.N510k().list() / client.N510k().load({"id": ...})."""
         from entity.n510k_entity import N510kEntity
         return N510kEntity(self, data)
 
 
     def Ndc(self, data=None) -> "NdcEntity":
-        """Entity factory: client.Ndc().list({}) / client.Ndc().load({"id": ...})."""
+        """Entity factory: client.Ndc().list() / client.Ndc().load({"id": ...})."""
         from entity.ndc_entity import NdcEntity
         return NdcEntity(self, data)
 
 
     def Nsde(self, data=None) -> "NsdeEntity":
-        """Entity factory: client.Nsde().list({}) / client.Nsde().load({"id": ...})."""
+        """Entity factory: client.Nsde().list() / client.Nsde().load({"id": ...})."""
         from entity.nsde_entity import NsdeEntity
         return NsdeEntity(self, data)
 
 
     def Pma(self, data=None) -> "PmaEntity":
-        """Entity factory: client.Pma().list({}) / client.Pma().load({"id": ...})."""
+        """Entity factory: client.Pma().list() / client.Pma().load({"id": ...})."""
         from entity.pma_entity import PmaEntity
         return PmaEntity(self, data)
 
 
     def Problem(self, data=None) -> "ProblemEntity":
-        """Entity factory: client.Problem().list({}) / client.Problem().load({"id": ...})."""
+        """Entity factory: client.Problem().list() / client.Problem().load({"id": ...})."""
         from entity.problem_entity import ProblemEntity
         return ProblemEntity(self, data)
 
 
     def Shortage(self, data=None) -> "ShortageEntity":
-        """Entity factory: client.Shortage().list({}) / client.Shortage().load({"id": ...})."""
+        """Entity factory: client.Shortage().list() / client.Shortage().load({"id": ...})."""
         from entity.shortage_entity import ShortageEntity
         return ShortageEntity(self, data)
 
 
     def Substance(self, data=None) -> "SubstanceEntity":
-        """Entity factory: client.Substance().list({}) / client.Substance().load({"id": ...})."""
+        """Entity factory: client.Substance().list() / client.Substance().load({"id": ...})."""
         from entity.substance_entity import SubstanceEntity
         return SubstanceEntity(self, data)
 

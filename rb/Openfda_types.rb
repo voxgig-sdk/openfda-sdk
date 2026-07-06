@@ -21,7 +21,7 @@ Classification = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Classification#list (any subset of Classification fields).
+# Request payload for Classification#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -47,7 +47,7 @@ Drug = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Drug#list (any subset of Drug fields).
+# Request payload for Drug#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -73,7 +73,7 @@ Drugsfda = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Drugsfda#list (any subset of Drugsfda fields).
+# Request payload for Drugsfda#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -99,7 +99,7 @@ Enforcement = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Enforcement#list (any subset of Enforcement fields).
+# Request payload for Enforcement#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -125,7 +125,7 @@ Event = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Event#list (any subset of Event fields).
+# Request payload for Event#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -151,7 +151,7 @@ Label = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Label#list (any subset of Label fields).
+# Request payload for Label#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -177,7 +177,7 @@ N510k = Struct.new(
   keyword_init: true
 )
 
-# Match filter for N510k#list (any subset of N510k fields).
+# Request payload for N510k#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -203,7 +203,7 @@ Ndc = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Ndc#list (any subset of Ndc fields).
+# Request payload for Ndc#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -229,7 +229,7 @@ Nsde = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Nsde#list (any subset of Nsde fields).
+# Request payload for Nsde#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -255,7 +255,7 @@ Pma = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Pma#list (any subset of Pma fields).
+# Request payload for Pma#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -281,7 +281,7 @@ Problem = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Problem#list (any subset of Problem fields).
+# Request payload for Problem#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -307,7 +307,7 @@ Shortage = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Shortage#list (any subset of Shortage fields).
+# Request payload for Shortage#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]
@@ -333,7 +333,7 @@ Substance = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Substance#list (any subset of Substance fields).
+# Request payload for Substance#list.
 #
 # @!attribute [rw] meta
 #   @return [Hash, nil]

@@ -10,89 +10,128 @@ export interface Classification {
   result?: any[]
 }
 
-export type ClassificationListMatch = Partial<Classification>
+export interface ClassificationListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Drug {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type DrugListMatch = Partial<Drug>
+export interface DrugListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Drugsfda {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type DrugsfdaListMatch = Partial<Drugsfda>
+export interface DrugsfdaListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Enforcement {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type EnforcementListMatch = Partial<Enforcement>
+export interface EnforcementListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Event {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type EventListMatch = Partial<Event>
+export interface EventListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Label {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type LabelListMatch = Partial<Label>
+export interface LabelListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface N510k {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type N510kListMatch = Partial<N510k>
+export interface N510kListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Ndc {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type NdcListMatch = Partial<Ndc>
+export interface NdcListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Nsde {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type NsdeListMatch = Partial<Nsde>
+export interface NsdeListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Pma {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type PmaListMatch = Partial<Pma>
+export interface PmaListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Problem {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type ProblemListMatch = Partial<Problem>
+export interface ProblemListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Shortage {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type ShortageListMatch = Partial<Shortage>
+export interface ShortageListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 
 export interface Substance {
   meta?: Record<string, any>
   result?: any[]
 }
 
-export type SubstanceListMatch = Partial<Substance>
+export interface SubstanceListMatch {
+  meta?: Record<string, any>
+  result?: any[]
+}
 

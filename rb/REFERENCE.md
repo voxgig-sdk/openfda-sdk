@@ -8,7 +8,7 @@ Complete API reference for the Openfda Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'openfda_sdk'
+require_relative 'Openfda_sdk'
 
 client = OpenfdaSDK.new(options)
 ```
@@ -142,17 +142,17 @@ classification = client.Classification
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Classification.list(nil)
+results = client.Classification.list
 ```
 
 ### Common Methods
@@ -195,17 +195,17 @@ drug = client.Drug
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Drug.list(nil)
+results = client.Drug.list
 ```
 
 ### Common Methods
@@ -248,17 +248,17 @@ drugsfda = client.Drugsfda
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Drugsfda.list(nil)
+results = client.Drugsfda.list
 ```
 
 ### Common Methods
@@ -301,17 +301,17 @@ enforcement = client.Enforcement
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Enforcement.list(nil)
+results = client.Enforcement.list
 ```
 
 ### Common Methods
@@ -354,17 +354,17 @@ event = client.Event
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Event.list(nil)
+results = client.Event.list
 ```
 
 ### Common Methods
@@ -407,17 +407,17 @@ label = client.Label
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Label.list(nil)
+results = client.Label.list
 ```
 
 ### Common Methods
@@ -460,17 +460,17 @@ n510k = client.N510k
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.N510k.list(nil)
+results = client.N510k.list
 ```
 
 ### Common Methods
@@ -513,17 +513,17 @@ ndc = client.Ndc
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Ndc.list(nil)
+results = client.Ndc.list
 ```
 
 ### Common Methods
@@ -566,17 +566,17 @@ nsde = client.Nsde
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Nsde.list(nil)
+results = client.Nsde.list
 ```
 
 ### Common Methods
@@ -619,17 +619,17 @@ pma = client.Pma
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Pma.list(nil)
+results = client.Pma.list
 ```
 
 ### Common Methods
@@ -672,17 +672,17 @@ problem = client.Problem
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Problem.list(nil)
+results = client.Problem.list
 ```
 
 ### Common Methods
@@ -725,17 +725,17 @@ shortage = client.Shortage
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Shortage.list(nil)
+results = client.Shortage.list
 ```
 
 ### Common Methods
@@ -778,17 +778,17 @@ substance = client.Substance
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `meta` | ``$OBJECT`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
+| `meta` | `Hash` | No |  |
+| `result` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Substance.list(nil)
+results = client.Substance.list
 ```
 
 ### Common Methods
