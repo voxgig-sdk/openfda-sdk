@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.fda.gov',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

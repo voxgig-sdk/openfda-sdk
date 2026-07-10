@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1917,14 +1914,24 @@
           "name": "Public Domain",
           "url": "https://open.fda.gov/license/"
         },
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "query",
+          "name": "api_key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.fda.gov"
           }
         ],
+        "summary": "openFDA provides access to a variety of public data related to FDA-regulated products.",
         "title": "openFDA API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://open.fda.gov/apis/"
       },
       "option": {},
       "target": {
@@ -1977,6 +1984,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -2027,6 +2037,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

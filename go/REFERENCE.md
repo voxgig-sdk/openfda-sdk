@@ -140,6 +140,7 @@ same parameters as `Direct()`.
 
 ```go
 classification := client.Classification(nil)
+fmt.Println(classification.GetName()) // "classification"
 ```
 
 ### Fields
@@ -157,6 +158,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Classification(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -187,6 +192,7 @@ Return the entity name.
 
 ```go
 drug := client.Drug(nil)
+fmt.Println(drug.GetName()) // "drug"
 ```
 
 ### Fields
@@ -204,6 +210,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Drug(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -234,6 +244,7 @@ Return the entity name.
 
 ```go
 drugsfda := client.Drugsfda(nil)
+fmt.Println(drugsfda.GetName()) // "drugsfda"
 ```
 
 ### Fields
@@ -251,6 +262,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Drugsfda(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -281,6 +296,7 @@ Return the entity name.
 
 ```go
 enforcement := client.Enforcement(nil)
+fmt.Println(enforcement.GetName()) // "enforcement"
 ```
 
 ### Fields
@@ -298,6 +314,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Enforcement(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -328,6 +348,7 @@ Return the entity name.
 
 ```go
 event := client.Event(nil)
+fmt.Println(event.GetName()) // "event"
 ```
 
 ### Fields
@@ -345,6 +366,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Event(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -375,6 +400,7 @@ Return the entity name.
 
 ```go
 label := client.Label(nil)
+fmt.Println(label.GetName()) // "label"
 ```
 
 ### Fields
@@ -392,6 +418,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Label(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -422,6 +452,7 @@ Return the entity name.
 
 ```go
 n510k := client.N510k(nil)
+fmt.Println(n510k.GetName()) // "n510k"
 ```
 
 ### Fields
@@ -439,6 +470,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.N510k(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -469,6 +504,7 @@ Return the entity name.
 
 ```go
 ndc := client.Ndc(nil)
+fmt.Println(ndc.GetName()) // "ndc"
 ```
 
 ### Fields
@@ -486,6 +522,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Ndc(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -516,6 +556,7 @@ Return the entity name.
 
 ```go
 nsde := client.Nsde(nil)
+fmt.Println(nsde.GetName()) // "nsde"
 ```
 
 ### Fields
@@ -533,6 +574,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Nsde(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -563,6 +608,7 @@ Return the entity name.
 
 ```go
 pma := client.Pma(nil)
+fmt.Println(pma.GetName()) // "pma"
 ```
 
 ### Fields
@@ -580,6 +626,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Pma(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -610,6 +660,7 @@ Return the entity name.
 
 ```go
 problem := client.Problem(nil)
+fmt.Println(problem.GetName()) // "problem"
 ```
 
 ### Fields
@@ -627,6 +678,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Problem(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -657,6 +712,7 @@ Return the entity name.
 
 ```go
 shortage := client.Shortage(nil)
+fmt.Println(shortage.GetName()) // "shortage"
 ```
 
 ### Fields
@@ -674,6 +730,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Shortage(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -704,6 +764,7 @@ Return the entity name.
 
 ```go
 substance := client.Substance(nil)
+fmt.Println(substance.GetName()) // "substance"
 ```
 
 ### Fields
@@ -721,6 +782,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Substance(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

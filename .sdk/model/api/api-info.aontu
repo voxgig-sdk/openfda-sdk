@@ -13,15 +13,22 @@ main: {
         name: "Public Domain"
         url: "https://open.fda.gov/license/"
       }
+      security: {
+        in: "query"
+        name: "api_key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Production server"
           url: "https://api.fda.gov"
         }
       ]
+      summary: "openFDA provides access to a variety of public data related to FDA-regulated products."
       title: "openFDA API"
       version: "1.0.0"
+      website: "https://open.fda.gov/apis/"
     }
   }
-}
-

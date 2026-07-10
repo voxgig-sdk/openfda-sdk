@@ -1,0 +1,15 @@
+# Entity Models
+
+@"classification.aontu"
+@"drug.aontu"
+@"drugsfda.aontu"
+@"enforcement.aontu"
+@"event.aontu"
+@"label.aontu"
+@"n510k.aontu"
+@"ndc.aontu"
+@"nsde.aontu"
+@"pma.aontu"
+@"problem.aontu"
+@"shortage.aontu"
+@"substance.aontu"

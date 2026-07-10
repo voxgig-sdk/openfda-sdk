@@ -16,7 +16,7 @@ module OpenfdaConfig
       "options" => {
         "base" => "https://api.fda.gov",
         "auth" => {
-          "prefix" => "Bearer",
+          "prefix" => "",
         },
         "headers" => {
           "content-type" => "application/json",
