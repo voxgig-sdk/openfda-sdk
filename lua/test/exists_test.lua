@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Openfda SDK exists test
 
 local sdk = require("openfda_sdk")
 
