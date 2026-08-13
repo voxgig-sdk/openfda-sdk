@@ -37,7 +37,7 @@ class NsdeEntity extends OpenfdaEntityBase<Nsde> {
 
 
 
-  async list(this: any, reqmatch?: NsdeListMatch, ctrl?: Control): Promise<Nsde[]> {
+  async list(this: any, reqmatch?: NsdeListMatch, ctrl?: Control): Promise<NsdeEntity[]> {
 
     const utility = this._utility
 

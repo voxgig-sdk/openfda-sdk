@@ -66,7 +66,7 @@ function n510k_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "OPENFDA_TEST_N___K_ENTID" => [],
+        "OPENFDA_TEST_N510K_ENTID" => [],
         "OPENFDA_TEST_LIVE" => "FALSE",
         "OPENFDA_APIKEY" => "NONE",
     ]);

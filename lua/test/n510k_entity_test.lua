@@ -70,7 +70,7 @@ describe("N510kEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N___K_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N510K_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -126,18 +126,18 @@ function n510k_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("OPENFDA_TEST_N___K_ENTID")
+  local entid_env_raw = os.getenv("OPENFDA_TEST_N510K_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["OPENFDA_TEST_N___K_ENTID"] = idmap,
+    ["OPENFDA_TEST_N510K_ENTID"] = idmap,
     ["OPENFDA_TEST_LIVE"] = "FALSE",
     ["OPENFDA_TEST_EXPLAIN"] = "FALSE",
     ["OPENFDA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["OPENFDA_TEST_N___K_ENTID"])
+    env["OPENFDA_TEST_N510K_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end

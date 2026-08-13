@@ -37,7 +37,7 @@ class EventEntity extends OpenfdaEntityBase<Event> {
 
 
 
-  async list(this: any, reqmatch?: EventListMatch, ctrl?: Control): Promise<Event[]> {
+  async list(this: any, reqmatch?: EventListMatch, ctrl?: Control): Promise<EventEntity[]> {
 
     const utility = this._utility
 

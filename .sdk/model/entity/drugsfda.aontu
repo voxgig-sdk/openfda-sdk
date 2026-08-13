@@ -11,7 +11,7 @@ main: kit: entity: drugsfda: {
       type: "`$OBJECT`"
     }
     {
-      name: "result"
+      name: "results"
       req: false
       type: "`$ARRAY`"
     }

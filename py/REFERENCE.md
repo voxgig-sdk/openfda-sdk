@@ -137,7 +137,7 @@ classification = client.Classification()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -191,7 +191,7 @@ drug = client.Drug()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -245,7 +245,7 @@ drugsfda = client.Drugsfda()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -299,7 +299,7 @@ enforcement = client.Enforcement()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -353,7 +353,7 @@ event = client.Event()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -407,7 +407,7 @@ label = client.Label()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -461,7 +461,7 @@ n510k = client.N510k()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -515,7 +515,7 @@ ndc = client.Ndc()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -569,7 +569,7 @@ nsde = client.Nsde()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -623,7 +623,7 @@ pma = client.Pma()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -677,7 +677,7 @@ problem = client.Problem()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -731,7 +731,7 @@ shortage = client.Shortage()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 
@@ -785,7 +785,7 @@ substance = client.Substance()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `dict` | No |  |
-| `result` | `list` | No |  |
+| `results` | `list` | No |  |
 
 ### Operations
 

@@ -3,15 +3,15 @@
     "event": {
       "EVENT00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "EVENT01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "EVENT02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "event": {
       "event_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import OpenfdaSDK
-from core.error import OpenfdaError
-from core.result import OpenfdaResult
-from core.response import OpenfdaResponse
-from core.spec import OpenfdaSpec
-from feature.base_feature import OpenfdaBaseFeature
+from projectname_sdk.core.error import OpenfdaError
+from projectname_sdk.core.result import OpenfdaResult
+from projectname_sdk.core.response import OpenfdaResponse
+from projectname_sdk.core.spec import OpenfdaSpec
+from projectname_sdk.feature.base_feature import OpenfdaBaseFeature
 
 
 def _client():

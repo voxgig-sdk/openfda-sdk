@@ -60,8 +60,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    classifications = client.Classification().list()
-    print(classifications)
+    events = client.Event().list()
+    print(events)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -127,9 +127,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OpenfdaSDK.test()
 
-# Entity ops return the bare record and raise on error.
-classification = client.Classification().list()
-# classification contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+event = client.Event().list()
+# event contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -237,7 +238,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -260,7 +261,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -271,7 +272,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -282,7 +283,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -293,7 +294,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -304,7 +305,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -315,7 +316,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -326,7 +327,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -337,7 +338,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -348,7 +349,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -359,7 +360,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -370,7 +371,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -381,7 +382,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -392,7 +393,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -418,7 +419,7 @@ Create an instance: `classification = client.Classification()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -442,7 +443,7 @@ Create an instance: `drug = client.Drug()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -466,7 +467,7 @@ Create an instance: `drugsfda = client.Drugsfda()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -490,7 +491,7 @@ Create an instance: `enforcement = client.Enforcement()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -514,7 +515,7 @@ Create an instance: `event = client.Event()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -538,7 +539,7 @@ Create an instance: `label = client.Label()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -562,7 +563,7 @@ Create an instance: `n510k = client.N510k()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -586,7 +587,7 @@ Create an instance: `ndc = client.Ndc()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -610,7 +611,7 @@ Create an instance: `nsde = client.Nsde()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -634,7 +635,7 @@ Create an instance: `pma = client.Pma()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -658,7 +659,7 @@ Create an instance: `problem = client.Problem()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -682,7 +683,7 @@ Create an instance: `shortage = client.Shortage()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -706,7 +707,7 @@ Create an instance: `substance = client.Substance()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `dict` |  |
-| `result` | `list` |  |
+| `results` | `list` |  |
 
 #### Example: List
 
@@ -790,11 +791,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-classification = client.Classification()
-classification.list()
+event = client.Event()
+event.list()
 
-# classification.data_get() now returns the classification data from the last list
-# classification.match_get() returns the last match criteria
+# event.data_get() now returns the event data from the last list
+# event.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

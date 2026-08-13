@@ -63,7 +63,7 @@ describe('LabelEntity', async () => {
     const label_ref01_ent = client.Label()
     const label_ref01_match: any = {}
 
-    const label_ref01_list = await label_ref01_ent.list(label_ref01_match)
+    const label_ref01_list = (await label_ref01_ent.list(label_ref01_match)).map((e: any) => e.data())
 
 
   })

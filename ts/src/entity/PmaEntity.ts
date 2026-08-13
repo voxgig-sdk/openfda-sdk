@@ -37,7 +37,7 @@ class PmaEntity extends OpenfdaEntityBase<Pma> {
 
 
 
-  async list(this: any, reqmatch?: PmaListMatch, ctrl?: Control): Promise<Pma[]> {
+  async list(this: any, reqmatch?: PmaListMatch, ctrl?: Control): Promise<PmaEntity[]> {
 
     const utility = this._utility
 

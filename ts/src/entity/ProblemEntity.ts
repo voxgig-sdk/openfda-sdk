@@ -37,7 +37,7 @@ class ProblemEntity extends OpenfdaEntityBase<Problem> {
 
 
 
-  async list(this: any, reqmatch?: ProblemListMatch, ctrl?: Control): Promise<Problem[]> {
+  async list(this: any, reqmatch?: ProblemListMatch, ctrl?: Control): Promise<ProblemEntity[]> {
 
     const utility = this._utility
 

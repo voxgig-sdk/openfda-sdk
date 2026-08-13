@@ -3,15 +3,15 @@
     "drug": {
       "DRUG00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "DRUG01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "DRUG02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "drug": {
       "drug_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from openfda_sdk.utility.voxgig_struct import voxgig_struct as vs
 from openfda_sdk import OpenfdaSDK
-from core import helpers
+from openfda_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,7 +42,7 @@ class TestN510kEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
+        from openfda_sdk.config import make_config
         cfg = make_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = OpenfdaSDK.test(
@@ -70,7 +70,7 @@ class TestN510kEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set OPENFDA_TEST_N___K_ENTID JSON to run live")
+                        "set OPENFDA_TEST_N510K_ENTID JSON to run live")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -118,18 +118,18 @@ def _n510k_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "OPENFDA_TEST_N___K_ENTID")
+        "OPENFDA_TEST_N510K_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "OPENFDA_TEST_N___K_ENTID": idmap,
+        "OPENFDA_TEST_N510K_ENTID": idmap,
         "OPENFDA_TEST_LIVE": "FALSE",
         "OPENFDA_TEST_EXPLAIN": "FALSE",
         "OPENFDA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("OPENFDA_TEST_N___K_ENTID"))
+        env.get("OPENFDA_TEST_N510K_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 

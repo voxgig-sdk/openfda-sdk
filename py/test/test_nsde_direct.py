@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from openfda_sdk.utility.voxgig_struct import voxgig_struct as vs
 from openfda_sdk import OpenfdaSDK
-from core import helpers
+from openfda_sdk.core import helpers
 from test import runner
 
 

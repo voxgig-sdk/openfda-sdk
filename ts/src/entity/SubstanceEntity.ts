@@ -37,7 +37,7 @@ class SubstanceEntity extends OpenfdaEntityBase<Substance> {
 
 
 
-  async list(this: any, reqmatch?: SubstanceListMatch, ctrl?: Control): Promise<Substance[]> {
+  async list(this: any, reqmatch?: SubstanceListMatch, ctrl?: Control): Promise<SubstanceEntity[]> {
 
     const utility = this._utility
 

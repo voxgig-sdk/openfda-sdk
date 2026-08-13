@@ -13,11 +13,11 @@
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Classification = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -26,11 +26,11 @@ Classification = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 ClassificationListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -39,11 +39,11 @@ ClassificationListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Drug = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -52,11 +52,11 @@ Drug = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 DrugListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -65,11 +65,11 @@ DrugListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Drugsfda = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -78,11 +78,11 @@ Drugsfda = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 DrugsfdaListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -91,11 +91,11 @@ DrugsfdaListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Enforcement = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -104,11 +104,11 @@ Enforcement = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 EnforcementListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -117,11 +117,11 @@ EnforcementListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Event = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -130,11 +130,11 @@ Event = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 EventListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -143,11 +143,11 @@ EventListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Label = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -156,11 +156,11 @@ Label = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 LabelListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -169,11 +169,11 @@ LabelListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 N510k = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -182,11 +182,11 @@ N510k = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 N510kListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -195,11 +195,11 @@ N510kListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Ndc = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -208,11 +208,11 @@ Ndc = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 NdcListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -221,11 +221,11 @@ NdcListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Nsde = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -234,11 +234,11 @@ Nsde = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 NsdeListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -247,11 +247,11 @@ NsdeListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Pma = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -260,11 +260,11 @@ Pma = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 PmaListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -273,11 +273,11 @@ PmaListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Problem = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -286,11 +286,11 @@ Problem = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 ProblemListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -299,11 +299,11 @@ ProblemListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Shortage = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -312,11 +312,11 @@ Shortage = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 ShortageListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -325,11 +325,11 @@ ShortageListMatch = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 Substance = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 
@@ -338,11 +338,11 @@ Substance = Struct.new(
 # @!attribute [rw] meta
 #   @return [Hash, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 SubstanceListMatch = Struct.new(
   :meta,
-  :result,
+  :results,
   keyword_init: true
 )
 

@@ -72,7 +72,7 @@ class N510kEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N___K_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N510K_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -117,18 +117,18 @@ function n510k_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("OPENFDA_TEST_N___K_ENTID");
+    $entid_env_raw = getenv("OPENFDA_TEST_N510K_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "OPENFDA_TEST_N___K_ENTID" => $idmap,
+        "OPENFDA_TEST_N510K_ENTID" => $idmap,
         "OPENFDA_TEST_LIVE" => "FALSE",
         "OPENFDA_TEST_EXPLAIN" => "FALSE",
         "OPENFDA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["OPENFDA_TEST_N___K_ENTID"]);
+        $env["OPENFDA_TEST_N510K_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Openfda SDK exists test
 
 import pytest
 from openfda_sdk import OpenfdaSDK

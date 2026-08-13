@@ -63,7 +63,7 @@ describe('EventEntity', async () => {
     const event_ref01_ent = client.Event()
     const event_ref01_match: any = {}
 
-    const event_ref01_list = await event_ref01_ent.list(event_ref01_match)
+    const event_ref01_list = (await event_ref01_ent.list(event_ref01_match)).map((e: any) => e.data())
 
 
   })

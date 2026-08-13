@@ -71,12 +71,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-classifications, err := client.Classification(nil).List(nil, nil)
+events, err := client.Event(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = classifications
+_ = events
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -140,13 +140,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-classification, err := client.Classification(nil).List(
+event, err := client.Event(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(classification) // the returned mock data
+fmt.Println(event) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -278,7 +278,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -289,7 +289,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -300,7 +300,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -311,7 +311,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -322,7 +322,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -333,7 +333,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -344,7 +344,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -355,7 +355,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -366,7 +366,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -377,7 +377,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -388,7 +388,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -399,7 +399,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -410,7 +410,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"result"` |  |
+| `"results"` |  |
 
 Operations: List.
 
@@ -436,7 +436,7 @@ Create an instance: `classification := client.Classification(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -464,7 +464,7 @@ Create an instance: `drug := client.Drug(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -492,7 +492,7 @@ Create an instance: `drugsfda := client.Drugsfda(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -520,7 +520,7 @@ Create an instance: `enforcement := client.Enforcement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -548,7 +548,7 @@ Create an instance: `event := client.Event(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -576,7 +576,7 @@ Create an instance: `label := client.Label(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -604,7 +604,7 @@ Create an instance: `n510k := client.N510k(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -632,7 +632,7 @@ Create an instance: `ndc := client.Ndc(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -660,7 +660,7 @@ Create an instance: `nsde := client.Nsde(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -688,7 +688,7 @@ Create an instance: `pma := client.Pma(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -716,7 +716,7 @@ Create an instance: `problem := client.Problem(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -744,7 +744,7 @@ Create an instance: `shortage := client.Shortage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -772,7 +772,7 @@ Create an instance: `substance := client.Substance(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `result` | `[]any` |  |
+| `results` | `[]any` |  |
 
 #### Example: List
 
@@ -858,11 +858,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-classification := client.Classification(nil)
-classification.List(nil, nil)
+event := client.Event(nil)
+event.List(nil, nil)
 
-// classification.Data() now returns the classification data from the last list
-// classification.Match() returns the last match criteria
+// event.Data() now returns the event data from the last list
+// event.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -37,7 +37,7 @@ class ClassificationEntity extends OpenfdaEntityBase<Classification> {
 
 
 
-  async list(this: any, reqmatch?: ClassificationListMatch, ctrl?: Control): Promise<Classification[]> {
+  async list(this: any, reqmatch?: ClassificationListMatch, ctrl?: Control): Promise<ClassificationEntity[]> {
 
     const utility = this._utility
 

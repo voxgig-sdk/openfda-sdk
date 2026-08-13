@@ -55,7 +55,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $classifications = $client->Classification()->list();
+    $events = $client->Event()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -127,9 +127,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = OpenfdaSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$classification = $client->Classification()->list();
-print_r($classification);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$event = $client->Event()->list();
+print_r($event);
 ```
 
 ### Use a custom fetch function
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -263,7 +264,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -274,7 +275,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -285,7 +286,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -296,7 +297,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -307,7 +308,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -318,7 +319,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -329,7 +330,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -340,7 +341,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -351,7 +352,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -362,7 +363,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -373,7 +374,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -384,7 +385,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -395,7 +396,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -421,7 +422,7 @@ Create an instance: `$classification = $client->Classification();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -446,7 +447,7 @@ Create an instance: `$drug = $client->Drug();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -471,7 +472,7 @@ Create an instance: `$drugsfda = $client->Drugsfda();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -496,7 +497,7 @@ Create an instance: `$enforcement = $client->Enforcement();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -521,7 +522,7 @@ Create an instance: `$event = $client->Event();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -546,7 +547,7 @@ Create an instance: `$label = $client->Label();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -571,7 +572,7 @@ Create an instance: `$n510k = $client->N510k();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -596,7 +597,7 @@ Create an instance: `$ndc = $client->Ndc();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -621,7 +622,7 @@ Create an instance: `$nsde = $client->Nsde();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -646,7 +647,7 @@ Create an instance: `$pma = $client->Pma();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -671,7 +672,7 @@ Create an instance: `$problem = $client->Problem();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -696,7 +697,7 @@ Create an instance: `$shortage = $client->Shortage();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -721,7 +722,7 @@ Create an instance: `$substance = $client->Substance();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `result` | `array` |  |
+| `results` | `array` |  |
 
 #### Example: List
 
@@ -807,11 +808,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$classification = $client->Classification();
-$classification->list();
+$event = $client->Event();
+$event->list();
 
-// $classification->data_get() now returns the classification data from the last list
-// $classification->match_get() returns the last match criteria
+// $event->data_get() now returns the event data from the last list
+// $event->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

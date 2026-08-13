@@ -92,7 +92,7 @@ func TestN510kEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N___K_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N510K_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,17 +160,17 @@ func n510kBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("OPENFDA_TEST_N___K_ENTID")
+	entidEnvRaw := os.Getenv("OPENFDA_TEST_N510K_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"OPENFDA_TEST_N___K_ENTID": idmap,
+		"OPENFDA_TEST_N510K_ENTID": idmap,
 		"OPENFDA_TEST_LIVE":      "FALSE",
 		"OPENFDA_TEST_EXPLAIN":   "FALSE",
 		"OPENFDA_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["OPENFDA_TEST_N___K_ENTID"])
+	idmapResolved := core.ToMapAny(env["OPENFDA_TEST_N510K_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}

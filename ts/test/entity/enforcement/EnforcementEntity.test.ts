@@ -63,7 +63,7 @@ describe('EnforcementEntity', async () => {
     const enforcement_ref01_ent = client.Enforcement()
     const enforcement_ref01_match: any = {}
 
-    const enforcement_ref01_list = await enforcement_ref01_ent.list(enforcement_ref01_match)
+    const enforcement_ref01_list = (await enforcement_ref01_ent.list(enforcement_ref01_match)).map((e: any) => e.data())
 
 
   })

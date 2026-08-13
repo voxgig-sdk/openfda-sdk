@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ OpenfdaUtility.registrar = ->(u) {
   u.prepare_params = OpenfdaUtilities::PrepareParams
   u.prepare_path = OpenfdaUtilities::PreparePath
   u.prepare_query = OpenfdaUtilities::PrepareQuery
+  u.graphql_body = OpenfdaUtilities::GraphqlBody
+  u.graphql_errors = OpenfdaUtilities::GraphqlErrors
   u.result_basic = OpenfdaUtilities::ResultBasic
   u.result_body = OpenfdaUtilities::ResultBody
   u.result_headers = OpenfdaUtilities::ResultHeaders

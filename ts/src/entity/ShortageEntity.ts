@@ -37,7 +37,7 @@ class ShortageEntity extends OpenfdaEntityBase<Shortage> {
 
 
 
-  async list(this: any, reqmatch?: ShortageListMatch, ctrl?: Control): Promise<Shortage[]> {
+  async list(this: any, reqmatch?: ShortageListMatch, ctrl?: Control): Promise<ShortageEntity[]> {
 
     const utility = this._utility
 

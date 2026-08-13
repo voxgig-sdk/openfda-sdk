@@ -158,8 +158,29 @@ class OpenfdaSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('OpenfdaSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -220,94 +241,174 @@ class OpenfdaSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('OpenfdaSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('OpenfdaSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Classification().list()` / `client.Classification().load({ id })`.
-  Classification(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Classification(entopts?: Record<string, any>) {
     const self = this
-    return new ClassificationEntity(self,data)
+    return new ClassificationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Drug().list()` / `client.Drug().load({ id })`.
-  Drug(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Drug(entopts?: Record<string, any>) {
     const self = this
-    return new DrugEntity(self,data)
+    return new DrugEntity(self, entopts)
   }
 
 
   // Entity access: `client.Drugsfda().list()` / `client.Drugsfda().load({ id })`.
-  Drugsfda(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Drugsfda(entopts?: Record<string, any>) {
     const self = this
-    return new DrugsfdaEntity(self,data)
+    return new DrugsfdaEntity(self, entopts)
   }
 
 
   // Entity access: `client.Enforcement().list()` / `client.Enforcement().load({ id })`.
-  Enforcement(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Enforcement(entopts?: Record<string, any>) {
     const self = this
-    return new EnforcementEntity(self,data)
+    return new EnforcementEntity(self, entopts)
   }
 
 
   // Entity access: `client.Event().list()` / `client.Event().load({ id })`.
-  Event(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Event(entopts?: Record<string, any>) {
     const self = this
-    return new EventEntity(self,data)
+    return new EventEntity(self, entopts)
   }
 
 
   // Entity access: `client.Label().list()` / `client.Label().load({ id })`.
-  Label(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Label(entopts?: Record<string, any>) {
     const self = this
-    return new LabelEntity(self,data)
+    return new LabelEntity(self, entopts)
   }
 
 
   // Entity access: `client.N510k().list()` / `client.N510k().load({ id })`.
-  N510k(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  N510k(entopts?: Record<string, any>) {
     const self = this
-    return new N510kEntity(self,data)
+    return new N510kEntity(self, entopts)
   }
 
 
   // Entity access: `client.Ndc().list()` / `client.Ndc().load({ id })`.
-  Ndc(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Ndc(entopts?: Record<string, any>) {
     const self = this
-    return new NdcEntity(self,data)
+    return new NdcEntity(self, entopts)
   }
 
 
   // Entity access: `client.Nsde().list()` / `client.Nsde().load({ id })`.
-  Nsde(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Nsde(entopts?: Record<string, any>) {
     const self = this
-    return new NsdeEntity(self,data)
+    return new NsdeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Pma().list()` / `client.Pma().load({ id })`.
-  Pma(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Pma(entopts?: Record<string, any>) {
     const self = this
-    return new PmaEntity(self,data)
+    return new PmaEntity(self, entopts)
   }
 
 
   // Entity access: `client.Problem().list()` / `client.Problem().load({ id })`.
-  Problem(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Problem(entopts?: Record<string, any>) {
     const self = this
-    return new ProblemEntity(self,data)
+    return new ProblemEntity(self, entopts)
   }
 
 
   // Entity access: `client.Shortage().list()` / `client.Shortage().load({ id })`.
-  Shortage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Shortage(entopts?: Record<string, any>) {
     const self = this
-    return new ShortageEntity(self,data)
+    return new ShortageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Substance().list()` / `client.Substance().load({ id })`.
-  Substance(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Substance(entopts?: Record<string, any>) {
     const self = this
-    return new SubstanceEntity(self,data)
+    return new SubstanceEntity(self, entopts)
   }
 
 

@@ -3,15 +3,15 @@
     "label": {
       "LABEL00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "LABEL01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "LABEL02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "label": {
       "label_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

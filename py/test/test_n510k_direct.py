@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from openfda_sdk.utility.voxgig_struct import voxgig_struct as vs
 from openfda_sdk import OpenfdaSDK
-from core import helpers
+from openfda_sdk.core import helpers
 from test import runner
 
 
@@ -58,7 +58,7 @@ def _n510k_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "OPENFDA_TEST_N___K_ENTID": {},
+        "OPENFDA_TEST_N510K_ENTID": {},
         "OPENFDA_TEST_LIVE": "FALSE",
         "OPENFDA_APIKEY": "NONE",
     })

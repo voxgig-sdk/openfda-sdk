@@ -3,15 +3,15 @@
     "nsde": {
       "NSDE00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "NSDE01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "NSDE02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "nsde": {
       "nsde_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

@@ -37,7 +37,7 @@ class LabelEntity extends OpenfdaEntityBase<Label> {
 
 
 
-  async list(this: any, reqmatch?: LabelListMatch, ctrl?: Control): Promise<Label[]> {
+  async list(this: any, reqmatch?: LabelListMatch, ctrl?: Control): Promise<LabelEntity[]> {
 
     const utility = this._utility
 

@@ -37,7 +37,7 @@ class DrugEntity extends OpenfdaEntityBase<Drug> {
 
 
 
-  async list(this: any, reqmatch?: DrugListMatch, ctrl?: Control): Promise<Drug[]> {
+  async list(this: any, reqmatch?: DrugListMatch, ctrl?: Control): Promise<DrugEntity[]> {
 
     const utility = this._utility
 

@@ -53,7 +53,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  classifications = client.Classification.list()
+  events = client.Event.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -121,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = OpenfdaSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-classification = client.Classification.list()
-puts classification
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+event = client.Event.list()
+puts event
 ```
 
 ### Use a custom fetch function
@@ -253,7 +254,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -264,7 +265,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -275,7 +276,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -286,7 +287,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -297,7 +298,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -308,7 +309,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -319,7 +320,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -330,7 +331,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -341,7 +342,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -352,7 +353,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -363,7 +364,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -374,7 +375,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -385,7 +386,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -411,7 +412,7 @@ Create an instance: `classification = client.Classification`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -436,7 +437,7 @@ Create an instance: `drug = client.Drug`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -461,7 +462,7 @@ Create an instance: `drugsfda = client.Drugsfda`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -486,7 +487,7 @@ Create an instance: `enforcement = client.Enforcement`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -511,7 +512,7 @@ Create an instance: `event = client.Event`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -536,7 +537,7 @@ Create an instance: `label = client.Label`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -561,7 +562,7 @@ Create an instance: `n510k = client.N510k`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -586,7 +587,7 @@ Create an instance: `ndc = client.Ndc`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -611,7 +612,7 @@ Create an instance: `nsde = client.Nsde`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -636,7 +637,7 @@ Create an instance: `pma = client.Pma`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -661,7 +662,7 @@ Create an instance: `problem = client.Problem`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -686,7 +687,7 @@ Create an instance: `shortage = client.Shortage`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -711,7 +712,7 @@ Create an instance: `substance = client.Substance`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Hash` |  |
-| `result` | `Array` |  |
+| `results` | `Array` |  |
 
 #### Example: List
 
@@ -797,11 +798,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-classification = client.Classification
-classification.list()
+event = client.Event
+event.list()
 
-# classification.data_get now returns the classification data from the last list
-# classification.match_get returns the last match criteria
+# event.data_get now returns the event data from the last list
+# event.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

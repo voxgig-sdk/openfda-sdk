@@ -142,7 +142,7 @@ $classification = $client->Classification();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -195,7 +195,7 @@ $drug = $client->Drug();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -248,7 +248,7 @@ $drugsfda = $client->Drugsfda();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -301,7 +301,7 @@ $enforcement = $client->Enforcement();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -354,7 +354,7 @@ $event = $client->Event();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -407,7 +407,7 @@ $label = $client->Label();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -460,7 +460,7 @@ $n510k = $client->N510k();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -513,7 +513,7 @@ $ndc = $client->Ndc();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -566,7 +566,7 @@ $nsde = $client->Nsde();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -619,7 +619,7 @@ $pma = $client->Pma();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -672,7 +672,7 @@ $problem = $client->Problem();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -725,7 +725,7 @@ $shortage = $client->Shortage();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 
@@ -778,7 +778,7 @@ $substance = $client->Substance();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `array` | No |  |
-| `result` | `array` | No |  |
+| `results` | `array` | No |  |
 
 ### Operations
 

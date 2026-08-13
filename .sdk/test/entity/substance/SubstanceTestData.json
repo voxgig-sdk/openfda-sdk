@@ -3,15 +3,15 @@
     "substance": {
       "SUBSTANCE00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "SUBSTANCE01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "SUBSTANCE02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "substance": {
       "substance_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

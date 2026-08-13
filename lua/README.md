@@ -56,7 +56,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local classifications, err = client:Classification():list()
+local events, err = client:Event():list()
 if err then error(err) end
 ```
 
@@ -114,7 +114,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Classification():list()
+local result, err = client:Event():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -234,9 +234,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local classification, err = client:Classification():load()
+    local classification, err = client:Classification():list()
     if err then error(err) end
-    -- classification is the loaded record
+    -- classification is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -248,7 +248,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -259,7 +259,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -270,7 +270,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -281,7 +281,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -292,7 +292,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -303,7 +303,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -314,7 +314,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -325,7 +325,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -336,7 +336,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -347,7 +347,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -358,7 +358,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -369,7 +369,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -380,7 +380,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: List.
 
@@ -406,7 +406,7 @@ Create an instance: `local classification = client:Classification(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -430,7 +430,7 @@ Create an instance: `local drug = client:Drug(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -454,7 +454,7 @@ Create an instance: `local drugsfda = client:Drugsfda(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -478,7 +478,7 @@ Create an instance: `local enforcement = client:Enforcement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -502,7 +502,7 @@ Create an instance: `local event = client:Event(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -526,7 +526,7 @@ Create an instance: `local label = client:Label(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -550,7 +550,7 @@ Create an instance: `local n510k = client:N510k(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -574,7 +574,7 @@ Create an instance: `local ndc = client:Ndc(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -598,7 +598,7 @@ Create an instance: `local nsde = client:Nsde(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -622,7 +622,7 @@ Create an instance: `local pma = client:Pma(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -646,7 +646,7 @@ Create an instance: `local problem = client:Problem(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -670,7 +670,7 @@ Create an instance: `local shortage = client:Shortage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -694,7 +694,7 @@ Create an instance: `local substance = client:Substance(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `result` | `table` |  |
+| `results` | `table` |  |
 
 #### Example: List
 
@@ -779,11 +779,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local classification = client:Classification()
-classification:list()
+local event = client:Event()
+event:list()
 
--- classification:data_get() now returns the classification data from the last list
--- classification:match_get() returns the last match criteria
+-- event:data_get() now returns the event data from the last list
+-- event:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -63,7 +63,7 @@ describe('SubstanceEntity', async () => {
     const substance_ref01_ent = client.Substance()
     const substance_ref01_match: any = {}
 
-    const substance_ref01_list = await substance_ref01_ent.list(substance_ref01_match)
+    const substance_ref01_list = (await substance_ref01_ent.list(substance_ref01_match)).map((e: any) => e.data())
 
 
   })

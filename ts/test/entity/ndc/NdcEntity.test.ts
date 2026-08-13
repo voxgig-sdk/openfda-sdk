@@ -63,7 +63,7 @@ describe('NdcEntity', async () => {
     const ndc_ref01_ent = client.Ndc()
     const ndc_ref01_match: any = {}
 
-    const ndc_ref01_list = await ndc_ref01_ent.list(ndc_ref01_match)
+    const ndc_ref01_list = (await ndc_ref01_ent.list(ndc_ref01_match)).map((e: any) => e.data())
 
 
   })

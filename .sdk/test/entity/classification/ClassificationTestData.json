@@ -3,15 +3,15 @@
     "classification": {
       "CLASSIFICATION00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "CLASSIFICATION01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "CLASSIFICATION02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "classification": {
       "classification_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

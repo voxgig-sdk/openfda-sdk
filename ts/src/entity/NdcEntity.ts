@@ -37,7 +37,7 @@ class NdcEntity extends OpenfdaEntityBase<Ndc> {
 
 
 
-  async list(this: any, reqmatch?: NdcListMatch, ctrl?: Control): Promise<Ndc[]> {
+  async list(this: any, reqmatch?: NdcListMatch, ctrl?: Control): Promise<NdcEntity[]> {
 
     const utility = this._utility
 

@@ -16,181 +16,181 @@ declare(strict_types=1);
 class Classification
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Classification#list. */
 class ClassificationListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Drug entity data model. */
 class Drug
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Drug#list. */
 class DrugListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Drugsfda entity data model. */
 class Drugsfda
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Drugsfda#list. */
 class DrugsfdaListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Enforcement entity data model. */
 class Enforcement
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Enforcement#list. */
 class EnforcementListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Event entity data model. */
 class Event
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Event#list. */
 class EventListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Label entity data model. */
 class Label
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Label#list. */
 class LabelListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** N510k entity data model. */
 class N510k
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for N510k#list. */
 class N510kListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Ndc entity data model. */
 class Ndc
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Ndc#list. */
 class NdcListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Nsde entity data model. */
 class Nsde
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Nsde#list. */
 class NsdeListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Pma entity data model. */
 class Pma
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Pma#list. */
 class PmaListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Problem entity data model. */
 class Problem
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Problem#list. */
 class ProblemListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Shortage entity data model. */
 class Shortage
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Shortage#list. */
 class ShortageListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Substance entity data model. */
 class Substance
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 
 /** Request payload for Substance#list. */
 class SubstanceListMatch
 {
     public ?array $meta = null;
-    public ?array $result = null;
+    public ?array $results = null;
 }
 

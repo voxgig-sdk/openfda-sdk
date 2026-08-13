@@ -3,15 +3,15 @@
     "problem": {
       "PROBLEM00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "PROBLEM01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "PROBLEM02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "problem": {
       "problem_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

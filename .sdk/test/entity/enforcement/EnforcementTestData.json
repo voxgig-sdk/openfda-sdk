@@ -3,15 +3,15 @@
     "enforcement": {
       "ENFORCEMENT00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "ENFORCEMENT01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "ENFORCEMENT02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "enforcement": {
       "enforcement_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

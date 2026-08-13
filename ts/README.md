@@ -37,7 +37,9 @@ const client = new OpenfdaSDK({
 
 ### 2. List classification records
 
-`list()` resolves to an array of Classification objects — iterate it directly:
+`list()` resolves to an array of Classification ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const classifications = await client.Classification().list()
@@ -54,8 +56,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const classifications = await client.Classification().list()
-  console.log(classifications)
+  const events = await client.Event().list()
+  console.log(events)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -121,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OpenfdaSDK.test()
 
-const classification = await client.Classification().list()
-// classification is a bare entity populated with mock response data
-console.log(classification)
+const event = await client.Event().list()
+// event is the entity, populated with mock response data
+// — call event.data() for the record itself
+console.log(event)
 ```
 
 You can also use the instance method:
@@ -138,7 +141,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Classification()
+const entity = client.Event()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -303,7 +306,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -314,7 +317,7 @@ API path: `/device/classification.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -325,7 +328,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -336,7 +339,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -347,7 +350,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -358,7 +361,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -369,7 +372,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -380,7 +383,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -391,7 +394,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -402,7 +405,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -413,7 +416,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -424,7 +427,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -435,7 +438,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `result` |  |
+| `results` |  |
 
 Operations: list.
 
@@ -461,7 +464,7 @@ Create an instance: `const classification = client.Classification()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -485,7 +488,7 @@ Create an instance: `const drug = client.Drug()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -509,7 +512,7 @@ Create an instance: `const drugsfda = client.Drugsfda()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -533,7 +536,7 @@ Create an instance: `const enforcement = client.Enforcement()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -557,7 +560,7 @@ Create an instance: `const event = client.Event()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -581,7 +584,7 @@ Create an instance: `const label = client.Label()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -605,7 +608,7 @@ Create an instance: `const n510k = client.N510k()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -629,7 +632,7 @@ Create an instance: `const ndc = client.Ndc()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -653,7 +656,7 @@ Create an instance: `const nsde = client.Nsde()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -677,7 +680,7 @@ Create an instance: `const pma = client.Pma()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -701,7 +704,7 @@ Create an instance: `const problem = client.Problem()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -725,7 +728,7 @@ Create an instance: `const shortage = client.Shortage()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -749,7 +752,7 @@ Create an instance: `const substance = client.Substance()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `result` | `any[]` |  |
+| `results` | `any[]` |  |
 
 #### Example: List
 
@@ -827,11 +830,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const classification = client.Classification()
-await classification.list()
+const event = client.Event()
+await event.list()
 
-// classification.data() now returns the classification data from the last `list`
-// classification.match() returns the last match criteria
+// event.data() now returns the event data from the last `list`
+// event.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

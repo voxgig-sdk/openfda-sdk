@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ OpenfdaUtility::setRegistrar(function (OpenfdaUtility $u): void {
     $u->prepare_params = [OpenfdaPrepareParams::class, 'call'];
     $u->prepare_path = [OpenfdaPreparePath::class, 'call'];
     $u->prepare_query = [OpenfdaPrepareQuery::class, 'call'];
+    $u->graphql_body = [OpenfdaGraphql::class, 'body'];
+    $u->graphql_errors = [OpenfdaGraphql::class, 'errors'];
     $u->result_basic = [OpenfdaResultBasic::class, 'call'];
     $u->result_body = [OpenfdaResultBody::class, 'call'];
     $u->result_headers = [OpenfdaResultHeaders::class, 'call'];

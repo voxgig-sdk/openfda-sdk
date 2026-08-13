@@ -37,7 +37,7 @@ class EnforcementEntity extends OpenfdaEntityBase<Enforcement> {
 
 
 
-  async list(this: any, reqmatch?: EnforcementListMatch, ctrl?: Control): Promise<Enforcement[]> {
+  async list(this: any, reqmatch?: EnforcementListMatch, ctrl?: Control): Promise<EnforcementEntity[]> {
 
     const utility = this._utility
 

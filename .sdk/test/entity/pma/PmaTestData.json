@@ -3,15 +3,15 @@
     "pma": {
       "PMA00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "PMA01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "PMA02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "pma": {
       "pma_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

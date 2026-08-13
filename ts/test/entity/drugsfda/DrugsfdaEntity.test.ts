@@ -63,7 +63,7 @@ describe('DrugsfdaEntity', async () => {
     const drugsfda_ref01_ent = client.Drugsfda()
     const drugsfda_ref01_match: any = {}
 
-    const drugsfda_ref01_list = await drugsfda_ref01_ent.list(drugsfda_ref01_match)
+    const drugsfda_ref01_list = (await drugsfda_ref01_ent.list(drugsfda_ref01_match)).map((e: any) => e.data())
 
 
   })

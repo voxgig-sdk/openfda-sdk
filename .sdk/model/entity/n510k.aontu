@@ -11,7 +11,7 @@ main: kit: entity: n510k: {
       type: "`$OBJECT`"
     }
     {
-      name: "result"
+      name: "results"
       req: false
       type: "`$ARRAY`"
     }

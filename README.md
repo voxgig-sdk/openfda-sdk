@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = OpenfdaSDK.test()
-const classifications = await client.Classification().list()
-// classifications is an array of bare Classification records populated with mock data
-console.log(classifications)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = OpenfdaSDK.test({
+  entity: {
+    event: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const events = await client.Event().list()
+// events is an array of Event entities, populated with mock data
+// — call events[0].data() for the record itself
+console.log(events)
 ```
 
 ### Python
 
 ```python
 client = OpenfdaSDK.test()
-classifications = client.Classification().list()
-print(classifications)
+events = client.Event().list()
+print(events)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(classifications)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = OpenfdaSDK::test([
-    "entity" => ["classification" => ["test01" => []]],
+    "entity" => ["event" => ["test01" => []]],
 ]);
-$classifications = $client->Classification()->list();
+$events = $client->Event()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Classification(nil).List(
+result, err := client.Event(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Classification(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = OpenfdaSDK.test({
-  "entity" => { "classification" => { "test01" => {} } },
+  "entity" => { "event" => { "test01" => {} } },
 })
-classifications = client.Classification.list()
+events = client.Event.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Classification():list()
+local results, err = client:Event():list()
 ```
 
 ## Packages
@@ -112,7 +121,7 @@ const client = new OpenfdaSDK({
   apikey: process.env.OPENFDA_APIKEY,
 })
 
-// List all classifications (returns Classification[])
+// List all classifications (returns ClassificationEntity[] — .data() for the record)
 const classifications = await client.Classification().list()
 for (const classification of classifications) {
   console.log(classification)
@@ -368,6 +377,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://open.fda.gov/](https://open.fda.gov/)
 

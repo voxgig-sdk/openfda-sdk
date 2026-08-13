@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Openfda',
   }
 
 
@@ -103,7 +103,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -157,6 +157,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/device/classification.json",
               "parts": [
@@ -196,7 +197,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -249,6 +250,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/event.json",
               "parts": [
@@ -289,7 +291,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -343,6 +345,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/drugsfda.json",
               "parts": [
@@ -382,7 +385,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -436,6 +439,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/device/enforcement.json",
               "parts": [
@@ -498,6 +502,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/enforcement.json",
               "parts": [
@@ -560,6 +565,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/food/enforcement.json",
               "parts": [
@@ -599,7 +605,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -653,6 +659,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/cosmetic/event.json",
               "parts": [
@@ -715,6 +722,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/device/event.json",
               "parts": [
@@ -777,6 +785,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/food/event.json",
               "parts": [
@@ -816,7 +825,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -868,6 +877,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/label.json",
               "parts": [
@@ -907,7 +917,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -961,6 +971,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/device/510k.json",
               "parts": [
@@ -1000,7 +1011,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1054,6 +1065,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/ndc.json",
               "parts": [
@@ -1093,7 +1105,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1147,6 +1159,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/other/nsde.json",
               "parts": [
@@ -1186,7 +1199,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1240,6 +1253,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/device/pma.json",
               "parts": [
@@ -1279,7 +1293,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1333,6 +1347,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/tobacco/problem.json",
               "parts": [
@@ -1372,7 +1387,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1426,6 +1441,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/drug/shortages.json",
               "parts": [
@@ -1465,7 +1481,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "result",
+          "name": "results",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -1519,6 +1535,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/other/substance.json",
               "parts": [

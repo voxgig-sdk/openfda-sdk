@@ -3,15 +3,15 @@
     "ndc": {
       "NDC00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "NDC01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "NDC02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "ndc": {
       "ndc_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

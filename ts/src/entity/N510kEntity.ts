@@ -37,7 +37,7 @@ class N510kEntity extends OpenfdaEntityBase<N510k> {
 
 
 
-  async list(this: any, reqmatch?: N510kListMatch, ctrl?: Control): Promise<N510k[]> {
+  async list(this: any, reqmatch?: N510kListMatch, ctrl?: Control): Promise<N510kEntity[]> {
 
     const utility = this._utility
 

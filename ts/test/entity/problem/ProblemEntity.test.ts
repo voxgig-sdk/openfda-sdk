@@ -63,7 +63,7 @@ describe('ProblemEntity', async () => {
     const problem_ref01_ent = client.Problem()
     const problem_ref01_match: any = {}
 
-    const problem_ref01_list = await problem_ref01_ent.list(problem_ref01_match)
+    const problem_ref01_list = (await problem_ref01_ent.list(problem_ref01_match)).map((e: any) => e.data())
 
 
   })

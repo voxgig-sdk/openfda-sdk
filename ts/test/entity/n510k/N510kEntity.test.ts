@@ -48,7 +48,7 @@ describe('N510kEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N___K_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_N510K_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -63,7 +63,7 @@ describe('N510kEntity', async () => {
     const n510k_ref01_ent = client.N510k()
     const n510k_ref01_match: any = {}
 
-    const n510k_ref01_list = await n510k_ref01_ent.list(n510k_ref01_match)
+    const n510k_ref01_list = (await n510k_ref01_ent.list(n510k_ref01_match)).map((e: any) => e.data())
 
 
   })
@@ -106,17 +106,17 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['OPENFDA_TEST_N___K_ENTID']
+  const idmapEnvVal = process.env['OPENFDA_TEST_N510K_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'OPENFDA_TEST_N___K_ENTID': idmap,
+    'OPENFDA_TEST_N510K_ENTID': idmap,
     'OPENFDA_TEST_LIVE': 'FALSE',
     'OPENFDA_TEST_EXPLAIN': 'FALSE',
     'OPENFDA_APIKEY': 'NONE',
   })
 
-  idmap = env['OPENFDA_TEST_N___K_ENTID']
+  idmap = env['OPENFDA_TEST_N510K_ENTID']
 
   const live = 'TRUE' === env.OPENFDA_TEST_LIVE
 

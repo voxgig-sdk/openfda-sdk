@@ -63,7 +63,7 @@ describe('DrugEntity', async () => {
     const drug_ref01_ent = client.Drug()
     const drug_ref01_match: any = {}
 
-    const drug_ref01_list = await drug_ref01_ent.list(drug_ref01_match)
+    const drug_ref01_list = (await drug_ref01_ent.list(drug_ref01_match)).map((e: any) => e.data())
 
 
   })

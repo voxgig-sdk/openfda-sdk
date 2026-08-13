@@ -148,7 +148,7 @@ fmt.Println(classification.GetName()) // "classification"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -200,7 +200,7 @@ fmt.Println(drug.GetName()) // "drug"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -252,7 +252,7 @@ fmt.Println(drugsfda.GetName()) // "drugsfda"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -304,7 +304,7 @@ fmt.Println(enforcement.GetName()) // "enforcement"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -356,7 +356,7 @@ fmt.Println(event.GetName()) // "event"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -408,7 +408,7 @@ fmt.Println(label.GetName()) // "label"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -460,7 +460,7 @@ fmt.Println(n510k.GetName()) // "n510k"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -512,7 +512,7 @@ fmt.Println(ndc.GetName()) // "ndc"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -564,7 +564,7 @@ fmt.Println(nsde.GetName()) // "nsde"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -616,7 +616,7 @@ fmt.Println(pma.GetName()) // "pma"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -668,7 +668,7 @@ fmt.Println(problem.GetName()) // "problem"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -720,7 +720,7 @@ fmt.Println(shortage.GetName()) // "shortage"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 
@@ -772,7 +772,7 @@ fmt.Println(substance.GetName()) // "substance"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `map[string]any` | No |  |
-| `result` | `[]any` | No |  |
+| `results` | `[]any` | No |  |
 
 ### Operations
 

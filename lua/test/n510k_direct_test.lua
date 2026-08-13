@@ -61,7 +61,7 @@ function n510k_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["OPENFDA_TEST_N___K_ENTID"] = {},
+    ["OPENFDA_TEST_N510K_ENTID"] = {},
     ["OPENFDA_TEST_LIVE"] = "FALSE",
     ["OPENFDA_APIKEY"] = "NONE",
   })

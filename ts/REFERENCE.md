@@ -262,7 +262,7 @@ const classification = client.Classification()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -313,7 +313,27 @@ const drug = client.Drug()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `event` | `/drug/event.json` | `client.Drug().list({ $action: 'event', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Drug record — check the API definition for its shape.
+
+```ts
+const result = await client.Drug().list({
+  $action: 'event',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -364,7 +384,7 @@ const drugsfda = client.Drugsfda()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -415,7 +435,7 @@ const enforcement = client.Enforcement()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -466,7 +486,7 @@ const event = client.Event()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -517,7 +537,7 @@ const label = client.Label()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -568,7 +588,7 @@ const n510k = client.N510k()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -619,7 +639,7 @@ const ndc = client.Ndc()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -670,7 +690,7 @@ const nsde = client.Nsde()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -721,7 +741,7 @@ const pma = client.Pma()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -772,7 +792,7 @@ const problem = client.Problem()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -823,7 +843,7 @@ const shortage = client.Shortage()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 
@@ -874,7 +894,7 @@ const substance = client.Substance()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `Record<string, any>` | No |  |
-| `result` | `any[]` | No |  |
+| `results` | `any[]` | No |  |
 
 ### Operations
 

@@ -48,7 +48,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -102,6 +102,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/device/classification.json",
 								"parts": []any{
@@ -123,7 +124,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -141,7 +141,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -194,6 +194,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/event.json",
 								"parts": []any{
@@ -216,7 +217,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -234,7 +234,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -288,6 +288,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/drugsfda.json",
 								"parts": []any{
@@ -309,7 +310,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -327,7 +327,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -381,6 +381,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/device/enforcement.json",
 								"parts": []any{
@@ -443,6 +444,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/enforcement.json",
 								"parts": []any{
@@ -505,6 +507,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/food/enforcement.json",
 								"parts": []any{
@@ -526,7 +529,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -544,7 +546,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -598,6 +600,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/cosmetic/event.json",
 								"parts": []any{
@@ -660,6 +663,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/device/event.json",
 								"parts": []any{
@@ -722,6 +726,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/food/event.json",
 								"parts": []any{
@@ -743,7 +748,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -761,7 +765,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -813,6 +817,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/label.json",
 								"parts": []any{
@@ -834,7 +839,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -852,7 +856,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -906,6 +910,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/device/510k.json",
 								"parts": []any{
@@ -927,7 +932,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -945,7 +949,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -999,6 +1003,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/ndc.json",
 								"parts": []any{
@@ -1020,7 +1025,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1038,7 +1042,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1092,6 +1096,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/other/nsde.json",
 								"parts": []any{
@@ -1113,7 +1118,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1131,7 +1135,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1185,6 +1189,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/device/pma.json",
 								"parts": []any{
@@ -1206,7 +1211,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1224,7 +1228,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1278,6 +1282,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/tobacco/problem.json",
 								"parts": []any{
@@ -1299,7 +1304,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1317,7 +1321,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1371,6 +1375,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/shortages.json",
 								"parts": []any{
@@ -1392,7 +1397,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1410,7 +1414,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
@@ -1464,6 +1468,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/other/substance.json",
 								"parts": []any{
@@ -1485,7 +1490,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

@@ -24,6 +24,10 @@ describe('N510kDirect', async () => {
 
   test('direct-exists', async () => {
     const sdk = new OpenfdaSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,7 +81,7 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'OPENFDA_TEST_N___K_ENTID': {},
+    'OPENFDA_TEST_N510K_ENTID': {},
     'OPENFDA_TEST_LIVE': 'FALSE',
     'OPENFDA_APIKEY': 'NONE',
   })
@@ -89,7 +93,7 @@ function directSetup(mockres?: any) {
       apikey: env.OPENFDA_APIKEY,
     })
 
-    let idmap: any = env['OPENFDA_TEST_N___K_ENTID']
+    let idmap: any = env['OPENFDA_TEST_N510K_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

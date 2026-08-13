@@ -63,7 +63,7 @@ describe('ClassificationEntity', async () => {
     const classification_ref01_ent = client.Classification()
     const classification_ref01_match: any = {}
 
-    const classification_ref01_list = await classification_ref01_ent.list(classification_ref01_match)
+    const classification_ref01_list = (await classification_ref01_ent.list(classification_ref01_match)).map((e: any) => e.data())
 
 
   })

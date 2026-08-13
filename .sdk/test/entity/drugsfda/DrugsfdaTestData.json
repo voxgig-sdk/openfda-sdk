@@ -3,15 +3,15 @@
     "drugsfda": {
       "DRUGSFDA00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "DRUGSFDA01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "DRUGSFDA02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "drugsfda": {
       "drugsfda_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }

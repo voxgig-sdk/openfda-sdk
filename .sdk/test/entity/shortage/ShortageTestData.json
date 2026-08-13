@@ -3,15 +3,15 @@
     "shortage": {
       "SHORTAGE00": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "SHORTAGE01": {
         "meta": {},
-        "result": []
+        "results": []
       },
       "SHORTAGE02": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   },
@@ -19,7 +19,7 @@
     "shortage": {
       "shortage_ref01": {
         "meta": {},
-        "result": []
+        "results": []
       }
     }
   }
