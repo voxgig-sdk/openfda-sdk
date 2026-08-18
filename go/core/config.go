@@ -1,5 +1,12 @@
 package core
 
+import (
+	"sync"
+)
+
+// MakeConfig builds a fresh, fully materialised config map. Every call
+// rebuilds the whole structure, so prefer SharedConfig unless you need a
+// private copy you intend to mutate.
 func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
@@ -40,18 +47,12 @@ func MakeConfig() map[string]any {
 			"classification": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "classification",
@@ -61,43 +62,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -121,7 +113,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -133,18 +124,12 @@ func MakeConfig() map[string]any {
 			"drug": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "drug",
@@ -154,42 +139,33 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:aspirin",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -214,7 +190,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -226,18 +201,12 @@ func MakeConfig() map[string]any {
 			"drugsfda": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "drugsfda",
@@ -247,43 +216,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -307,7 +267,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -319,18 +278,12 @@ func MakeConfig() map[string]any {
 			"enforcement": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "enforcement",
@@ -340,43 +293,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -400,46 +344,36 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -463,46 +397,36 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 1,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -526,7 +450,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 2,
 							},
 						},
 					},
@@ -538,18 +461,12 @@ func MakeConfig() map[string]any {
 			"event": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "event",
@@ -559,43 +476,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -619,46 +527,36 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -682,46 +580,36 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 1,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -745,7 +633,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 2,
 							},
 						},
 					},
@@ -757,18 +644,12 @@ func MakeConfig() map[string]any {
 			"label": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "label",
@@ -778,41 +659,32 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -836,7 +708,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -848,18 +719,12 @@ func MakeConfig() map[string]any {
 			"n510k": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "n510k",
@@ -869,43 +734,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -929,7 +785,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -941,18 +796,12 @@ func MakeConfig() map[string]any {
 			"ndc": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "ndc",
@@ -962,43 +811,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1022,7 +862,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1034,18 +873,12 @@ func MakeConfig() map[string]any {
 			"nsde": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "nsde",
@@ -1055,43 +888,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1115,7 +939,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1127,18 +950,12 @@ func MakeConfig() map[string]any {
 			"pma": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "pma",
@@ -1148,43 +965,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1208,7 +1016,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1220,18 +1027,12 @@ func MakeConfig() map[string]any {
 			"problem": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "problem",
@@ -1241,43 +1042,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1301,7 +1093,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1313,18 +1104,12 @@ func MakeConfig() map[string]any {
 			"shortage": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "shortage",
@@ -1334,43 +1119,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1394,7 +1170,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1406,18 +1181,12 @@ func MakeConfig() map[string]any {
 			"substance": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "meta",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "results",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "substance",
@@ -1427,43 +1196,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "patient.reaction.reactionmeddrapt.exact",
 											"kind": "query",
 											"name": "count",
 											"orig": "count",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "limit",
 											"orig": "limit",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "patient.drug.openfda.brand_name:lipitor",
 											"kind": "query",
 											"name": "search",
 											"orig": "search",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 0,
 											"kind": "query",
 											"name": "skip",
 											"orig": "skip",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 									},
@@ -1487,7 +1247,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1498,6 +1257,24 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+var (
+	sharedConfigOnce sync.Once
+	sharedConfigVal  map[string]any
+)
+
+// SharedConfig returns the process-wide config, built once on first use.
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client.
+//
+// The returned map is shared: treat it as read-only. Callers that need to
+// mutate should use MakeConfig, which always returns a fresh copy.
+func SharedConfig() map[string]any {
+	sharedConfigOnce.Do(func() {
+		sharedConfigVal = MakeConfig()
+	})
+	return sharedConfigVal
 }
 
 func makeFeature(name string) Feature {

@@ -28,7 +28,7 @@ class OpenfdaSDK
     utility = OpenfdaUtility.new
     @_utility = utility
 
-    config = OpenfdaConfig.make_config
+    config = OpenfdaConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

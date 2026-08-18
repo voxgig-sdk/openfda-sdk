@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class OpenfdaConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -46,18 +69,12 @@ class OpenfdaConfig
         'classification' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'classification',
@@ -67,43 +84,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -127,10 +135,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -140,18 +146,12 @@ class OpenfdaConfig
         'drug' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'drug',
@@ -161,42 +161,33 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:aspirin',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -221,10 +212,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -234,18 +223,12 @@ class OpenfdaConfig
         'drugsfda' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'drugsfda',
@@ -255,43 +238,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -315,10 +289,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -328,18 +300,12 @@ class OpenfdaConfig
         'enforcement' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'enforcement',
@@ -349,43 +315,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -409,46 +366,36 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -472,46 +419,36 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -535,10 +472,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -548,18 +483,12 @@ class OpenfdaConfig
         'event' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'event',
@@ -569,43 +498,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -629,46 +549,36 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -692,46 +602,36 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -755,10 +655,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -768,18 +666,12 @@ class OpenfdaConfig
         'label' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'label',
@@ -789,41 +681,32 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -847,10 +730,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -860,18 +741,12 @@ class OpenfdaConfig
         'n510k' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'n510k',
@@ -881,43 +756,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -941,10 +807,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -954,18 +818,12 @@ class OpenfdaConfig
         'ndc' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'ndc',
@@ -975,43 +833,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1035,10 +884,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1048,18 +895,12 @@ class OpenfdaConfig
         'nsde' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'nsde',
@@ -1069,43 +910,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1129,10 +961,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1142,18 +972,12 @@ class OpenfdaConfig
         'pma' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'pma',
@@ -1163,43 +987,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1223,10 +1038,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1236,18 +1049,12 @@ class OpenfdaConfig
         'problem' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'problem',
@@ -1257,43 +1064,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1317,10 +1115,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1330,18 +1126,12 @@ class OpenfdaConfig
         'shortage' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'shortage',
@@ -1351,43 +1141,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1411,10 +1192,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -1424,18 +1203,12 @@ class OpenfdaConfig
         'substance' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'meta',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'results',
-              'req' => false,
               'type' => '`$ARRAY`',
-              'index$' => 1,
             ],
           ],
           'name' => 'substance',
@@ -1445,43 +1218,34 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 'patient.reaction.reactionmeddrapt.exact',
                         'kind' => 'query',
                         'name' => 'count',
                         'orig' => 'count',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'limit',
                         'orig' => 'limit',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 'patient.drug.openfda.brand_name:lipitor',
                         'kind' => 'query',
                         'name' => 'search',
                         'orig' => 'search',
-                        'reqd' => false,
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'skip',
                         'orig' => 'skip',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -1505,10 +1269,8 @@ class OpenfdaConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [

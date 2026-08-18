@@ -40,7 +40,7 @@ class OpenfdaSDK
         $utility = new OpenfdaUtility();
         $this->_utility = $utility;
 
-        $config = OpenfdaConfig::make_config();
+        $config = OpenfdaConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

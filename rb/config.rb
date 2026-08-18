@@ -1,6 +1,20 @@
 # Openfda SDK configuration
 
 module OpenfdaConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -41,18 +55,12 @@ module OpenfdaConfig
         "classification" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "classification",
@@ -62,43 +70,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -122,10 +121,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -135,18 +132,12 @@ module OpenfdaConfig
         "drug" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "drug",
@@ -156,42 +147,33 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:aspirin",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -216,10 +198,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -229,18 +209,12 @@ module OpenfdaConfig
         "drugsfda" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "drugsfda",
@@ -250,43 +224,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -310,10 +275,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -323,18 +286,12 @@ module OpenfdaConfig
         "enforcement" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "enforcement",
@@ -344,43 +301,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -404,46 +352,36 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -467,46 +405,36 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -530,10 +458,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -543,18 +469,12 @@ module OpenfdaConfig
         "event" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "event",
@@ -564,43 +484,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -624,46 +535,36 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -687,46 +588,36 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -750,10 +641,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -763,18 +652,12 @@ module OpenfdaConfig
         "label" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "label",
@@ -784,41 +667,32 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -842,10 +716,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -855,18 +727,12 @@ module OpenfdaConfig
         "n510k" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "n510k",
@@ -876,43 +742,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -936,10 +793,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -949,18 +804,12 @@ module OpenfdaConfig
         "ndc" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "ndc",
@@ -970,43 +819,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1030,10 +870,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -1043,18 +881,12 @@ module OpenfdaConfig
         "nsde" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "nsde",
@@ -1064,43 +896,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1124,10 +947,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -1137,18 +958,12 @@ module OpenfdaConfig
         "pma" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "pma",
@@ -1158,43 +973,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1218,10 +1024,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -1231,18 +1035,12 @@ module OpenfdaConfig
         "problem" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "problem",
@@ -1252,43 +1050,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1312,10 +1101,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -1325,18 +1112,12 @@ module OpenfdaConfig
         "shortage" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "shortage",
@@ -1346,43 +1127,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1406,10 +1178,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -1419,18 +1189,12 @@ module OpenfdaConfig
         "substance" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "meta",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "results",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "substance",
@@ -1440,43 +1204,34 @@ module OpenfdaConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "patient.reaction.reactionmeddrapt.exact",
                         "kind" => "query",
                         "name" => "count",
                         "orig" => "count",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "limit",
                         "orig" => "limit",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => "patient.drug.openfda.brand_name:lipitor",
                         "kind" => "query",
                         "name" => "search",
                         "orig" => "search",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "skip",
                         "orig" => "skip",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -1500,10 +1255,8 @@ module OpenfdaConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
