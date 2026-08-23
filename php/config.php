@@ -33,6 +33,9 @@ class OpenfdaConfig
         return [
             "main" => [
                 "name" => "Openfda",
+                "slug" => "openfda",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -74,6 +77,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -228,6 +232,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -305,6 +310,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -488,6 +494,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -671,6 +678,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -746,6 +754,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -823,6 +832,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -900,6 +910,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -977,6 +988,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -1054,6 +1066,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -1131,6 +1144,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],
@@ -1208,6 +1222,7 @@ class OpenfdaConfig
             ],
             [
               'name' => 'results',
+              'short' => 'Array of result objects matching the query',
               'type' => '`$ARRAY`',
             ],
           ],

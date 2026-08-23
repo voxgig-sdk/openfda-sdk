@@ -42,6 +42,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -230,6 +231,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -324,6 +326,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -542,6 +545,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -760,6 +764,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -852,6 +857,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -946,6 +952,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -1040,6 +1047,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -1134,6 +1142,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -1228,6 +1237,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -1322,6 +1332,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],
@@ -1416,6 +1427,7 @@
               "active": true,
               "name": "results",
               "req": false,
+              "short": "Array of result objects matching the query",
               "type": "`$ARRAY`"
             }
           ],

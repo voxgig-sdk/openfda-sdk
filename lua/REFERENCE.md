@@ -140,7 +140,7 @@ local classification = client:Classification(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -246,7 +246,7 @@ local drugsfda = client:Drugsfda(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -299,7 +299,7 @@ local enforcement = client:Enforcement(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -352,7 +352,7 @@ local event = client:Event(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -405,7 +405,7 @@ local label = client:Label(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -458,7 +458,7 @@ local n510k = client:N510k(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -511,7 +511,7 @@ local ndc = client:Ndc(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -564,7 +564,7 @@ local nsde = client:Nsde(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -617,7 +617,7 @@ local pma = client:Pma(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -670,7 +670,7 @@ local problem = client:Problem(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -723,7 +723,7 @@ local shortage = client:Shortage(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 
@@ -776,7 +776,7 @@ local substance = client:Substance(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `meta` | `table` | No |  |
-| `results` | `table` | No |  |
+| `results` | `table` | No | Array of result objects matching the query |
 
 ### Operations
 

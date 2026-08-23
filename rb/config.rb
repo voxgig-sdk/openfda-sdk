@@ -19,6 +19,9 @@ module OpenfdaConfig
     {
       "main" => {
         "name" => "Openfda",
+        "slug" => "openfda",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -60,6 +63,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -214,6 +218,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -291,6 +296,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -474,6 +480,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -657,6 +664,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -732,6 +740,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -809,6 +818,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -886,6 +896,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -963,6 +974,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1040,6 +1052,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1117,6 +1130,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],
@@ -1194,6 +1208,7 @@ module OpenfdaConfig
             },
             {
               "name" => "results",
+              "short" => "Array of result objects matching the query",
               "type" => "`$ARRAY`",
             },
           ],

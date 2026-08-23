@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Openfda",
+            "slug": "openfda",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -69,6 +72,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -223,6 +227,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -300,6 +305,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -483,6 +489,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -666,6 +673,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -741,6 +749,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -818,6 +827,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -895,6 +905,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -972,6 +983,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -1049,6 +1061,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -1126,6 +1139,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],
@@ -1203,6 +1217,7 @@ def make_config():
           },
           {
             "name": "results",
+            "short": "Array of result objects matching the query",
             "type": "`$ARRAY`",
           },
         ],

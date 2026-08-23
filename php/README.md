@@ -264,7 +264,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -286,7 +286,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -297,7 +297,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -308,7 +308,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -319,7 +319,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -330,7 +330,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -341,7 +341,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -352,7 +352,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -363,7 +363,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -374,7 +374,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -385,7 +385,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -396,7 +396,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -422,7 +422,7 @@ Create an instance: `$classification = $client->Classification();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -472,7 +472,7 @@ Create an instance: `$drugsfda = $client->Drugsfda();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -497,7 +497,7 @@ Create an instance: `$enforcement = $client->Enforcement();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -522,7 +522,7 @@ Create an instance: `$event = $client->Event();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -547,7 +547,7 @@ Create an instance: `$label = $client->Label();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -572,7 +572,7 @@ Create an instance: `$n510k = $client->N510k();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -597,7 +597,7 @@ Create an instance: `$ndc = $client->Ndc();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -622,7 +622,7 @@ Create an instance: `$nsde = $client->Nsde();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -647,7 +647,7 @@ Create an instance: `$pma = $client->Pma();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -672,7 +672,7 @@ Create an instance: `$problem = $client->Problem();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -697,7 +697,7 @@ Create an instance: `$shortage = $client->Shortage();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -722,7 +722,7 @@ Create an instance: `$substance = $client->Substance();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `array` |  |
-| `results` | `array` |  |
+| `results` | `array` | Array of result objects matching the query |
 
 #### Example: List
 

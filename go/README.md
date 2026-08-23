@@ -6,7 +6,7 @@ The Golang SDK for the Openfda API — an entity-oriented client using standard 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Classification(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -278,7 +278,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -300,7 +300,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -311,7 +311,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -322,7 +322,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -333,7 +333,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -344,7 +344,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -355,7 +355,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -366,7 +366,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -377,7 +377,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -388,7 +388,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -399,7 +399,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -410,7 +410,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `"meta"` |  |
-| `"results"` |  |
+| `"results"` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -436,7 +436,7 @@ Create an instance: `classification := client.Classification(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -492,7 +492,7 @@ Create an instance: `drugsfda := client.Drugsfda(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -520,7 +520,7 @@ Create an instance: `enforcement := client.Enforcement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -548,7 +548,7 @@ Create an instance: `event := client.Event(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -576,7 +576,7 @@ Create an instance: `label := client.Label(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -604,7 +604,7 @@ Create an instance: `n510k := client.N510k(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -632,7 +632,7 @@ Create an instance: `ndc := client.Ndc(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -660,7 +660,7 @@ Create an instance: `nsde := client.Nsde(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -688,7 +688,7 @@ Create an instance: `pma := client.Pma(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -716,7 +716,7 @@ Create an instance: `problem := client.Problem(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -744,7 +744,7 @@ Create an instance: `shortage := client.Shortage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -772,7 +772,7 @@ Create an instance: `substance := client.Substance(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
+| `results` | `[]any` | Array of result objects matching the query |
 
 #### Example: List
 

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Openfda",
+      slug = "openfda",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -48,6 +51,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -202,6 +206,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -279,6 +284,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -462,6 +468,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -645,6 +652,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -720,6 +728,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -797,6 +806,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -874,6 +884,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -951,6 +962,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -1028,6 +1040,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -1105,6 +1118,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -1182,6 +1196,7 @@ local function make_config()
           },
           {
             ["name"] = "results",
+            ["short"] = "Array of result objects matching the query",
             ["type"] = "`$ARRAY`",
           },
         },

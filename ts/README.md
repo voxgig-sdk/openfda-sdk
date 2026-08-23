@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -306,7 +306,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -328,7 +328,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -339,7 +339,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -350,7 +350,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -361,7 +361,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -372,7 +372,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -383,7 +383,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -394,7 +394,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -405,7 +405,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -416,7 +416,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -427,7 +427,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -438,7 +438,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: list.
 
@@ -464,7 +464,7 @@ Create an instance: `const classification = client.Classification()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -512,7 +512,7 @@ Create an instance: `const drugsfda = client.Drugsfda()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -536,7 +536,7 @@ Create an instance: `const enforcement = client.Enforcement()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -560,7 +560,7 @@ Create an instance: `const event = client.Event()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -584,7 +584,7 @@ Create an instance: `const label = client.Label()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -608,7 +608,7 @@ Create an instance: `const n510k = client.N510k()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -632,7 +632,7 @@ Create an instance: `const ndc = client.Ndc()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -656,7 +656,7 @@ Create an instance: `const nsde = client.Nsde()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -680,7 +680,7 @@ Create an instance: `const pma = client.Pma()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -704,7 +704,7 @@ Create an instance: `const problem = client.Problem()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -728,7 +728,7 @@ Create an instance: `const shortage = client.Shortage()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -752,7 +752,7 @@ Create an instance: `const substance = client.Substance()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
+| `results` | `any[]` | Array of result objects matching the query |
 
 #### Example: List
 

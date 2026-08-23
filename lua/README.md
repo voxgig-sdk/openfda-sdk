@@ -248,7 +248,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -270,7 +270,7 @@ API path: `/drug/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -281,7 +281,7 @@ API path: `/drug/drugsfda.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -292,7 +292,7 @@ API path: `/device/enforcement.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -303,7 +303,7 @@ API path: `/cosmetic/event.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -314,7 +314,7 @@ API path: `/drug/label.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -325,7 +325,7 @@ API path: `/device/510k.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -336,7 +336,7 @@ API path: `/drug/ndc.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -347,7 +347,7 @@ API path: `/other/nsde.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -358,7 +358,7 @@ API path: `/device/pma.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -369,7 +369,7 @@ API path: `/tobacco/problem.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -380,7 +380,7 @@ API path: `/drug/shortages.json`
 | Field | Description |
 | --- | --- |
 | `meta` |  |
-| `results` |  |
+| `results` | Array of result objects matching the query |
 
 Operations: List.
 
@@ -406,7 +406,7 @@ Create an instance: `local classification = client:Classification(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -454,7 +454,7 @@ Create an instance: `local drugsfda = client:Drugsfda(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -478,7 +478,7 @@ Create an instance: `local enforcement = client:Enforcement(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -502,7 +502,7 @@ Create an instance: `local event = client:Event(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -526,7 +526,7 @@ Create an instance: `local label = client:Label(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -550,7 +550,7 @@ Create an instance: `local n510k = client:N510k(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -574,7 +574,7 @@ Create an instance: `local ndc = client:Ndc(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -598,7 +598,7 @@ Create an instance: `local nsde = client:Nsde(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -622,7 +622,7 @@ Create an instance: `local pma = client:Pma(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -646,7 +646,7 @@ Create an instance: `local problem = client:Problem(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -670,7 +670,7 @@ Create an instance: `local shortage = client:Shortage(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
@@ -694,7 +694,7 @@ Create an instance: `local substance = client:Substance(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `meta` | `table` |  |
-| `results` | `table` |  |
+| `results` | `table` | Array of result objects matching the query |
 
 #### Example: List
 
