@@ -44,7 +44,8 @@ class N510kEntity extends OpenfdaEntityBase<N510k> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,

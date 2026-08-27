@@ -42,6 +42,7 @@ class OpenfdaConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
