@@ -23,14 +23,22 @@ Classification = Struct.new(
 
 # Request payload for Classification#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 ClassificationListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -49,14 +57,22 @@ Drug = Struct.new(
 
 # Request payload for Drug#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 DrugListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -75,14 +91,22 @@ Drugsfda = Struct.new(
 
 # Request payload for Drugsfda#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 DrugsfdaListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -101,14 +125,22 @@ Enforcement = Struct.new(
 
 # Request payload for Enforcement#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 EnforcementListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -127,14 +159,22 @@ Event = Struct.new(
 
 # Request payload for Event#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 EventListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -153,14 +193,22 @@ Label = Struct.new(
 
 # Request payload for Label#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 LabelListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -179,14 +227,22 @@ N510k = Struct.new(
 
 # Request payload for N510k#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 N510kListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -205,14 +261,22 @@ Ndc = Struct.new(
 
 # Request payload for Ndc#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 NdcListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -231,14 +295,22 @@ Nsde = Struct.new(
 
 # Request payload for Nsde#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 NsdeListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -257,14 +329,22 @@ Pma = Struct.new(
 
 # Request payload for Pma#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 PmaListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -283,14 +363,22 @@ Problem = Struct.new(
 
 # Request payload for Problem#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 ProblemListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -309,14 +397,22 @@ Shortage = Struct.new(
 
 # Request payload for Shortage#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 ShortageListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 
@@ -335,14 +431,22 @@ Substance = Struct.new(
 
 # Request payload for Substance#list.
 #
-# @!attribute [rw] meta
-#   @return [Hash, nil]
+# @!attribute [rw] count
+#   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] search
+#   @return [String, nil]
+#
+# @!attribute [rw] skip
+#   @return [Integer, nil]
 SubstanceListMatch = Struct.new(
-  :meta,
-  :results,
+  :count,
+  :limit,
+  :search,
+  :skip,
   keyword_init: true
 )
 

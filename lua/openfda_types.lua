@@ -11,104 +11,130 @@
 ---@field results? table
 
 ---@class ClassificationListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Drug
 ---@field meta? table
 ---@field results? table
 
 ---@class DrugListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Drugsfda
 ---@field meta? table
 ---@field results? table
 
 ---@class DrugsfdaListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Enforcement
 ---@field meta? table
 ---@field results? table
 
 ---@class EnforcementListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Event
 ---@field meta? table
 ---@field results? table
 
 ---@class EventListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Label
 ---@field meta? table
 ---@field results? table
 
 ---@class LabelListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class N510k
 ---@field meta? table
 ---@field results? table
 
 ---@class N510kListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Ndc
 ---@field meta? table
 ---@field results? table
 
 ---@class NdcListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Nsde
 ---@field meta? table
 ---@field results? table
 
 ---@class NsdeListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Pma
 ---@field meta? table
 ---@field results? table
 
 ---@class PmaListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Problem
 ---@field meta? table
 ---@field results? table
 
 ---@class ProblemListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Shortage
 ---@field meta? table
 ---@field results? table
 
 ---@class ShortageListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 ---@class Substance
 ---@field meta? table
 ---@field results? table
 
 ---@class SubstanceListMatch
----@field meta? table
----@field results? table
+---@field count? string
+---@field limit? number
+---@field search? string
+---@field skip? number
 
 local M = {}
 

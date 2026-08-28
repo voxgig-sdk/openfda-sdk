@@ -20,8 +20,10 @@ type Classification struct {
 
 // ClassificationListMatch is the typed request payload for Classification.ListTyped.
 type ClassificationListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Drug is the typed data model for the drug entity.
@@ -32,8 +34,10 @@ type Drug struct {
 
 // DrugListMatch is the typed request payload for Drug.ListTyped.
 type DrugListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Drugsfda is the typed data model for the drugsfda entity.
@@ -44,8 +48,10 @@ type Drugsfda struct {
 
 // DrugsfdaListMatch is the typed request payload for Drugsfda.ListTyped.
 type DrugsfdaListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Enforcement is the typed data model for the enforcement entity.
@@ -56,8 +62,10 @@ type Enforcement struct {
 
 // EnforcementListMatch is the typed request payload for Enforcement.ListTyped.
 type EnforcementListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Event is the typed data model for the event entity.
@@ -68,8 +76,10 @@ type Event struct {
 
 // EventListMatch is the typed request payload for Event.ListTyped.
 type EventListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Label is the typed data model for the label entity.
@@ -80,8 +90,10 @@ type Label struct {
 
 // LabelListMatch is the typed request payload for Label.ListTyped.
 type LabelListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // N510k is the typed data model for the n510k entity.
@@ -92,8 +104,10 @@ type N510k struct {
 
 // N510kListMatch is the typed request payload for N510k.ListTyped.
 type N510kListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Ndc is the typed data model for the ndc entity.
@@ -104,8 +118,10 @@ type Ndc struct {
 
 // NdcListMatch is the typed request payload for Ndc.ListTyped.
 type NdcListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Nsde is the typed data model for the nsde entity.
@@ -116,8 +132,10 @@ type Nsde struct {
 
 // NsdeListMatch is the typed request payload for Nsde.ListTyped.
 type NsdeListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Pma is the typed data model for the pma entity.
@@ -128,8 +146,10 @@ type Pma struct {
 
 // PmaListMatch is the typed request payload for Pma.ListTyped.
 type PmaListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Problem is the typed data model for the problem entity.
@@ -140,8 +160,10 @@ type Problem struct {
 
 // ProblemListMatch is the typed request payload for Problem.ListTyped.
 type ProblemListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Shortage is the typed data model for the shortage entity.
@@ -152,8 +174,10 @@ type Shortage struct {
 
 // ShortageListMatch is the typed request payload for Shortage.ListTyped.
 type ShortageListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // Substance is the typed data model for the substance entity.
@@ -164,8 +188,10 @@ type Substance struct {
 
 // SubstanceListMatch is the typed request payload for Substance.ListTyped.
 type SubstanceListMatch struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
+	Count *string `json:"count,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Search *string `json:"search,omitempty"`
+	Skip *int `json:"skip,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

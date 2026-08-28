@@ -22,8 +22,10 @@ class Classification(TypedDict, total=False):
 
 
 class ClassificationListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Drug(TypedDict, total=False):
@@ -32,8 +34,10 @@ class Drug(TypedDict, total=False):
 
 
 class DrugListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Drugsfda(TypedDict, total=False):
@@ -42,8 +46,10 @@ class Drugsfda(TypedDict, total=False):
 
 
 class DrugsfdaListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Enforcement(TypedDict, total=False):
@@ -52,8 +58,10 @@ class Enforcement(TypedDict, total=False):
 
 
 class EnforcementListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Event(TypedDict, total=False):
@@ -62,8 +70,10 @@ class Event(TypedDict, total=False):
 
 
 class EventListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Label(TypedDict, total=False):
@@ -72,8 +82,10 @@ class Label(TypedDict, total=False):
 
 
 class LabelListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class N510k(TypedDict, total=False):
@@ -82,8 +94,10 @@ class N510k(TypedDict, total=False):
 
 
 class N510kListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Ndc(TypedDict, total=False):
@@ -92,8 +106,10 @@ class Ndc(TypedDict, total=False):
 
 
 class NdcListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Nsde(TypedDict, total=False):
@@ -102,8 +118,10 @@ class Nsde(TypedDict, total=False):
 
 
 class NsdeListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Pma(TypedDict, total=False):
@@ -112,8 +130,10 @@ class Pma(TypedDict, total=False):
 
 
 class PmaListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Problem(TypedDict, total=False):
@@ -122,8 +142,10 @@ class Problem(TypedDict, total=False):
 
 
 class ProblemListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Shortage(TypedDict, total=False):
@@ -132,8 +154,10 @@ class Shortage(TypedDict, total=False):
 
 
 class ShortageListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int
 
 
 class Substance(TypedDict, total=False):
@@ -142,5 +166,7 @@ class Substance(TypedDict, total=False):
 
 
 class SubstanceListMatch(TypedDict, total=False):
-    meta: dict
-    results: list
+    count: str
+    limit: int
+    search: str
+    skip: int

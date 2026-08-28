@@ -11,8 +11,10 @@ export interface Classification {
 }
 
 export interface ClassificationListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Drug {
@@ -21,8 +23,10 @@ export interface Drug {
 }
 
 export interface DrugListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 
   // Selects a custom action instead of the plain list:
   //   'event'
@@ -37,8 +41,10 @@ export interface Drugsfda {
 }
 
 export interface DrugsfdaListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Enforcement {
@@ -47,8 +53,10 @@ export interface Enforcement {
 }
 
 export interface EnforcementListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Event {
@@ -57,8 +65,10 @@ export interface Event {
 }
 
 export interface EventListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Label {
@@ -67,8 +77,10 @@ export interface Label {
 }
 
 export interface LabelListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface N510k {
@@ -77,8 +89,10 @@ export interface N510k {
 }
 
 export interface N510kListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Ndc {
@@ -87,8 +101,10 @@ export interface Ndc {
 }
 
 export interface NdcListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Nsde {
@@ -97,8 +113,10 @@ export interface Nsde {
 }
 
 export interface NsdeListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Pma {
@@ -107,8 +125,10 @@ export interface Pma {
 }
 
 export interface PmaListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Problem {
@@ -117,8 +137,10 @@ export interface Problem {
 }
 
 export interface ProblemListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Shortage {
@@ -127,8 +149,10 @@ export interface Shortage {
 }
 
 export interface ShortageListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
 export interface Substance {
@@ -137,7 +161,9 @@ export interface Substance {
 }
 
 export interface SubstanceListMatch {
-  meta?: Record<string, any>
-  results?: any[]
+  count?: string
+  limit?: number
+  search?: string
+  skip?: number
 }
 
