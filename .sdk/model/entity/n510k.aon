@@ -62,9 +62,13 @@ main: kit: entity: n510k: {
           }
           method: "GET"
           orig: "/device/510k.json"
-          parts: [
-            "device"
-            "510k.json"
+          segments: [
+            {
+              lit: "device"
+            }
+            {
+              lit: "510k.json"
+            }
           ]
           select: {
             exist: [

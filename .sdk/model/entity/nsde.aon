@@ -62,9 +62,13 @@ main: kit: entity: nsde: {
           }
           method: "GET"
           orig: "/other/nsde.json"
-          parts: [
-            "other"
-            "nsde.json"
+          segments: [
+            {
+              lit: "other"
+            }
+            {
+              lit: "nsde.json"
+            }
           ]
           select: {
             exist: [

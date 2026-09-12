@@ -62,9 +62,13 @@ main: kit: entity: substance: {
           }
           method: "GET"
           orig: "/other/substance.json"
-          parts: [
-            "other"
-            "substance.json"
+          segments: [
+            {
+              lit: "other"
+            }
+            {
+              lit: "substance.json"
+            }
           ]
           select: {
             exist: [

@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -158,9 +169,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/device/classification.json",
-              "parts": [
-                "device",
-                "classification.json"
+              "segments": [
+                {
+                  "lit": "device"
+                },
+                {
+                  "lit": "classification.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -173,7 +188,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "device",
+                "classification.json"
+              ]
             }
           ]
         }
@@ -234,9 +253,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/event.json",
-              "parts": [
-                "drug",
-                "event.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "event.json"
+                }
               ],
               "select": {
                 "$action": "event",
@@ -250,7 +273,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "event.json"
+              ]
             }
           ]
         }
@@ -313,9 +340,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/drugsfda.json",
-              "parts": [
-                "drug",
-                "drugsfda.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "drugsfda.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -328,7 +359,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "drugsfda.json"
+              ]
             }
           ]
         }
@@ -391,9 +426,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/device/enforcement.json",
-              "parts": [
-                "device",
-                "enforcement.json"
+              "segments": [
+                {
+                  "lit": "device"
+                },
+                {
+                  "lit": "enforcement.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -406,7 +445,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "device",
+                "enforcement.json"
+              ]
             },
             {
               "args": {
@@ -444,9 +487,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/enforcement.json",
-              "parts": [
-                "drug",
-                "enforcement.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "enforcement.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -459,7 +506,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "enforcement.json"
+              ]
             },
             {
               "args": {
@@ -497,9 +548,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/food/enforcement.json",
-              "parts": [
-                "food",
-                "enforcement.json"
+              "segments": [
+                {
+                  "lit": "food"
+                },
+                {
+                  "lit": "enforcement.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -512,7 +567,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "food",
+                "enforcement.json"
+              ]
             }
           ]
         }
@@ -575,9 +634,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/cosmetic/event.json",
-              "parts": [
-                "cosmetic",
-                "event.json"
+              "segments": [
+                {
+                  "lit": "cosmetic"
+                },
+                {
+                  "lit": "event.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -590,7 +653,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "cosmetic",
+                "event.json"
+              ]
             },
             {
               "args": {
@@ -628,9 +695,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/device/event.json",
-              "parts": [
-                "device",
-                "event.json"
+              "segments": [
+                {
+                  "lit": "device"
+                },
+                {
+                  "lit": "event.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -643,7 +714,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "device",
+                "event.json"
+              ]
             },
             {
               "args": {
@@ -681,9 +756,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/food/event.json",
-              "parts": [
-                "food",
-                "event.json"
+              "segments": [
+                {
+                  "lit": "food"
+                },
+                {
+                  "lit": "event.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -696,7 +775,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "food",
+                "event.json"
+              ]
             }
           ]
         }
@@ -757,9 +840,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/label.json",
-              "parts": [
-                "drug",
-                "label.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "label.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -772,7 +859,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "label.json"
+              ]
             }
           ]
         }
@@ -835,9 +926,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/device/510k.json",
-              "parts": [
-                "device",
-                "510k.json"
+              "segments": [
+                {
+                  "lit": "device"
+                },
+                {
+                  "lit": "510k.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -850,7 +945,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "device",
+                "510k.json"
+              ]
             }
           ]
         }
@@ -913,9 +1012,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/ndc.json",
-              "parts": [
-                "drug",
-                "ndc.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "ndc.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -928,7 +1031,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "ndc.json"
+              ]
             }
           ]
         }
@@ -991,9 +1098,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/other/nsde.json",
-              "parts": [
-                "other",
-                "nsde.json"
+              "segments": [
+                {
+                  "lit": "other"
+                },
+                {
+                  "lit": "nsde.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -1006,7 +1117,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "other",
+                "nsde.json"
+              ]
             }
           ]
         }
@@ -1069,9 +1184,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/device/pma.json",
-              "parts": [
-                "device",
-                "pma.json"
+              "segments": [
+                {
+                  "lit": "device"
+                },
+                {
+                  "lit": "pma.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -1084,7 +1203,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "device",
+                "pma.json"
+              ]
             }
           ]
         }
@@ -1147,9 +1270,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/tobacco/problem.json",
-              "parts": [
-                "tobacco",
-                "problem.json"
+              "segments": [
+                {
+                  "lit": "tobacco"
+                },
+                {
+                  "lit": "problem.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -1162,7 +1289,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "tobacco",
+                "problem.json"
+              ]
             }
           ]
         }
@@ -1225,9 +1356,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/drug/shortages.json",
-              "parts": [
-                "drug",
-                "shortages.json"
+              "segments": [
+                {
+                  "lit": "drug"
+                },
+                {
+                  "lit": "shortages.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -1240,7 +1375,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "drug",
+                "shortages.json"
+              ]
             }
           ]
         }
@@ -1303,9 +1442,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/other/substance.json",
-              "parts": [
-                "other",
-                "substance.json"
+              "segments": [
+                {
+                  "lit": "other"
+                },
+                {
+                  "lit": "substance.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -1318,7 +1461,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "other",
+                "substance.json"
+              ]
             }
           ]
         }
@@ -1334,6 +1481,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

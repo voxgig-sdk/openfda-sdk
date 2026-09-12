@@ -1,6 +1,14 @@
 # Openfda SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -119,9 +127,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/classification.json",
-                "parts": [
-                  "device",
-                  "classification.json",
+                "segments": [
+                  {
+                    "lit": "device",
+                  },
+                  {
+                    "lit": "classification.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -135,6 +147,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "device",
+                  "classification.json",
+                ],
               },
             ],
           },
@@ -195,9 +211,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/event.json",
-                "parts": [
-                  "drug",
-                  "event.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "event.json",
+                  },
                 ],
                 "select": {
                   "$action": "event",
@@ -212,6 +232,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "event.json",
+                ],
               },
             ],
           },
@@ -274,9 +298,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/drugsfda.json",
-                "parts": [
-                  "drug",
-                  "drugsfda.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "drugsfda.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -290,6 +318,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "drugsfda.json",
+                ],
               },
             ],
           },
@@ -352,9 +384,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/enforcement.json",
-                "parts": [
-                  "device",
-                  "enforcement.json",
+                "segments": [
+                  {
+                    "lit": "device",
+                  },
+                  {
+                    "lit": "enforcement.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -368,6 +404,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "device",
+                  "enforcement.json",
+                ],
               },
               {
                 "args": {
@@ -405,9 +445,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/enforcement.json",
-                "parts": [
-                  "drug",
-                  "enforcement.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "enforcement.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -421,6 +465,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "enforcement.json",
+                ],
               },
               {
                 "args": {
@@ -458,9 +506,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/food/enforcement.json",
-                "parts": [
-                  "food",
-                  "enforcement.json",
+                "segments": [
+                  {
+                    "lit": "food",
+                  },
+                  {
+                    "lit": "enforcement.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -474,6 +526,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "food",
+                  "enforcement.json",
+                ],
               },
             ],
           },
@@ -536,9 +592,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cosmetic/event.json",
-                "parts": [
-                  "cosmetic",
-                  "event.json",
+                "segments": [
+                  {
+                    "lit": "cosmetic",
+                  },
+                  {
+                    "lit": "event.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -552,6 +612,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "cosmetic",
+                  "event.json",
+                ],
               },
               {
                 "args": {
@@ -589,9 +653,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/event.json",
-                "parts": [
-                  "device",
-                  "event.json",
+                "segments": [
+                  {
+                    "lit": "device",
+                  },
+                  {
+                    "lit": "event.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -605,6 +673,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "device",
+                  "event.json",
+                ],
               },
               {
                 "args": {
@@ -642,9 +714,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/food/event.json",
-                "parts": [
-                  "food",
-                  "event.json",
+                "segments": [
+                  {
+                    "lit": "food",
+                  },
+                  {
+                    "lit": "event.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -658,6 +734,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "food",
+                  "event.json",
+                ],
               },
             ],
           },
@@ -718,9 +798,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/label.json",
-                "parts": [
-                  "drug",
-                  "label.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "label.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -734,6 +818,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "label.json",
+                ],
               },
             ],
           },
@@ -796,9 +884,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/510k.json",
-                "parts": [
-                  "device",
-                  "510k.json",
+                "segments": [
+                  {
+                    "lit": "device",
+                  },
+                  {
+                    "lit": "510k.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -812,6 +904,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "device",
+                  "510k.json",
+                ],
               },
             ],
           },
@@ -874,9 +970,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/ndc.json",
-                "parts": [
-                  "drug",
-                  "ndc.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "ndc.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -890,6 +990,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "ndc.json",
+                ],
               },
             ],
           },
@@ -952,9 +1056,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/other/nsde.json",
-                "parts": [
-                  "other",
-                  "nsde.json",
+                "segments": [
+                  {
+                    "lit": "other",
+                  },
+                  {
+                    "lit": "nsde.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -968,6 +1076,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "other",
+                  "nsde.json",
+                ],
               },
             ],
           },
@@ -1030,9 +1142,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/pma.json",
-                "parts": [
-                  "device",
-                  "pma.json",
+                "segments": [
+                  {
+                    "lit": "device",
+                  },
+                  {
+                    "lit": "pma.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1046,6 +1162,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "device",
+                  "pma.json",
+                ],
               },
             ],
           },
@@ -1108,9 +1228,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/tobacco/problem.json",
-                "parts": [
-                  "tobacco",
-                  "problem.json",
+                "segments": [
+                  {
+                    "lit": "tobacco",
+                  },
+                  {
+                    "lit": "problem.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1124,6 +1248,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "tobacco",
+                  "problem.json",
+                ],
               },
             ],
           },
@@ -1186,9 +1314,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/shortages.json",
-                "parts": [
-                  "drug",
-                  "shortages.json",
+                "segments": [
+                  {
+                    "lit": "drug",
+                  },
+                  {
+                    "lit": "shortages.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1202,6 +1334,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "drug",
+                  "shortages.json",
+                ],
               },
             ],
           },
@@ -1264,9 +1400,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/other/substance.json",
-                "parts": [
-                  "other",
-                  "substance.json",
+                "segments": [
+                  {
+                    "lit": "other",
+                  },
+                  {
+                    "lit": "substance.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1280,6 +1420,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "other",
+                  "substance.json",
+                ],
               },
             ],
           },

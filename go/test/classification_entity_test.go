@@ -98,7 +98,7 @@ func TestClassificationEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		classificationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.classification", setup.data)))
+		classificationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.classification")))
 		var classificationRef01Data map[string]any
 		if len(classificationRef01DataRaw) > 0 {
 			classificationRef01Data = core.ToMapAny(classificationRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func classificationBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"classification01", "classification02", "classification03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -167,7 +167,7 @@ func classificationBasicSetup(extra map[string]any) *entityTestSetup {
 		"OPENFDA_TEST_CLASSIFICATION_ENTID": idmap,
 		"OPENFDA_TEST_LIVE":      "FALSE",
 		"OPENFDA_TEST_EXPLAIN":   "FALSE",
-		"OPENFDA_APIKEY":         "NONE",
+		"OPENFDA_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["OPENFDA_TEST_CLASSIFICATION_ENTID"])
@@ -176,11 +176,23 @@ func classificationBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["OPENFDA_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["OPENFDA_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewOpenfdaSDK(core.ToMapAny(mergedOpts))
 	}

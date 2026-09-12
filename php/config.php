@@ -124,9 +124,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/classification.json',
-                  'parts' => [
-                    'device',
-                    'classification.json',
+                  'segments' => [
+                    [
+                      'lit' => 'device',
+                    ],
+                    [
+                      'lit' => 'classification.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -139,6 +143,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'device',
+                    'classification.json',
                   ],
                 ],
               ],
@@ -200,9 +208,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/event.json',
-                  'parts' => [
-                    'drug',
-                    'event.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'event.json',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'event',
@@ -216,6 +228,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'event.json',
                   ],
                 ],
               ],
@@ -279,9 +295,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/drugsfda.json',
-                  'parts' => [
-                    'drug',
-                    'drugsfda.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'drugsfda.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -294,6 +314,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'drugsfda.json',
                   ],
                 ],
               ],
@@ -357,9 +381,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/enforcement.json',
-                  'parts' => [
-                    'device',
-                    'enforcement.json',
+                  'segments' => [
+                    [
+                      'lit' => 'device',
+                    ],
+                    [
+                      'lit' => 'enforcement.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -372,6 +400,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'device',
+                    'enforcement.json',
                   ],
                 ],
                 [
@@ -410,9 +442,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/enforcement.json',
-                  'parts' => [
-                    'drug',
-                    'enforcement.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'enforcement.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -425,6 +461,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'enforcement.json',
                   ],
                 ],
                 [
@@ -463,9 +503,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/food/enforcement.json',
-                  'parts' => [
-                    'food',
-                    'enforcement.json',
+                  'segments' => [
+                    [
+                      'lit' => 'food',
+                    ],
+                    [
+                      'lit' => 'enforcement.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -478,6 +522,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'food',
+                    'enforcement.json',
                   ],
                 ],
               ],
@@ -541,9 +589,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cosmetic/event.json',
-                  'parts' => [
-                    'cosmetic',
-                    'event.json',
+                  'segments' => [
+                    [
+                      'lit' => 'cosmetic',
+                    ],
+                    [
+                      'lit' => 'event.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -556,6 +608,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'cosmetic',
+                    'event.json',
                   ],
                 ],
                 [
@@ -594,9 +650,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/event.json',
-                  'parts' => [
-                    'device',
-                    'event.json',
+                  'segments' => [
+                    [
+                      'lit' => 'device',
+                    ],
+                    [
+                      'lit' => 'event.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -609,6 +669,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'device',
+                    'event.json',
                   ],
                 ],
                 [
@@ -647,9 +711,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/food/event.json',
-                  'parts' => [
-                    'food',
-                    'event.json',
+                  'segments' => [
+                    [
+                      'lit' => 'food',
+                    ],
+                    [
+                      'lit' => 'event.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -662,6 +730,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'food',
+                    'event.json',
                   ],
                 ],
               ],
@@ -723,9 +795,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/label.json',
-                  'parts' => [
-                    'drug',
-                    'label.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'label.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -738,6 +814,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'label.json',
                   ],
                 ],
               ],
@@ -801,9 +881,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/510k.json',
-                  'parts' => [
-                    'device',
-                    '510k.json',
+                  'segments' => [
+                    [
+                      'lit' => 'device',
+                    ],
+                    [
+                      'lit' => '510k.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -816,6 +900,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'device',
+                    '510k.json',
                   ],
                 ],
               ],
@@ -879,9 +967,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/ndc.json',
-                  'parts' => [
-                    'drug',
-                    'ndc.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'ndc.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -894,6 +986,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'ndc.json',
                   ],
                 ],
               ],
@@ -957,9 +1053,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/other/nsde.json',
-                  'parts' => [
-                    'other',
-                    'nsde.json',
+                  'segments' => [
+                    [
+                      'lit' => 'other',
+                    ],
+                    [
+                      'lit' => 'nsde.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -972,6 +1072,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'other',
+                    'nsde.json',
                   ],
                 ],
               ],
@@ -1035,9 +1139,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/pma.json',
-                  'parts' => [
-                    'device',
-                    'pma.json',
+                  'segments' => [
+                    [
+                      'lit' => 'device',
+                    ],
+                    [
+                      'lit' => 'pma.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1050,6 +1158,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'device',
+                    'pma.json',
                   ],
                 ],
               ],
@@ -1113,9 +1225,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tobacco/problem.json',
-                  'parts' => [
-                    'tobacco',
-                    'problem.json',
+                  'segments' => [
+                    [
+                      'lit' => 'tobacco',
+                    ],
+                    [
+                      'lit' => 'problem.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1128,6 +1244,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'tobacco',
+                    'problem.json',
                   ],
                 ],
               ],
@@ -1191,9 +1311,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/shortages.json',
-                  'parts' => [
-                    'drug',
-                    'shortages.json',
+                  'segments' => [
+                    [
+                      'lit' => 'drug',
+                    ],
+                    [
+                      'lit' => 'shortages.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1206,6 +1330,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'drug',
+                    'shortages.json',
                   ],
                 ],
               ],
@@ -1269,9 +1397,13 @@ class OpenfdaConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/other/substance.json',
-                  'parts' => [
-                    'other',
-                    'substance.json',
+                  'segments' => [
+                    [
+                      'lit' => 'other',
+                    ],
+                    [
+                      'lit' => 'substance.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1284,6 +1416,10 @@ class OpenfdaConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'other',
+                    'substance.json',
                   ],
                 ],
               ],

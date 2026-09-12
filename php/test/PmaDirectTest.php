@@ -68,15 +68,17 @@ function pma_direct_setup($mockres)
     $env = Runner::env_override([
         "OPENFDA_TEST_PMA_ENTID" => [],
         "OPENFDA_TEST_LIVE" => "FALSE",
-        "OPENFDA_APIKEY" => "NONE",
+        "OPENFDA_APIKEY" => "",
     ]);
 
     $live = $env["OPENFDA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["OPENFDA_APIKEY"],
-        ];
+        ]);
         $client = new OpenfdaSDK($merged_opts);
         return [
             "client" => $client,

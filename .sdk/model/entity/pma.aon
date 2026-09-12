@@ -62,9 +62,13 @@ main: kit: entity: pma: {
           }
           method: "GET"
           orig: "/device/pma.json"
-          parts: [
-            "device"
-            "pma.json"
+          segments: [
+            {
+              lit: "device"
+            }
+            {
+              lit: "pma.json"
+            }
           ]
           select: {
             exist: [

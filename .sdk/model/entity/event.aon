@@ -62,9 +62,13 @@ main: kit: entity: event: {
           }
           method: "GET"
           orig: "/cosmetic/event.json"
-          parts: [
-            "cosmetic"
-            "event.json"
+          segments: [
+            {
+              lit: "cosmetic"
+            }
+            {
+              lit: "event.json"
+            }
           ]
           select: {
             exist: [
@@ -118,9 +122,13 @@ main: kit: entity: event: {
           }
           method: "GET"
           orig: "/device/event.json"
-          parts: [
-            "device"
-            "event.json"
+          segments: [
+            {
+              lit: "device"
+            }
+            {
+              lit: "event.json"
+            }
           ]
           select: {
             exist: [
@@ -174,9 +182,13 @@ main: kit: entity: event: {
           }
           method: "GET"
           orig: "/food/event.json"
-          parts: [
-            "food"
-            "event.json"
+          segments: [
+            {
+              lit: "food"
+            }
+            {
+              lit: "event.json"
+            }
           ]
           select: {
             exist: [

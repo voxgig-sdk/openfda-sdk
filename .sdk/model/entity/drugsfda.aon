@@ -62,9 +62,13 @@ main: kit: entity: drugsfda: {
           }
           method: "GET"
           orig: "/drug/drugsfda.json"
-          parts: [
-            "drug"
-            "drugsfda.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "drugsfda.json"
+            }
           ]
           select: {
             exist: [

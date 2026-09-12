@@ -62,9 +62,13 @@ main: kit: entity: ndc: {
           }
           method: "GET"
           orig: "/drug/ndc.json"
-          parts: [
-            "drug"
-            "ndc.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "ndc.json"
+            }
           ]
           select: {
             exist: [

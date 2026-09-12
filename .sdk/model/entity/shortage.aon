@@ -62,9 +62,13 @@ main: kit: entity: shortage: {
           }
           method: "GET"
           orig: "/drug/shortages.json"
-          parts: [
-            "drug"
-            "shortages.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "shortages.json"
+            }
           ]
           select: {
             exist: [

@@ -62,9 +62,13 @@ main: kit: entity: enforcement: {
           }
           method: "GET"
           orig: "/device/enforcement.json"
-          parts: [
-            "device"
-            "enforcement.json"
+          segments: [
+            {
+              lit: "device"
+            }
+            {
+              lit: "enforcement.json"
+            }
           ]
           select: {
             exist: [
@@ -118,9 +122,13 @@ main: kit: entity: enforcement: {
           }
           method: "GET"
           orig: "/drug/enforcement.json"
-          parts: [
-            "drug"
-            "enforcement.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "enforcement.json"
+            }
           ]
           select: {
             exist: [
@@ -174,9 +182,13 @@ main: kit: entity: enforcement: {
           }
           method: "GET"
           orig: "/food/enforcement.json"
-          parts: [
-            "food"
-            "enforcement.json"
+          segments: [
+            {
+              lit: "food"
+            }
+            {
+              lit: "enforcement.json"
+            }
           ]
           select: {
             exist: [

@@ -1,0 +1,81 @@
+import { ClassificationEntity } from './entity/ClassificationEntity';
+import { DrugEntity } from './entity/DrugEntity';
+import { DrugsfdaEntity } from './entity/DrugsfdaEntity';
+import { EnforcementEntity } from './entity/EnforcementEntity';
+import { EventEntity } from './entity/EventEntity';
+import { LabelEntity } from './entity/LabelEntity';
+import { N510kEntity } from './entity/N510kEntity';
+import { NdcEntity } from './entity/NdcEntity';
+import { NsdeEntity } from './entity/NsdeEntity';
+import { PmaEntity } from './entity/PmaEntity';
+import { ProblemEntity } from './entity/ProblemEntity';
+import { ShortageEntity } from './entity/ShortageEntity';
+import { SubstanceEntity } from './entity/SubstanceEntity';
+export type * from './OpenfdaTypes';
+import { inspect } from 'node:util';
+import type { Context, Feature } from './types';
+import { config } from './Config';
+import { OpenfdaEntityBase } from './OpenfdaEntityBase';
+import { Utility } from './utility/Utility';
+import { BaseFeature } from './feature/base/BaseFeature';
+declare const stdutil: Utility;
+declare class OpenfdaSDK {
+    _mode: string;
+    _options: any;
+    _utility: Utility;
+    _features: Feature[];
+    _rootctx: Context;
+    constructor(options?: any);
+    options(): any;
+    utility(): any;
+    prepare(fetchargs?: any): Promise<any>;
+    direct(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    _rawRequest(fetchargs?: any): Promise<Error | {
+        ok: boolean;
+        status: number;
+        headers: any;
+        data: any;
+        err?: undefined;
+    } | {
+        ok: boolean;
+        err: any;
+        status?: undefined;
+        headers?: undefined;
+        data?: undefined;
+    }>;
+    graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
+    Classification(entopts?: Record<string, any>): ClassificationEntity;
+    Drug(entopts?: Record<string, any>): DrugEntity;
+    Drugsfda(entopts?: Record<string, any>): DrugsfdaEntity;
+    Enforcement(entopts?: Record<string, any>): EnforcementEntity;
+    Event(entopts?: Record<string, any>): EventEntity;
+    Label(entopts?: Record<string, any>): LabelEntity;
+    N510k(entopts?: Record<string, any>): N510kEntity;
+    Ndc(entopts?: Record<string, any>): NdcEntity;
+    Nsde(entopts?: Record<string, any>): NsdeEntity;
+    Pma(entopts?: Record<string, any>): PmaEntity;
+    Problem(entopts?: Record<string, any>): ProblemEntity;
+    Shortage(entopts?: Record<string, any>): ShortageEntity;
+    Substance(entopts?: Record<string, any>): SubstanceEntity;
+    static test(testoptsarg?: any, sdkoptsarg?: any): OpenfdaSDK;
+    tester(testopts?: any, sdkopts?: any): OpenfdaSDK;
+    toJSON(): {
+        name: string;
+    };
+    toString(): string;
+    [inspect.custom](): string;
+}
+declare const SDK: typeof OpenfdaSDK;
+export { stdutil, config, BaseFeature, OpenfdaEntityBase, OpenfdaSDK, SDK, };

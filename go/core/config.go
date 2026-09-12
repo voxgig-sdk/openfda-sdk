@@ -102,9 +102,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/classification.json",
-								"parts": []any{
-									"device",
-									"classification.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "device",
+									},
+									map[string]any{
+										"lit": "classification.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -117,6 +121,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"device",
+									"classification.json",
 								},
 							},
 						},
@@ -178,9 +186,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/event.json",
-								"parts": []any{
-									"drug",
-									"event.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "event.json",
+									},
 								},
 								"select": map[string]any{
 									"$action": "event",
@@ -194,6 +206,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"event.json",
 								},
 							},
 						},
@@ -257,9 +273,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/drugsfda.json",
-								"parts": []any{
-									"drug",
-									"drugsfda.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "drugsfda.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -272,6 +292,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"drugsfda.json",
 								},
 							},
 						},
@@ -335,9 +359,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/enforcement.json",
-								"parts": []any{
-									"device",
-									"enforcement.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "device",
+									},
+									map[string]any{
+										"lit": "enforcement.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -350,6 +378,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"device",
+									"enforcement.json",
 								},
 							},
 							map[string]any{
@@ -388,9 +420,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/enforcement.json",
-								"parts": []any{
-									"drug",
-									"enforcement.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "enforcement.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -403,6 +439,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"enforcement.json",
 								},
 							},
 							map[string]any{
@@ -441,9 +481,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/food/enforcement.json",
-								"parts": []any{
-									"food",
-									"enforcement.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "food",
+									},
+									map[string]any{
+										"lit": "enforcement.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -456,6 +500,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"food",
+									"enforcement.json",
 								},
 							},
 						},
@@ -519,9 +567,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cosmetic/event.json",
-								"parts": []any{
-									"cosmetic",
-									"event.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "cosmetic",
+									},
+									map[string]any{
+										"lit": "event.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -534,6 +586,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"cosmetic",
+									"event.json",
 								},
 							},
 							map[string]any{
@@ -572,9 +628,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/event.json",
-								"parts": []any{
-									"device",
-									"event.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "device",
+									},
+									map[string]any{
+										"lit": "event.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -587,6 +647,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"device",
+									"event.json",
 								},
 							},
 							map[string]any{
@@ -625,9 +689,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/food/event.json",
-								"parts": []any{
-									"food",
-									"event.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "food",
+									},
+									map[string]any{
+										"lit": "event.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -640,6 +708,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"food",
+									"event.json",
 								},
 							},
 						},
@@ -701,9 +773,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/label.json",
-								"parts": []any{
-									"drug",
-									"label.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "label.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -716,6 +792,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"label.json",
 								},
 							},
 						},
@@ -779,9 +859,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/510k.json",
-								"parts": []any{
-									"device",
-									"510k.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "device",
+									},
+									map[string]any{
+										"lit": "510k.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -794,6 +878,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"device",
+									"510k.json",
 								},
 							},
 						},
@@ -857,9 +945,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/ndc.json",
-								"parts": []any{
-									"drug",
-									"ndc.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "ndc.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -872,6 +964,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"ndc.json",
 								},
 							},
 						},
@@ -935,9 +1031,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/other/nsde.json",
-								"parts": []any{
-									"other",
-									"nsde.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "other",
+									},
+									map[string]any{
+										"lit": "nsde.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -950,6 +1050,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"other",
+									"nsde.json",
 								},
 							},
 						},
@@ -1013,9 +1117,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/pma.json",
-								"parts": []any{
-									"device",
-									"pma.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "device",
+									},
+									map[string]any{
+										"lit": "pma.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1028,6 +1136,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"device",
+									"pma.json",
 								},
 							},
 						},
@@ -1091,9 +1203,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tobacco/problem.json",
-								"parts": []any{
-									"tobacco",
-									"problem.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "tobacco",
+									},
+									map[string]any{
+										"lit": "problem.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1106,6 +1222,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"tobacco",
+									"problem.json",
 								},
 							},
 						},
@@ -1169,9 +1289,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/shortages.json",
-								"parts": []any{
-									"drug",
-									"shortages.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "drug",
+									},
+									map[string]any{
+										"lit": "shortages.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1184,6 +1308,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"drug",
+									"shortages.json",
 								},
 							},
 						},
@@ -1247,9 +1375,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/other/substance.json",
-								"parts": []any{
-									"other",
-									"substance.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "other",
+									},
+									map[string]any{
+										"lit": "substance.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1263,6 +1395,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"other",
+									"substance.json",
+								},
 							},
 						},
 					},
@@ -1273,6 +1409,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

@@ -125,7 +125,7 @@ def _label_basic_setup(extra):
         "OPENFDA_TEST_LABEL_ENTID": idmap,
         "OPENFDA_TEST_LIVE": "FALSE",
         "OPENFDA_TEST_EXPLAIN": "FALSE",
-        "OPENFDA_APIKEY": "NONE",
+        "OPENFDA_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -135,6 +135,10 @@ def _label_basic_setup(extra):
 
     if env.get("OPENFDA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("OPENFDA_APIKEY"),
             },

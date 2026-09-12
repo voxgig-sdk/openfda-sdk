@@ -97,9 +97,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/device/classification.json",
-                  "parts": [
-                    "device",
-                    "classification.json"
+                  "segments": [
+                    {
+                      "lit": "device"
+                    },
+                    {
+                      "lit": "classification.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -190,9 +194,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/event.json",
-                  "parts": [
-                    "drug",
-                    "event.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "event.json"
+                    }
                   ],
                   "select": {
                     "$action": "event",
@@ -286,9 +294,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/drugsfda.json",
-                  "parts": [
-                    "drug",
-                    "drugsfda.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "drugsfda.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -381,9 +393,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/device/enforcement.json",
-                  "parts": [
-                    "device",
-                    "enforcement.json"
+                  "segments": [
+                    {
+                      "lit": "device"
+                    },
+                    {
+                      "lit": "enforcement.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -443,9 +459,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/enforcement.json",
-                  "parts": [
-                    "drug",
-                    "enforcement.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "enforcement.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -505,9 +525,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/food/enforcement.json",
-                  "parts": [
-                    "food",
-                    "enforcement.json"
+                  "segments": [
+                    {
+                      "lit": "food"
+                    },
+                    {
+                      "lit": "enforcement.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -600,9 +624,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/cosmetic/event.json",
-                  "parts": [
-                    "cosmetic",
-                    "event.json"
+                  "segments": [
+                    {
+                      "lit": "cosmetic"
+                    },
+                    {
+                      "lit": "event.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -662,9 +690,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/device/event.json",
-                  "parts": [
-                    "device",
-                    "event.json"
+                  "segments": [
+                    {
+                      "lit": "device"
+                    },
+                    {
+                      "lit": "event.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -724,9 +756,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/food/event.json",
-                  "parts": [
-                    "food",
-                    "event.json"
+                  "segments": [
+                    {
+                      "lit": "food"
+                    },
+                    {
+                      "lit": "event.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -817,9 +853,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/label.json",
-                  "parts": [
-                    "drug",
-                    "label.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "label.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -912,9 +952,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/device/510k.json",
-                  "parts": [
-                    "device",
-                    "510k.json"
+                  "segments": [
+                    {
+                      "lit": "device"
+                    },
+                    {
+                      "lit": "510k.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1007,9 +1051,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/ndc.json",
-                  "parts": [
-                    "drug",
-                    "ndc.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "ndc.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1102,9 +1150,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/other/nsde.json",
-                  "parts": [
-                    "other",
-                    "nsde.json"
+                  "segments": [
+                    {
+                      "lit": "other"
+                    },
+                    {
+                      "lit": "nsde.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1197,9 +1249,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/device/pma.json",
-                  "parts": [
-                    "device",
-                    "pma.json"
+                  "segments": [
+                    {
+                      "lit": "device"
+                    },
+                    {
+                      "lit": "pma.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1292,9 +1348,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/tobacco/problem.json",
-                  "parts": [
-                    "tobacco",
-                    "problem.json"
+                  "segments": [
+                    {
+                      "lit": "tobacco"
+                    },
+                    {
+                      "lit": "problem.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1387,9 +1447,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/drug/shortages.json",
-                  "parts": [
-                    "drug",
-                    "shortages.json"
+                  "segments": [
+                    {
+                      "lit": "drug"
+                    },
+                    {
+                      "lit": "shortages.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1482,9 +1546,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/other/substance.json",
-                  "parts": [
-                    "other",
-                    "substance.json"
+                  "segments": [
+                    {
+                      "lit": "other"
+                    },
+                    {
+                      "lit": "substance.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1571,8 +1639,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -2013,6 +2084,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2038,6 +2112,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -2089,6 +2167,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2113,6 +2192,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -2164,6 +2244,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2188,6 +2269,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -2228,6 +2310,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2253,6 +2338,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2287,6 +2375,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2312,6 +2403,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -2352,6 +2446,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2377,6 +2474,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2422,6 +2522,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2447,6 +2550,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2464,11 +2570,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2497,6 +2598,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2521,6 +2625,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

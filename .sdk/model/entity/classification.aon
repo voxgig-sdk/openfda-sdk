@@ -62,9 +62,13 @@ main: kit: entity: classification: {
           }
           method: "GET"
           orig: "/device/classification.json"
-          parts: [
-            "device"
-            "classification.json"
+          segments: [
+            {
+              lit: "device"
+            }
+            {
+              lit: "classification.json"
+            }
           ]
           select: {
             exist: [

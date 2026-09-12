@@ -60,9 +60,13 @@ main: kit: entity: drug: {
           }
           method: "GET"
           orig: "/drug/event.json"
-          parts: [
-            "drug"
-            "event.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "event.json"
+            }
           ]
           select: {
             "$action": "event"

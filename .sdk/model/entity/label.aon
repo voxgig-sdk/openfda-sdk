@@ -60,9 +60,13 @@ main: kit: entity: label: {
           }
           method: "GET"
           orig: "/drug/label.json"
-          parts: [
-            "drug"
-            "label.json"
+          segments: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "label.json"
+            }
           ]
           select: {
             exist: [

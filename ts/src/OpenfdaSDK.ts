@@ -29,6 +29,7 @@ import { Utility } from './utility/Utility'
 import { BaseFeature } from './feature/base/BaseFeature'
 
 
+
 const stdutil = new Utility()
 
 
@@ -38,6 +39,7 @@ class OpenfdaSDK {
   _utility = new Utility()
   _features: Feature[]
   _rootctx: Context
+  
 
   constructor(options?: any) {
 
@@ -110,6 +112,8 @@ class OpenfdaSDK {
     return this._utility.struct.clone(this._utility)
   }
 
+  
+
 
   async prepare(fetchargs?: any) {
     const utility = this._utility
@@ -155,6 +159,8 @@ class OpenfdaSDK {
         spec.headers[key] = uheaders[key]
       }
     }
+
+    
 
     // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
@@ -469,6 +475,7 @@ const SDK = OpenfdaSDK
 export {
   stdutil,
   config,
+  
 
   BaseFeature,
   OpenfdaEntityBase,
