@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OpenfdaSDK } from '@voxgig-sdk/openfda'
+import { OpenfdaSDK } from '@voxgig-sdk/openfda-sdk'
 
 const client = new OpenfdaSDK({
   apikey: process.env.OPENFDA_APIKEY,
@@ -843,7 +843,7 @@ openfda/
 Import the SDK from the package root:
 
 ```ts
-import { OpenfdaSDK } from '@voxgig-sdk/openfda'
+import { OpenfdaSDK } from '@voxgig-sdk/openfda-sdk'
 ```
 
 ### Entity state

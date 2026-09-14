@@ -105,7 +105,7 @@ local results, err = client:Event():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
+| TypeScript | `@voxgig-sdk/openfda-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
 | Python | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
 | PHP | `voxgig-sdk/openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/openfda-sdk/go` | `go get github.com/voxgig-sdk/openfda-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Event():list()
 ### TypeScript
 
 ```ts
-import { OpenfdaSDK } from '@voxgig-sdk/openfda'
+import { OpenfdaSDK } from '@voxgig-sdk/openfda-sdk'
 
 const client = new OpenfdaSDK({
   apikey: process.env.OPENFDA_APIKEY,
