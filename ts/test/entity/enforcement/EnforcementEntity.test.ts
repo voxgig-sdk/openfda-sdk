@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { OpenfdaSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('EnforcementEntity', async () => {
 
     const live = 'TRUE' === process.env.OPENFDA_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'enforcement.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'enforcement.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_ENFORCEMENT_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"meta","req":false,"type":"`$OBJECT`","index$":0},{"active":true,"name":"results","req":false,"short":"Array of result objects matching the query","type":"`$ARRAY`","index$":1}],"name":"enforcement","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":"patient.reaction.reactionmeddrapt.exact","kind":"query","name":"count","orig":"count","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":1,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":"patient.drug.openfda.brand_name:lipitor","kind":"query","name":"search","orig":"search","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":0,"kind":"query","name":"skip","orig":"skip","reqd":false,"type":"`$INTEGER`","index$":3}]},"contract":{"id":"GET /device/enforcement.json","json":"{\"operationId\":\"searchDeviceEnforcement\",\"parameters\":[{\"description\":\"Search query using openFDA query syntax. Supports logical operators (AND, OR), field-specific searches, and range queries.\",\"example\":\"patient.drug.openfda.brand_name:lipitor\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Count records by specified field. Returns frequency counts for unique values.\",\"example\":\"patient.reaction.reactionmeddrapt.exact\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of records to return. Maximum is 1000.\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of records to skip for pagination. Used with limit for paging through results.\",\"in\":\"query\",\"name\":\"skip\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"disclaimer\":{\"description\":\"Important disclaimer about FDA data usage\",\"type\":\"string\"},\"last_updated\":{\"description\":\"Date the data was last updated\",\"format\":\"date\",\"type\":\"string\"},\"license\":{\"description\":\"Link to data license\",\"type\":\"string\"},\"results\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned\",\"type\":\"integer\"},\"skip\":{\"description\":\"Number of records skipped\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of matching records\",\"type\":\"integer\"}},\"type\":\"object\"},\"terms\":{\"description\":\"Link to API terms of service\",\"type\":\"string\"}},\"type\":\"object\"},\"results\":{\"description\":\"Array of result objects matching the query\",\"items\":{\"additionalProperties\":true,\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"security\":[{},{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day.\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/device/enforcement.json","segments":[{"lit":"device"},{"lit":"enforcement.json"}],"select":{"exist":["count","limit","search","skip"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"query":[{"active":true,"example":"patient.reaction.reactionmeddrapt.exact","kind":"query","name":"count","orig":"count","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":1,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":"patient.drug.openfda.brand_name:lipitor","kind":"query","name":"search","orig":"search","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":0,"kind":"query","name":"skip","orig":"skip","reqd":false,"type":"`$INTEGER`","index$":3}]},"contract":{"id":"GET /drug/enforcement.json","json":"{\"operationId\":\"searchDrugEnforcement\",\"parameters\":[{\"description\":\"Search query using openFDA query syntax. Supports logical operators (AND, OR), field-specific searches, and range queries.\",\"example\":\"patient.drug.openfda.brand_name:lipitor\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Count records by specified field. Returns frequency counts for unique values.\",\"example\":\"patient.reaction.reactionmeddrapt.exact\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of records to return. Maximum is 1000.\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of records to skip for pagination. Used with limit for paging through results.\",\"in\":\"query\",\"name\":\"skip\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"disclaimer\":{\"description\":\"Important disclaimer about FDA data usage\",\"type\":\"string\"},\"last_updated\":{\"description\":\"Date the data was last updated\",\"format\":\"date\",\"type\":\"string\"},\"license\":{\"description\":\"Link to data license\",\"type\":\"string\"},\"results\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned\",\"type\":\"integer\"},\"skip\":{\"description\":\"Number of records skipped\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of matching records\",\"type\":\"integer\"}},\"type\":\"object\"},\"terms\":{\"description\":\"Link to API terms of service\",\"type\":\"string\"}},\"type\":\"object\"},\"results\":{\"description\":\"Array of result objects matching the query\",\"items\":{\"additionalProperties\":true,\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"400\":{\"description\":\"Bad request\"}},\"security\":[{},{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day.\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/drug/enforcement.json","segments":[{"lit":"drug"},{"lit":"enforcement.json"}],"select":{"exist":["count","limit","search","skip"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1},{"active":true,"args":{"query":[{"active":true,"example":"patient.reaction.reactionmeddrapt.exact","kind":"query","name":"count","orig":"count","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":1,"kind":"query","name":"limit","orig":"limit","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":"patient.drug.openfda.brand_name:lipitor","kind":"query","name":"search","orig":"search","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":0,"kind":"query","name":"skip","orig":"skip","reqd":false,"type":"`$INTEGER`","index$":3}]},"contract":{"id":"GET /food/enforcement.json","json":"{\"operationId\":\"searchFoodEnforcement\",\"parameters\":[{\"description\":\"Search query using openFDA query syntax. Supports logical operators (AND, OR), field-specific searches, and range queries.\",\"example\":\"patient.drug.openfda.brand_name:lipitor\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Count records by specified field. Returns frequency counts for unique values.\",\"example\":\"patient.reaction.reactionmeddrapt.exact\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of records to return. Maximum is 1000.\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of records to skip for pagination. Used with limit for paging through results.\",\"in\":\"query\",\"name\":\"skip\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"disclaimer\":{\"description\":\"Important disclaimer about FDA data usage\",\"type\":\"string\"},\"last_updated\":{\"description\":\"Date the data was last updated\",\"format\":\"date\",\"type\":\"string\"},\"license\":{\"description\":\"Link to data license\",\"type\":\"string\"},\"results\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned\",\"type\":\"integer\"},\"skip\":{\"description\":\"Number of records skipped\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of matching records\",\"type\":\"integer\"}},\"type\":\"object\"},\"terms\":{\"description\":\"Link to API terms of service\",\"type\":\"string\"}},\"type\":\"object\"},\"results\":{\"description\":\"Array of result objects matching the query\",\"items\":{\"additionalProperties\":true,\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"security\":[{},{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day.\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/food/enforcement.json","segments":[{"lit":"food"},{"lit":"enforcement.json"}],"select":{"exist":["count","limit","search","skip"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"enforcement","name__orig":"enforcement","Name":"Enforcement","name_":"enforcement","name-":"enforcement","NAME":"ENFORCEMENT","index$":3}, {"active":true,"entity":"enforcement","key$":"BasicEnforcementFlow","kind":"basic","name":"BasicEnforcementFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"enforcement_ref01"}}],"index$":0}]}, 'Enforcement')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['OPENFDA_TEST_ENFORCEMENT_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'OPENFDA_TEST_ENFORCEMENT_ENTID': idmap,
     'OPENFDA_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.OPENFDA_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['OPENFDA_TEST_ENFORCEMENT_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new OpenfdaSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.OPENFDA_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

@@ -1,12 +1,18 @@
 # Openfda SDK feature factory
 
 from openfda_sdk.feature.base_feature import OpenfdaBaseFeature
+from openfda_sdk.feature.ratelimit_feature import OpenfdaRatelimitFeature
+from openfda_sdk.feature.retry_feature import OpenfdaRetryFeature
 from openfda_sdk.feature.test_feature import OpenfdaTestFeature
+from openfda_sdk.feature.timeout_feature import OpenfdaTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: OpenfdaBaseFeature(),
+    "ratelimit": lambda: OpenfdaRatelimitFeature(),
+    "retry": lambda: OpenfdaRetryFeature(),
     "test": lambda: OpenfdaTestFeature(),
+    "timeout": lambda: OpenfdaTimeoutFeature(),
 }
 
 

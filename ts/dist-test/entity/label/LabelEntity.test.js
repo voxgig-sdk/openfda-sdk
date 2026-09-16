@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.OPENFDA_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'label.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'label.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set OPENFDA_TEST_LABEL_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "meta", "req": false, "type": "`$OBJECT`", "index$": 0 }, { "active": true, "name": "results", "req": false, "short": "Array of result objects matching the query", "type": "`$ARRAY`", "index$": 1 }], "name": "label", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "count", "orig": "count", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "example": 1, "kind": "query", "name": "limit", "orig": "limit", "reqd": false, "type": "`$INTEGER`", "index$": 1 }, { "active": true, "kind": "query", "name": "search", "orig": "search", "reqd": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "example": 0, "kind": "query", "name": "skip", "orig": "skip", "reqd": false, "type": "`$INTEGER`", "index$": 3 }] }, "contract": { "id": "GET /drug/label.json", "json": "{\"operationId\":\"searchDrugLabels\",\"parameters\":[{\"description\":\"Search query using openFDA query syntax\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Count records by specified field\",\"in\":\"query\",\"name\":\"count\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of records to return (max 1000)\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":1,\"maximum\":1000,\"type\":\"integer\"}},{\"description\":\"Number of records to skip for pagination\",\"in\":\"query\",\"name\":\"skip\",\"required\":false,\"schema\":{\"default\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meta\":{\"properties\":{\"disclaimer\":{\"description\":\"Important disclaimer about FDA data usage\",\"type\":\"string\"},\"last_updated\":{\"description\":\"Date the data was last updated\",\"format\":\"date\",\"type\":\"string\"},\"license\":{\"description\":\"Link to data license\",\"type\":\"string\"},\"results\":{\"properties\":{\"limit\":{\"description\":\"Number of records returned\",\"type\":\"integer\"},\"skip\":{\"description\":\"Number of records skipped\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of matching records\",\"type\":\"integer\"}},\"type\":\"object\"},\"terms\":{\"description\":\"Link to API terms of service\",\"type\":\"string\"}},\"type\":\"object\"},\"results\":{\"description\":\"Array of result objects matching the query\",\"items\":{\"additionalProperties\":true,\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"400\":{\"description\":\"Bad request\"},\"404\":{\"description\":\"No results found\"},\"429\":{\"description\":\"Rate limit exceeded\"}},\"security\":[{},{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day.\",\"in\":\"query\",\"name\":\"api_key\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/drug/label.json", "segments": [{ "lit": "drug" }, { "lit": "label.json" }], "select": { "exist": ["count", "limit", "search", "skip"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "label", "name__orig": "label", "Name": "Label", "name_": "label", "name-": "label", "NAME": "LABEL", "index$": 5 }, { "active": true, "entity": "label", "key$": "BasicLabelFlow", "kind": "basic", "name": "BasicLabelFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "label_ref01" } }], "index$": 0 }] }, 'Label');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['OPENFDA_TEST_LABEL_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'OPENFDA_TEST_LABEL_ENTID': idmap,
         'OPENFDA_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['OPENFDA_TEST_LABEL_ENTID'];
     const live = 'TRUE' === env.OPENFDA_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['OPENFDA_TEST_LABEL_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.OpenfdaSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -128,7 +126,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -140,7 +139,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.OPENFDA_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
