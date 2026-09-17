@@ -191,13 +191,6 @@ Return the entity name.
 drug = client.Drug
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `Hash` | No |  |
-| `results` | `Array` | No |  |
-
 ### Operations
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`

@@ -288,8 +288,6 @@ API path: `/device/classification.json`
 
 | Field | Description |
 | --- | --- |
-| `"meta"` |  |
-| `"results"` |  |
 
 Operations: List.
 
@@ -458,13 +456,6 @@ Create an instance: `drug := client.Drug(nil)`
 | Method | Description |
 | --- | --- |
 | `List(match, ctrl)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `meta` | `map[string]any` |  |
-| `results` | `[]any` |  |
 
 #### Example: List
 

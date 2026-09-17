@@ -43,17 +43,8 @@ ClassificationListMatch = Struct.new(
 )
 
 # Drug entity data model.
-#
-# @!attribute [rw] meta
-#   @return [Hash, nil]
-#
-# @!attribute [rw] results
-#   @return [Array, nil]
-Drug = Struct.new(
-  :meta,
-  :results,
-  keyword_init: true
-)
+class Drug
+end
 
 # Request payload for Drug#list.
 #

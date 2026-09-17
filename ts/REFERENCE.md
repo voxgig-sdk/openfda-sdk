@@ -308,13 +308,6 @@ Return a copy of the entity options.
 const drug = client.Drug()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `Record<string, any>` | No |  |
-| `results` | `any[]` | No |  |
-
 ### Actions
 
 This entity exposes custom API actions in addition to the standard

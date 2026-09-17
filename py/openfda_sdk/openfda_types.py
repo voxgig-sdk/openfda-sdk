@@ -28,9 +28,8 @@ class ClassificationListMatch(TypedDict, total=False):
     skip: int
 
 
-class Drug(TypedDict, total=False):
-    meta: dict
-    results: list
+class Drug(TypedDict):
+    pass
 
 
 class DrugListMatch(TypedDict, total=False):

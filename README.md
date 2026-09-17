@@ -105,12 +105,12 @@ local results, err = client:Event():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/openfda-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
-| Python | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
-| PHP | `voxgig-sdk/openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
+| TypeScript | `@voxgig-sdk/openfda-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/tags) |
+| Python | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/tags) |
+| PHP | `voxgig-sdk/openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/openfda-sdk/go` | `go get github.com/voxgig-sdk/openfda-sdk/go@latest` |
-| Ruby | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
-| Lua | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/releases) |
+| Ruby | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/tags) |
+| Lua | `voxgig-sdk-openfda` | publish pending — [install from git tag](https://github.com/voxgig-sdk/openfda-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/openfda-sdk/go-cli` | `go install github.com/voxgig-sdk/openfda-sdk/go-cli/cmd/openfda@latest` |
 | Go MCP server | `github.com/voxgig-sdk/openfda-sdk/go-mcp` | `go get github.com/voxgig-sdk/openfda-sdk/go-mcp@latest` |
 

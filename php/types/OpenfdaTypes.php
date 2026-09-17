@@ -31,8 +31,6 @@ class ClassificationListMatch
 /** Drug entity data model. */
 class Drug
 {
-    public ?array $meta = null;
-    public ?array $results = null;
 }
 
 /** Request payload for Drug#list. */

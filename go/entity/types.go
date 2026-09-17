@@ -28,8 +28,6 @@ type ClassificationListMatch struct {
 
 // Drug is the typed data model for the drug entity.
 type Drug struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // DrugListMatch is the typed request payload for Drug.ListTyped.

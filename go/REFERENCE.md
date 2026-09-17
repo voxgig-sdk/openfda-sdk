@@ -195,13 +195,6 @@ drug := client.Drug(nil)
 fmt.Println(drug.GetName()) // "drug"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `map[string]any` | No |  |
-| `results` | `[]any` | No |  |
-
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`

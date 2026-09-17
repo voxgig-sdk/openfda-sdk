@@ -81,6 +81,8 @@ func MakeConfig() map[string]any {
 			"base": "https://api.fda.gov",
 			"auth": map[string]any{
 				"prefix": "",
+				"in": "query",
+				"name": "api_key",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",
@@ -189,16 +191,7 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"drug": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "meta",
-						"type": "`$OBJECT`",
-					},
-					map[string]any{
-						"name": "results",
-						"type": "`$ARRAY`",
-					},
-				},
+				"fields": []any{},
 				"name": "drug",
 				"op": map[string]any{
 					"list": map[string]any{

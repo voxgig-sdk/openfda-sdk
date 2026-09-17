@@ -264,8 +264,6 @@ API path: `/device/classification.json`
 
 | Field | Description |
 | --- | --- |
-| `meta` |  |
-| `results` |  |
 
 Operations: List.
 
@@ -431,13 +429,6 @@ Create an instance: `drug = client.Drug`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `meta` | `Hash` |  |
-| `results` | `Array` |  |
 
 #### Example: List
 
@@ -864,6 +855,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── Openfda_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

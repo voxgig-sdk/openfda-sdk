@@ -67,6 +67,8 @@ declare class Config {
         base: string;
         auth: {
             prefix: string;
+            in: string;
+            name: string;
         };
         headers: {
             "content-type": string;
@@ -141,10 +143,7 @@ declare class Config {
             };
         };
         drug: {
-            fields: {
-                name: string;
-                type: string;
-            }[];
+            fields: never[];
             name: string;
             op: {
                 list: {

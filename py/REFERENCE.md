@@ -186,13 +186,6 @@ Return the entity name.
 drug = client.Drug()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `dict` | No |  |
-| `results` | `list` | No |  |
-
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`

@@ -188,13 +188,6 @@ Return the entity name.
 local drug = client:Drug(nil)
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `table` | No |  |
-| `results` | `table` | No |  |
-
 ### Operations
 
 #### `list(reqmatch, ctrl) -> any, err`

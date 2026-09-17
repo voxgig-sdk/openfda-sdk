@@ -9,8 +9,6 @@ export interface ClassificationListMatch {
     skip?: number;
 }
 export interface Drug {
-    meta?: Record<string, any>;
-    results?: any[];
 }
 export interface DrugListMatch {
     count?: string;

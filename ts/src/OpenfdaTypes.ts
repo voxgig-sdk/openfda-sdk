@@ -18,8 +18,6 @@ export interface ClassificationListMatch {
 }
 
 export interface Drug {
-  meta?: Record<string, any>
-  results?: any[]
 }
 
 export interface DrugListMatch {

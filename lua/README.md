@@ -258,8 +258,6 @@ API path: `/device/classification.json`
 
 | Field | Description |
 | --- | --- |
-| `meta` |  |
-| `results` |  |
 
 Operations: List.
 
@@ -424,13 +422,6 @@ Create an instance: `local drug = client:Drug(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `meta` | `table` |  |
-| `results` | `table` |  |
 
 #### Example: List
 
@@ -845,6 +836,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── openfda_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

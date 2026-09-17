@@ -190,13 +190,6 @@ Return the entity name.
 $drug = $client->Drug();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `meta` | `array` | No |  |
-| `results` | `array` | No |  |
-
 ### Operations
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`

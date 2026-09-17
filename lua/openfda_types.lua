@@ -17,8 +17,6 @@
 ---@field skip? number
 
 ---@class Drug
----@field meta? table
----@field results? table
 
 ---@class DrugListMatch
 ---@field count? string

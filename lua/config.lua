@@ -77,6 +77,8 @@ local function make_config()
       base = "https://api.fda.gov",
       auth = {
         prefix = "",
+        ["in"] = "query",
+        name = "api_key",
       },
       headers = {
         ["content-type"] = "application/json",
@@ -185,16 +187,7 @@ local function make_config()
         },
       },
       ["drug"] = {
-        ["fields"] = {
-          {
-            ["name"] = "meta",
-            ["type"] = "`$OBJECT`",
-          },
-          {
-            ["name"] = "results",
-            ["type"] = "`$ARRAY`",
-          },
-        },
+        ["fields"] = {},
         ["name"] = "drug",
         ["op"] = {
           ["list"] = {

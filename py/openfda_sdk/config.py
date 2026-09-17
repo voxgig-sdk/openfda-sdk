@@ -106,6 +106,8 @@ def make_config():
             "base": "https://api.fda.gov",
             "auth": {
                 "prefix": "",
+                "in": "query",
+                "name": "api_key",
             },
             "headers": {
         "content-type": "application/json",
@@ -214,16 +216,7 @@ def make_config():
         },
       },
       "drug": {
-        "fields": [
-          {
-            "name": "meta",
-            "type": "`$OBJECT`",
-          },
-          {
-            "name": "results",
-            "type": "`$ARRAY`",
-          },
-        ],
+        "fields": [],
         "name": "drug",
         "op": {
           "list": {

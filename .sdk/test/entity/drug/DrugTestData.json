@@ -1,26 +1,14 @@
 {
   "existing": {
     "drug": {
-      "DRUG00": {
-        "meta": {},
-        "results": []
-      },
-      "DRUG01": {
-        "meta": {},
-        "results": []
-      },
-      "DRUG02": {
-        "meta": {},
-        "results": []
-      }
+      "DRUG00": {},
+      "DRUG01": {},
+      "DRUG02": {}
     }
   },
   "new": {
     "drug": {
-      "drug_ref01": {
-        "meta": {},
-        "results": []
-      }
+      "drug_ref01": {}
     }
   },
   "requests": {

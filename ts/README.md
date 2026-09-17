@@ -321,8 +321,6 @@ API path: `/device/classification.json`
 
 | Field | Description |
 | --- | --- |
-| `meta` |  |
-| `results` |  |
 
 Operations: list.
 
@@ -487,13 +485,6 @@ Create an instance: `const drug = client.Drug()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `meta` | `Record<string, any>` |  |
-| `results` | `any[]` |  |
 
 #### Example: List
 

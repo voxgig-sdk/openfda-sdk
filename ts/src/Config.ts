@@ -123,6 +123,8 @@ class Config {
 
     auth: {
       prefix: '',
+      in: 'query',
+      name: 'api_key',
     },
 
     headers: {
@@ -131,45 +133,45 @@ class Config {
 
     entity: {
       
-      classification: {
-      },
-
-      drug: {
-      },
-
-      drugsfda: {
-      },
-
-      enforcement: {
-      },
-
-      event: {
-      },
-
-      label: {
-      },
-
-      n510k: {
-      },
-
-      ndc: {
-      },
-
-      nsde: {
-      },
-
-      pma: {
-      },
-
-      problem: {
-      },
-
-      shortage: {
-      },
-
-      substance: {
-      },
-
+        classification: {
+        },
+  
+        drug: {
+        },
+  
+        drugsfda: {
+        },
+  
+        enforcement: {
+        },
+  
+        event: {
+        },
+  
+        label: {
+        },
+  
+        n510k: {
+        },
+  
+        ndc: {
+        },
+  
+        nsde: {
+        },
+  
+        pma: {
+        },
+  
+        problem: {
+        },
+  
+        shortage: {
+        },
+  
+        substance: {
+        },
+  
     }
   }
 
@@ -262,16 +264,7 @@ class Config {
       }
     },
     "drug": {
-      "fields": [
-        {
-          "name": "meta",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "results",
-          "type": "`$ARRAY`"
-        }
-      ],
+      "fields": [],
       "name": "drug",
       "op": {
         "list": {
