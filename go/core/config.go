@@ -108,12 +108,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "classification",
@@ -123,38 +125,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/classification.json",
@@ -166,6 +136,47 @@ func MakeConfig() map[string]any {
 										"lit": "classification.json",
 									},
 								},
+								"parts": []any{
+									"device",
+									"classification.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -173,14 +184,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"device",
-									"classification.json",
 								},
 							},
 						},
@@ -199,37 +202,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:aspirin",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/event.json",
@@ -241,6 +213,46 @@ func MakeConfig() map[string]any {
 										"lit": "event.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"event.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:aspirin",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "event",
 									"exist": []any{
@@ -249,14 +261,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"event.json",
 								},
 							},
 						},
@@ -270,12 +274,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "drugsfda",
@@ -285,38 +291,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/drugsfda.json",
@@ -328,6 +302,47 @@ func MakeConfig() map[string]any {
 										"lit": "drugsfda.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"drugsfda.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -335,14 +350,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"drugsfda.json",
 								},
 							},
 						},
@@ -356,12 +363,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "enforcement",
@@ -371,38 +380,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/enforcement.json",
@@ -414,6 +391,47 @@ func MakeConfig() map[string]any {
 										"lit": "enforcement.json",
 									},
 								},
+								"parts": []any{
+									"device",
+									"enforcement.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -422,48 +440,8 @@ func MakeConfig() map[string]any {
 										"skip",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"device",
-									"enforcement.json",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/enforcement.json",
@@ -475,6 +453,47 @@ func MakeConfig() map[string]any {
 										"lit": "enforcement.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"enforcement.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -483,48 +502,8 @@ func MakeConfig() map[string]any {
 										"skip",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"enforcement.json",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/food/enforcement.json",
@@ -536,6 +515,47 @@ func MakeConfig() map[string]any {
 										"lit": "enforcement.json",
 									},
 								},
+								"parts": []any{
+									"food",
+									"enforcement.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -543,14 +563,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"food",
-									"enforcement.json",
 								},
 							},
 						},
@@ -564,12 +576,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "event",
@@ -579,38 +593,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/cosmetic/event.json",
@@ -622,6 +604,47 @@ func MakeConfig() map[string]any {
 										"lit": "event.json",
 									},
 								},
+								"parts": []any{
+									"cosmetic",
+									"event.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -630,48 +653,8 @@ func MakeConfig() map[string]any {
 										"skip",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"cosmetic",
-									"event.json",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/event.json",
@@ -683,6 +666,47 @@ func MakeConfig() map[string]any {
 										"lit": "event.json",
 									},
 								},
+								"parts": []any{
+									"device",
+									"event.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -691,48 +715,8 @@ func MakeConfig() map[string]any {
 										"skip",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"device",
-									"event.json",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/food/event.json",
@@ -744,6 +728,47 @@ func MakeConfig() map[string]any {
 										"lit": "event.json",
 									},
 								},
+								"parts": []any{
+									"food",
+									"event.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -751,14 +776,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"food",
-									"event.json",
 								},
 							},
 						},
@@ -772,12 +789,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "label",
@@ -787,36 +806,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/label.json",
@@ -828,6 +817,45 @@ func MakeConfig() map[string]any {
 										"lit": "label.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"label.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -835,14 +863,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"label.json",
 								},
 							},
 						},
@@ -856,12 +876,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "n510k",
@@ -871,38 +893,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/510k.json",
@@ -914,6 +904,47 @@ func MakeConfig() map[string]any {
 										"lit": "510k.json",
 									},
 								},
+								"parts": []any{
+									"device",
+									"510k.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -921,14 +952,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"device",
-									"510k.json",
 								},
 							},
 						},
@@ -942,12 +965,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "ndc",
@@ -957,38 +982,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/ndc.json",
@@ -1000,6 +993,47 @@ func MakeConfig() map[string]any {
 										"lit": "ndc.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"ndc.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1007,14 +1041,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"ndc.json",
 								},
 							},
 						},
@@ -1028,12 +1054,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "nsde",
@@ -1043,38 +1071,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/other/nsde.json",
@@ -1086,6 +1082,47 @@ func MakeConfig() map[string]any {
 										"lit": "nsde.json",
 									},
 								},
+								"parts": []any{
+									"other",
+									"nsde.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1093,14 +1130,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"other",
-									"nsde.json",
 								},
 							},
 						},
@@ -1114,12 +1143,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "pma",
@@ -1129,38 +1160,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/device/pma.json",
@@ -1172,6 +1171,47 @@ func MakeConfig() map[string]any {
 										"lit": "pma.json",
 									},
 								},
+								"parts": []any{
+									"device",
+									"pma.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1179,14 +1219,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"device",
-									"pma.json",
 								},
 							},
 						},
@@ -1200,12 +1232,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "problem",
@@ -1215,38 +1249,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tobacco/problem.json",
@@ -1258,6 +1260,47 @@ func MakeConfig() map[string]any {
 										"lit": "problem.json",
 									},
 								},
+								"parts": []any{
+									"tobacco",
+									"problem.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1265,14 +1308,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"tobacco",
-									"problem.json",
 								},
 							},
 						},
@@ -1286,12 +1321,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "shortage",
@@ -1301,38 +1338,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/drug/shortages.json",
@@ -1344,6 +1349,47 @@ func MakeConfig() map[string]any {
 										"lit": "shortages.json",
 									},
 								},
+								"parts": []any{
+									"drug",
+									"shortages.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1351,14 +1397,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"drug",
-									"shortages.json",
 								},
 							},
 						},
@@ -1372,12 +1410,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "results",
-						"short": "Array of result objects matching the query",
+						"title": "Results",
 						"type": "`$ARRAY`",
+						"short": "Array of result objects matching the query",
 					},
 				},
 				"name": "substance",
@@ -1387,38 +1427,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "patient.reaction.reactionmeddrapt.exact",
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "patient.drug.openfda.brand_name:lipitor",
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "skip",
-											"orig": "skip",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/other/substance.json",
@@ -1430,6 +1438,47 @@ func MakeConfig() map[string]any {
 										"lit": "substance.json",
 									},
 								},
+								"parts": []any{
+									"other",
+									"substance.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.reaction.reactionmeddrapt.exact",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 1,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "patient.drug.openfda.brand_name:lipitor",
+										},
+										map[string]any{
+											"name": "skip",
+											"orig": "skip",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"count",
@@ -1437,14 +1486,6 @@ func MakeConfig() map[string]any {
 										"search",
 										"skip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"other",
-									"substance.json",
 								},
 							},
 						},

@@ -19,7 +19,6 @@ import type {
   ShortageListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class ShortageEntity extends OpenfdaEntityBase<Shortage> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

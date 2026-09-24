@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProblemEntity = void 0;
 const OpenfdaEntityBase_1 = require("../OpenfdaEntityBase");
-// TODO: needs Entity superclass
 class ProblemEntity extends OpenfdaEntityBase_1.OpenfdaEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

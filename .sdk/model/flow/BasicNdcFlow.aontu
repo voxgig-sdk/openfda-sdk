@@ -1,0 +1,22 @@
+# BasicNdcFlow
+
+main: kit: flow: BasicNdcFlow:
+{
+  entity: "ndc",
+  kind: "basic",
+  name: "BasicNdcFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ndc_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNdcFlow"
+}

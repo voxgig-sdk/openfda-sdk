@@ -1,0 +1,99 @@
+# Entity: drugsfda
+
+main: kit: entity: drugsfda: {
+
+  alias: field: {}
+
+  fields: {
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: false
+      t: "`$OBJECT`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      sh: "Array of result objects matching the query"
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "drugsfda"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /drug/drugsfda.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "patient.reaction.reactionmeddrapt.exact"
+                k: "query"
+                n: "count"
+                or: "count"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "patient.drug.openfda.brand_name:lipitor"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "skip"
+                or: "skip"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/drug/drugsfda.json"
+          q: {
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          s: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "drugsfda.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

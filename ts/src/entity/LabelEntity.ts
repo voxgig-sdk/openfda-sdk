@@ -19,7 +19,6 @@ import type {
   LabelListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class LabelEntity extends OpenfdaEntityBase<Label> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

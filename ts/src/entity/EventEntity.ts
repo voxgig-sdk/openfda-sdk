@@ -19,7 +19,6 @@ import type {
   EventListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class EventEntity extends OpenfdaEntityBase<Event> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

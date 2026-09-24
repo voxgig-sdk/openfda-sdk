@@ -1,0 +1,86 @@
+# Entity: drug
+
+main: kit: entity: drug: {
+
+  alias: field: {}
+
+  name: "drug"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /drug/event.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "count"
+                or: "count"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "patient.drug.openfda.brand_name:aspirin"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "skip"
+                or: "skip"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/drug/event.json"
+          q: {
+            "$action": "event"
+            exist: [
+              "count"
+              "limit"
+              "search"
+              "skip"
+            ]
+          }
+          s: [
+            {
+              lit: "drug"
+            }
+            {
+              lit: "event.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

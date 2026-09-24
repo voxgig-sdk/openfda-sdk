@@ -1,0 +1,22 @@
+# BasicDrugsfdaFlow
+
+main: kit: flow: BasicDrugsfdaFlow:
+{
+  entity: "drugsfda",
+  kind: "basic",
+  name: "BasicDrugsfdaFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "drugsfda_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDrugsfdaFlow"
+}

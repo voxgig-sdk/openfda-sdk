@@ -19,7 +19,6 @@ import type {
   NsdeListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class NsdeEntity extends OpenfdaEntityBase<Nsde> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

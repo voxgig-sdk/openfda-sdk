@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LabelEntity = void 0;
 const OpenfdaEntityBase_1 = require("../OpenfdaEntityBase");
-// TODO: needs Entity superclass
 class LabelEntity extends OpenfdaEntityBase_1.OpenfdaEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

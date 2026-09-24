@@ -1,7 +1,7 @@
 // Typed models for the Openfda SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,8 +14,6 @@ import (
 
 // Classification is the typed data model for the classification entity.
 type Classification struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // ClassificationListMatch is the typed request payload for Classification.ListTyped.
@@ -40,8 +38,6 @@ type DrugListMatch struct {
 
 // Drugsfda is the typed data model for the drugsfda entity.
 type Drugsfda struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // DrugsfdaListMatch is the typed request payload for Drugsfda.ListTyped.
@@ -54,8 +50,6 @@ type DrugsfdaListMatch struct {
 
 // Enforcement is the typed data model for the enforcement entity.
 type Enforcement struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // EnforcementListMatch is the typed request payload for Enforcement.ListTyped.
@@ -68,8 +62,6 @@ type EnforcementListMatch struct {
 
 // Event is the typed data model for the event entity.
 type Event struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // EventListMatch is the typed request payload for Event.ListTyped.
@@ -82,8 +74,6 @@ type EventListMatch struct {
 
 // Label is the typed data model for the label entity.
 type Label struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // LabelListMatch is the typed request payload for Label.ListTyped.
@@ -96,8 +86,6 @@ type LabelListMatch struct {
 
 // N510k is the typed data model for the n510k entity.
 type N510k struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // N510kListMatch is the typed request payload for N510k.ListTyped.
@@ -110,8 +98,6 @@ type N510kListMatch struct {
 
 // Ndc is the typed data model for the ndc entity.
 type Ndc struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // NdcListMatch is the typed request payload for Ndc.ListTyped.
@@ -124,8 +110,6 @@ type NdcListMatch struct {
 
 // Nsde is the typed data model for the nsde entity.
 type Nsde struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // NsdeListMatch is the typed request payload for Nsde.ListTyped.
@@ -138,8 +122,6 @@ type NsdeListMatch struct {
 
 // Pma is the typed data model for the pma entity.
 type Pma struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // PmaListMatch is the typed request payload for Pma.ListTyped.
@@ -152,8 +134,6 @@ type PmaListMatch struct {
 
 // Problem is the typed data model for the problem entity.
 type Problem struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // ProblemListMatch is the typed request payload for Problem.ListTyped.
@@ -166,8 +146,6 @@ type ProblemListMatch struct {
 
 // Shortage is the typed data model for the shortage entity.
 type Shortage struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // ShortageListMatch is the typed request payload for Shortage.ListTyped.
@@ -180,8 +158,6 @@ type ShortageListMatch struct {
 
 // Substance is the typed data model for the substance entity.
 type Substance struct {
-	Meta *map[string]any `json:"meta,omitempty"`
-	Results *[]any `json:"results,omitempty"`
 }
 
 // SubstanceListMatch is the typed request payload for Substance.ListTyped.

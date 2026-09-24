@@ -19,7 +19,6 @@ import type {
   DrugsfdaListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class DrugsfdaEntity extends OpenfdaEntityBase<Drugsfda> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

@@ -19,7 +19,6 @@ import type {
   EnforcementListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class EnforcementEntity extends OpenfdaEntityBase<Enforcement> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

@@ -19,7 +19,6 @@ import type {
   N510kListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class N510kEntity extends OpenfdaEntityBase<N510k> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

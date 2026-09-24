@@ -45,7 +45,7 @@ local classifications, err = client:Classification():list()
 if err then error(err) end
 
 for _, item in ipairs(classifications) do
-  print(item["meta"])
+  print(item)
 end
 ```
 

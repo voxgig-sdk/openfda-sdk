@@ -19,7 +19,6 @@ import type {
   ProblemListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class ProblemEntity extends OpenfdaEntityBase<Problem> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

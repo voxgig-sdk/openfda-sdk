@@ -19,7 +19,6 @@ import type {
   NdcListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class NdcEntity extends OpenfdaEntityBase<Ndc> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

@@ -130,12 +130,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'classification',
@@ -145,38 +147,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/classification.json',
@@ -188,6 +158,47 @@ class OpenfdaConfig
                       'lit' => 'classification.json',
                     ],
                   ],
+                  'parts' => [
+                    'device',
+                    'classification.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -195,14 +206,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'device',
-                    'classification.json',
                   ],
                 ],
               ],
@@ -221,37 +224,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:aspirin',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/event.json',
@@ -263,6 +235,46 @@ class OpenfdaConfig
                       'lit' => 'event.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'event.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:aspirin',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     '$action' => 'event',
                     'exist' => [
@@ -271,14 +283,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'event.json',
                   ],
                 ],
               ],
@@ -292,12 +296,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'drugsfda',
@@ -307,38 +313,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/drugsfda.json',
@@ -350,6 +324,47 @@ class OpenfdaConfig
                       'lit' => 'drugsfda.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'drugsfda.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -357,14 +372,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'drugsfda.json',
                   ],
                 ],
               ],
@@ -378,12 +385,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'enforcement',
@@ -393,38 +402,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/enforcement.json',
@@ -436,6 +413,47 @@ class OpenfdaConfig
                       'lit' => 'enforcement.json',
                     ],
                   ],
+                  'parts' => [
+                    'device',
+                    'enforcement.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -444,48 +462,8 @@ class OpenfdaConfig
                       'skip',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'device',
-                    'enforcement.json',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/enforcement.json',
@@ -497,6 +475,47 @@ class OpenfdaConfig
                       'lit' => 'enforcement.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'enforcement.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -505,48 +524,8 @@ class OpenfdaConfig
                       'skip',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'enforcement.json',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/food/enforcement.json',
@@ -558,6 +537,47 @@ class OpenfdaConfig
                       'lit' => 'enforcement.json',
                     ],
                   ],
+                  'parts' => [
+                    'food',
+                    'enforcement.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -565,14 +585,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'food',
-                    'enforcement.json',
                   ],
                 ],
               ],
@@ -586,12 +598,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'event',
@@ -601,38 +615,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/cosmetic/event.json',
@@ -644,6 +626,47 @@ class OpenfdaConfig
                       'lit' => 'event.json',
                     ],
                   ],
+                  'parts' => [
+                    'cosmetic',
+                    'event.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -652,48 +675,8 @@ class OpenfdaConfig
                       'skip',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'cosmetic',
-                    'event.json',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/event.json',
@@ -705,6 +688,47 @@ class OpenfdaConfig
                       'lit' => 'event.json',
                     ],
                   ],
+                  'parts' => [
+                    'device',
+                    'event.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -713,48 +737,8 @@ class OpenfdaConfig
                       'skip',
                     ],
                   ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'device',
-                    'event.json',
-                  ],
                 ],
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/food/event.json',
@@ -766,6 +750,47 @@ class OpenfdaConfig
                       'lit' => 'event.json',
                     ],
                   ],
+                  'parts' => [
+                    'food',
+                    'event.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -773,14 +798,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'food',
-                    'event.json',
                   ],
                 ],
               ],
@@ -794,12 +811,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'label',
@@ -809,36 +828,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/label.json',
@@ -850,6 +839,45 @@ class OpenfdaConfig
                       'lit' => 'label.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'label.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -857,14 +885,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'label.json',
                   ],
                 ],
               ],
@@ -878,12 +898,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'n510k',
@@ -893,38 +915,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/510k.json',
@@ -936,6 +926,47 @@ class OpenfdaConfig
                       'lit' => '510k.json',
                     ],
                   ],
+                  'parts' => [
+                    'device',
+                    '510k.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -943,14 +974,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'device',
-                    '510k.json',
                   ],
                 ],
               ],
@@ -964,12 +987,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'ndc',
@@ -979,38 +1004,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/ndc.json',
@@ -1022,6 +1015,47 @@ class OpenfdaConfig
                       'lit' => 'ndc.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'ndc.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1029,14 +1063,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'ndc.json',
                   ],
                 ],
               ],
@@ -1050,12 +1076,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'nsde',
@@ -1065,38 +1093,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/other/nsde.json',
@@ -1108,6 +1104,47 @@ class OpenfdaConfig
                       'lit' => 'nsde.json',
                     ],
                   ],
+                  'parts' => [
+                    'other',
+                    'nsde.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1115,14 +1152,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'other',
-                    'nsde.json',
                   ],
                 ],
               ],
@@ -1136,12 +1165,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'pma',
@@ -1151,38 +1182,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/device/pma.json',
@@ -1194,6 +1193,47 @@ class OpenfdaConfig
                       'lit' => 'pma.json',
                     ],
                   ],
+                  'parts' => [
+                    'device',
+                    'pma.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1201,14 +1241,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'device',
-                    'pma.json',
                   ],
                 ],
               ],
@@ -1222,12 +1254,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'problem',
@@ -1237,38 +1271,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/tobacco/problem.json',
@@ -1280,6 +1282,47 @@ class OpenfdaConfig
                       'lit' => 'problem.json',
                     ],
                   ],
+                  'parts' => [
+                    'tobacco',
+                    'problem.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1287,14 +1330,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'tobacco',
-                    'problem.json',
                   ],
                 ],
               ],
@@ -1308,12 +1343,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'shortage',
@@ -1323,38 +1360,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/drug/shortages.json',
@@ -1366,6 +1371,47 @@ class OpenfdaConfig
                       'lit' => 'shortages.json',
                     ],
                   ],
+                  'parts' => [
+                    'drug',
+                    'shortages.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1373,14 +1419,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'drug',
-                    'shortages.json',
                   ],
                 ],
               ],
@@ -1394,12 +1432,14 @@ class OpenfdaConfig
           'fields' => [
             [
               'name' => 'meta',
+              'title' => 'Meta',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'results',
-              'short' => 'Array of result objects matching the query',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
+              'short' => 'Array of result objects matching the query',
             ],
           ],
           'name' => 'substance',
@@ -1409,38 +1449,6 @@ class OpenfdaConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'patient.reaction.reactionmeddrapt.exact',
-                        'kind' => 'query',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'patient.drug.openfda.brand_name:lipitor',
-                        'kind' => 'query',
-                        'name' => 'search',
-                        'orig' => 'search',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'skip',
-                        'orig' => 'skip',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/other/substance.json',
@@ -1452,6 +1460,47 @@ class OpenfdaConfig
                       'lit' => 'substance.json',
                     ],
                   ],
+                  'parts' => [
+                    'other',
+                    'substance.json',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.reaction.reactionmeddrapt.exact',
+                      ],
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'search',
+                        'orig' => 'search',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'patient.drug.openfda.brand_name:lipitor',
+                      ],
+                      [
+                        'name' => 'skip',
+                        'orig' => 'skip',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'count',
@@ -1459,14 +1508,6 @@ class OpenfdaConfig
                       'search',
                       'skip',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'other',
-                    'substance.json',
                   ],
                 ],
               ],

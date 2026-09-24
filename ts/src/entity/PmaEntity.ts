@@ -19,7 +19,6 @@ import type {
   PmaListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class PmaEntity extends OpenfdaEntityBase<Pma> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

@@ -1,0 +1,22 @@
+# BasicShortageFlow
+
+main: kit: flow: BasicShortageFlow:
+{
+  entity: "shortage",
+  kind: "basic",
+  name: "BasicShortageFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "shortage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicShortageFlow"
+}

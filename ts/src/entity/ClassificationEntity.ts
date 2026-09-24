@@ -19,7 +19,6 @@ import type {
   ClassificationListMatch,
 } from '../OpenfdaTypes'
 
-// TODO: needs Entity superclass
 class ClassificationEntity extends OpenfdaEntityBase<Classification> {
 
   constructor(client: OpenfdaSDK, entopts: any) {

@@ -133,12 +133,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "classification",
@@ -148,38 +150,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/classification.json",
@@ -191,6 +161,47 @@ def make_config():
                     "lit": "classification.json",
                   },
                 ],
+                "parts": [
+                  "device",
+                  "classification.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -199,14 +210,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "device",
-                  "classification.json",
-                ],
               },
             ],
           },
@@ -224,37 +227,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:aspirin",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/event.json",
@@ -266,6 +238,46 @@ def make_config():
                     "lit": "event.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "event.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:aspirin",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "$action": "event",
                   "exist": [
@@ -275,14 +287,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "event.json",
-                ],
               },
             ],
           },
@@ -295,12 +299,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "drugsfda",
@@ -310,38 +316,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/drugsfda.json",
@@ -353,6 +327,47 @@ def make_config():
                     "lit": "drugsfda.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "drugsfda.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -361,14 +376,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "drugsfda.json",
-                ],
               },
             ],
           },
@@ -381,12 +388,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "enforcement",
@@ -396,38 +405,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/enforcement.json",
@@ -439,6 +416,47 @@ def make_config():
                     "lit": "enforcement.json",
                   },
                 ],
+                "parts": [
+                  "device",
+                  "enforcement.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -447,48 +465,8 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "device",
-                  "enforcement.json",
-                ],
               },
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/enforcement.json",
@@ -500,6 +478,47 @@ def make_config():
                     "lit": "enforcement.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "enforcement.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -508,48 +527,8 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "enforcement.json",
-                ],
               },
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/food/enforcement.json",
@@ -561,6 +540,47 @@ def make_config():
                     "lit": "enforcement.json",
                   },
                 ],
+                "parts": [
+                  "food",
+                  "enforcement.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -569,14 +589,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "food",
-                  "enforcement.json",
-                ],
               },
             ],
           },
@@ -589,12 +601,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "event",
@@ -604,38 +618,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/cosmetic/event.json",
@@ -647,6 +629,47 @@ def make_config():
                     "lit": "event.json",
                   },
                 ],
+                "parts": [
+                  "cosmetic",
+                  "event.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -655,48 +678,8 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "cosmetic",
-                  "event.json",
-                ],
               },
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/event.json",
@@ -708,6 +691,47 @@ def make_config():
                     "lit": "event.json",
                   },
                 ],
+                "parts": [
+                  "device",
+                  "event.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -716,48 +740,8 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "device",
-                  "event.json",
-                ],
               },
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/food/event.json",
@@ -769,6 +753,47 @@ def make_config():
                     "lit": "event.json",
                   },
                 ],
+                "parts": [
+                  "food",
+                  "event.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -777,14 +802,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "food",
-                  "event.json",
-                ],
               },
             ],
           },
@@ -797,12 +814,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "label",
@@ -812,36 +831,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/label.json",
@@ -853,6 +842,45 @@ def make_config():
                     "lit": "label.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "label.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -861,14 +889,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "label.json",
-                ],
               },
             ],
           },
@@ -881,12 +901,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "n510k",
@@ -896,38 +918,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/510k.json",
@@ -939,6 +929,47 @@ def make_config():
                     "lit": "510k.json",
                   },
                 ],
+                "parts": [
+                  "device",
+                  "510k.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -947,14 +978,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "device",
-                  "510k.json",
-                ],
               },
             ],
           },
@@ -967,12 +990,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "ndc",
@@ -982,38 +1007,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/ndc.json",
@@ -1025,6 +1018,47 @@ def make_config():
                     "lit": "ndc.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "ndc.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1033,14 +1067,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "ndc.json",
-                ],
               },
             ],
           },
@@ -1053,12 +1079,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "nsde",
@@ -1068,38 +1096,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/other/nsde.json",
@@ -1111,6 +1107,47 @@ def make_config():
                     "lit": "nsde.json",
                   },
                 ],
+                "parts": [
+                  "other",
+                  "nsde.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1119,14 +1156,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "other",
-                  "nsde.json",
-                ],
               },
             ],
           },
@@ -1139,12 +1168,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "pma",
@@ -1154,38 +1185,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/device/pma.json",
@@ -1197,6 +1196,47 @@ def make_config():
                     "lit": "pma.json",
                   },
                 ],
+                "parts": [
+                  "device",
+                  "pma.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1205,14 +1245,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "device",
-                  "pma.json",
-                ],
               },
             ],
           },
@@ -1225,12 +1257,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "problem",
@@ -1240,38 +1274,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/tobacco/problem.json",
@@ -1283,6 +1285,47 @@ def make_config():
                     "lit": "problem.json",
                   },
                 ],
+                "parts": [
+                  "tobacco",
+                  "problem.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1291,14 +1334,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "tobacco",
-                  "problem.json",
-                ],
               },
             ],
           },
@@ -1311,12 +1346,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "shortage",
@@ -1326,38 +1363,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/drug/shortages.json",
@@ -1369,6 +1374,47 @@ def make_config():
                     "lit": "shortages.json",
                   },
                 ],
+                "parts": [
+                  "drug",
+                  "shortages.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1377,14 +1423,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "drug",
-                  "shortages.json",
-                ],
               },
             ],
           },
@@ -1397,12 +1435,14 @@ def make_config():
         "fields": [
           {
             "name": "meta",
+            "title": "Meta",
             "type": "`$OBJECT`",
           },
           {
             "name": "results",
-            "short": "Array of result objects matching the query",
+            "title": "Results",
             "type": "`$ARRAY`",
+            "short": "Array of result objects matching the query",
           },
         ],
         "name": "substance",
@@ -1412,38 +1452,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "patient.reaction.reactionmeddrapt.exact",
-                      "kind": "query",
-                      "name": "count",
-                      "orig": "count",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 1,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "patient.drug.openfda.brand_name:lipitor",
-                      "kind": "query",
-                      "name": "search",
-                      "orig": "search",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 0,
-                      "kind": "query",
-                      "name": "skip",
-                      "orig": "skip",
-                      "type": "`$INTEGER`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/other/substance.json",
@@ -1455,6 +1463,47 @@ def make_config():
                     "lit": "substance.json",
                   },
                 ],
+                "parts": [
+                  "other",
+                  "substance.json",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "count",
+                      "orig": "count",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.reaction.reactionmeddrapt.exact",
+                    },
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 1,
+                    },
+                    {
+                      "name": "search",
+                      "orig": "search",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "patient.drug.openfda.brand_name:lipitor",
+                    },
+                    {
+                      "name": "skip",
+                      "orig": "skip",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 0,
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "count",
@@ -1463,14 +1512,6 @@ def make_config():
                     "skip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "other",
-                  "substance.json",
-                ],
               },
             ],
           },

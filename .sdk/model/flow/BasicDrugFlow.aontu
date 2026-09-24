@@ -1,0 +1,22 @@
+# BasicDrugFlow
+
+main: kit: flow: BasicDrugFlow:
+{
+  entity: "drug",
+  kind: "basic",
+  name: "BasicDrugFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "drug_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDrugFlow"
+}

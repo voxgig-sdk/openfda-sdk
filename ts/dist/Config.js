@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -131,12 +124,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "classification",
@@ -146,38 +141,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/device/classification.json",
@@ -189,6 +152,47 @@ class Config {
                                     "lit": "classification.json"
                                 }
                             ],
+                            "parts": [
+                                "device",
+                                "classification.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -196,15 +200,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "device",
-                                "classification.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -222,37 +218,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:aspirin",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/event.json",
@@ -264,6 +229,46 @@ class Config {
                                     "lit": "event.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "event.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:aspirin"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "$action": "event",
                                 "exist": [
@@ -272,15 +277,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "event.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -293,12 +290,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "drugsfda",
@@ -308,38 +307,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/drugsfda.json",
@@ -351,6 +318,47 @@ class Config {
                                     "lit": "drugsfda.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "drugsfda.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -358,15 +366,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "drugsfda.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -379,12 +379,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "enforcement",
@@ -394,38 +396,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/device/enforcement.json",
@@ -437,6 +407,47 @@ class Config {
                                     "lit": "enforcement.json"
                                 }
                             ],
+                            "parts": [
+                                "device",
+                                "enforcement.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -444,49 +455,9 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "device",
-                                "enforcement.json"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/enforcement.json",
@@ -498,6 +469,47 @@ class Config {
                                     "lit": "enforcement.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "enforcement.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -505,49 +517,9 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "enforcement.json"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/food/enforcement.json",
@@ -559,6 +531,47 @@ class Config {
                                     "lit": "enforcement.json"
                                 }
                             ],
+                            "parts": [
+                                "food",
+                                "enforcement.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -566,15 +579,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "food",
-                                "enforcement.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -587,12 +592,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "event",
@@ -602,38 +609,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/cosmetic/event.json",
@@ -645,6 +620,47 @@ class Config {
                                     "lit": "event.json"
                                 }
                             ],
+                            "parts": [
+                                "cosmetic",
+                                "event.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -652,49 +668,9 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "cosmetic",
-                                "event.json"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/device/event.json",
@@ -706,6 +682,47 @@ class Config {
                                     "lit": "event.json"
                                 }
                             ],
+                            "parts": [
+                                "device",
+                                "event.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -713,49 +730,9 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "device",
-                                "event.json"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/food/event.json",
@@ -767,6 +744,47 @@ class Config {
                                     "lit": "event.json"
                                 }
                             ],
+                            "parts": [
+                                "food",
+                                "event.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -774,15 +792,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "food",
-                                "event.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -795,12 +805,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "label",
@@ -810,36 +822,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/label.json",
@@ -851,6 +833,45 @@ class Config {
                                     "lit": "label.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "label.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -858,15 +879,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "label.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -879,12 +892,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "n510k",
@@ -894,38 +909,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/device/510k.json",
@@ -937,6 +920,47 @@ class Config {
                                     "lit": "510k.json"
                                 }
                             ],
+                            "parts": [
+                                "device",
+                                "510k.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -944,15 +968,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "device",
-                                "510k.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -965,12 +981,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "ndc",
@@ -980,38 +998,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/ndc.json",
@@ -1023,6 +1009,47 @@ class Config {
                                     "lit": "ndc.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "ndc.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1030,15 +1057,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "ndc.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1051,12 +1070,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "nsde",
@@ -1066,38 +1087,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/other/nsde.json",
@@ -1109,6 +1098,47 @@ class Config {
                                     "lit": "nsde.json"
                                 }
                             ],
+                            "parts": [
+                                "other",
+                                "nsde.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1116,15 +1146,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "other",
-                                "nsde.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1137,12 +1159,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "pma",
@@ -1152,38 +1176,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/device/pma.json",
@@ -1195,6 +1187,47 @@ class Config {
                                     "lit": "pma.json"
                                 }
                             ],
+                            "parts": [
+                                "device",
+                                "pma.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1202,15 +1235,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "device",
-                                "pma.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1223,12 +1248,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "problem",
@@ -1238,38 +1265,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/tobacco/problem.json",
@@ -1281,6 +1276,47 @@ class Config {
                                     "lit": "problem.json"
                                 }
                             ],
+                            "parts": [
+                                "tobacco",
+                                "problem.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1288,15 +1324,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "tobacco",
-                                "problem.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1309,12 +1337,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "shortage",
@@ -1324,38 +1354,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/drug/shortages.json",
@@ -1367,6 +1365,47 @@ class Config {
                                     "lit": "shortages.json"
                                 }
                             ],
+                            "parts": [
+                                "drug",
+                                "shortages.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1374,15 +1413,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "drug",
-                                "shortages.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -1395,12 +1426,14 @@ class Config {
             "fields": [
                 {
                     "name": "meta",
+                    "title": "Meta",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "results",
-                    "short": "Array of result objects matching the query",
-                    "type": "`$ARRAY`"
+                    "title": "Results",
+                    "type": "`$ARRAY`",
+                    "short": "Array of result objects matching the query"
                 }
             ],
             "name": "substance",
@@ -1410,38 +1443,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "patient.reaction.reactionmeddrapt.exact",
-                                        "kind": "query",
-                                        "name": "count",
-                                        "orig": "count",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 1,
-                                        "kind": "query",
-                                        "name": "limit",
-                                        "orig": "limit",
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "example": "patient.drug.openfda.brand_name:lipitor",
-                                        "kind": "query",
-                                        "name": "search",
-                                        "orig": "search",
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "example": 0,
-                                        "kind": "query",
-                                        "name": "skip",
-                                        "orig": "skip",
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/other/substance.json",
@@ -1453,6 +1454,47 @@ class Config {
                                     "lit": "substance.json"
                                 }
                             ],
+                            "parts": [
+                                "other",
+                                "substance.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "count",
+                                        "orig": "count",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.reaction.reactionmeddrapt.exact"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "orig": "limit",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 1
+                                    },
+                                    {
+                                        "name": "search",
+                                        "orig": "search",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "example": "patient.drug.openfda.brand_name:lipitor"
+                                    },
+                                    {
+                                        "name": "skip",
+                                        "orig": "skip",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "example": 0
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "count",
@@ -1460,15 +1502,7 @@ class Config {
                                     "search",
                                     "skip"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "other",
-                                "substance.json"
-                            ]
+                            }
                         }
                     ]
                 }
