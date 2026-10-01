@@ -85,7 +85,7 @@ main: kit: entity: label: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

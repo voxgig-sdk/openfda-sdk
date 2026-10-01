@@ -87,7 +87,7 @@ main: kit: entity: n510k: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

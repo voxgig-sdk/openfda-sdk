@@ -87,7 +87,7 @@ main: kit: entity: pma: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

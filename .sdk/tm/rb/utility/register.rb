@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 OpenfdaUtility.registrar = ->(u) {
   u.clean = OpenfdaUtilities::Clean
+  u.clean_add = OpenfdaUtilities::CleanAdd
+  u.clean_explain = OpenfdaUtilities::CleanExplain
   u.done = OpenfdaUtilities::Done
   u.make_error = OpenfdaUtilities::MakeError
   u.feature_add = OpenfdaUtilities::FeatureAdd

@@ -168,7 +168,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -245,7 +245,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -334,7 +334,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -423,7 +423,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -485,7 +485,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -547,7 +547,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -636,7 +636,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -698,7 +698,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -760,7 +760,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -849,7 +849,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -936,7 +936,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1025,7 +1025,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1114,7 +1114,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1203,7 +1203,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1292,7 +1292,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1381,7 +1381,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [
@@ -1470,7 +1470,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.results`",
                 },
                 "args": {
                   "query": [

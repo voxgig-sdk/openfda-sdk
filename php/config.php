@@ -165,7 +165,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -242,7 +242,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -331,7 +331,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -420,7 +420,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -482,7 +482,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -544,7 +544,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -633,7 +633,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -695,7 +695,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -757,7 +757,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -846,7 +846,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -933,7 +933,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1022,7 +1022,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1111,7 +1111,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1200,7 +1200,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1289,7 +1289,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1378,7 +1378,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [
@@ -1467,7 +1467,7 @@ class OpenfdaConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'args' => [
                     'query' => [

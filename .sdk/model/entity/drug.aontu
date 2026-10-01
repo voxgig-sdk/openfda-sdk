@@ -71,7 +71,7 @@ main: kit: entity: drug: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

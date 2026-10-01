@@ -87,7 +87,7 @@ main: kit: entity: enforcement: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
         {
@@ -152,7 +152,7 @@ main: kit: entity: enforcement: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
         {
@@ -217,7 +217,7 @@ main: kit: entity: enforcement: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

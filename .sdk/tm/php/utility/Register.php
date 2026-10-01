@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 OpenfdaUtility::setRegistrar(function (OpenfdaUtility $u): void {
     $u->clean = [OpenfdaClean::class, 'call'];
+    $u->clean_add = [OpenfdaClean::class, 'add'];
+    $u->clean_explain = [OpenfdaDone::class, 'clean_explain'];
     $u->done = [OpenfdaDone::class, 'call'];
     $u->make_error = [OpenfdaMakeError::class, 'call'];
     $u->feature_add = [OpenfdaFeatureAdd::class, 'call'];

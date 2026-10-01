@@ -87,7 +87,7 @@ main: kit: entity: substance: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

@@ -87,7 +87,7 @@ main: kit: entity: drugsfda: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]
