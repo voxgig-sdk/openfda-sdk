@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type OpenfdaEntity = core.OpenfdaEntity
+type OpenfdaEntityBase = core.OpenfdaEntityBase
+
+// Deprecated: use OpenfdaEntityBase.
+type OpenfdaEntity = core.OpenfdaEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,43 +46,43 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewClassificationEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewClassificationEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewClassificationEntity(client, entopts)
 	}
-	core.NewDrugEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewDrugEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewDrugEntity(client, entopts)
 	}
-	core.NewDrugsfdaEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewDrugsfdaEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewDrugsfdaEntity(client, entopts)
 	}
-	core.NewEnforcementEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewEnforcementEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewEnforcementEntity(client, entopts)
 	}
-	core.NewEventEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewEventEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewEventEntity(client, entopts)
 	}
-	core.NewLabelEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewLabelEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewLabelEntity(client, entopts)
 	}
-	core.NewN510kEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewN510kEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewN510kEntity(client, entopts)
 	}
-	core.NewNdcEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewNdcEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewNdcEntity(client, entopts)
 	}
-	core.NewNsdeEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewNsdeEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewNsdeEntity(client, entopts)
 	}
-	core.NewPmaEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewPmaEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewPmaEntity(client, entopts)
 	}
-	core.NewProblemEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewProblemEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewProblemEntity(client, entopts)
 	}
-	core.NewShortageEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewShortageEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewShortageEntity(client, entopts)
 	}
-	core.NewSubstanceEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntity {
+	core.NewSubstanceEntityFunc = func(client *core.OpenfdaSDK, entopts map[string]any) core.OpenfdaEntityBase {
 		return entity.NewSubstanceEntity(client, entopts)
 	}
 }

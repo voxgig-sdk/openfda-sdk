@@ -17,36 +17,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "drug",
@@ -58,35 +81,58 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "v1",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:aspirin",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
+                "terms": "x",
                 "license": "x",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "drugsfda",
@@ -97,36 +143,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "label",
@@ -137,36 +206,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "v1",
-            "limit": "v1",
+            "limit": 1,
             "search": "v1",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "n510k",
@@ -177,36 +269,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "ndc",
@@ -217,36 +332,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "nsde",
@@ -257,36 +395,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "pma",
@@ -297,36 +458,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "problem",
@@ -337,36 +521,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "shortage",
@@ -377,36 +584,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     },
     {
         "entity": "substance",
@@ -417,36 +647,59 @@ const PLAN = [
         "args": [],
         "select": {
             "count": "patient.reaction.reactionmeddrapt.exact",
-            "limit": "v1",
+            "limit": 1,
             "search": "patient.drug.openfda.brand_name:lipitor",
-            "skip": "v1"
+            "skip": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "search",
             "count",
             "limit",
             "skip"
         ],
+        "queryArgs": [
+            {
+                "name": "count",
+                "wire": "count"
+            },
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "search",
+                "wire": "search"
+            },
+            {
+                "name": "skip",
+                "wire": "skip"
+            }
+        ],
         "auth": [],
         "status": 200,
         "sample": {
             "meta": {
                 "disclaimer": "x",
-                "last_updated": "2026-01-01",
+                "terms": "x",
                 "license": "x",
+                "last_updated": "2026-01-01",
                 "results": {
-                    "limit": 1,
                     "skip": 1,
+                    "limit": 1,
                     "total": 1
-                },
-                "terms": "x"
+                }
             },
             "results": [
                 {}
             ]
         },
-        "idField": "id"
+        "idField": "id",
+        "ownQuery": "api_key"
     }
 ];
 (0, node_test_1.describe)('definition', () => {

@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/openfda-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/openfda-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/openfda-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -30,14 +30,15 @@ go mod edit -replace github.com/voxgig-sdk/openfda-sdk/go=../openfda-sdk/go
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key as the `api_key` query parameter.
 
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -53,13 +54,13 @@ func main() {
         "apikey": os.Getenv("OPENFDA_APIKEY"),
     })
 
-    // List classification records — the value is the array of records itself.
+    // List classification records — the value is a []any of entities, one per record.
     classifications, err := client.Classification(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range classifications.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 }
 ```
@@ -140,13 +141,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-event, err := client.Event(nil).List(
+events, err := client.Event(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(event) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range events.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -225,27 +229,27 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `Classification` | `(data map[string]any) OpenfdaEntity` | Create a Classification entity instance. |
-| `Drug` | `(data map[string]any) OpenfdaEntity` | Create a Drug entity instance. |
-| `Drugsfda` | `(data map[string]any) OpenfdaEntity` | Create a Drugsfda entity instance. |
-| `Enforcement` | `(data map[string]any) OpenfdaEntity` | Create an Enforcement entity instance. |
-| `Event` | `(data map[string]any) OpenfdaEntity` | Create an Event entity instance. |
-| `Label` | `(data map[string]any) OpenfdaEntity` | Create a Label entity instance. |
-| `N510k` | `(data map[string]any) OpenfdaEntity` | Create a N510k entity instance. |
-| `Ndc` | `(data map[string]any) OpenfdaEntity` | Create a Ndc entity instance. |
-| `Nsde` | `(data map[string]any) OpenfdaEntity` | Create a Nsde entity instance. |
-| `Pma` | `(data map[string]any) OpenfdaEntity` | Create a Pma entity instance. |
-| `Problem` | `(data map[string]any) OpenfdaEntity` | Create a Problem entity instance. |
-| `Shortage` | `(data map[string]any) OpenfdaEntity` | Create a Shortage entity instance. |
-| `Substance` | `(data map[string]any) OpenfdaEntity` | Create a Substance entity instance. |
+| `Classification` | `(data map[string]any) OpenfdaEntityBase` | Create a Classification entity instance. |
+| `Drug` | `(data map[string]any) OpenfdaEntityBase` | Create a Drug entity instance. |
+| `Drugsfda` | `(data map[string]any) OpenfdaEntityBase` | Create a Drugsfda entity instance. |
+| `Enforcement` | `(data map[string]any) OpenfdaEntityBase` | Create an Enforcement entity instance. |
+| `Event` | `(data map[string]any) OpenfdaEntityBase` | Create an Event entity instance. |
+| `Label` | `(data map[string]any) OpenfdaEntityBase` | Create a Label entity instance. |
+| `N510k` | `(data map[string]any) OpenfdaEntityBase` | Create a N510k entity instance. |
+| `Ndc` | `(data map[string]any) OpenfdaEntityBase` | Create a Ndc entity instance. |
+| `Nsde` | `(data map[string]any) OpenfdaEntityBase` | Create a Nsde entity instance. |
+| `Pma` | `(data map[string]any) OpenfdaEntityBase` | Create a Pma entity instance. |
+| `Problem` | `(data map[string]any) OpenfdaEntityBase` | Create a Problem entity instance. |
+| `Shortage` | `(data map[string]any) OpenfdaEntityBase` | Create a Shortage entity instance. |
+| `Substance` | `(data map[string]any) OpenfdaEntityBase` | Create a Substance entity instance. |
 
-### Entity interface (OpenfdaEntity)
+### Entity interface (OpenfdaEntityBase)
 
-All entities implement the `OpenfdaEntity` interface.
+All entities implement the `OpenfdaEntityBase` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -253,20 +257,20 @@ All entities implement the `OpenfdaEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `List` | a `[]any` of entity records |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    classification, err := client.Classification(nil).List(map[string]any{/* fields */}, nil)
+    classification, err := client.Classification(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // classification is the returned record
+    // classification is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -443,7 +447,10 @@ classifications, err := client.Classification(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(classifications) // the array of records
+// A []any of entities, one per record.
+for _, item := range classifications.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -464,7 +471,10 @@ drugs, err := client.Drug(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(drugs) // the array of records
+// A []any of entities, one per record.
+for _, item := range drugs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -492,7 +502,10 @@ drugsfdas, err := client.Drugsfda(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(drugsfdas) // the array of records
+// A []any of entities, one per record.
+for _, item := range drugsfdas.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -520,7 +533,10 @@ enforcements, err := client.Enforcement(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(enforcements) // the array of records
+// A []any of entities, one per record.
+for _, item := range enforcements.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -548,7 +564,10 @@ events, err := client.Event(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(events) // the array of records
+// A []any of entities, one per record.
+for _, item := range events.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -576,7 +595,10 @@ labels, err := client.Label(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(labels) // the array of records
+// A []any of entities, one per record.
+for _, item := range labels.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -604,7 +626,10 @@ n510ks, err := client.N510k(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(n510ks) // the array of records
+// A []any of entities, one per record.
+for _, item := range n510ks.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -632,7 +657,10 @@ ndcs, err := client.Ndc(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(ndcs) // the array of records
+// A []any of entities, one per record.
+for _, item := range ndcs.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -660,7 +688,10 @@ nsdes, err := client.Nsde(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(nsdes) // the array of records
+// A []any of entities, one per record.
+for _, item := range nsdes.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -688,7 +719,10 @@ pmas, err := client.Pma(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(pmas) // the array of records
+// A []any of entities, one per record.
+for _, item := range pmas.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -716,7 +750,10 @@ problems, err := client.Problem(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(problems) // the array of records
+// A []any of entities, one per record.
+for _, item := range problems.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -744,7 +781,10 @@ shortages, err := client.Shortage(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(shortages) // the array of records
+// A []any of entities, one per record.
+for _, item := range shortages.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -772,7 +812,10 @@ substances, err := client.Substance(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(substances) // the array of records
+// A []any of entities, one per record.
+for _, item := range substances.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -909,7 +952,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

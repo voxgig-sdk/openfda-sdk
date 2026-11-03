@@ -69,13 +69,9 @@ main: kit: entity: n510k: {
           }
           m: "GET"
           o: "/device/510k.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -69,13 +69,9 @@ main: kit: entity: nsde: {
           }
           m: "GET"
           o: "/other/nsde.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -69,13 +69,9 @@ main: kit: entity: classification: {
           }
           m: "GET"
           o: "/device/classification.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

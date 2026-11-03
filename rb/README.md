@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/openfda-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/openfda-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -29,7 +29,7 @@ gem "voxgig-sdk-openfda-sdk", path: "./openfda-sdk/rb"
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key as the `api_key` query parameter.
 
 ### 1. Create a client
 
@@ -45,10 +45,11 @@ client = OpenfdaSDK.new({
 
 ```ruby
 begin
-  # list returns an Array of Classification records — iterate directly.
+  # list returns an Array of Classification entities, one per record; data_get reads the record.
   classifications = client.Classification.list
   classifications.each do |item|
-    puts "#{item["meta"]}"
+    record = item.data_get
+    puts "#{record["meta"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -130,10 +131,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = OpenfdaSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-event = client.Event.list()
-puts event
+# list returns an Array of Event entities, one per mock record (raises on
+# error); data_get reads each record.
+events = client.Event.list()
+events.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -231,7 +232,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -241,9 +242,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `OpenfdaError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`OpenfdaError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -424,8 +426,9 @@ Create an instance: `classification = client.Classification`
 #### Example: List
 
 ```ruby
-# list returns an Array of Classification records (raises on error).
+# list returns an Array of Classification entities, one per record (raises on error).
 classifications = client.Classification.list
+classifications.each { |item| puts item.data_get }
 ```
 
 
@@ -442,8 +445,9 @@ Create an instance: `drug = client.Drug`
 #### Example: List
 
 ```ruby
-# list returns an Array of Drug records (raises on error).
+# list returns an Array of Drug entities, one per record (raises on error).
 drugs = client.Drug.list
+drugs.each { |item| puts item.data_get }
 ```
 
 
@@ -467,8 +471,9 @@ Create an instance: `drugsfda = client.Drugsfda`
 #### Example: List
 
 ```ruby
-# list returns an Array of Drugsfda records (raises on error).
+# list returns an Array of Drugsfda entities, one per record (raises on error).
 drugsfdas = client.Drugsfda.list
+drugsfdas.each { |item| puts item.data_get }
 ```
 
 
@@ -492,8 +497,9 @@ Create an instance: `enforcement = client.Enforcement`
 #### Example: List
 
 ```ruby
-# list returns an Array of Enforcement records (raises on error).
+# list returns an Array of Enforcement entities, one per record (raises on error).
 enforcements = client.Enforcement.list
+enforcements.each { |item| puts item.data_get }
 ```
 
 
@@ -517,8 +523,9 @@ Create an instance: `event = client.Event`
 #### Example: List
 
 ```ruby
-# list returns an Array of Event records (raises on error).
+# list returns an Array of Event entities, one per record (raises on error).
 events = client.Event.list
+events.each { |item| puts item.data_get }
 ```
 
 
@@ -542,8 +549,9 @@ Create an instance: `label = client.Label`
 #### Example: List
 
 ```ruby
-# list returns an Array of Label records (raises on error).
+# list returns an Array of Label entities, one per record (raises on error).
 labels = client.Label.list
+labels.each { |item| puts item.data_get }
 ```
 
 
@@ -567,8 +575,9 @@ Create an instance: `n510k = client.N510k`
 #### Example: List
 
 ```ruby
-# list returns an Array of N510k records (raises on error).
+# list returns an Array of N510k entities, one per record (raises on error).
 n510ks = client.N510k.list
+n510ks.each { |item| puts item.data_get }
 ```
 
 
@@ -592,8 +601,9 @@ Create an instance: `ndc = client.Ndc`
 #### Example: List
 
 ```ruby
-# list returns an Array of Ndc records (raises on error).
+# list returns an Array of Ndc entities, one per record (raises on error).
 ndcs = client.Ndc.list
+ndcs.each { |item| puts item.data_get }
 ```
 
 
@@ -617,8 +627,9 @@ Create an instance: `nsde = client.Nsde`
 #### Example: List
 
 ```ruby
-# list returns an Array of Nsde records (raises on error).
+# list returns an Array of Nsde entities, one per record (raises on error).
 nsdes = client.Nsde.list
+nsdes.each { |item| puts item.data_get }
 ```
 
 
@@ -642,8 +653,9 @@ Create an instance: `pma = client.Pma`
 #### Example: List
 
 ```ruby
-# list returns an Array of Pma records (raises on error).
+# list returns an Array of Pma entities, one per record (raises on error).
 pmas = client.Pma.list
+pmas.each { |item| puts item.data_get }
 ```
 
 
@@ -667,8 +679,9 @@ Create an instance: `problem = client.Problem`
 #### Example: List
 
 ```ruby
-# list returns an Array of Problem records (raises on error).
+# list returns an Array of Problem entities, one per record (raises on error).
 problems = client.Problem.list
+problems.each { |item| puts item.data_get }
 ```
 
 
@@ -692,8 +705,9 @@ Create an instance: `shortage = client.Shortage`
 #### Example: List
 
 ```ruby
-# list returns an Array of Shortage records (raises on error).
+# list returns an Array of Shortage entities, one per record (raises on error).
 shortages = client.Shortage.list
+shortages.each { |item| puts item.data_get }
 ```
 
 
@@ -717,8 +731,9 @@ Create an instance: `substance = client.Substance`
 #### Example: List
 
 ```ruby
-# list returns an Array of Substance records (raises on error).
+# list returns an Array of Substance entities, one per record (raises on error).
 substances = client.Substance.list
+substances.each { |item| puts item.data_get }
 ```
 
 ## Features

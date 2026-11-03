@@ -79,6 +79,7 @@ module OpenfdaConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -185,13 +186,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -263,12 +261,10 @@ module OpenfdaConfig
                   },
                   "select" => {
                     "$action" => "event",
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -351,13 +347,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -440,13 +433,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
                 {
@@ -502,13 +492,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
                 {
@@ -564,13 +551,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -653,13 +637,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
                 {
@@ -715,13 +696,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
                 {
@@ -777,13 +755,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -864,13 +839,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -953,13 +925,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1042,13 +1011,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1131,13 +1097,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1220,13 +1183,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1309,13 +1269,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1398,13 +1355,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -1487,13 +1441,10 @@ module OpenfdaConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

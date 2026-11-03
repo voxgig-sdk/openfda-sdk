@@ -3,5 +3,14 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Array of result objects matching the query",
+      "Optional API key for higher rate limits. Without a key, requests are limited to 240 per minute and 1000 per day. With a key, limits increase to 240 per minute and 120000 per day.",
+      "Production server",
+      "Successful response",
+      "openFDA provides access to a variety of public data related to FDA-regulated products. It offers APIs for searching FDA data for drugs, devices, food, and other relevant categories crucial for healthcare decisions and research."
+    ]
+  }
 }

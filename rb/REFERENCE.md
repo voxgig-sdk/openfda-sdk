@@ -149,10 +149,11 @@ classification = client.Classification
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Classification.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -195,10 +196,11 @@ drug = client.Drug
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Drug.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -248,10 +250,11 @@ drugsfda = client.Drugsfda
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Drugsfda.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -301,10 +304,11 @@ enforcement = client.Enforcement
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Enforcement.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -354,10 +358,11 @@ event = client.Event
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Event.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -407,10 +412,11 @@ label = client.Label
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Label.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -460,10 +466,11 @@ n510k = client.N510k
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.N510k.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -513,10 +520,11 @@ ndc = client.Ndc
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Ndc.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -566,10 +574,11 @@ nsde = client.Nsde
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Nsde.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -619,10 +628,11 @@ pma = client.Pma
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Pma.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -672,10 +682,11 @@ problem = client.Problem
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Problem.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -725,10 +736,11 @@ shortage = client.Shortage
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Shortage.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -778,10 +790,11 @@ substance = client.Substance
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Substance.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -971,6 +984,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

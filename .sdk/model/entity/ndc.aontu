@@ -69,13 +69,9 @@ main: kit: entity: ndc: {
           }
           m: "GET"
           o: "/drug/ndc.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

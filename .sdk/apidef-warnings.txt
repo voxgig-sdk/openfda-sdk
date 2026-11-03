@@ -1,0 +1,26 @@
+{
+  point: "warning"
+  note: "Points GET /device/enforcement.json, GET /drug/enforcement.json and GET /food/enforcement.json on entity=enforcement op=list have the same selector (exist: none), so only GET /device/enforcement.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "enforcement"
+  op: "list"
+  points: [
+    "GET /device/enforcement.json"
+    "GET /drug/enforcement.json"
+    "GET /food/enforcement.json"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /cosmetic/event.json, GET /device/event.json and GET /food/event.json on entity=event op=list have the same selector (exist: none), so only GET /cosmetic/event.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "event"
+  op: "list"
+  points: [
+    "GET /cosmetic/event.json"
+    "GET /device/event.json"
+    "GET /food/event.json"
+  ]
+
+}

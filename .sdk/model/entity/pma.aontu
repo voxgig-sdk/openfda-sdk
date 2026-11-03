@@ -69,13 +69,9 @@ main: kit: entity: pma: {
           }
           m: "GET"
           o: "/device/pma.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -54,12 +54,10 @@ main: kit: entity: drug: {
           o: "/drug/event.json"
           q: {
             "$action": "event"
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

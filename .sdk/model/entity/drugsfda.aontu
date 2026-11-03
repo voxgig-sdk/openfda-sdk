@@ -69,13 +69,9 @@ main: kit: entity: drugsfda: {
           }
           m: "GET"
           o: "/drug/drugsfda.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

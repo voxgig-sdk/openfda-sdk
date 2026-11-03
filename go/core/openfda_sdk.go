@@ -146,6 +146,14 @@ func (sdk *OpenfdaSDK) Prepare(fetchargs map[string]any) (map[string]any, error)
 	if method == "" {
 		method = "GET"
 	}
+	method = strings.ToUpper(method)
+
+	allowMethodVal := vs.GetPath(options, []any{"allow", "method"})
+	if !Allowed(allowMethodVal, method) {
+		allowMethod, _ := allowMethodVal.(string)
+		return nil, ctx.MakeError("spec_method_allow",
+			"Method \""+method+"\" not allowed by SDK option allow.method value: \""+allowMethod+"\"")
+	}
 
 	params := ToMapAny(vs.GetProp(fetchargs, "params"))
 	if params == nil {
@@ -205,8 +213,7 @@ func (sdk *OpenfdaSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 
 // Is this raw-access op permitted by the SDK's allow.op option?
 func (sdk *OpenfdaSDK) opAllowed(op string) bool {
-	allowOp, _ := vs.GetPath(sdk.options, []any{"allow", "op"}).(string)
-	return strings.Contains(allowOp, op)
+	return Allowed(vs.GetPath(sdk.options, []any{"allow", "op"}), op)
 }
 
 func (sdk *OpenfdaSDK) opDenied(op string) map[string]any {
@@ -278,20 +285,34 @@ func (sdk *OpenfdaSDK) rawRequest(fetchargs map[string]any) (map[string]any, err
 		noBody := status == 204 || status == 304 || contentLength == "0"
 
 		var jsonData any
+		var bodyErr error
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
 					jsonData = f()
 				}
 			}
+			if unreadable, _ := vs.GetProp(fm, "unreadable").(bool); unreadable {
+				var failed error
+				if status < 200 || status >= 300 {
+					failed = ctx.MakeError("request_status",
+						fmt.Sprintf("request: %d: %v", status, vs.GetProp(fm, "statusText")))
+				}
+				bodyErr = UnreadableBody(ctx, status, headers, vs.GetProp(fm, "body"),
+					fetchdef["headers"], failed)
+			}
 		}
 
-		return map[string]any{
-			"ok":      status >= 200 && status < 300,
+		out := map[string]any{
+			"ok":      bodyErr == nil && status >= 200 && status < 300,
 			"status":  status,
 			"headers": headers,
 			"data":    jsonData,
-		}, nil
+		}
+		if bodyErr != nil {
+			out["err"] = sdk.cleanErr(ctx, bodyErr)
+		}
+		return out, nil
 	}
 
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
@@ -354,7 +375,7 @@ func (sdk *OpenfdaSDK) Graphql(
 // Classification returns a Classification entity bound to this client.
 // Idiomatic usage: client.Classification(nil).List(nil, nil) or
 // client.Classification(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Classification(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Classification(data map[string]any) OpenfdaEntityBase {
 	return NewClassificationEntityFunc(sdk, data)
 }
 
@@ -362,7 +383,7 @@ func (sdk *OpenfdaSDK) Classification(data map[string]any) OpenfdaEntity {
 // Drug returns a Drug entity bound to this client.
 // Idiomatic usage: client.Drug(nil).List(nil, nil) or
 // client.Drug(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Drug(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Drug(data map[string]any) OpenfdaEntityBase {
 	return NewDrugEntityFunc(sdk, data)
 }
 
@@ -370,7 +391,7 @@ func (sdk *OpenfdaSDK) Drug(data map[string]any) OpenfdaEntity {
 // Drugsfda returns a Drugsfda entity bound to this client.
 // Idiomatic usage: client.Drugsfda(nil).List(nil, nil) or
 // client.Drugsfda(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Drugsfda(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Drugsfda(data map[string]any) OpenfdaEntityBase {
 	return NewDrugsfdaEntityFunc(sdk, data)
 }
 
@@ -378,7 +399,7 @@ func (sdk *OpenfdaSDK) Drugsfda(data map[string]any) OpenfdaEntity {
 // Enforcement returns a Enforcement entity bound to this client.
 // Idiomatic usage: client.Enforcement(nil).List(nil, nil) or
 // client.Enforcement(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Enforcement(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Enforcement(data map[string]any) OpenfdaEntityBase {
 	return NewEnforcementEntityFunc(sdk, data)
 }
 
@@ -386,7 +407,7 @@ func (sdk *OpenfdaSDK) Enforcement(data map[string]any) OpenfdaEntity {
 // Event returns a Event entity bound to this client.
 // Idiomatic usage: client.Event(nil).List(nil, nil) or
 // client.Event(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Event(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Event(data map[string]any) OpenfdaEntityBase {
 	return NewEventEntityFunc(sdk, data)
 }
 
@@ -394,7 +415,7 @@ func (sdk *OpenfdaSDK) Event(data map[string]any) OpenfdaEntity {
 // Label returns a Label entity bound to this client.
 // Idiomatic usage: client.Label(nil).List(nil, nil) or
 // client.Label(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Label(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Label(data map[string]any) OpenfdaEntityBase {
 	return NewLabelEntityFunc(sdk, data)
 }
 
@@ -402,7 +423,7 @@ func (sdk *OpenfdaSDK) Label(data map[string]any) OpenfdaEntity {
 // N510k returns a N510k entity bound to this client.
 // Idiomatic usage: client.N510k(nil).List(nil, nil) or
 // client.N510k(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) N510k(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) N510k(data map[string]any) OpenfdaEntityBase {
 	return NewN510kEntityFunc(sdk, data)
 }
 
@@ -410,7 +431,7 @@ func (sdk *OpenfdaSDK) N510k(data map[string]any) OpenfdaEntity {
 // Ndc returns a Ndc entity bound to this client.
 // Idiomatic usage: client.Ndc(nil).List(nil, nil) or
 // client.Ndc(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Ndc(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Ndc(data map[string]any) OpenfdaEntityBase {
 	return NewNdcEntityFunc(sdk, data)
 }
 
@@ -418,7 +439,7 @@ func (sdk *OpenfdaSDK) Ndc(data map[string]any) OpenfdaEntity {
 // Nsde returns a Nsde entity bound to this client.
 // Idiomatic usage: client.Nsde(nil).List(nil, nil) or
 // client.Nsde(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Nsde(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Nsde(data map[string]any) OpenfdaEntityBase {
 	return NewNsdeEntityFunc(sdk, data)
 }
 
@@ -426,7 +447,7 @@ func (sdk *OpenfdaSDK) Nsde(data map[string]any) OpenfdaEntity {
 // Pma returns a Pma entity bound to this client.
 // Idiomatic usage: client.Pma(nil).List(nil, nil) or
 // client.Pma(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Pma(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Pma(data map[string]any) OpenfdaEntityBase {
 	return NewPmaEntityFunc(sdk, data)
 }
 
@@ -434,7 +455,7 @@ func (sdk *OpenfdaSDK) Pma(data map[string]any) OpenfdaEntity {
 // Problem returns a Problem entity bound to this client.
 // Idiomatic usage: client.Problem(nil).List(nil, nil) or
 // client.Problem(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Problem(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Problem(data map[string]any) OpenfdaEntityBase {
 	return NewProblemEntityFunc(sdk, data)
 }
 
@@ -442,7 +463,7 @@ func (sdk *OpenfdaSDK) Problem(data map[string]any) OpenfdaEntity {
 // Shortage returns a Shortage entity bound to this client.
 // Idiomatic usage: client.Shortage(nil).List(nil, nil) or
 // client.Shortage(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Shortage(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Shortage(data map[string]any) OpenfdaEntityBase {
 	return NewShortageEntityFunc(sdk, data)
 }
 
@@ -450,7 +471,7 @@ func (sdk *OpenfdaSDK) Shortage(data map[string]any) OpenfdaEntity {
 // Substance returns a Substance entity bound to this client.
 // Idiomatic usage: client.Substance(nil).List(nil, nil) or
 // client.Substance(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *OpenfdaSDK) Substance(data map[string]any) OpenfdaEntity {
+func (sdk *OpenfdaSDK) Substance(data map[string]any) OpenfdaEntityBase {
 	return NewSubstanceEntityFunc(sdk, data)
 }
 

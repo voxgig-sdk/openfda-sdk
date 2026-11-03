@@ -69,13 +69,9 @@ main: kit: entity: problem: {
           }
           m: "GET"
           o: "/tobacco/problem.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

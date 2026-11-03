@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { OpenfdaSDK, BaseFeature, stdutil } from '../../..'
+import { OpenfdaSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('DrugEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('drug hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of OpenfdaSDK.test(offline).Drug().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of OpenfdaSDK.test(offline).Drug()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = OpenfdaSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Drug().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of OpenfdaSDK.test().Drug().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new OpenfdaSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Drug().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Drug().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = OpenfdaSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Drug().list({"count":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.OPENFDA_TEST_LIVE
@@ -51,7 +109,7 @@ describe('DrugEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"drug","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /drug/event.json","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"count","or":"count","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":1,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"ex":"patient.drug.openfda.brand_name:aspirin","k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":2},{"a":true,"ex":0,"k":"query","n":"skip","or":"skip","r":false,"t":"`$INTEGER`","index$":3}]},"k":"http","m":"GET","o":"/drug/event.json","q":{"$action":"event","exist":["count","limit","search","skip"]},"r":{},"s":[{"lit":"drug"},{"lit":"event.json"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"drug","name__orig":"drug","Name":"Drug","name_":"drug","name-":"drug","NAME":"DRUG","index$":1}, {"active":true,"entity":"drug","key$":"BasicDrugFlow","kind":"basic","name":"BasicDrugFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"drug_ref01"}}],"index$":0}]}, 'Drug', {"GET /drug/event.json":{"protocol":"http","parameters":[{"name":"search","in":"query","description":"Search query using openFDA query syntax","required":false,"schema":{"type":"string"},"example":"patient.drug.openfda.brand_name:aspirin","index$":0},{"name":"count","in":"query","description":"Count records by specified field","required":false,"schema":{"type":"string"},"index$":1},{"name":"limit","in":"query","description":"Number of records to return (max 1000)","required":false,"schema":{"type":"integer","default":1,"maximum":1000},"index$":2},{"name":"skip","in":"query","description":"Number of records to skip for pagination","required":false,"schema":{"type":"integer","default":0},"index$":3}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"drug","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /drug/event.json","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"count","or":"count","r":false,"t":"`$STRING`","index$":0},{"a":true,"ex":1,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"ex":"patient.drug.openfda.brand_name:aspirin","k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":2},{"a":true,"ex":0,"k":"query","n":"skip","or":"skip","r":false,"t":"`$INTEGER`","index$":3}]},"k":"http","m":"GET","o":"/drug/event.json","q":{"$action":"event"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"drug"},{"lit":"event.json"}],"t":{"req":"`reqdata`","res":"`body.results`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"drug","name__orig":"drug","Name":"Drug","name_":"drug","name-":"drug","NAME":"DRUG","index$":1}, {"active":true,"entity":"drug","key$":"BasicDrugFlow","kind":"basic","name":"BasicDrugFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"drug_ref01"}}],"index$":0}]}, 'Drug', {"GET /drug/event.json":{"protocol":"http","parameters":[{"name":"search","in":"query","description":"Search query using openFDA query syntax","required":false,"schema":{"type":"string"},"example":"patient.drug.openfda.brand_name:aspirin","index$":0},{"name":"count","in":"query","description":"Count records by specified field","required":false,"schema":{"type":"string"},"index$":1},{"name":"limit","in":"query","description":"Number of records to return (max 1000)","required":false,"schema":{"type":"integer","default":1,"maximum":1000},"index$":2},{"name":"skip","in":"query","description":"Number of records to skip for pagination","required":false,"schema":{"type":"integer","default":0},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('DrugEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

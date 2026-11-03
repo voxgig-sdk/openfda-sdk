@@ -12,29 +12,29 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewClassificationEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewClassificationEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewDrugEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewDrugEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewDrugsfdaEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewDrugsfdaEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewEnforcementEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewEnforcementEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewEventEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewEventEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewLabelEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewLabelEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewN510kEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewN510kEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewNdcEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewNdcEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewNsdeEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewNsdeEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewPmaEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewPmaEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewProblemEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewProblemEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewShortageEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewShortageEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 
-var NewSubstanceEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntity
+var NewSubstanceEntityFunc func(client *OpenfdaSDK, entopts map[string]any) OpenfdaEntityBase
 

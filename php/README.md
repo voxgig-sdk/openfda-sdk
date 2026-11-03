@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/openfda-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/openfda-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -25,7 +25,7 @@ composer require voxgig-sdk/openfda-sdk:@dev
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
-loading a specific record.
+loading a specific record. The client sends the API key as the `api_key` query parameter.
 
 ### 1. Create a client
 
@@ -237,7 +237,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -247,9 +247,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -431,7 +431,7 @@ Create an instance: `$classification = $client->Classification();`
 #### Example: List
 
 ```php
-// list() returns an array of Classification records (throws on error).
+// list() returns an array of Classification entities, one per record (throws on error).
 $classifications = $client->Classification()->list();
 ```
 
@@ -449,7 +449,7 @@ Create an instance: `$drug = $client->Drug();`
 #### Example: List
 
 ```php
-// list() returns an array of Drug records (throws on error).
+// list() returns an array of Drug entities, one per record (throws on error).
 $drugs = $client->Drug()->list();
 ```
 
@@ -474,7 +474,7 @@ Create an instance: `$drugsfda = $client->Drugsfda();`
 #### Example: List
 
 ```php
-// list() returns an array of Drugsfda records (throws on error).
+// list() returns an array of Drugsfda entities, one per record (throws on error).
 $drugsfdas = $client->Drugsfda()->list();
 ```
 
@@ -499,7 +499,7 @@ Create an instance: `$enforcement = $client->Enforcement();`
 #### Example: List
 
 ```php
-// list() returns an array of Enforcement records (throws on error).
+// list() returns an array of Enforcement entities, one per record (throws on error).
 $enforcements = $client->Enforcement()->list();
 ```
 
@@ -524,7 +524,7 @@ Create an instance: `$event = $client->Event();`
 #### Example: List
 
 ```php
-// list() returns an array of Event records (throws on error).
+// list() returns an array of Event entities, one per record (throws on error).
 $events = $client->Event()->list();
 ```
 
@@ -549,7 +549,7 @@ Create an instance: `$label = $client->Label();`
 #### Example: List
 
 ```php
-// list() returns an array of Label records (throws on error).
+// list() returns an array of Label entities, one per record (throws on error).
 $labels = $client->Label()->list();
 ```
 
@@ -574,7 +574,7 @@ Create an instance: `$n510k = $client->N510k();`
 #### Example: List
 
 ```php
-// list() returns an array of N510k records (throws on error).
+// list() returns an array of N510k entities, one per record (throws on error).
 $n510ks = $client->N510k()->list();
 ```
 
@@ -599,7 +599,7 @@ Create an instance: `$ndc = $client->Ndc();`
 #### Example: List
 
 ```php
-// list() returns an array of Ndc records (throws on error).
+// list() returns an array of Ndc entities, one per record (throws on error).
 $ndcs = $client->Ndc()->list();
 ```
 
@@ -624,7 +624,7 @@ Create an instance: `$nsde = $client->Nsde();`
 #### Example: List
 
 ```php
-// list() returns an array of Nsde records (throws on error).
+// list() returns an array of Nsde entities, one per record (throws on error).
 $nsdes = $client->Nsde()->list();
 ```
 
@@ -649,7 +649,7 @@ Create an instance: `$pma = $client->Pma();`
 #### Example: List
 
 ```php
-// list() returns an array of Pma records (throws on error).
+// list() returns an array of Pma entities, one per record (throws on error).
 $pmas = $client->Pma()->list();
 ```
 
@@ -674,7 +674,7 @@ Create an instance: `$problem = $client->Problem();`
 #### Example: List
 
 ```php
-// list() returns an array of Problem records (throws on error).
+// list() returns an array of Problem entities, one per record (throws on error).
 $problems = $client->Problem()->list();
 ```
 
@@ -699,7 +699,7 @@ Create an instance: `$shortage = $client->Shortage();`
 #### Example: List
 
 ```php
-// list() returns an array of Shortage records (throws on error).
+// list() returns an array of Shortage entities, one per record (throws on error).
 $shortages = $client->Shortage()->list();
 ```
 
@@ -724,7 +724,7 @@ Create an instance: `$substance = $client->Substance();`
 #### Example: List
 
 ```php
-// list() returns an array of Substance records (throws on error).
+// list() returns an array of Substance entities, one per record (throws on error).
 $substances = $client->Substance()->list();
 ```
 

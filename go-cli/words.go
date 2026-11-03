@@ -75,7 +75,7 @@ func runOp(client *sdk.OpenfdaSDK, op string, query *eng.Value, entityAtom eng.V
 
 // entityFor dispatches on the lowercase entity name. The generator
 // emits one `case "<name>":` per entity defined in the SDK model.
-func entityFor(client *sdk.OpenfdaSDK, name string) (sdk.OpenfdaEntity, error) {
+func entityFor(client *sdk.OpenfdaSDK, name string) (sdk.OpenfdaEntityBase, error) {
 	switch strings.ToLower(name) {
 	case "classification":
 		return client.Classification(nil), nil

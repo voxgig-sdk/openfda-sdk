@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -243,13 +244,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -320,13 +318,11 @@ class Config {
                 ]
               },
               "select": {
-                "$action": "event",
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+                "$action": "event"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -409,13 +405,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -498,13 +491,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -560,13 +550,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -622,13 +609,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -711,13 +695,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -773,13 +754,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             },
             {
@@ -835,13 +813,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -922,13 +897,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1011,13 +983,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1100,13 +1069,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1189,13 +1155,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1278,13 +1241,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1367,13 +1327,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1456,13 +1413,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -1545,13 +1499,10 @@ class Config {
                   }
                 ]
               },
-              "select": {
-                "exist": [
-                  "count",
-                  "limit",
-                  "search",
-                  "skip"
-                ]
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

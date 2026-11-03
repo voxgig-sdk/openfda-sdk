@@ -67,13 +67,9 @@ main: kit: entity: label: {
           }
           m: "GET"
           o: "/drug/label.json"
-          q: {
-            exist: [
-              "count"
-              "limit"
-              "search"
-              "skip"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

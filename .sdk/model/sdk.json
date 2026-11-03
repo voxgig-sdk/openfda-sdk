@@ -169,15 +169,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/device/classification.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "device"
@@ -260,15 +257,13 @@
                   "m": "GET",
                   "o": "/drug/event.json",
                   "q": {
-                    "$action": "event",
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
+                    "$action": "event"
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -367,15 +362,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/drug/drugsfda.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -474,15 +466,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/device/enforcement.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "device"
@@ -546,15 +535,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/drug/enforcement.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -618,15 +604,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/food/enforcement.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "food"
@@ -725,15 +708,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/cosmetic/event.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "cosmetic"
@@ -797,15 +777,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/device/event.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "device"
@@ -869,15 +846,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/food/event.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "food"
@@ -974,15 +948,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/drug/label.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -1081,15 +1052,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/device/510k.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "device"
@@ -1188,15 +1156,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/drug/ndc.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -1295,15 +1260,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/other/nsde.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "other"
@@ -1402,15 +1364,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/device/pma.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "device"
@@ -1509,15 +1468,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/tobacco/problem.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "tobacco"
@@ -1616,15 +1572,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/drug/shortages.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "drug"
@@ -1723,15 +1676,12 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/other/substance.json",
-                  "q": {
-                    "exist": [
-                      "count",
-                      "limit",
-                      "search",
-                      "skip"
-                    ]
-                  },
+                  "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "other"
@@ -2075,6 +2025,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -2536,7 +2487,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -2589,6 +2540,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -2819,7 +2775,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -3196,6 +3155,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },
